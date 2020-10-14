@@ -13,9 +13,9 @@
 	$password = $_POST["password"];
 
 	//check if name exists
-	$namecheckquerry = "SELECT username FROM players WHERE username='" . $username . "';";
+	$namecheckquery = "SELECT username FROM players WHERE username='" . $username . "';";
 
-	$namecheck = mysqli_query($con, $namecheckquerry) or die("2: Name check querry Failed"); //error code #2 = name check query failed
+	$namecheck = mysqli_query($con, $namecheckquery) or die("2: Name check query Failed"); //error code #2 = name check query failed
 
 	if (mysqli_num_rows($namecheck) > 0)
 	{
