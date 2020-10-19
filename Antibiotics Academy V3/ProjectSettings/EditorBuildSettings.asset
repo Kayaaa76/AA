@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main YJ.unity
     guid: 42f149ff81fd5fe408cd669313d3041a
   - enabled: 1
-    path: Assets/Scenes/Match3.unity
+    path: Assets/Scenes/Match3 YJ.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/TowerDefense.unity
@@ -47,4 +47,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pre Game Quiz.unity
     guid: 9ebb97220424fd04f8e790979136c851
+  - enabled: 1
+    path: Assets/Scenes/Main OG.unity
+    guid: c3e36ccd052ec724aad259aa4b1eefa3
+  - enabled: 1
+    path: Assets/Scenes/Match3 OG.unity
+    guid: 105aec9d017f576408d8a418d0ee9b1e
+  - enabled: 1
+    path: Assets/Scenes/Theme Select.unity
+    guid: 85162c85251d6ea4e9f9688884f96de3
   m_configObjects: {}

@@ -37,7 +37,7 @@ public class CustomizationScreen : MonoBehaviour
     {
         if (IsGenderSelected == true) // if player has selected a character
         {
-            SceneManager.LoadScene("Main"); // go to main scene
+            SceneManager.LoadScene("Main OG"); // go to main scene
         }
         else // if player has not selected a character
         {

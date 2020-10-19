@@ -9,7 +9,14 @@ namespace Match3
     {
         public void TriggerRestart()  //function to restart the game
         {
-            SceneManager.LoadScene(8); // match 3
+            if (ThemeSelectScreen.IsClassic == true)
+            {
+                SceneManager.LoadScene(14); // match 3
+            }
+            else if(ThemeSelectScreen.IsYJ == true)
+            {
+                SceneManager.LoadScene(8);
+            }
         }
 
         public void TriggerQuit() //function to quit the game
@@ -17,8 +24,14 @@ namespace Match3
             GameManager.pharmacistStage = 2;
             GameManager.receptionistStage = 2;
 
-            SceneManager.LoadScene(7); //main
-
+            if (ThemeSelectScreen.IsClassic == true)
+            {
+                SceneManager.LoadScene(13); //main
+            }
+            else if (ThemeSelectScreen.IsYJ == true)
+            {
+                SceneManager.LoadScene(7);
+            }
         }
 
         public void TriggerQuitLost()  //function to quit the game when player lost

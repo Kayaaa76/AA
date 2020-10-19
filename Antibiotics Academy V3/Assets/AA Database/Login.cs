@@ -29,7 +29,7 @@ public class Login : MonoBehaviour
         {
             DBManager.username = nameField.text;
             //DBManager.score = int.Parse(www.text.Split('\t')[1]);
-            SceneManager.LoadScene(12);
+            SceneManager.LoadScene(15);
         }
         else
         {

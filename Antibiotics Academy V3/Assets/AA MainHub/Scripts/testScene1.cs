@@ -14,6 +14,13 @@ public class testScene1 : MonoBehaviour
 
     public void Load() // function to load the match 3 mini game
     {
-        SceneManager.LoadScene(8); // match 3
+        if (ThemeSelectScreen.IsYJ == true)
+        {
+            SceneManager.LoadSceneAsync(8); // match 3
+        }
+        else if(ThemeSelectScreen.IsClassic == true)
+        {
+            SceneManager.LoadSceneAsync(14);
+        }
     }
 }

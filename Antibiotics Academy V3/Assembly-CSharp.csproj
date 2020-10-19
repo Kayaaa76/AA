@@ -74,6 +74,7 @@
      <Compile Include="Assets\AA MainHub\Scripts\Movement.cs" />
      <Compile Include="Assets\AA MainHub\Scripts\PlayerCharacterCustomization.cs" />
      <Compile Include="Assets\AA MainHub\Scripts\Teleport.cs" />
+     <Compile Include="Assets\AA MainHub\Scripts\ThemeSelectScreen.cs" />
      <Compile Include="Assets\AA MainHub\Scripts\testScene1.cs" />
      <Compile Include="Assets\AA MainHub\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
      <Compile Include="Assets\AA MainHub\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
