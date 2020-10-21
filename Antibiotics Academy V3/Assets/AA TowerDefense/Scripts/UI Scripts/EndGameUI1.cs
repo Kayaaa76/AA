@@ -18,12 +18,34 @@ namespace TowerDefense
             GameManager.surgeonStage = 3;
             GameManager.npclawyerStage = 1;
 
-            SceneManager.LoadScene(7); // go back to hospital
+            if (ThemeSelectScreen.IsYJ == true)
+            {
+                SceneManager.LoadScene(7); // go back to hospital
+            }
+            else if (ThemeSelectScreen.IsClassic == true)
+            {
+                SceneManager.LoadScene(14); // go back to hospital
+            }
+            else if (ThemeSelectScreen.IsTrixy == true)
+            {
+                SceneManager.LoadScene(16); // go back to hospital
+            }
         }
 
         public void TriggerQuitLost()
         {
-            SceneManager.LoadScene(7); // back to main
+            if (ThemeSelectScreen.IsYJ == true)
+            {
+                SceneManager.LoadScene(7); // back to main
+            }
+            else if (ThemeSelectScreen.IsClassic == true)
+            {
+                SceneManager.LoadScene(14); // back to main
+            }
+            else if (ThemeSelectScreen.IsTrixy == true)
+            {
+                SceneManager.LoadScene(16); // back to main
+            }
             GameManager.surgeonStage = 0;
         }
     }

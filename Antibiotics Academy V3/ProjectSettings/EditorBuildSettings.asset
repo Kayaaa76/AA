@@ -56,4 +56,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Theme Select.unity
     guid: 85162c85251d6ea4e9f9688884f96de3
+  - enabled: 1
+    path: Assets/Scenes/Main Trixy.unity
+    guid: 15e21243741bff540a0a8fd6252c9c4f
   m_configObjects: {}

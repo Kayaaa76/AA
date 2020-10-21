@@ -18,7 +18,7 @@ public class testScene1 : MonoBehaviour
         {
             SceneManager.LoadSceneAsync(8); // match 3
         }
-        else if(ThemeSelectScreen.IsClassic == true)
+        else if(ThemeSelectScreen.IsClassic == true || ThemeSelectScreen.IsTrixy == true)
         {
             SceneManager.LoadSceneAsync(14);
         }

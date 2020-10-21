@@ -9,6 +9,7 @@ public class ThemeSelectScreen : MonoBehaviour
 
     public static bool IsClassic = false;
     public static bool IsYJ = false;
+    public static bool IsTrixy = false;
 
     public GameObject AdvisePopUp; // warning message that pops up if player clicks ok without selecting a theme
 
@@ -23,7 +24,14 @@ public class ThemeSelectScreen : MonoBehaviour
     {
         IsYJ = true; // set bool IsYJ to be true
         IsClassic = false;
-        IsThemeSelected = true; // set bool to true since player has selected a character
+        IsThemeSelected = true; // set bool to true since player has selected a theme
+    }
+
+    public void SelectTrixy() // function that triggers when player clicks on the Trixy's theme in the theme selection screen
+    {
+        IsTrixy = true; // set bool IsTrixy to be true
+        IsClassic = false;
+        IsThemeSelected = true; // set bool to true since player has selected a theme
     }
 
     public void GoToMainScene() // function to go to main scene after selecting a character
@@ -35,6 +43,10 @@ public class ThemeSelectScreen : MonoBehaviour
         else if (IsThemeSelected == true && IsYJ == true)
         {
             SceneManager.LoadScene("Main YJ");
+        }
+        else if (IsThemeSelected == true && IsTrixy == true)
+        {
+            SceneManager.LoadScene("Main Trixy");
         }
         else // if player has not selected a character
         {

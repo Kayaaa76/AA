@@ -32,6 +32,10 @@ namespace Match3
             {
                 SceneManager.LoadScene(7);
             }
+            else if(ThemeSelectScreen.IsTrixy == true)
+            {
+                SceneManager.LoadScene(16);
+            }
         }
 
         public void TriggerQuitLost()  //function to quit the game when player lost
