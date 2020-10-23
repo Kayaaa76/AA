@@ -33,11 +33,31 @@ public class CustomizationScreen : MonoBehaviour
         IsGenderSelected = true; // set bool to true since player has selected a character
     }
 
+    //public void GoToMainScene() // function to go to main scene after selecting a character
+    //{
+    //    if (IsGenderSelected == true) // if player has selected a character
+    //    {
+    //        SceneManager.LoadScene("Main OG"); // go to main scene
+    //    }
+    //    else // if player has not selected a character
+    //    {
+    //        StartCoroutine(AdvisePopUpTime()); // warning message appear
+    //    }
+    //}
+
     public void GoToMainScene() // function to go to main scene after selecting a character
     {
-        if (IsGenderSelected == true) // if player has selected a character
+        if (IsGenderSelected == true && ThemeSelectScreen.IsClassic == true) // if player has selected classic theme
         {
-            SceneManager.LoadScene("Main OG"); // go to main scene
+            SceneManager.LoadScene("Main OG"); // go to main og scene
+        }
+        else if (IsGenderSelected == true && ThemeSelectScreen.IsYJ == true)
+        {
+            SceneManager.LoadScene("Main YJ");
+        }
+        else if (IsGenderSelected == true && ThemeSelectScreen.IsTrixy == true)
+        {
+            SceneManager.LoadScene("Main Trixy");
         }
         else // if player has not selected a character
         {

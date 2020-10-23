@@ -57,4 +57,9 @@ public class Login : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void BypassLogin()
+    {
+        SceneManager.LoadScene(15);
+    }
 }
