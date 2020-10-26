@@ -13,9 +13,6 @@ public class ThemeSelectScreen : MonoBehaviour
 
     public GameObject AdvisePopUp; // warning message that pops up if player clicks ok without selecting a theme
 
-    public GameObject ClassicPopUp;
-    public GameObject YJPopUp;
-    public GameObject TrixyPopUp;
 
     public void SelectClassic() // function that triggers when player clicks on the classic theme in the theme selection screen
     {
@@ -23,7 +20,6 @@ public class ThemeSelectScreen : MonoBehaviour
         IsYJ = false;
         IsTrixy = false;
         IsThemeSelected = true; // set bool to true since player has selected a theme
-        StartCoroutine(ClassicPopUpTime());
     }
 
     public void SelectYJ() // function that triggers when player clicks on the YJ's theme in the theme selection screen
@@ -32,7 +28,6 @@ public class ThemeSelectScreen : MonoBehaviour
         IsClassic = false;
         IsTrixy = false;
         IsThemeSelected = true; // set bool to true since player has selected a theme
-        StartCoroutine(YJPopUpTime());
     }
 
     public void SelectTrixy() // function that triggers when player clicks on the Trixy's theme in the theme selection screen
@@ -41,7 +36,6 @@ public class ThemeSelectScreen : MonoBehaviour
         IsClassic = false;
         IsYJ = false;
         IsThemeSelected = true; // set bool to true since player has selected a theme
-        StartCoroutine(TrixyPopUpTime());
     }
 
     //public void GoToMainScene() // function to go to main scene after selecting a character
@@ -85,26 +79,5 @@ public class ThemeSelectScreen : MonoBehaviour
         AdvisePopUp.SetActive(true); // set the warning text to appear
         yield return new WaitForSeconds(2); // wait for 2 seconds 
         AdvisePopUp.SetActive(false); // make the warning text disappear
-    }
-
-    IEnumerator ClassicPopUpTime()
-    {
-        ClassicPopUp.SetActive(true);
-        yield return new WaitForSeconds(2);
-        ClassicPopUp.SetActive(false);
-    }
-
-    IEnumerator YJPopUpTime()
-    {
-        YJPopUp.SetActive(true);
-        yield return new WaitForSeconds(2);
-        YJPopUp.SetActive(false);
-    }
-
-    IEnumerator TrixyPopUpTime()
-    {
-        TrixyPopUp.SetActive(true);
-        yield return new WaitForSeconds(2);
-        TrixyPopUp.SetActive(false);
     }
 }
