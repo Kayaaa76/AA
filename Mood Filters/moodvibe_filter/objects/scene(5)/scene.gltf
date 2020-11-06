@@ -1,0 +1,518 @@
+{
+  "accessors": [
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 1698,
+      "max": [
+        42.378887176513672,
+        6.9812097549438477,
+        47.119441986083984
+      ],
+      "min": [
+        -42.378887176513672,
+        -33.167106628417969,
+        -42.378887176513672
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 20376,
+      "componentType": 5126,
+      "count": 1698,
+      "max": [
+        1,
+        0.99778294563293457,
+        1
+      ],
+      "min": [
+        -1,
+        -0.99778330326080322,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 1698,
+      "max": [
+        1,
+        0.99995046854019165,
+        0.99851900339126587,
+        1
+      ],
+      "min": [
+        -0.9993438720703125,
+        -0.99995064735412598,
+        -0.99894404411315918,
+        1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1698,
+      "max": [
+        0.99951171875,
+        0.67127609252929688
+      ],
+      "min": [
+        0.00048828125,
+        0.00048828125
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5125,
+      "count": 4296,
+      "max": [
+        1697
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 6,
+      "max": [
+        1,
+        2.4398966687139373e-16,
+        0,
+        0,
+        4.0676037522033699e-17,
+        1,
+        2.4398966687139373e-16,
+        0,
+        0.99232691526412964,
+        4.0676037522033699e-17,
+        1,
+        0,
+        4.6243610230626837e-16,
+        17.609111785888672,
+        13.692367553710938,
+        1
+      ],
+      "min": [
+        -0.33214503526687622,
+        0,
+        -0.99232691526412964,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        -0.33214503526687622,
+        0,
+        -39.020267486572266,
+        0,
+        -42.669490814208984,
+        1
+      ],
+      "type": "MAT4"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5123,
+      "count": 1698,
+      "max": [
+        5,
+        1,
+        1,
+        1
+      ],
+      "min": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 4,
+      "byteOffset": 27168,
+      "componentType": 5126,
+      "count": 1698,
+      "max": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "min": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "type": "VEC4"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Teitoku Ippan (https://sketchfab.com/TeitokuIppan)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/yin-yang-crystal-choker-a32716b79ef9466e8eb51746573c520a",
+      "title": "Yin Yang Crystal Choker"
+    },
+    "generator": "Sketchfab-6.72.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 13584,
+      "byteOffset": 0,
+      "byteStride": 8,
+      "name": "shortBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 17184,
+      "byteOffset": 13584,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 13584,
+      "byteOffset": 30768,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 40752,
+      "byteOffset": 44352,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 54336,
+      "byteOffset": 85104,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 384,
+      "byteOffset": 139440,
+      "byteStride": 64,
+      "name": "floatBufferViews"
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 139824,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/M_yy_crystal_choker_baseColor.png"
+    },
+    {
+      "uri": "textures/M_yy_crystal_choker_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/M_yy_crystal_choker_emissive.png"
+    },
+    {
+      "uri": "textures/M_yy_crystal_choker_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "emissiveTexture": {
+        "index": 2,
+        "texCoord": 0
+      },
+      "name": "M_yy_crystal_choker",
+      "normalTexture": {
+        "index": 3,
+        "scale": 1,
+        "texCoord": 0
+      },
+      "occlusionTexture": {
+        "index": 1,
+        "strength": 1,
+        "texCoord": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "baseColorTexture": {
+          "index": 0,
+          "texCoord": 0
+        },
+        "metallicFactor": 1,
+        "metallicRoughnessTexture": {
+          "index": 1,
+          "texCoord": 0
+        },
+        "roughnessFactor": 1
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_yy_crystal_choker_M_yy_crystal_choker_0",
+      "primitives": [
+        {
+          "attributes": {
+            "JOINTS_0": 6,
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3,
+            "WEIGHTS_0": 7
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "9542fe4f6d764369b2523959a14ea34f.fbx"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        5,
+        7,
+        6
+      ],
+      "name": ""
+    },
+    {
+      "children": [
+        8
+      ],
+      "name": "_rootJoint"
+    },
+    {
+      "matrix": [
+        1.0000000000000002,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1.0000000000000002,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": ""
+    },
+    {
+      "mesh": 0,
+      "name": "",
+      "skin": 0
+    },
+    {
+      "children": [
+        9
+      ],
+      "name": "root_collar_00",
+      "rotation": [
+        -8.6429329496252584e-17,
+        -0.74954718351364136,
+        -8.6429329496252584e-17,
+        0.66195094585418701
+      ]
+    },
+    {
+      "children": [
+        10
+      ],
+      "name": "chain_1_01",
+      "rotation": [
+        -2.4528007652947888e-32,
+        -0.086490742862224579,
+        3.0816782860031129e-34,
+        0.99625265598297119
+      ],
+      "translation": [
+        39.568794250488281,
+        -7.1885147094726562,
+        -4.9301905632019043
+      ]
+    },
+    {
+      "children": [
+        11
+      ],
+      "name": "chain_2_02",
+      "rotation": [
+        2.5360273816377392e-32,
+        -0.020708432421088219,
+        -1.0228378585977896e-33,
+        0.99978554248809814
+      ],
+      "translation": [
+        0.81505107879638672,
+        -3.0702815055847168,
+        -0.24958814680576324
+      ]
+    },
+    {
+      "children": [
+        12
+      ],
+      "name": "chain_3_03",
+      "rotation": [
+        -4.4799008064798957e-34,
+        0.00054845318663865328,
+        -4.1515613570662297e-33,
+        0.99999994039535522
+      ],
+      "translation": [
+        0.59020757675170898,
+        -2.7135343551635742,
+        -0.20783358812332153
+      ]
+    },
+    {
+      "name": "chain_4_04",
+      "rotation": [
+        8.5365700959962498e-17,
+        0.81581562757492065,
+        -8.5365700959962498e-17,
+        0.57831209897994995
+      ],
+      "translation": [
+        1.2423261404037476,
+        -4.6367812156677246,
+        -0.43593716621398926
+      ]
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 5,
+      "joints": [
+        5,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "skeleton": 5
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    }
+  ]
+}
+
