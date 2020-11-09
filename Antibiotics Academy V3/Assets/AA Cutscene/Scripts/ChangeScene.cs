@@ -32,8 +32,13 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene(5); // Change to fourth cutscene
     }
 
-    public void CharacterSelectionScene()
+    //public void CharacterSelectionScene()
+    //{
+    //    SceneManager.LoadScene(6); // Change to character selection scene
+    //}
+
+    public void ThemeSelectionScene()
     {
-        SceneManager.LoadScene(6); // Change to character selection scene
+        SceneManager.LoadScene(15); // Change to character selection scene
     }
 }

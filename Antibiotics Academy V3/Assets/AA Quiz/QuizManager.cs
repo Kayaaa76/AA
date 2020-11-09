@@ -17,6 +17,8 @@ public class QuizManager : MonoBehaviour
     public Text questionNo;
     public Text question;
 
+    public Text LoginToken;
+
     private string ans;
 
     private int index = 0;
@@ -39,6 +41,8 @@ public class QuizManager : MonoBehaviour
 
         questionNo.text = "Question: " + qns[index].questionNo;           //set the questionNo text and question text to the first question, since index starts at 0
         question.text = qns[index].questions;
+
+        LoginToken.text = Login.LoginToken;
     }
 
     public void TrueBtn()        //function to set the ans to true

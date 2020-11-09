@@ -12,10 +12,13 @@ public class Login : MonoBehaviour
 
     public Button submitButton;
 
+    public static string LoginToken;
+
     public void CallLogin()
     {
-        StartCoroutine(LoginPlayer());
+        //StartCoroutine(LoginPlayer());
         //StartCoroutine(GetRequest("http://103.239.222.212/ALIVEService/api/login/Generate?username=player1&password=2020Alive"));
+        StartCoroutine(PostRequest());
         //LoginPlayers();
     }
 
@@ -32,7 +35,7 @@ public class Login : MonoBehaviour
         {
             DBManager.username = nameField.text;
             //DBManager.score = int.Parse(www.text.Split('\t')[1]);
-            SceneManager.LoadScene(15);
+            SceneManager.LoadScene(12);
         }
         else
         {
@@ -60,6 +63,17 @@ public class Login : MonoBehaviour
     //    }
     //}
 
+    IEnumerator PostRequest()
+    {
+        WWWForm form = new WWWForm();
+        WWW www = new WWW("http://103.239.222.212/ALIVEService/api/login/Generate?username=player1&password=2020Alive", form);
+        yield return www;
+        Debug.Log(www.text);
+        LoginToken = www.text;
+
+        SceneManager.LoadScene(12);
+    }
+
     //void LoginPlayers()
     //{
     //    if (nameField.text == "testuser" && passwordField.text == "password")
@@ -84,6 +98,7 @@ public class Login : MonoBehaviour
 
     public void BypassLogin()
     {
-        SceneManager.LoadScene(15);
+        StartCoroutine(PostRequest());
+        //SceneManager.LoadScene(12);
     }
 }
