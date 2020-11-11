@@ -17,6 +17,10 @@ namespace Match3
             {
                 SceneManager.LoadScene(8);
             }
+            else
+            {
+                SceneManager.LoadScene(14);
+            }
         }
 
         public void TriggerQuit() //function to quit the game
@@ -35,6 +39,10 @@ namespace Match3
             else if(ThemeSelectScreen.IsTrixy == true)
             {
                 SceneManager.LoadScene(16);
+            }
+            else
+            {
+                SceneManager.LoadScene(13);
             }
         }
 

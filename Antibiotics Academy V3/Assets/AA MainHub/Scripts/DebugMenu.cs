@@ -6,18 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class DebugMenu : MonoBehaviour
 {
-    public GameObject DebugButton;
     public GameObject Menu;
-    public GameObject Match3Button;
-    public GameObject TowerDefenseButton;
-    public GameObject EndlessRunnerButton;
     public GameObject CloseButton;
-    public static GameObject Scene;
+    public static bool isDeveloper = false;
 
     void Start()
     {
-        Scene = GameObject.Find("Scene");
         Menu.SetActive(false);
+        CloseButton.SetActive(false);
+    }
+
+    void Update()
+    {
+        if(isDeveloper == true)
+        {
+            CloseButton.SetActive(true);
+        }
+        else if(isDeveloper == false)
+        {
+            CloseButton.SetActive(false);
+        }
     }
 
     public void OpenMenu()
@@ -32,59 +40,104 @@ public class DebugMenu : MonoBehaviour
 
     public void OpenMatch3()
     {
+        isDeveloper = true;
         if (ThemeSelectScreen.IsClassic == true || ThemeSelectScreen.IsTrixy == true)
         {
-            SceneManager.LoadSceneAsync("Match3 OG", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Match3 OG");
         }
         else if(ThemeSelectScreen.IsYJ == true)
         {
-            SceneManager.LoadSceneAsync("Match3 YJ", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Match3 YJ");
         }
         else
         {
-            SceneManager.LoadSceneAsync("Match3 OG",LoadSceneMode.Additive);
+            SceneManager.LoadScene("Match3 OG");
         }
-
-        ChangeSceneManager.SceneActive = false;
     }
 
     public void OpenTowerDefense()
     {
-        SceneManager.LoadSceneAsync("TowerDefense", LoadSceneMode.Additive);
-        ChangeSceneManager.SceneActive = false;
+        isDeveloper = true;
+        SceneManager.LoadScene("TowerDefense");
     }
 
     public void OpenEndlessRunner()
     {
-        SceneManager.LoadSceneAsync("Endless Runner", LoadSceneMode.Additive);
-        ChangeSceneManager.SceneActive = false;
+        isDeveloper = true;
+        SceneManager.LoadScene("Endless Runner");
     }
 
     public void CloseMatch3()
     {
-        ChangeSceneManager.SceneActive = true;
-        if (ThemeSelectScreen.IsClassic == true || ThemeSelectScreen.IsTrixy == true)
+        isDeveloper = false;
+        if (ThemeSelectScreen.IsClassic == true)
         {
-            SceneManager.UnloadSceneAsync("Match3 OG");
+            SceneManager.UnloadScene("Match3 OG");
+            SceneManager.LoadScene("Main OG");
         }
         else if (ThemeSelectScreen.IsYJ == true)
         {
-            SceneManager.UnloadSceneAsync("Match3 YJ");
+            SceneManager.UnloadScene("Match3 YJ");
+            SceneManager.LoadScene("Main YJ");
+        }
+        else if (ThemeSelectScreen.IsTrixy == true)
+        {
+            SceneManager.UnloadScene("Match3 OG");
+            SceneManager.LoadScene("Main Trixy");
         }
         else
         {
-            SceneManager.UnloadSceneAsync("Match3 OG");
+            SceneManager.UnloadScene("Match3 OG");
+            SceneManager.LoadScene("Main OG");
         }
     }
 
     public void CloseTowerDefense()
     {
-        ChangeSceneManager.SceneActive = true;
-        SceneManager.UnloadSceneAsync("TowerDefense");
+        isDeveloper = false;
+        if (ThemeSelectScreen.IsClassic == true)
+        {
+            SceneManager.UnloadScene("TowerDefense");
+            SceneManager.LoadScene("Main OG");
+        }
+        else if (ThemeSelectScreen.IsYJ == true)
+        {
+            SceneManager.UnloadScene("TowerDefense");
+            SceneManager.LoadScene("Main YJ");
+        }
+        else if (ThemeSelectScreen.IsTrixy == true)
+        {
+            SceneManager.UnloadScene("TowerDefense");
+            SceneManager.LoadScene("Main Trixy");
+        }
+        else
+        {
+            SceneManager.UnloadScene("TowerDefense");
+            SceneManager.LoadScene("Main OG");
+        }
     }
     public void CloseEndlessRunner()
     {
-        ChangeSceneManager.SceneActive = true;
-        SceneManager.UnloadSceneAsync("Endless Runner");
+        isDeveloper = false;
+        if (ThemeSelectScreen.IsClassic == true)
+        {
+            SceneManager.UnloadScene("Endless Runner");
+            SceneManager.LoadScene("Main OG");
+        }
+        else if (ThemeSelectScreen.IsYJ == true)
+        {
+            SceneManager.UnloadScene("Endless Runner");
+            SceneManager.LoadScene("Main YJ");
+        }
+        else if (ThemeSelectScreen.IsTrixy == true)
+        {
+            SceneManager.UnloadScene("Endless Runner");
+            SceneManager.LoadScene("Main Trixy");
+        }
+        else
+        {
+            SceneManager.UnloadScene("Endless Runner");
+            SceneManager.LoadScene("Main OG");
+        }
     }
 }

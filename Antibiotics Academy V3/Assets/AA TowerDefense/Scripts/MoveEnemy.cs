@@ -19,11 +19,6 @@ public class MoveEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ChangeSceneManager.SceneActive == true)
-        {
-            Destroy(this.gameObject);
-        }
-
         // 1 
         Vector3 startPosition = waypoints[currentWaypoint].transform.position;    //the current waypoint that they were last at
         Vector3 endPosition = waypoints[currentWaypoint + 1].transform.position;  //the next waypoint they are going to

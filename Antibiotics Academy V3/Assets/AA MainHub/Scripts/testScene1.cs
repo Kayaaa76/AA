@@ -16,11 +16,11 @@ public class testScene1 : MonoBehaviour
     {
         if (ThemeSelectScreen.IsYJ == true)
         {
-            SceneManager.LoadSceneAsync(8); // match 3
+            SceneManager.LoadScene(8); // match 3
         }
         else if(ThemeSelectScreen.IsClassic == true || ThemeSelectScreen.IsTrixy == true)
         {
-            SceneManager.LoadSceneAsync(14);
+            SceneManager.LoadScene(14);
         }
     }
 }

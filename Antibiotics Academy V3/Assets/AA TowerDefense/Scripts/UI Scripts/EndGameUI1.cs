@@ -24,11 +24,15 @@ namespace TowerDefense
             }
             else if (ThemeSelectScreen.IsClassic == true)
             {
-                SceneManager.LoadScene(14); // go back to hospital
+                SceneManager.LoadScene(13); // go back to hospital
             }
             else if (ThemeSelectScreen.IsTrixy == true)
             {
                 SceneManager.LoadScene(16); // go back to hospital
+            }
+            else
+            {
+                SceneManager.LoadScene(13);
             }
         }
 
@@ -40,7 +44,7 @@ namespace TowerDefense
             }
             else if (ThemeSelectScreen.IsClassic == true)
             {
-                SceneManager.LoadScene(14); // back to main
+                SceneManager.LoadScene(13); // back to main
             }
             else if (ThemeSelectScreen.IsTrixy == true)
             {

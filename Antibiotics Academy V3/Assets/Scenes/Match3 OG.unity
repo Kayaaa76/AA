@@ -4943,12 +4943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afbbf84db7e3f949a6ab5c684c5e84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugButton: {fileID: 0}
   Menu: {fileID: 0}
-  Match3Button: {fileID: 0}
-  TowerDefenseButton: {fileID: 0}
-  EndlessRunnerButton: {fileID: 0}
-  CloseButton: {fileID: 0}
+  CloseButton: {fileID: 1553698616}
 --- !u!1 &2100506510
 GameObject:
   m_ObjectHideFlags: 0

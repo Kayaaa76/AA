@@ -20,11 +20,6 @@ public class MoveLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ChangeSceneManager.SceneActive == true)
-        {
-            Destroy(this.gameObject);
-        }
-
         if (playercontroller.yourScore > 50 && playercontroller.yourScore <= 75) // if score is more than 50 and less than or equals to 75
         {
             speed = 10f; // set obstacle movement speed to 10

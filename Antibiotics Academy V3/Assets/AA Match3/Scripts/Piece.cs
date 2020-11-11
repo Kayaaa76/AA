@@ -35,11 +35,6 @@ namespace Match3
         // Update is called once per frame
         void Update()
         {
-            if(ChangeSceneManager.SceneActive == true)
-            {
-                Destroy(this.gameObject);
-            }
-
             if (isMatched)
             {
                 SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
