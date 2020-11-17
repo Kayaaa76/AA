@@ -125,6 +125,7 @@
      <Compile Include="Assets\AA TowerDefense\Scripts\UI Scripts\Tutorial1.cs" />
      <Compile Include="Assets\AA TowerDefense\Scripts\UI Scripts\TutorialManager1.cs" />
      <Compile Include="Assets\AA TowerDefense\Scripts\UI Scripts\TutorialTrigger1.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
      <None Include="Assets\AA MainHub\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\AA TowerDefense\Font\readme.txt" />
  <Reference Include="Unity.Timeline.Editor">

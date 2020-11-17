@@ -82,6 +82,8 @@ public class QuizManager : MonoBehaviour
             }
             Debug.Log("No more Questions.");
             Debug.Log(score);
+            Debug.Log("You got 100 coins for completing the Quiz!");
+            Player.coins += 100;
         }
 
 

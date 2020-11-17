@@ -56749,6 +56749,7 @@ GameObject:
   - component: {fileID: 919904923}
   - component: {fileID: 919904922}
   - component: {fileID: 919904921}
+  - component: {fileID: 919904927}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -56903,6 +56904,18 @@ Transform:
   m_Father: {fileID: 758836944}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &919904927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919904920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e75c76a70d1ef444bb7492f4fc1ff3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &920105683
 GameObject:
   m_ObjectHideFlags: 0
@@ -97637,12 +97650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afbbf84db7e3f949a6ab5c684c5e84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugButton: {fileID: 1772984848}
   Menu: {fileID: 2142216997}
-  Match3Button: {fileID: 5164622}
-  TowerDefenseButton: {fileID: 881109011}
-  EndlessRunnerButton: {fileID: 1615124005}
-  CloseButton: {fileID: 2063729247}
+  CloseButton: {fileID: 0}
 --- !u!1 &1618079225
 GameObject:
   m_ObjectHideFlags: 0

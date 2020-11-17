@@ -31,6 +31,7 @@ public class DebugMenu : MonoBehaviour
     public void OpenMenu()
     {
         Menu.SetActive(true);
+        Player.TotalCoins();
     }
 
     public void CloseMenu()

@@ -34,6 +34,8 @@ namespace TowerDefense
             {
                 SceneManager.LoadScene(13);
             }
+            Player.coins += 50;
+            Debug.Log("You got 50 coins for winning this game!");
         }
 
         public void TriggerQuitLost()

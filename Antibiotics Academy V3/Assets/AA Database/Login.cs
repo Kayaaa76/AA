@@ -71,6 +71,9 @@ public class Login : MonoBehaviour
         Debug.Log(www.text);
         LoginToken = www.text;
 
+        Player.coins += 10;
+        Debug.Log("You got 10 coins for logging in today!");
+
         SceneManager.LoadScene(12);
     }
 

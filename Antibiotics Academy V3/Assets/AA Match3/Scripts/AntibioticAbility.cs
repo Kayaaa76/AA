@@ -20,7 +20,7 @@ namespace Match3
 
         private void Update()
         {
-            if (healthManager.healthState == HealthStates.Sick && counter > 0)       //if health state is in sick and counter is greater than 0
+            if (healthManager.healthState == HealthStates.Sick && counter > 0 && Player.coins > 40)       //if health state is in sick and counter is greater than 0
             {
                 btn.interactable = true;                                             //antibiotic button will be interactable
             }
@@ -36,18 +36,21 @@ namespace Match3
             {
                 healthManager.currentHealth += 25;                                    //if counter is 3, adds health by 25
                 counter -= 1;                                                         //reduces counter by 1
+                Player.coins -= 40;
             }
 
             else if (counter == 2)                                                   //if counter is 2, health adds by 15 and counter reduces by 1
             {
                 healthManager.currentHealth += 15;                                    //if counter is 2, adds health by 15
                 counter -= 1;                                                         //reduces counter by 1
+                Player.coins -= 40;
             }
 
             else if (counter == 1)                                                   //if counter is 1, health adds by 10 and counter reduces by 1, which means counter is at 0 and the ability can no longer be used
             {
                 healthManager.currentHealth += 10;                                    //if counter is 1, adds health by 10
                 counter -= 1;                                                         //reduces counter by 1, now counter is 0 and the ability can never be used again
+                Player.coins -= 40;
             }
         }
 
