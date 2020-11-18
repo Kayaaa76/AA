@@ -56916,6 +56916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e75c76a70d1ef444bb7492f4fc1ff3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coin: 0
 --- !u!1 &920105683
 GameObject:
   m_ObjectHideFlags: 0
@@ -123746,7 +123747,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Save (N.A)
+  m_Text: Save
 --- !u!222 &2082044576
 CanvasRenderer:
   m_ObjectHideFlags: 0
