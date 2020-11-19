@@ -22,5 +22,9 @@ public class testScene1 : MonoBehaviour
         {
             SceneManager.LoadScene(14);
         }
+        else
+        {
+            SceneManager.LoadScene(14);
+        }
     }
 }
