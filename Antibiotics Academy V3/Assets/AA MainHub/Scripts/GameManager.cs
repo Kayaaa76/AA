@@ -328,8 +328,15 @@ public class GameManager : MonoBehaviour
     {
         if (npclawyerStage == 1) // if player completed both match 3 and tower defense minigame
         {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger lawyer dialogue
-            npclawyerStage = 2; // lawyer stage 2 
+            if (Player.lifes > 0)
+            {
+                obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger lawyer dialogue
+                npclawyerStage = 2; // lawyer stage 2 
+            }
+            else
+            {
+                Debug.Log("You do not have enough lifes to play the game!");
+            }
         }
 
         if (npclawyerStage == 2 && dm.spawned == false) // if lawyer finished dialogue
@@ -337,15 +344,25 @@ public class GameManager : MonoBehaviour
             currentPosition = player.transform.position; // get current position of player
             sceneCounter = 2; // set scenecounter to 2 to change scene
             SceneManager.LoadScene(11); // trigger endless runner game
+            Player.lifes -= 1;
         }
     }
+    
 
     public void StartTD() // function to start tower defense game
     {
-        surgeonStage = 2;
-        currentPosition = player.transform.position;
-        sceneCounter = 2;
-        SceneManager.LoadScene(9); // tower defense
+        if (Player.lifes > 0)
+        {
+            surgeonStage = 2;
+            currentPosition = player.transform.position;
+            sceneCounter = 2;
+            SceneManager.LoadScene(9); // tower defense
+            Player.lifes -= 1;
+        }
+        else
+        {
+            Debug.Log("You do not have enough lifes to play the game!");
+        }
     }
 
     public void RetriggerSurgeon() // function to retrigger surgeon if player clicks no

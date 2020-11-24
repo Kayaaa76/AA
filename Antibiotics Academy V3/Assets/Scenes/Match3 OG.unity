@@ -2550,9 +2550,9 @@ MonoBehaviour:
     - "There are states: Sick, Neutral and Healthy! \n\nThere's a text at the bottom
       where it will tell you what pieces gives bonus health when matched during the
       three states!"
-    - "There is also an antibiotic button, that adds health! It costs 40 coins! \n\nHowever,
-      it can only be used when you're in the sick state! \n\nThere's only 3 uses,
-      and each uses decreases the effectiveness of the next use!"
+    - "There is also an antibiotic button, that adds health! It costs 25 to 40 coins!
+      \n\nHowever, it can only be used when you're in the sick state! \n\nThere's
+      only 3 uses, and each uses decreases the effectiveness of the next use!"
   StartUI: {fileID: 1477448296}
 --- !u!114 &929065390
 MonoBehaviour:
@@ -4479,8 +4479,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: -75}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 450, y: -115}
+  m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1794728982
 MonoBehaviour:
@@ -4502,7 +4502,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 993de02b967b2564c9df47c82a5e7fcc, type: 3}
-    m_FontSize: 20
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -4513,7 +4513,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 40 Coins
+  m_Text: "First \nAntibiotic = \n25 Coins\nSecond/Third \nAntibiotic =\n 40 Coins"
 --- !u!222 &1794728983
 CanvasRenderer:
   m_ObjectHideFlags: 0

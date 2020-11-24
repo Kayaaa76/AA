@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
+using System.IO;
 
 public class Login : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class Login : MonoBehaviour
     public InputField passwordField;
 
     public Button submitButton;
+
+    public static System.DateTime lastLogin;
+    System.DateTime currentLogin;
 
     public static string LoginToken;
 
@@ -71,9 +75,32 @@ public class Login : MonoBehaviour
         Debug.Log(www.text);
         LoginToken = www.text;
 
-        Player.coins += 10;
-        Debug.Log("You got 10 coins for logging in today!");
+        currentLogin = System.DateTime.Now;
+        string path = Application.persistentDataPath + "/player.txt";
+        if (File.Exists(path))
+        {
+            Player.LoadPlayer();
+            if (currentLogin >= lastLogin.AddHours(18))
+            {
+                Player.coins += 10;
+                Debug.Log("You got 10 coins for logging in today!");
+                Player.lifes += 3;
+                Debug.Log("You got 3 lifes for logging in today!");
+            }
+            else
+            {
+                Debug.Log("You have already logged in for the day!");
+            }
+        }
+        else
+        {
+            Player.coins += 10;
+            Debug.Log("You got 10 coins for logging in today!");
+            Player.lifes += 3;
+            Debug.Log("You got 3 lifes for logging in today!");
+        }
 
+        lastLogin = currentLogin;
         SceneManager.LoadScene(12);
     }
 

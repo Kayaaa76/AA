@@ -7,19 +7,23 @@ public class PlayerData
 {
     public int coin;
 
-    public int receptionistStage = 0;
-    public int doctorStage = 0;
-    public int pharmacistStage = 0;
-    public int surgeonStage = 0;
-    public int npcdadStage = 0;
-    public int npcmalStage = 0;
-    public int npcbffStage = 0;
-    public int npcnqxStage = 0;
-    public int npctimStage = 0;
-    public int npcjunoStage = 0;
-    public int npcseanStage = 0;
-    public int npcauntyStage = 0;
-    public int npclawyerStage = 0;
+    public int receptionistStage;
+    public int doctorStage;
+    public int pharmacistStage;
+    public int surgeonStage;
+    public int npcdadStage;
+    public int npcmalStage;
+    public int npcbffStage;
+    public int npcnqxStage;
+    public int npctimStage;
+    public int npcjunoStage;
+    public int npcseanStage;
+    public int npcauntyStage;
+    public int npclawyerStage;
+
+    public System.DateTime lastLogin;
+
+    public int life;
 
     public PlayerData(Player player)
     {
@@ -38,5 +42,9 @@ public class PlayerData
         npcseanStage = player.tnpcseanStage;
         npcauntyStage = player.tnpcauntyStage;
         npclawyerStage = player.tnpclawyerStage;
-}
+
+        lastLogin = player.tLastLogin;
+
+        life = player.life;
+    }
 }

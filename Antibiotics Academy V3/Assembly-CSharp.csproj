@@ -129,6 +129,7 @@
      <Compile Include="Assets\Scripts\PlayerData.cs" />
      <Compile Include="Assets\Scripts\SaveSystem.cs" />
      <Compile Include="Assets\Scripts\ShowCoins.cs" />
+     <Compile Include="Assets\Scripts\ShowLifes.cs" />
      <None Include="Assets\AA MainHub\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\AA TowerDefense\Font\readme.txt" />
  <Reference Include="Unity.Timeline.Editor">

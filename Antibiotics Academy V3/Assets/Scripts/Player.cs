@@ -21,6 +21,11 @@ public class Player : MonoBehaviour
     public int tnpcauntyStage = 0;
     public int tnpclawyerStage = 0;
 
+    public System.DateTime tLastLogin;
+
+    public static int lifes;
+    public int life;
+
     void Update()
     {
         coin = coins;
@@ -38,11 +43,25 @@ public class Player : MonoBehaviour
         tnpcseanStage = GameManager.npcseanStage;
         tnpcauntyStage = GameManager.npcauntyStage;
         tnpclawyerStage = GameManager.npclawyerStage;
-}
+
+        tLastLogin = Login.lastLogin;
+
+        life = lifes;
+
+        if(lifes > 5)
+        {
+            lifes = 5;
+        }
+    }
 
     public static void TotalCoins()
     {
         Debug.Log("Player has: " + coins + " coins!");
+    }
+
+    public static void TotalLifes()
+    {
+        Debug.Log("Player has: " + lifes + " lifes!");
     }
 
     public void SavePlayer()
@@ -50,7 +69,12 @@ public class Player : MonoBehaviour
         SaveSystem.SavePlayer(this);
     }
 
-    public void LoadPlayer()
+    public void CallLoadPlayer()
+    {
+        LoadPlayer();
+    }
+
+    public static void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
@@ -69,5 +93,11 @@ public class Player : MonoBehaviour
         GameManager.npcseanStage = data.npcseanStage;
         GameManager.npcauntyStage = data.npcauntyStage;
         GameManager.npclawyerStage = data.npclawyerStage;
+
+        Login.lastLogin = data.lastLogin;
+
+        lifes = data.life;
+
+        Debug.Log("player data have been loaded");
     }
 }

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 323063078}
   - component: {fileID: 323063077}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Developer Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -932,6 +932,7 @@ GameObject:
   - component: {fileID: 979470781}
   - component: {fileID: 979470780}
   - component: {fileID: 979470784}
+  - component: {fileID: 979470785}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1045,6 +1046,32 @@ MonoBehaviour:
   nameField: {fileID: 2002328263}
   passwordField: {fileID: 1827094067}
   submitButton: {fileID: 1193434057}
+--- !u!114 &979470785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979470779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e75c76a70d1ef444bb7492f4fc1ff3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: 0
+  treceptionistStage: 0
+  tdoctorStage: 0
+  tpharmacistStage: 0
+  tsurgeonStage: 0
+  tnpcdadStage: 0
+  tnpcmalStage: 0
+  tnpcbffStage: 0
+  tnpcnqxStage: 0
+  tnpctimStage: 0
+  tnpcjunoStage: 0
+  tnpcseanStage: 0
+  tnpcauntyStage: 0
+  tnpclawyerStage: 0
 --- !u!1 &1037290869
 GameObject:
   m_ObjectHideFlags: 0
