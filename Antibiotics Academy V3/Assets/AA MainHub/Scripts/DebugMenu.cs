@@ -75,22 +75,22 @@ public class DebugMenu : MonoBehaviour
         isDeveloper = false;
         if (ThemeSelectScreen.IsClassic == true)
         {
-            SceneManager.UnloadScene("Match3 OG");
+            SceneManager.UnloadSceneAsync("Match3 OG");
             SceneManager.LoadScene("Main OG");
         }
         else if (ThemeSelectScreen.IsYJ == true)
         {
-            SceneManager.UnloadScene("Match3 YJ");
+            SceneManager.UnloadSceneAsync("Match3 YJ");
             SceneManager.LoadScene("Main YJ");
         }
         else if (ThemeSelectScreen.IsTrixy == true)
         {
-            SceneManager.UnloadScene("Match3 OG");
+            SceneManager.UnloadSceneAsync("Match3 OG");
             SceneManager.LoadScene("Main Trixy");
         }
         else
         {
-            SceneManager.UnloadScene("Match3 OG");
+            SceneManager.UnloadSceneAsync("Match3 OG");
             SceneManager.LoadScene("Main OG");
         }
     }
@@ -100,22 +100,22 @@ public class DebugMenu : MonoBehaviour
         isDeveloper = false;
         if (ThemeSelectScreen.IsClassic == true)
         {
-            SceneManager.UnloadScene("TowerDefense");
+            SceneManager.UnloadSceneAsync("TowerDefense");
             SceneManager.LoadScene("Main OG");
         }
         else if (ThemeSelectScreen.IsYJ == true)
         {
-            SceneManager.UnloadScene("TowerDefense");
+            SceneManager.UnloadSceneAsync("TowerDefense");
             SceneManager.LoadScene("Main YJ");
         }
         else if (ThemeSelectScreen.IsTrixy == true)
         {
-            SceneManager.UnloadScene("TowerDefense");
+            SceneManager.UnloadSceneAsync("TowerDefense");
             SceneManager.LoadScene("Main Trixy");
         }
         else
         {
-            SceneManager.UnloadScene("TowerDefense");
+            SceneManager.UnloadSceneAsync("TowerDefense");
             SceneManager.LoadScene("Main OG");
         }
     }
@@ -124,22 +124,22 @@ public class DebugMenu : MonoBehaviour
         isDeveloper = false;
         if (ThemeSelectScreen.IsClassic == true)
         {
-            SceneManager.UnloadScene("Endless Runner");
+            SceneManager.UnloadSceneAsync("Endless Runner");
             SceneManager.LoadScene("Main OG");
         }
         else if (ThemeSelectScreen.IsYJ == true)
         {
-            SceneManager.UnloadScene("Endless Runner");
+            SceneManager.UnloadSceneAsync("Endless Runner");
             SceneManager.LoadScene("Main YJ");
         }
         else if (ThemeSelectScreen.IsTrixy == true)
         {
-            SceneManager.UnloadScene("Endless Runner");
+            SceneManager.UnloadSceneAsync("Endless Runner");
             SceneManager.LoadScene("Main Trixy");
         }
         else
         {
-            SceneManager.UnloadScene("Endless Runner");
+            SceneManager.UnloadSceneAsync("Endless Runner");
             SceneManager.LoadScene("Main OG");
         }
     }

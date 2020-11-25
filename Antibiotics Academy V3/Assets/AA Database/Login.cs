@@ -79,7 +79,7 @@ public class Login : MonoBehaviour
         string path = Application.persistentDataPath + "/player.txt";
         if (File.Exists(path))
         {
-            Player.LoadPlayer();
+            Player.Load();
             if (currentLogin >= lastLogin.AddHours(18))
             {
                 Player.coins += 10;
