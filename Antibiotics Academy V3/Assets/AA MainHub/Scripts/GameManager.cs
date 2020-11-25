@@ -328,7 +328,7 @@ public class GameManager : MonoBehaviour
     {
         if (npclawyerStage == 1) // if player completed both match 3 and tower defense minigame
         {
-            if (Player.lifes > 0)
+            if (Player.lives > 0)
             {
                 obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger lawyer dialogue
                 npclawyerStage = 2; // lawyer stage 2 
@@ -344,20 +344,20 @@ public class GameManager : MonoBehaviour
             currentPosition = player.transform.position; // get current position of player
             sceneCounter = 2; // set scenecounter to 2 to change scene
             SceneManager.LoadScene(11); // trigger endless runner game
-            Player.lifes -= 1;
+            Player.lives -= 1;
         }
     }
     
 
     public void StartTD() // function to start tower defense game
     {
-        if (Player.lifes > 0)
+        if (Player.lives > 0)
         {
             surgeonStage = 2;
             currentPosition = player.transform.position;
             sceneCounter = 2;
             SceneManager.LoadScene(9); // tower defense
-            Player.lifes -= 1;
+            Player.lives -= 1;
         }
         else
         {

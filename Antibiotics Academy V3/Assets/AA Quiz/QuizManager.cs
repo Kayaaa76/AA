@@ -74,10 +74,12 @@ public class QuizManager : MonoBehaviour
             if (sceneID == 1)
             {
                 SceneManager.LoadScene(nextScene);
+                Player.donePreQuiz = true;
             }
 
             else
             {
+                Player.donePostQuiz = true;
                 Application.Quit();
             }
             Debug.Log("No more Questions.");

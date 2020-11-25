@@ -32,7 +32,7 @@ public class DebugMenu : MonoBehaviour
     {
         Menu.SetActive(true);
         Player.TotalCoins();
-        Player.TotalLifes();
+        Player.TotalLives();
         Debug.Log(Application.persistentDataPath);
     }
 

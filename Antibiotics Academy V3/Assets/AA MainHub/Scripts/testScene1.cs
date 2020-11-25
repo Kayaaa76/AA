@@ -14,27 +14,27 @@ public class testScene1 : MonoBehaviour
 
     public void Load() // function to load the match 3 mini game
     {
-        if (Player.lifes > 0)
+        if (Player.lives > 0)
         {
             if (ThemeSelectScreen.IsYJ == true)
             {
                 SceneManager.LoadScene(8); // match 3
-                Player.lifes -= 1;
+                Player.lives -= 1;
             }
             else if (ThemeSelectScreen.IsClassic == true || ThemeSelectScreen.IsTrixy == true)
             {
                 SceneManager.LoadScene(14);
-                Player.lifes -= 1;
+                Player.lives -= 1;
             }
             else
             {
                 SceneManager.LoadScene(14);
-                Player.lifes -= 1;
+                Player.lives -= 1;
             }
         }
         else
         {
-            Debug.Log("You do not have enough lifes to play the game!");
+            Debug.Log("You do not have enough lives to play the game!");
         }
     }
 }

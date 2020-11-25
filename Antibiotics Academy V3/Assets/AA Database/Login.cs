@@ -76,7 +76,7 @@ public class Login : MonoBehaviour
         LoginToken = www.text;
 
         currentLogin = System.DateTime.Now;
-        string path = Application.persistentDataPath + "/player.txt";
+        string path = Application.persistentDataPath + "/PlayerSave.json";
         if (File.Exists(path))
         {
             Player.Load();
@@ -84,8 +84,8 @@ public class Login : MonoBehaviour
             {
                 Player.coins += 10;
                 Debug.Log("You got 10 coins for logging in today!");
-                Player.lifes += 3;
-                Debug.Log("You got 3 lifes for logging in today!");
+                Player.lives += 3;
+                Debug.Log("You got 3 lives for logging in today!");
             }
             else
             {
@@ -96,12 +96,24 @@ public class Login : MonoBehaviour
         {
             Player.coins += 10;
             Debug.Log("You got 10 coins for logging in today!");
-            Player.lifes += 3;
-            Debug.Log("You got 3 lifes for logging in today!");
+            Player.lives += 3;
+            Debug.Log("You got 3 lives for logging in today!");
         }
 
         lastLogin = currentLogin;
-        SceneManager.LoadScene(12);
+        if (Player.donePreQuiz == false)
+        {
+            SceneManager.LoadScene(12);
+            Player.donePreQuiz = true;
+        }
+        else if(Player.donePreQuiz == true)
+        {
+            SceneManager.LoadScene("Cutscene");
+        }
+        else
+        {
+            SceneManager.LoadScene("Cutscene");
+        }
     }
 
     //void LoginPlayers()

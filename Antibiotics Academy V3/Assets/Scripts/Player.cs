@@ -25,8 +25,11 @@ public class Player : MonoBehaviour
 
     public System.DateTime tLastLogin;
 
-    public static int lifes;
+    public static int lives;
     public int life;
+
+    public static bool donePreQuiz = false;
+    public static bool donePostQuiz = false;
 
     void Update()
     {
@@ -48,11 +51,11 @@ public class Player : MonoBehaviour
 
         tLastLogin = Login.lastLogin;
 
-        life = lifes;
+        life = lives;
 
-        if(lifes > 5)
+        if(lives > 5)
         {
-            lifes = 5;
+            lives = 5;
         }
 
         //if (Input.GetKeyDown(KeyCode.S))
@@ -70,16 +73,16 @@ public class Player : MonoBehaviour
         Debug.Log("Player has: " + coins + " coins!");
     }
 
-    public static void TotalLifes()
+    public static void TotalLives()
     {
-        Debug.Log("Player has: " + lifes + " lifes!");
+        Debug.Log("Player has: " + lives + " lives!");
     }
 
     public void Save()
     {
         JSONObject playerJson = new JSONObject();
         playerJson.Add("Coins", coins);
-        playerJson.Add("Lifes", lifes);
+        playerJson.Add("Lives", lives);
         playerJson.Add("Receptionist Stage", treceptionistStage);
         playerJson.Add("Doctor Stage", tdoctorStage);
         playerJson.Add("Pharmacist Stage", tpharmacistStage);
@@ -94,20 +97,22 @@ public class Player : MonoBehaviour
         playerJson.Add("NPC Aunty Stage", tnpcauntyStage);
         playerJson.Add("NPC Lawyer Stage", tnpclawyerStage);
         playerJson.Add("Last Login", tLastLogin.ToString());
+        playerJson.Add("Done Pre Game Quiz", donePreQuiz);
+        playerJson.Add("Done Post Game Quiz", donePostQuiz);
 
         //Debug.Log(playerJson.ToString());
-        string path = Application.persistentDataPath + "/PlayerSave.csv";
+        string path = Application.persistentDataPath + "/PlayerSave.json";
         File.WriteAllText(path, playerJson.ToString());
     }
 
     public static void Load()
     {
-        string path = Application.persistentDataPath + "/PlayerSave.csv";
+        string path = Application.persistentDataPath + "/PlayerSave.json";
         string jsonString = File.ReadAllText(path);
         JSONObject playerJson = (JSONObject)JSON.Parse(jsonString);
 
         coins = playerJson["Coins"];
-        lifes = playerJson["Lifes"];
+        lives = playerJson["Lives"];
         GameManager.receptionistStage = playerJson["Receptionist Stage"];
         GameManager.doctorStage = playerJson["Doctor Stage"];
         GameManager.pharmacistStage = playerJson["Pharmacist Stage"];
@@ -122,6 +127,8 @@ public class Player : MonoBehaviour
         GameManager.npcauntyStage = playerJson["NPC Aunty Stage"];
         GameManager.npclawyerStage = playerJson["NPC Lawyer Stage"];
         Login.lastLogin = System.DateTime.Parse(playerJson["Last Login"]);
+        donePreQuiz = playerJson["Done Pre Game Quiz"];
+        donePostQuiz = playerJson["Done Post Game Quiz"];
 
         Debug.Log(playerJson);
     }
@@ -158,7 +165,7 @@ public class Player : MonoBehaviour
 
     //    Login.lastLogin = data.lastLogin;
 
-    //    lifes = data.life;
+    //    lives = data.life;
 
     //    Debug.Log("player data have been loaded");
     //}

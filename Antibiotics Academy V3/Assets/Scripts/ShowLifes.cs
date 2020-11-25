@@ -14,6 +14,6 @@ public class ShowLifes : MonoBehaviour
 
     void Update()
     {
-        text.text = "Lifes: " + Player.lifes;
+        text.text = "Lifes: " + Player.lives;
     }
 }
