@@ -639,7 +639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &230283955
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2460,9 +2460,6 @@ MonoBehaviour:
     - "There are states: Sick, Neutral and Healthy! \n\nThere's a text at the bottom
       where it will tell you what pieces gives bonus health when matched during the
       three states!"
-    - "There is also an antibiotic button, that adds health! It costs 25 to 40 coins!\n\nHowever,
-      it can only be used when you're in the sick state! \n\nThere's only 3 uses,
-      and each uses decreases the effectiveness of the next use!"
   StartUI: {fileID: 1477448296}
 --- !u!114 &929065390
 MonoBehaviour:
@@ -2571,7 +2568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &948741134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5042,7 +5039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2079268670
 RectTransform:
   m_ObjectHideFlags: 0
