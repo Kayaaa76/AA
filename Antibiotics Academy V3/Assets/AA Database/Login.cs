@@ -48,21 +48,37 @@ public class Login : MonoBehaviour
 
     IEnumerator LoginPlayer()
     {
-        WWWForm form = new WWWForm();
-        WWW www = new WWW("http://103.239.222.212/ALIVE2Service/api/login/Generate?username=" + nameField.text + "&password=" + passwordField.text, form);
-        yield return www;
+        WWWForm formLogin = new WWWForm();
+        WWW wwwLogin = new WWW("http://103.239.222.212/ALIVE2Service/api/login/Generate?username=" + nameField.text + "&password=" + passwordField.text, formLogin);
+        yield return wwwLogin;
 
-        Debug.Log(www.text);
-        Debug.Log(www.error);
-        Debug.Log(www.url);
+        Debug.Log(wwwLogin.text);
+        Debug.Log(wwwLogin.error);
+        Debug.Log(wwwLogin.url);
 
         currentLogin = System.DateTime.Now;
 
         string path = Application.persistentDataPath + "/PlayerSave.json";
         
-        if(www.error == null)
+        if(wwwLogin.error == null)
         {
             Debug.Log("Login Successful!");
+
+            #region Update Login Activity
+            WWWForm formUpdateLogin = new WWWForm();
+            WWW wwwUpdateLogin = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostLogin?ActivityTypeName=Login&Username=" + nameField.text,formUpdateLogin);
+            yield return wwwUpdateLogin;
+            Debug.Log(wwwUpdateLogin.error);
+            #endregion
+
+            #region Check Game Version
+            //WWWForm formCheckVersion = new WWWForm();
+            WWW wwwCheckVersion = new WWW("http://103.239.222.212/ALIVE2Service/api/game/GameSave");
+            yield return wwwCheckVersion;
+
+            Debug.Log(wwwCheckVersion.text);
+            #endregion
+
             if (File.Exists(path))
             {
                 Player.Load();
