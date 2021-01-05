@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Match3
 {
@@ -27,6 +28,7 @@ namespace Match3
         public float currentHealth;
         public float min_sickHealth = 1f;
         public float min_neutralHealth = 25f;
+        public float min_betterHealth = 50f;
         public float min_healthyHealth = 75f;
 
         private float rateOfDecrease;
@@ -36,6 +38,9 @@ namespace Match3
         private float addHealth;
 
         public HealthBar healthBar;
+
+        //LevelSelect levelSelect;
+        //public GameObject LevelSelectUI;
 
         private string bonusTag;
         private string bonusTag1;
@@ -56,7 +61,7 @@ namespace Match3
         {
             fm = FindObjectOfType<FindMatch>();
             display = FindObjectOfType<DisplayEndUI>();
-            nm = FindObjectOfType<NotificationManager>();
+            //nm = FindObjectOfType<NotificationManager>();
             currentHealth = min_neutralHealth;
             healthState = HealthStates.Sick;
             healthBar.SetHealth(min_neutralHealth);
@@ -86,7 +91,7 @@ namespace Match3
             else if (currentHealth < min_neutralHealth && currentHealth > 1) //red health, sick state
             {
                 healthState = HealthStates.Sick;
-                nm.DisplayNotification(0);                                  
+                //nm.DisplayNotification(0);                                  
                 sr.sprite = sprites[0];                                      
 
                 bannerSleep.SetActive(true);
@@ -106,7 +111,7 @@ namespace Match3
             else if (currentHealth >= min_neutralHealth && currentHealth < min_healthyHealth) //yellow health, neutral health
             {
                 healthState = HealthStates.Neutral;
-                nm.DisplayNotification(1);
+                //nm.DisplayNotification(1);
                 sr.sprite = sprites[1];
 
                 if (audiosrc.isPlaying)
@@ -126,7 +131,7 @@ namespace Match3
             else if (currentHealth >= min_healthyHealth && currentHealth < 100f) //green health, healthy state
             {
                 healthState = HealthStates.Healthy;
-                nm.DisplayNotification(2);
+                //nm.DisplayNotification(2);
                 sr.sprite = sprites[2];
 
                 if (audiosrc.isPlaying)

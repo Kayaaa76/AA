@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Main YJ.unity
+- path: Assets/Scenes/Match3 OG.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

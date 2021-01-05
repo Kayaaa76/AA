@@ -10,6 +10,7 @@ namespace Match3
         public Animator anim;
         public Text tutorialText;
         public Queue<string> sentences;
+        public GameObject LevelsUI;
 
         private void Start()
         {
@@ -53,8 +54,9 @@ namespace Match3
 
         void EndDialogue()                             //function to close the tutorial box
         {
-            Time.timeScale = 1f;
+            //Time.timeScale = 1f;
             anim.SetBool("IsOpen", false);             //plays the closing animation
+            LevelsUI.SetActive(true);                  
         }
     }
 }
