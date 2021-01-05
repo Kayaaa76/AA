@@ -31,6 +31,27 @@ public class Player : MonoBehaviour
     public static bool donePreQuiz = false;
     public static bool donePostQuiz = false;
 
+    public static bool spunToday = false;
+
+    public GameObject SpinMenu;
+
+    void Start()
+    {
+        if(spunToday == false)
+        {
+            SpinMenu.SetActive(true);
+            spunToday = true;
+        }
+        //else if(spunToday == true)
+        //{
+        //    SpinMenu.SetActive(false);
+        //}
+        //else
+        //{
+        //    SpinMenu.SetActive(false);
+        //}
+    }
+
     void Update()
     {
         coin = coins;
@@ -99,6 +120,7 @@ public class Player : MonoBehaviour
         playerJson.Add("Last Login", tLastLogin.ToString());
         playerJson.Add("Done Pre Game Quiz", donePreQuiz);
         playerJson.Add("Done Post Game Quiz", donePostQuiz);
+        playerJson.Add("Spun Reward Wheel Today?", spunToday);
 
         //Debug.Log(playerJson.ToString());
         string path = Application.persistentDataPath + "/PlayerSave.json";
@@ -129,6 +151,7 @@ public class Player : MonoBehaviour
         Login.lastLogin = System.DateTime.Parse(playerJson["Last Login"]);
         donePreQuiz = playerJson["Done Pre Game Quiz"];
         donePostQuiz = playerJson["Done Post Game Quiz"];
+        spunToday = playerJson["Spun Reward Wheel Today?"];
 
         Debug.Log(playerJson);
     }

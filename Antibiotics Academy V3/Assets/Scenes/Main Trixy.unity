@@ -57258,6 +57258,7 @@ MonoBehaviour:
   tnpcauntyStage: 0
   tnpclawyerStage: 0
   life: 0
+  SpinMenu: {fileID: 1115677719}
 --- !u!1 &920105683
 GameObject:
   m_ObjectHideFlags: 0
@@ -67706,7 +67707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1115677720
 RectTransform:
   m_ObjectHideFlags: 0

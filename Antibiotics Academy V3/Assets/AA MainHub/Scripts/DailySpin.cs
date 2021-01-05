@@ -18,7 +18,7 @@ public class DailySpin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+     
     }
 
     // Update is called once per frame
@@ -106,26 +106,36 @@ public class DailySpin : MonoBehaviour
         if (stoppedAngle <= 90)
         {
             daily = "1 Life";
+            Player.lives += 1;
+            Debug.Log("You got 1 life from the Reward Wheel!");
         }
         //when wheel stops at 10 coins (angles based on wheel)
         else if (stoppedAngle <= 234)
         {
             daily = "10 Coins";
+            Player.coins += 10;
+            Debug.Log("You got 10 coins from the Reward Wheel!");
         }
         //when wheel stops at 500 coins (angles based on wheel)
         else if (stoppedAngle <= 252)
         {
             daily = "500 Coins";
+            Player.coins += 500;
+            Debug.Log("You got 500 coins from the Reward Wheel!");
         }
         //when wheel stops at 50 coins (angles based on wheel)
         else if (stoppedAngle <= 324)
         {
             daily = "50 Coins";
+            Player.coins += 50;
+            Debug.Log("You got 50 coins from the Reward Wheel!");
         }
         //when wheel stops at 100 coins (angles based on wheel)
         else if (stoppedAngle <= 360)
         {
             daily = "100 Coins";
+            Player.coins += 100;
+            Debug.Log("You got 100 coins from the Reward Wheel!");
         }
 
         //change text to daily won
