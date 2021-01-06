@@ -107,6 +107,8 @@ public class Login : MonoBehaviour
             }
 
             lastLogin = currentLogin;
+            NotificationManager.CreateNotifChannel();
+            NotificationManager.SendNotification();
 
             if (Player.donePreQuiz == false)
             {
@@ -196,8 +198,6 @@ public class Login : MonoBehaviour
         {
             SceneManager.LoadScene("Cutscene");
         }
-
-        NotificationManager.SendNotification();
     }
 
     //void LoginPlayers()

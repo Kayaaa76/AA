@@ -11,7 +11,7 @@ public class NotificationManager : MonoBehaviour
         //SendNotification();
     }
 
-    void CreateNotifChannel()
+    public static void CreateNotifChannel()
     {
         var c = new AndroidNotificationChannel()
         {
