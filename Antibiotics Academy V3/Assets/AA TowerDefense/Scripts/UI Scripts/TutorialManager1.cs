@@ -14,7 +14,9 @@ namespace TowerDefense
         private AudioSource src;
 
         public GameObject tutorialGameObject;
-        public GameObject tutorialUI;
+        //public GameObject tutorialUI;
+
+        public GameObject LevelsUI;
 
         private SpriteRenderer image1;
         private SpriteRenderer image2;
@@ -99,16 +101,18 @@ namespace TowerDefense
 
         void EndDialogue() // function to close the tutorial ui since tutorial ended
         {
-            Time.timeScale = 1f; // resume the game
-            src = heart.GetComponent<AudioSource>(); 
+            //Time.timeScale = 1f; // resume the game
+            //src = heart.GetComponent<AudioSource>(); 
 
             anim.SetBool("IsOpen", false);
-            tutorialUI.SetActive(false);
+            //tutorialUI.SetActive(false);
 
-            if (!src.isPlaying)
-            {
-                src.Play();
-            }
+            LevelsUI.SetActive(true);
+
+            //if (!src.isPlaying)
+            //{
+            //    src.Play();
+            //}
         }
     }
 }

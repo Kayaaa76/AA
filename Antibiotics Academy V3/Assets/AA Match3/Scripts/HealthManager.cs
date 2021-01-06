@@ -42,8 +42,8 @@ namespace Match3
         //LevelSelect levelSelect;
         //public GameObject LevelSelectUI;
 
-        private string bonusTag;
-        private string bonusTag1;
+        public string bonusTag;
+        public string bonusTag1;
         private float healthToAdd;
 
         private Animator anim;
@@ -155,18 +155,18 @@ namespace Match3
             switch (states)
             {
                 case HealthStates.Sick:                //if state is sick, then matching water and sleep gives bonus health
-                    bonusTag = "Water";
-                    bonusTag1 = "Sleeping";
+                    //bonusTag = "Water";
+                    //bonusTag1 = "Sleeping";
                     rateOfDecrease = 1.0f;             //changes the rate of decrease to 1
                     break;
                 case HealthStates.Neutral:             //if state is neutral, then matching fruit and veg gives bonus health  
-                    bonusTag = "Fruit";
-                    bonusTag1 = "Vegetable";
+                    //bonusTag = "Fruit";
+                    //bonusTag1 = "Vegetable";
                     rateOfDecrease = 1.25f;            //changes the rate of decrease to 1.25
                     break;
                 case HealthStates.Healthy:             //if state is healthy, then matching running gives bonus health
-                    bonusTag = "Running";
-                    bonusTag1 = "?";
+                    //bonusTag = "Running";
+                    //bonusTag1 = "?";
                     rateOfDecrease = 1.5f;             //changes the rate of decrease to 1.5
                     break;
             }

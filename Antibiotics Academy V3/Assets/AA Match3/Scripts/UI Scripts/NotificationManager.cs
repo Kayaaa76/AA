@@ -8,11 +8,11 @@ namespace Match3
     public class NotificationManager : MonoBehaviour
     {
         public Text notificationText;
-        private string[] sentences = new string[5];  //instantiate an array that has 3 elements
+        private string[] sentences = new string[5];  //instantiate an array that has 5 elements
 
         void Start()
         {
-            sentences[0] = "Rest X2!";          //store the three strings into the array
+            sentences[0] = "Rest X2!";          //store the five strings into the array
             sentences[1] = "Fruits and Vegetables X2!";
             sentences[2] = "Water X2!";
             sentences[3] = "Running X2!";
@@ -23,31 +23,6 @@ namespace Match3
         public void DisplayNotification(int index)      //function to change the notification based on the index given in the argument
         {
             notificationText.text = sentences[index];
-        }
-
-        public void restBonusText()
-        {
-            DisplayNotification(0);
-        }
-
-        public void foodBonusText()
-        {
-            DisplayNotification(1);
-        }
-
-        public void immunisationBonusText()
-        {
-            DisplayNotification(2);
-        }
-
-        public void exerciseBonusText()
-        {
-            DisplayNotification(3);
-        }
-
-        public void healthyBonusText()
-        {
-            DisplayNotification(4);
         }
     }
 }

@@ -104,7 +104,7 @@
     <Compile Include="Assets\AA Match3\Scripts\Piece.cs" />
     <Compile Include="Assets\AA Match3\Scripts\UI Scripts\DisplayEndUI.cs" />
     <Compile Include="Assets\AA Match3\Scripts\UI Scripts\EndGameUI.cs" />
-    <Compile Include="Assets\AA Match3\Scripts\UI Scripts\LevelSelect.cs" />
+    <Compile Include="Assets\AA Match3\Scripts\UI Scripts\M3LevelSelect.cs" />
     <Compile Include="Assets\AA Match3\Scripts\UI Scripts\NotificationManager.cs" />
     <Compile Include="Assets\AA Match3\Scripts\UI Scripts\StartTrigger.cs" />
     <Compile Include="Assets\AA Match3\Scripts\UI Scripts\Tutorial.cs" />
@@ -131,6 +131,7 @@
     <Compile Include="Assets\AA TowerDefense\Scripts\Tutorial.cs" />
     <Compile Include="Assets\AA TowerDefense\Scripts\UI Scripts\EndGameUI1.cs" />
     <Compile Include="Assets\AA TowerDefense\Scripts\UI Scripts\StartTrigger1.cs" />
+    <Compile Include="Assets\AA TowerDefense\Scripts\UI Scripts\TDLevelSelect.cs" />
     <Compile Include="Assets\AA TowerDefense\Scripts\UI Scripts\Tutorial1.cs" />
     <Compile Include="Assets\AA TowerDefense\Scripts\UI Scripts\TutorialManager1.cs" />
     <Compile Include="Assets\AA TowerDefense\Scripts\UI Scripts\TutorialTrigger1.cs" />
