@@ -31,6 +31,7 @@ namespace Match3
         HealthManager hm;
         NotificationManager nm;
 
+        public int notification;
 
         // Start is called before the first frame update
         void Start()
@@ -141,32 +142,37 @@ namespace Match3
         public void restLevel()
         {
             hm.bonusTag = "Sleeping";
-            nm.DisplayNotification(0);
+            notification = 0;
+            nm.isSwitching = false;
         }
 
         public void foodLevel()
         {
             hm.bonusTag = "Fruit";
             hm.bonusTag1 = "Vegetable";
-            nm.DisplayNotification(1);
+            notification = 1;
+            nm.isSwitching = false;
         }
 
         public void immunisationLevel()
         {
             hm.bonusTag = "Water";
-            nm.DisplayNotification(2);
+            notification = 2;
+            nm.isSwitching = false;
         }
 
         public void runningLevel()
         {
             hm.bonusTag = "Running";
-            nm.DisplayNotification(3);
+            notification = 3;
+            nm.isSwitching = false;
         }
 
         public void healthyLevel()
         {
             hm.bonusTag = "None";
-            nm.DisplayNotification(4);
+            notification = 4;
+            nm.isSwitching = false;
         }
     }
 }

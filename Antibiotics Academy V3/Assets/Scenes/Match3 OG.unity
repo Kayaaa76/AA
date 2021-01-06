@@ -5502,6 +5502,7 @@ MonoBehaviour:
   fontSize: 70
   LevelSelectUI: {fileID: 1523068818}
   playableLevels: 1
+  notification: 0
 --- !u!114 &1149969352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9443,6 +9444,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notificationText: {fileID: 1581298715}
+  m3levelselect: {fileID: 1149969348}
+  isSwitching: 0
 --- !u!114 &1809350382
 MonoBehaviour:
   m_ObjectHideFlags: 0
