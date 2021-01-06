@@ -196,6 +196,8 @@ public class Login : MonoBehaviour
         {
             SceneManager.LoadScene("Cutscene");
         }
+
+        NotificationManager.SendNotification();
     }
 
     //void LoginPlayers()
