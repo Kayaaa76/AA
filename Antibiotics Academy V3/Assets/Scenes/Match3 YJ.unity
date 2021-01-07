@@ -639,7 +639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &230283955
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2256,6 +2256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 790959044}
   tutorialText: {fileID: 288645898}
+  LevelsUI: {fileID: 0}
 --- !u!4 &822894314
 Transform:
   m_ObjectHideFlags: 0
@@ -2568,7 +2569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &948741134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2600,7 +2601,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "First \nAntibiotic = \n25 Coins\nSecond/Third \nAntibiotic =\n 40 Coins"
+  m_Text: Cost = 25 Coins
 --- !u!222 &948741135
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2626,7 +2627,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 450.00006, y: -75}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &985592690
 GameObject:
@@ -3801,8 +3802,11 @@ MonoBehaviour:
   currentHealth: 0
   min_sickHealth: 1
   min_neutralHealth: 25
+  min_betterHealth: 50
   min_healthyHealth: 75
   healthBar: {fileID: 579290982}
+  bonusTag: 
+  bonusTag1: 
   boolNameSleep: RedHealth
   boolNameEat: YellowHealth
   boolNameRun: GreenHealth
@@ -4069,6 +4073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartUI: {fileID: 1477448296}
+  LevelsUI: {fileID: 0}
 --- !u!1 &1702953778
 GameObject:
   m_ObjectHideFlags: 0
@@ -4425,6 +4430,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notificationText: {fileID: 1581298715}
+  m3levelselect: {fileID: 0}
+  isSwitching: 0
 --- !u!114 &1809350382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5039,7 +5046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2079268670
 RectTransform:
   m_ObjectHideFlags: 0
