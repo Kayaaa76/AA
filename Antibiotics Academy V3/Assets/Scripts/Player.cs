@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     public static bool donePreQuiz = false;
     public static bool donePostQuiz = false;
 
-    public static bool spunToday = false;
+    public static bool spunToday = true;
 
     public GameObject SpinMenu;
 
