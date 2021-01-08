@@ -7,6 +7,27 @@ namespace Match3
 {
     public class EndGameUI : MonoBehaviour
     {
+        GameObject StartUI;
+
+        void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            StartUI = GameObject.Find("StartUI");
+            Debug.Log(StartUI);
+            if (StartUI != null)
+            {
+                StartUI.SetActive(false);
+            }
+            else StartUI.SetActive(true);
+            //StartUI.SetActive(false);
+            Debug.Log("OnSceneLoaded: " + scene.name);
+            Debug.Log(mode);
+        }
+
         public void TriggerRestart()  //function to restart the game
         {
             if (ThemeSelectScreen.IsClassic == true)

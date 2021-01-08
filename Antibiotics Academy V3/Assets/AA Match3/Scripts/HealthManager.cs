@@ -57,6 +57,8 @@ namespace Match3
 
         public AudioSource audiosrc;
 
+        public GameObject m3levelselectscript;
+
         void Start()
         {
             fm = FindObjectOfType<FindMatch>();
@@ -80,9 +82,13 @@ namespace Match3
 
         private void CheckState()                              //function to do things according to the state of the health
         {
-            if (currentHealth >= 100)                          //if currentHealth is greater than or equals to 100, it means that the player won
+            if (currentHealth > 100)                           //if currentHealth is greater than 100, it means that the player won
             {
                 display.DisplayWinUI();                        //displays the Win UI
+                if (m3levelselectscript.GetComponent<M3LevelSelect>().playingLevel == Player.m3unlockedlevels) //check if playing level is same as unlocked level
+                {
+                    Player.m3unlockedlevels += 1;              //increase unlocked level
+                }
             } 
             else if (currentHealth < 1)                        //if currentHealth is lesser than 1, meaning 0, it means that the player lost
             {

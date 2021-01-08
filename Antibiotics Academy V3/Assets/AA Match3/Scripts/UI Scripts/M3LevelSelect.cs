@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Match3
 {
@@ -23,10 +24,13 @@ namespace Match3
         public int fontSize = 65;
 
         public GameObject LevelSelectUI;
+        public GameObject LevelSelectMenu;
+        public GameObject StartUI;
 
         Button[] totalLevels;
 
-        public int playableLevels = 1;                                                         //number of levels unlocked
+        public int playableLevels;                                                         //number of levels unlocked
+        public int playingLevel;                                                           //level currently playing
 
         HealthManager hm;
         NotificationManager nm;
@@ -40,12 +44,23 @@ namespace Match3
 
             hm = FindObjectOfType<HealthManager>();
             nm = FindObjectOfType<NotificationManager>();
+
+            if(StartUI.activeSelf == true)
+            {
+                LevelSelectMenu.SetActive(false);
+            }
+
+            playableLevels = Player.m3unlockedlevels;
         }
 
         // Update is called once per frame
         void Update()
         {
             currentLevels();
+            if (EventSystem.current.currentSelectedGameObject.name.Contains("Lvl"))             //check if selected object name contains "Lvl" (for level buttons)
+            {
+                playingLevel = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text); //set playing level to button text
+            }
         }
 
         void currentLevels()                                                                    //display levels
@@ -59,7 +74,6 @@ namespace Match3
                     if (i < 5)                                                                  //at levels 1-5
                     {
                         totalLevels[i].GetComponent<Image>().sprite = levelSleep;               //set button as given image
-                        //nm.DisplayNotification(0);
                     }
                     else if (i < 8)                                                             //at levels 6-8
                     {
