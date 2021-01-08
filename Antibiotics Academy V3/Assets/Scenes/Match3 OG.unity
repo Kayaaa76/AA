@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 62809480}
   - component: {fileID: 62809483}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Levels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,7 +359,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 62809483}
-        m_MethodName: TriggerQuit
+        m_MethodName: TriggerRestart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1332,7 +1332,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: restart
+  m_Text: quit
 --- !u!222 &276751158
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1953,7 +1953,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: levels
 --- !u!222 &370754566
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2177,7 +2177,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: levels
 --- !u!222 &464171091
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2284,7 +2284,7 @@ GameObject:
   - component: {fileID: 493072490}
   - component: {fileID: 493072493}
   m_Layer: 5
-  m_Name: Restart
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2354,7 +2354,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 493072493}
-        m_MethodName: TriggerRestart
+        m_MethodName: TriggerQuitLost
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3177,7 +3177,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: restart
+  m_Text: quit
 --- !u!222 &639424223
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7986,7 +7986,7 @@ GameObject:
   - component: {fileID: 1544894558}
   - component: {fileID: 1544894561}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Levels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8056,7 +8056,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1544894561}
-        m_MethodName: TriggerQuitLost
+        m_MethodName: TriggerRestart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8465,7 +8465,6 @@ MonoBehaviour:
   bannerRun: {fileID: 397805505}
   audiosrc: {fileID: 0}
   m3levelselectscript: {fileID: 1149969348}
-  checkplaying: 0
 --- !u!82 &1597351329
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11030,7 +11029,7 @@ GameObject:
   - component: {fileID: 2100506512}
   - component: {fileID: 2100506515}
   m_Layer: 5
-  m_Name: Restart
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11100,7 +11099,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2100506515}
-        m_MethodName: TriggerRestart
+        m_MethodName: TriggerQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

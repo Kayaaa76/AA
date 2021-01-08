@@ -22,7 +22,7 @@ namespace Match3
             {
                 StartUI.SetActive(false);
             }
-            else StartUI.SetActive(true);
+            //else StartUI.SetActive(true);
             //StartUI.SetActive(false);
             Debug.Log("OnSceneLoaded: " + scene.name);
             Debug.Log(mode);
@@ -66,8 +66,8 @@ namespace Match3
                 SceneManager.LoadScene(13);
             }
 
-            Player.coins += 50;
-            Debug.Log("You got 50 coins for winning this game!");
+            //Player.coins += 50;
+            //Debug.Log("You got 50 coins for winning this game!");
         }
 
         public void TriggerQuitLost()  //function to quit the game when player lost
