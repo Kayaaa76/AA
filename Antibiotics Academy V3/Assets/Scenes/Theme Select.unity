@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 269684706}
   - component: {fileID: 269684705}
   m_Layer: 5
-  m_Name: Classic Selection
+  m_Name: Pastel Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,7 +1010,7 @@ GameObject:
   - component: {fileID: 1112810097}
   - component: {fileID: 1112810096}
   m_Layer: 5
-  m_Name: Trixy Selection
+  m_Name: Bold Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1434,7 +1434,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: High Contrast Theme!
+  m_Text: Bold Theme!
 --- !u!222 &1475134178
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1779,7 +1779,7 @@ GameObject:
   - component: {fileID: 2060219344}
   - component: {fileID: 2060219343}
   m_Layer: 5
-  m_Name: YJ Selection
+  m_Name: Classic Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

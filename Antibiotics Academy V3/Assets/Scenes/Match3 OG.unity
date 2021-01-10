@@ -1225,7 +1225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: -5}
+  m_AnchoredPosition: {x: 6, y: -5}
   m_SizeDelta: {x: 1200, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267526577
@@ -3443,7 +3443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16.6, y: -649}
+  m_AnchoredPosition: {x: 6, y: -649}
   m_SizeDelta: {x: 2834.9858, y: 1739.0459}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &790959042
@@ -4451,9 +4451,12 @@ MonoBehaviour:
     - "The objective is to match the same pieces together to reach max health! \n\nThere
       must be at least 3 of the same pieces, horizontally or vertically,  for a match
       to happen!"
-    - "There are states: Sick, Neutral and Healthy! \n\nThere's a text at the bottom
-      where it will tell you what pieces gives bonus health when matched during the
-      three states!"
+    - 'There''s a text at the bottom where it will tell you what pieces gives bonus
+      health when matched.
+
+
+      Health tips will appear from time to time, look
+      out for them and you may learn something new!'
   StartUI: {fileID: 1477448296}
 --- !u!114 &929065390
 MonoBehaviour:
@@ -7678,7 +7681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7, y: -5}
+  m_AnchoredPosition: {x: 6, y: -5}
   m_SizeDelta: {x: 1200, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1477448298
@@ -8763,7 +8766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: -5}
+  m_AnchoredPosition: {x: 6, y: -5}
   m_SizeDelta: {x: 1200, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1702953780

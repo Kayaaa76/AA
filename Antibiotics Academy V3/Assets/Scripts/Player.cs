@@ -23,8 +23,8 @@ public class Player : MonoBehaviour
     public int tnpcauntyStage = 0;
     public int tnpclawyerStage = 0;
 
-    public int tm3unlockedlevels = 1;
-    public static int m3unlockedlevels= 1;
+    public int tm3unlockedlevels;
+    public static int m3unlockedlevels;
 
     public System.DateTime tLastLogin;
 
