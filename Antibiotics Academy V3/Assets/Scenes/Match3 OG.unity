@@ -5490,16 +5490,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d0982916fc8c54cad581eec47dd360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSleep: {fileID: 21300000, guid: 1c44903f8279269429098a28869b9c78, type: 3}
-  levelNutrition1: {fileID: 21300000, guid: 9150eafe02a907c4cad4f846e4cdccef, type: 3}
-  levelNutrition2: {fileID: 21300000, guid: a901d434a16f0ed4f8ee0e4db2f4e377, type: 3}
-  levelImmunisation: {fileID: 21300000, guid: d4aab08f869f4ed42b9b17ed4f4b0e6d, type: 3}
-  levelExercise: {fileID: 21300000, guid: aa10a056e4c00ee48a004740b1eb9b53, type: 3}
-  levelHealthy1: {fileID: 21300000, guid: b20950eb311b22d408cc11d65c02c9c7, type: 3}
-  levelHealthy2: {fileID: 21300000, guid: a9b1fc6134689c7478ecc3c92407007f, type: 3}
-  levelHealthy3: {fileID: 21300000, guid: 1b975c7e5b59fef4c8e7f8a590f91da8, type: 3}
-  levelHealthy4: {fileID: 21300000, guid: f51d9b292ee920348a551a7c580b0720, type: 3}
-  levelHealthy5: {fileID: 21300000, guid: 6ea97d714b6af334e9507859404867cb, type: 3}
+  PastelLevelSleep: {fileID: 21300000, guid: 1c44903f8279269429098a28869b9c78, type: 3}
+  PastelLevelNutrition1: {fileID: 21300000, guid: 9150eafe02a907c4cad4f846e4cdccef,
+    type: 3}
+  PastelLevelNutrition2: {fileID: 21300000, guid: a901d434a16f0ed4f8ee0e4db2f4e377,
+    type: 3}
+  PastelLevelImmunisation: {fileID: 21300000, guid: d4aab08f869f4ed42b9b17ed4f4b0e6d,
+    type: 3}
+  PastelLevelExercise: {fileID: 21300000, guid: aa10a056e4c00ee48a004740b1eb9b53,
+    type: 3}
+  PastelLevelHealthy1: {fileID: 21300000, guid: b20950eb311b22d408cc11d65c02c9c7,
+    type: 3}
+  PastelLevelHealthy2: {fileID: 21300000, guid: a9b1fc6134689c7478ecc3c92407007f,
+    type: 3}
+  PastelLevelHealthy3: {fileID: 21300000, guid: 1b975c7e5b59fef4c8e7f8a590f91da8,
+    type: 3}
+  PastelLevelHealthy4: {fileID: 21300000, guid: f51d9b292ee920348a551a7c580b0720,
+    type: 3}
+  PastelLevelHealthy5: {fileID: 21300000, guid: 6ea97d714b6af334e9507859404867cb,
+    type: 3}
+  ClassicLevelSleep: {fileID: 21300000, guid: ecfbdc7d307adc54e8c1bc6dc98cb314, type: 3}
+  ClassicLevelNutrition1: {fileID: 21300000, guid: 14c74a3c8c887f447b7b0af6db042fb3,
+    type: 3}
+  ClassicLevelNutrition2: {fileID: 21300000, guid: 5e6c831036355764e812a4744bf2a843,
+    type: 3}
+  ClassicLevelImmunisation: {fileID: 21300000, guid: 3de53502a71b9064492255cacf651081,
+    type: 3}
+  ClassicLevelExercise: {fileID: 21300000, guid: 29a89d4b7217f8b4f9e0ab7bb184f841,
+    type: 3}
+  ClassicLevelHealthy1: {fileID: 21300000, guid: 218a25dad9574c9429218ffbe4f67ecb,
+    type: 3}
+  ClassicLevelHealthy2: {fileID: 21300000, guid: d86c1c31eb03578468639d078369650a,
+    type: 3}
+  ClassicLevelHealthy3: {fileID: 21300000, guid: f695761c69f8d7745abe6f7677ae307c,
+    type: 3}
+  ClassicLevelHealthy4: {fileID: 21300000, guid: 7c0174d14e27a354a8a0540bffb315c3,
+    type: 3}
+  ClassicLevelHealthy5: {fileID: 21300000, guid: 85f3090782aaf8644986aa27b1af5532,
+    type: 3}
+  BoldLevelSleep: {fileID: 21300000, guid: e022bf02e6a3de148a860a87ebba305c, type: 3}
+  BoldLevelNutrition1: {fileID: 21300000, guid: 4cdce359709d6f743852737f743ca53a,
+    type: 3}
+  BoldLevelNutrition2: {fileID: 21300000, guid: 091a5a48c6504cb4b882684c052899f8,
+    type: 3}
+  BoldLevelImmunisation: {fileID: 21300000, guid: 03acc40186c5a1145bef73c85b7f8711,
+    type: 3}
+  BoldLevelExercise: {fileID: 21300000, guid: 5e0d629a694bd2c49bee84f49174d86a, type: 3}
+  BoldLevelHealthy1: {fileID: 21300000, guid: 5090643fa66efc14b8c36ebc188c557f, type: 3}
+  BoldLevelHealthy2: {fileID: 21300000, guid: 85659cb512f06b540af079e5babe5964, type: 3}
+  BoldLevelHealthy3: {fileID: 21300000, guid: 3fe9dc2c33e8d9f40ae328c5caefbf4c, type: 3}
+  BoldLevelHealthy4: {fileID: 21300000, guid: 5a8e084c9c6a77643a02b366d11d15ae, type: 3}
+  BoldLevelHealthy5: {fileID: 21300000, guid: a26f2c210fb8ee84d98cc0a014b1f95e, type: 3}
   levelLocked: {fileID: 21300000, guid: 5319e1d917bc0be488007ad5ec201de7, type: 3}
   gameFont: {fileID: 12800000, guid: 993de02b967b2564c9df47c82a5e7fcc, type: 3}
   fontSize: 70
@@ -7571,6 +7612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1458173587}
   - component: {fileID: 1458173586}
+  - component: {fileID: 1458173588}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -7642,6 +7684,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1458173588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458173585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55815aedae646fc47b59ff0a52f32700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1477448296
 GameObject:
   m_ObjectHideFlags: 0

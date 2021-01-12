@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseBtn; // pause button
     public GameObject menu; // menu that appears after clicking on the pause button
 
-    testScene1 test; // testScene1 script
+    //testScene1 test; // testScene1 script
 
     public static GameObject player; // store the player game object
     public static Vector3 currentPosition; // store the current position of the player
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         menu.SetActive(false); // disable menu to show at start
 
         dm = dialogueM.GetComponent<DialogueManager>(); // get the DialogueManager component of the dialogueM game object
-        test = GetComponent<testScene1>(); // get the testScene1 script
+        //test = GetComponent<testScene1>(); // get the testScene1 script
 
         if (Time.timeScale == 0) // if game is paused
         {
@@ -210,14 +210,27 @@ public class GameManager : MonoBehaviour
     {
         if (receptionistStage == 1 && doctorStage == 1 && pharmacistStage == 0) // if player has talked to the receptionist and doctor at least once
         {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger the dialogue for the pharmacist to start the match 3 mini game
-            pharmacistStage = 1; // pharmacist stage 1 ( player done talking to the pharmacist )
+            //obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger the dialogue for the pharmacist to start the match 3 mini game
+            //pharmacistStage = 1; // pharmacist stage 1 ( player done talking to the pharmacist )
+
+            if (Player.lives > 0)
+            {
+                obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger the dialogue for the pharmacist to start the match 3 mini game
+                pharmacistStage = 1; // pharmacist stage 1 ( player done talking to the pharmacist )
+            }
+            else
+            {
+                Debug.Log("You do not have enough lifes to play the game!");
+            }
         }
         if (pharmacistStage == 1 && dm.spawned == false) // if pharmacist stage 1 and dialogue is over
         {
             currentPosition = player.transform.position; // get current position of the player
             sceneCounter = 2; // set scenecounter to 2 to change to next scene
-            test.Load(); // trigger match 3 game
+            //test.Load(); // trigger match 3 game
+
+            SceneManager.LoadScene(14); //macth 3 scene
+            Player.lives -= 1;
         }
         if (pharmacistStage == 2 && receptionistStage == 2) // if player wins match 3 game
         {

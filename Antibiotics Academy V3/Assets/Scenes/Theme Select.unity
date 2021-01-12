@@ -284,7 +284,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 336691638}
-        m_MethodName: SelectClassic
+        m_MethodName: SelectPastel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1081,7 +1081,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 336691638}
-        m_MethodName: SelectTrixy
+        m_MethodName: SelectBold
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1850,7 +1850,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 336691638}
-        m_MethodName: SelectYJ
+        m_MethodName: SelectClassic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

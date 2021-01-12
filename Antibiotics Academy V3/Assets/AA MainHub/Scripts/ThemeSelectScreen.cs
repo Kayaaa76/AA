@@ -14,28 +14,34 @@ public class ThemeSelectScreen : MonoBehaviour
     public GameObject AdvisePopUp; // warning message that pops up if player clicks ok without selecting a theme
 
 
-    public void SelectClassic() // function that triggers when player clicks on the classic theme in the theme selection screen
+    public void SelectPastel() // function that triggers when player clicks on the classic theme in the theme selection screen
     {
-        IsClassic = true; // set bool IsClassic to be true
-        IsYJ = false;
-        IsTrixy = false;
+        //IsClassic = true; // set bool IsClassic to be true
+        //IsYJ = false;
+        //IsTrixy = false;
         IsThemeSelected = true; // set bool to true since player has selected a theme
+
+        PlayerPrefs.SetString("Theme", "Pastel");
     }
 
-    public void SelectYJ() // function that triggers when player clicks on the YJ's theme in the theme selection screen
+    public void SelectClassic() // function that triggers when player clicks on the YJ's theme in the theme selection screen
     {
-        IsYJ = true; // set bool IsYJ to be true
-        IsClassic = false;
-        IsTrixy = false;
+        //IsYJ = true; // set bool IsYJ to be true
+        //IsClassic = false;
+        //IsTrixy = false;
         IsThemeSelected = true; // set bool to true since player has selected a theme
+
+        PlayerPrefs.SetString("Theme", "Classic");
     }
 
-    public void SelectTrixy() // function that triggers when player clicks on the Trixy's theme in the theme selection screen
+    public void SelectBold() // function that triggers when player clicks on the Trixy's theme in the theme selection screen
     {
-        IsTrixy = true; // set bool IsTrixy to be true
-        IsClassic = false;
-        IsYJ = false;
+        //IsTrixy = true; // set bool IsTrixy to be true
+        //IsClassic = false;
+        //IsYJ = false;
         IsThemeSelected = true; // set bool to true since player has selected a theme
+
+        PlayerPrefs.SetString("Theme", "Bold");
     }
 
     //public void GoToMainScene() // function to go to main scene after selecting a character
@@ -60,13 +66,17 @@ public class ThemeSelectScreen : MonoBehaviour
 
     public void GoToCharacterSelect()
     {
-        if (IsThemeSelected == true && IsYJ == true)
+        //if (IsThemeSelected == true && IsYJ == true)
+        //{
+        //    SceneManager.LoadScene(6);
+        //}
+        //else if (IsThemeSelected == true && IsClassic == true || IsTrixy == true)
+        //{
+        //    SceneManager.LoadScene(17);
+        //}
+        if(IsThemeSelected == true)
         {
-            SceneManager.LoadScene(6);
-        }
-        else if (IsThemeSelected == true && IsClassic == true || IsTrixy == true)
-        {
-            SceneManager.LoadScene(17);
+            SceneManager.LoadScene(17); //character customization scene
         }
         else
         {

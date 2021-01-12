@@ -83,6 +83,7 @@
     <Compile Include="Assets\AA MainHub\Scripts\Movement.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\PlayerCharacterCustomization.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\Teleport.cs" />
+    <Compile Include="Assets\AA MainHub\Scripts\ThemeChange.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\ThemeSelectScreen.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\testScene1.cs" />
     <Compile Include="Assets\AA MainHub\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Assets\AA Match3\Scripts\UI Scripts\DisplayEndUI.cs" />
     <Compile Include="Assets\AA Match3\Scripts\UI Scripts\EndGameUI.cs" />
     <Compile Include="Assets\AA Match3\Scripts\UI Scripts\M3LevelSelect.cs" />
+    <Compile Include="Assets\AA Match3\Scripts\UI Scripts\M3ThemeChange.cs" />
     <Compile Include="Assets\AA Match3\Scripts\UI Scripts\NotificationManager.cs" />
     <Compile Include="Assets\AA Match3\Scripts\UI Scripts\StartTrigger.cs" />
     <Compile Include="Assets\AA Match3\Scripts\UI Scripts\Tutorial.cs" />

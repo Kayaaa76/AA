@@ -421,6 +421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsGenderSelected: 0
   AdvisePopUp: {fileID: 2046225081}
+  pastelMenuBg: {fileID: 21300000, guid: fa8c3ef40520c8f4c8e2b70f7dcd1f73, type: 3}
+  classicMenuBg: {fileID: 21300000, guid: 2674c371585e3224fa8cfd213e7c507a, type: 3}
 --- !u!1 &351995475
 GameObject:
   m_ObjectHideFlags: 0

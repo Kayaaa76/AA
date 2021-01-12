@@ -2787,7 +2787,7 @@ GameObject:
   - component: {fileID: 45974281}
   m_Layer: 0
   m_Name: Chair_Pink
-  m_TagString: Untagged
+  m_TagString: envChair2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3540,8 +3540,8 @@ GameObject:
   - component: {fileID: 57592797}
   - component: {fileID: 57592798}
   m_Layer: 0
-  m_Name: Chair_Pink (1)
-  m_TagString: Untagged
+  m_Name: Chair_Blue
+  m_TagString: envChair1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5391,7 +5391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90140024}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.82719064, y: -0.26809227, z: -0.000054}
+  m_LocalPosition: {x: -0.82719064, y: -0.26809227, z: -1}
   m_LocalScale: {x: 0.65088564, y: 0.64285, z: 0.64285}
   m_Children: []
   m_Father: {fileID: 1064527294}
@@ -6553,8 +6553,8 @@ GameObject:
   - component: {fileID: 113409514}
   - component: {fileID: 113409513}
   m_Layer: 0
-  m_Name: Chair_Pink (3)
-  m_TagString: Untagged
+  m_Name: Chair_Pink
+  m_TagString: envChair2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6932,8 +6932,8 @@ GameObject:
   - component: {fileID: 121481929}
   - component: {fileID: 121481928}
   m_Layer: 0
-  m_Name: Door_Pink 5
-  m_TagString: Untagged
+  m_Name: Door_Pink
+  m_TagString: envDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8788,7 +8788,7 @@ GameObject:
   - component: {fileID: 155943706}
   - component: {fileID: 155943707}
   m_Layer: 0
-  m_Name: Tile_2 (99)
+  m_Name: Chair_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14417,8 +14417,8 @@ GameObject:
   - component: {fileID: 265075950}
   - component: {fileID: 265075951}
   m_Layer: 0
-  m_Name: Capture (2)
-  m_TagString: Untagged
+  m_Name: Bed_2
+  m_TagString: envBed2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15278,6 +15278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 282839841}
+  - component: {fileID: 282839842}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -15320,6 +15321,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &282839842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282839840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84e873a0c54da348ad31077f9fd03c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pastelBed1: {fileID: 21300000, guid: 59826fd1a5d5d3f4e881cafce6bbc7f7, type: 3}
+  classicBed: {fileID: 21300000, guid: 251505d9d7f92904bb57fa182875c4b7, type: 3}
+  boldBed: {fileID: 21300000, guid: ccb56797dd270334281864b57b8f2d3e, type: 3}
+  pastelBed2: {fileID: 21300000, guid: 82f90659fa49c3d4e9220be4eb2f4600, type: 3}
+  pastelChair1: {fileID: 21300000, guid: a7eb2489520a63f48a4795e6f5735397, type: 3}
+  boldChair1: {fileID: 21300000, guid: 3ce4f8d1d2ab1c543bf6636b84edbbee, type: 3}
+  pastelChair2: {fileID: 21300000, guid: 651e069a901492a419daf2aeba4ebe2d, type: 3}
+  boldChair2: {fileID: 21300000, guid: d5da725c7b635c24fb9b745cddda522e, type: 3}
+  pastelCupboardFront: {fileID: 21300000, guid: 78757930bca79cb4ba8782c891040a0b,
+    type: 3}
+  boldCupboardFront: {fileID: 21300000, guid: 61dbfcdcf18a4994d9aea99f45cc65b7, type: 3}
+  pastelCupboardSide: {fileID: 21300000, guid: 8a26f2b6cdb5d5944adeb4888ab884c4, type: 3}
+  boldCupboardSide: {fileID: 21300000, guid: 554c82748aba78045b1a7724139aa431, type: 3}
+  pastelDeskDoctor: {fileID: 21300000, guid: f685154b3dde97c4ab2b03ea4fe00f77, type: 3}
+  classicDeskDoctor: {fileID: 21300000, guid: 9930e717c8e39c24593f6bb098f8cb1e, type: 3}
+  boldDeskDoctor: {fileID: 21300000, guid: 03784c35da30ef24b8db86b24c5b191e, type: 3}
+  pastelDeskMini: {fileID: 21300000, guid: 01ba3d32ffe10eb4fbd957ed3a9af1b4, type: 3}
+  classicDeskMini: {fileID: 21300000, guid: 7629647c7e6ee6e499b8d921a36b4f70, type: 3}
+  boldDeskMini: {fileID: 21300000, guid: 45db8556b6617244aac123376ce33c2c, type: 3}
+  pastelDeskPharmacist: {fileID: 21300000, guid: b451589d510484645b9374116acd56f4,
+    type: 3}
+  classicDeskPharmacist: {fileID: 21300000, guid: af6ed3e8078c0db45aa17ddd31e77345,
+    type: 3}
+  boldDeskPharmacist: {fileID: 21300000, guid: 74eebcf89218f9c41965ce36b56ddd5f, type: 3}
+  pastelDeskReceptionist: {fileID: 21300000, guid: e78e6a2df9abf314cad7ad4544d1a1eb,
+    type: 3}
+  classicDeskReceptionist: {fileID: 21300000, guid: 0ca77bb1f0e12a047a86db50d65e6367,
+    type: 3}
+  boldDeskReceptionist: {fileID: 21300000, guid: 2cd9f74929cf7f2438a61c0a82adf6fe,
+    type: 3}
+  pastelDoor: {fileID: 21300000, guid: 6ba922ce489065543a86896ce3b06085, type: 3}
+  classicDoor: {fileID: 21300000, guid: 0759e361d71d6ba48a73b122e17537e6, type: 3}
+  boldDoor: {fileID: 21300000, guid: 069d63a236303cb43958357df51193b9, type: 3}
+  pastelFloorMat: {fileID: 21300000, guid: f760cb32be0966c44b325a02e879ec79, type: 3}
+  boldFloorMat: {fileID: 21300000, guid: 15c2fba19a8ee0d4b8657fd129a9fcbf, type: 3}
+  pastelPlant1: {fileID: 21300000, guid: 3afb4d51ac398ee479f84fbd016e2a9b, type: 3}
+  boldPlant1: {fileID: 21300000, guid: d049858251fe3d24da7b064829801de4, type: 3}
+  pastelPlant2: {fileID: 21300000, guid: 8fb83143d25e0564b9486e2821912ef1, type: 3}
+  boldPlant2: {fileID: 21300000, guid: e5098ea8ffb471844a5b8a83349a1718, type: 3}
+  pastelStairs: {fileID: 21300000, guid: 95e8de30c00b0ef4d983b89109cf665c, type: 3}
+  classicStairs: {fileID: 21300000, guid: 2782d2d2b24d0a94a82b182000792145, type: 3}
+  boldStairs: {fileID: 21300000, guid: 9d61964fcaa1b7d4da3519bde9fe5506, type: 3}
+  pastelTicketMachine: {fileID: 21300000, guid: e0f529b56bb4131418d915ac7179f5d8,
+    type: 3}
+  boldTicketMachine: {fileID: 21300000, guid: 9cc771c149432504080045269d5ed9b1, type: 3}
 --- !u!1 &284620216
 GameObject:
   m_ObjectHideFlags: 0
@@ -19854,7 +19912,7 @@ GameObject:
   - component: {fileID: 358453372}
   m_Layer: 0
   m_Name: Cupboard_front
-  m_TagString: Untagged
+  m_TagString: envCupboardFront
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21708,7 +21766,7 @@ GameObject:
   - component: {fileID: 380884439}
   m_Layer: 0
   m_Name: Stairs
-  m_TagString: Untagged
+  m_TagString: envStairs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22194,8 +22252,8 @@ GameObject:
   - component: {fileID: 388750999}
   - component: {fileID: 388750998}
   m_Layer: 0
-  m_Name: Chair_Blue (4)
-  m_TagString: Untagged
+  m_Name: Chair_Blue
+  m_TagString: envChair1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24043,8 +24101,8 @@ GameObject:
   - component: {fileID: 416563170}
   - component: {fileID: 416563169}
   m_Layer: 0
-  m_Name: Door_Pink 3
-  m_TagString: Untagged
+  m_Name: Door_Pink
+  m_TagString: envDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25447,7 +25505,7 @@ GameObject:
   - component: {fileID: 437895648}
   m_Layer: 0
   m_Name: Plant_2
-  m_TagString: Untagged
+  m_TagString: envPlant2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25609,8 +25667,8 @@ GameObject:
   - component: {fileID: 437942147}
   - component: {fileID: 437942149}
   m_Layer: 0
-  m_Name: Plant
-  m_TagString: Untagged
+  m_Name: Plant_1
+  m_TagString: envPlant1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25717,8 +25775,8 @@ GameObject:
   - component: {fileID: 438947631}
   - component: {fileID: 438947632}
   m_Layer: 0
-  m_Name: Chair_Pink (1)
-  m_TagString: Untagged
+  m_Name: Chair_Blue
+  m_TagString: envChair1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30919,8 +30977,8 @@ GameObject:
   - component: {fileID: 515689138}
   - component: {fileID: 515689139}
   m_Layer: 0
-  m_Name: Desk_Mini (2)
-  m_TagString: Untagged
+  m_Name: Desk_Mini
+  m_TagString: envDeskMini
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32942,8 +33000,8 @@ GameObject:
   - component: {fileID: 545273233}
   - component: {fileID: 545273232}
   m_Layer: 0
-  m_Name: Ticket_Machine (1)
-  m_TagString: Untagged
+  m_Name: Ticket_Machine
+  m_TagString: envTicketMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33770,8 +33828,8 @@ GameObject:
   - component: {fileID: 559570001}
   - component: {fileID: 559570000}
   m_Layer: 0
-  m_Name: Door_Pink 1
-  m_TagString: Untagged
+  m_Name: Door_Pink
+  m_TagString: envDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41614,8 +41672,8 @@ GameObject:
   - component: {fileID: 661586426}
   - component: {fileID: 661586425}
   m_Layer: 0
-  m_Name: Door_Pink 4
-  m_TagString: Untagged
+  m_Name: Door_Pink
+  m_TagString: envDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44239,7 +44297,7 @@ GameObject:
   - component: {fileID: 716964633}
   m_Layer: 0
   m_Name: Plant_2
-  m_TagString: Untagged
+  m_TagString: envPlant2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45076,8 +45134,8 @@ GameObject:
   - component: {fileID: 725908308}
   - component: {fileID: 725908307}
   m_Layer: 0
-  m_Name: Chair_Blue (5)
-  m_TagString: Untagged
+  m_Name: Chair_Blue
+  m_TagString: envChair1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47259,8 +47317,8 @@ GameObject:
   - component: {fileID: 755294414}
   - component: {fileID: 755294415}
   m_Layer: 0
-  m_Name: Desk_Mini (2)
-  m_TagString: Untagged
+  m_Name: Desk_Mini
+  m_TagString: envDeskMini
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48037,7 +48095,7 @@ Transform:
   - {fileID: 59600734}
   - {fileID: 320398859}
   m_Father: {fileID: 933993523}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &768839343
 GameObject:
@@ -49608,8 +49666,8 @@ GameObject:
   - component: {fileID: 789244777}
   - component: {fileID: 789244776}
   m_Layer: 0
-  m_Name: Chair_Blue (2)
-  m_TagString: Untagged
+  m_Name: Chair_Blue
+  m_TagString: envChair1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52836,8 +52894,8 @@ GameObject:
   - component: {fileID: 846120158}
   - component: {fileID: 846120159}
   m_Layer: 0
-  m_Name: Capture (2)
-  m_TagString: Untagged
+  m_Name: Bed_2
+  m_TagString: envBed2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53890,7 +53948,7 @@ GameObject:
   - component: {fileID: 863945659}
   m_Layer: 0
   m_Name: Ticket_Machine
-  m_TagString: Untagged
+  m_TagString: envTicketMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57393,6 +57451,7 @@ MonoBehaviour:
   tnpcseanStage: 0
   tnpcauntyStage: 0
   tnpclawyerStage: 0
+  tm3unlockedlevels: 0
   life: 0
   SpinMenu: {fileID: 1303884014}
 --- !u!1 &920105683
@@ -57951,9 +58010,9 @@ Transform:
   m_LocalPosition: {x: -9.419577, y: 4.7412586, z: -38.25495}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1179134822}
   - {fileID: 768722370}
   - {fileID: 1064527294}
+  - {fileID: 1179134822}
   - {fileID: 1104194037}
   - {fileID: 1298750041}
   m_Father: {fileID: 282839841}
@@ -59429,8 +59488,8 @@ GameObject:
   - component: {fileID: 962832050}
   - component: {fileID: 962832051}
   m_Layer: 0
-  m_Name: Desk_Mini (1)
-  m_TagString: Untagged
+  m_Name: Desk_Mini
+  m_TagString: envDeskMini
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64532,7 +64591,7 @@ Transform:
   - {fileID: 1537852166}
   - {fileID: 292688281}
   m_Father: {fileID: 933993523}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1064714176
 GameObject:
@@ -66124,7 +66183,7 @@ GameObject:
   - component: {fileID: 1091592484}
   m_Layer: 0
   m_Name: Desk_Mini
-  m_TagString: Untagged
+  m_TagString: envDeskMini
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66501,8 +66560,8 @@ GameObject:
   - component: {fileID: 1097453770}
   - component: {fileID: 1097453769}
   m_Layer: 0
-  m_Name: Chair_Pink (1)
-  m_TagString: Untagged
+  m_Name: Chair_Pink
+  m_TagString: envChair2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70350,8 +70409,8 @@ GameObject:
   - component: {fileID: 1158863003}
   - component: {fileID: 1158863004}
   m_Layer: 0
-  m_Name: Bed
-  m_TagString: Untagged
+  m_Name: Bed_1
+  m_TagString: envBed1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71826,11 +71885,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179134821}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.02, y: 3.76, z: -0.00005}
+  m_LocalPosition: {x: -3.02, y: 3.76, z: -1}
   m_LocalScale: {x: 0.49980086, y: 0.49980086, z: 0.49980086}
   m_Children: []
   m_Father: {fileID: 933993523}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1179134823
 SpriteRenderer:
@@ -75948,7 +76007,7 @@ GameObject:
   - component: {fileID: 1248421439}
   m_Layer: 0
   m_Name: Desk_Doctor
-  m_TagString: Untagged
+  m_TagString: envDeskDoctor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76297,8 +76356,8 @@ GameObject:
   - component: {fileID: 1251095823}
   - component: {fileID: 1251095824}
   m_Layer: 0
-  m_Name: Chair_Pink (2)
-  m_TagString: Untagged
+  m_Name: Chair_Pink
+  m_TagString: envChair2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80606,7 +80665,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326237623}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -2.4071908, y: -1.7380923, z: -0.000054}
+  m_LocalPosition: {x: -2.4071908, y: -1.7380923, z: -1}
   m_LocalScale: {x: 0.53058153, y: 0.53058153, z: 0.53058153}
   m_Children: []
   m_Father: {fileID: 1064527294}
@@ -80781,8 +80840,8 @@ GameObject:
   - component: {fileID: 1327592186}
   - component: {fileID: 1327592185}
   m_Layer: 0
-  m_Name: Chair_Pink (4)
-  m_TagString: Untagged
+  m_Name: Chair_Pink
+  m_TagString: envChair2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86475,7 +86534,7 @@ GameObject:
   - component: {fileID: 1406963848}
   m_Layer: 0
   m_Name: Chair_Pink
-  m_TagString: Untagged
+  m_TagString: envChair2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89434,8 +89493,8 @@ GameObject:
   - component: {fileID: 1460036211}
   - component: {fileID: 1460036210}
   m_Layer: 0
-  m_Name: Chair_Blue (6)
-  m_TagString: Untagged
+  m_Name: Chair_Blue
+  m_TagString: envChair1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90851,8 +90910,8 @@ GameObject:
   - component: {fileID: 1486970408}
   - component: {fileID: 1486970410}
   m_Layer: 0
-  m_Name: Plant (1)
-  m_TagString: Untagged
+  m_Name: Plant_1
+  m_TagString: envPlant1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93210,8 +93269,8 @@ GameObject:
   - component: {fileID: 1521228580}
   - component: {fileID: 1521228581}
   m_Layer: 0
-  m_Name: Plant
-  m_TagString: Untagged
+  m_Name: Plant_1
+  m_TagString: envPlant1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94043,7 +94102,7 @@ GameObject:
   - component: {fileID: 1537852168}
   m_Layer: 0
   m_Name: Stairs
-  m_TagString: Untagged
+  m_TagString: envStairs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96834,8 +96893,8 @@ GameObject:
   - component: {fileID: 1588932439}
   - component: {fileID: 1588932441}
   m_Layer: 0
-  m_Name: Capture
-  m_TagString: Untagged
+  m_Name: Bed_2
+  m_TagString: envBed2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97865,8 +97924,8 @@ GameObject:
   - component: {fileID: 1602275323}
   - component: {fileID: 1602275324}
   m_Layer: 0
-  m_Name: Desk_Mini (1)
-  m_TagString: Untagged
+  m_Name: Desk_Mini
+  m_TagString: envDeskMini
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98216,7 +98275,7 @@ GameObject:
   - component: {fileID: 1609425939}
   m_Layer: 0
   m_Name: Chair_Pink
-  m_TagString: Untagged
+  m_TagString: envChair2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99715,8 +99774,8 @@ GameObject:
   - component: {fileID: 1634621575}
   - component: {fileID: 1634621576}
   m_Layer: 0
-  m_Name: Capture (1)
-  m_TagString: Untagged
+  m_Name: Bed_1
+  m_TagString: envBed1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102665,8 +102724,8 @@ GameObject:
   - component: {fileID: 1686562994}
   - component: {fileID: 1686562993}
   m_Layer: 0
-  m_Name: Chair_Pink (5)
-  m_TagString: Untagged
+  m_Name: Chair_Pink
+  m_TagString: envChair2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104818,8 +104877,8 @@ GameObject:
   - component: {fileID: 1723846817}
   - component: {fileID: 1723846818}
   m_Layer: 0
-  m_Name: Chair_Pink (2)
-  m_TagString: Untagged
+  m_Name: Chair_Pink
+  m_TagString: envChair2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108752,8 +108811,8 @@ GameObject:
   - component: {fileID: 1793244353}
   - component: {fileID: 1793244352}
   m_Layer: 0
-  m_Name: Door_Pink 2
-  m_TagString: Untagged
+  m_Name: Door_Pink
+  m_TagString: envDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109197,8 +109256,8 @@ GameObject:
   - component: {fileID: 1800099936}
   - component: {fileID: 1800099937}
   m_Layer: 0
-  m_Name: Capture (1)
-  m_TagString: Untagged
+  m_Name: Bed_1
+  m_TagString: envBed1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109630,7 +109689,7 @@ GameObject:
   - component: {fileID: 1811414058}
   m_Layer: 0
   m_Name: Cupboard_front
-  m_TagString: Untagged
+  m_TagString: envCupboardFront
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117671,7 +117730,7 @@ GameObject:
   - component: {fileID: 1941986866}
   m_Layer: 0
   m_Name: Desk_Pharmacist
-  m_TagString: Untagged
+  m_TagString: envDeskPharmacist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119611,7 +119670,7 @@ GameObject:
   - component: {fileID: 1985170256}
   m_Layer: 0
   m_Name: Desk_Receptionist
-  m_TagString: Untagged
+  m_TagString: envDeskReceptionist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121210,7 +121269,7 @@ GameObject:
   - component: {fileID: 2004758086}
   m_Layer: 0
   m_Name: Floor_Mat
-  m_TagString: Untagged
+  m_TagString: envFloormat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121759,8 +121818,8 @@ GameObject:
   - component: {fileID: 2014607408}
   - component: {fileID: 2014607407}
   m_Layer: 0
-  m_Name: Chair_Blue (7)
-  m_TagString: Untagged
+  m_Name: Chair_Blue
+  m_TagString: envChair1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123709,8 +123768,8 @@ GameObject:
   - component: {fileID: 2050419728}
   - component: {fileID: 2050419727}
   m_Layer: 0
-  m_Name: Chair_Blue (3)
-  m_TagString: Untagged
+  m_Name: Chair_Blue
+  m_TagString: envChair1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124629,7 +124688,7 @@ GameObject:
   - component: {fileID: 2072991235}
   m_Layer: 0
   m_Name: Door_Pink
-  m_TagString: Untagged
+  m_TagString: envDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125879,8 +125938,8 @@ GameObject:
   - component: {fileID: 2093129300}
   - component: {fileID: 2093129299}
   m_Layer: 0
-  m_Name: Chair_Pink (2)
-  m_TagString: Untagged
+  m_Name: Chair_Pink
+  m_TagString: envChair2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127841,7 +127900,7 @@ GameObject:
   - component: {fileID: 2122476137}
   m_Layer: 0
   m_Name: Cupboard_Side
-  m_TagString: Untagged
+  m_TagString: envCupboardSide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

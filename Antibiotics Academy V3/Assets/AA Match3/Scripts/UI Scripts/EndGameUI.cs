@@ -22,26 +22,25 @@ namespace Match3
             {
                 StartUI.SetActive(false);
             }
-            //else StartUI.SetActive(true);
-            //StartUI.SetActive(false);
-            Debug.Log("OnSceneLoaded: " + scene.name);
-            Debug.Log(mode);
+            //Debug.Log("OnSceneLoaded: " + scene.name);
         }
 
         public void TriggerRestart()  //function to restart the game
         {
-            if (ThemeSelectScreen.IsClassic == true)
-            {
-                SceneManager.LoadScene(14); // match 3
-            }
-            else if(ThemeSelectScreen.IsYJ == true)
-            {
-                SceneManager.LoadScene(8);
-            }
-            else
-            {
-                SceneManager.LoadScene(14);
-            }
+            //if (ThemeSelectScreen.IsClassic == true)
+            //{
+            //    SceneManager.LoadScene(14); // match 3
+            //}
+            //else if(ThemeSelectScreen.IsYJ == true)
+            //{
+            //    SceneManager.LoadScene(8);
+            //}
+            //else
+            //{
+            //    SceneManager.LoadScene(14);
+            //}
+
+            SceneManager.LoadScene(14); //match 3 scene
         }
 
         public void TriggerQuit() //function to quit the game
@@ -49,22 +48,24 @@ namespace Match3
             GameManager.pharmacistStage = 2;
             GameManager.receptionistStage = 2;
 
-            if (ThemeSelectScreen.IsClassic == true)
-            {
-                SceneManager.LoadScene(13); //main
-            }
-            else if (ThemeSelectScreen.IsYJ == true)
-            {
-                SceneManager.LoadScene(7);
-            }
-            else if(ThemeSelectScreen.IsTrixy == true)
-            {
-                SceneManager.LoadScene(16);
-            }
-            else
-            {
-                SceneManager.LoadScene(13);
-            }
+            //if (ThemeSelectScreen.IsClassic == true)
+            //{
+            //    SceneManager.LoadScene(13); //main
+            //}
+            //else if (ThemeSelectScreen.IsYJ == true)
+            //{
+            //    SceneManager.LoadScene(7);
+            //}
+            //else if(ThemeSelectScreen.IsTrixy == true)
+            //{
+            //    SceneManager.LoadScene(16);
+            //}
+            //else
+            //{
+            //    SceneManager.LoadScene(13);
+            //}
+
+            SceneManager.LoadScene(13); //main scene
 
             //Player.coins += 50;
             //Debug.Log("You got 50 coins for winning this game!");

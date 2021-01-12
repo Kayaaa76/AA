@@ -15,14 +15,16 @@ public class Hub : MonoBehaviour
         GameManager.doctorStage = 0;
         GameManager.surgeonStage = 0;
 
-        if (ThemeSelectScreen.IsYJ == true)
-        {
-            SceneManager.LoadScene(7); // load main scene
-        }
-        else if(ThemeSelectScreen.IsClassic == true)
-        {
-            SceneManager.LoadScene(13);
-        }
+        //if (ThemeSelectScreen.IsYJ == true)
+        //{
+        //    SceneManager.LoadScene(7); // load main scene
+        //}
+        //else if(ThemeSelectScreen.IsClassic == true)
+        //{
+        //    SceneManager.LoadScene(13);
+        //}
+
+        SceneManager.LoadScene(13);
     }
 
 }

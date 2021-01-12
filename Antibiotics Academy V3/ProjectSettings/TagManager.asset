@@ -29,6 +29,22 @@ TagManager:
   - bg
   - grass
   - FruitTurr
+  - envBed1
+  - envBed2
+  - envChair1
+  - envChair2
+  - envCupboardFront
+  - envCupboardSide
+  - envDeskDoctor
+  - envDeskMini
+  - envDeskPharmacist
+  - envDeskReceptionist
+  - envPlant1
+  - envPlant2
+  - envStairs
+  - envDoor
+  - envTicketMachine
+  - envFloormat
   layers:
   - Default
   - TransparentFX
