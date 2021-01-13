@@ -13599,9 +13599,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e4a2df2d7da4d49b8c99a3cc2c7b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelAntibiotic: {fileID: 21300000, guid: ac4fb9a3a7655304ea253eb3d230dfcb, type: 3}
-  levelEat: {fileID: 21300000, guid: 2e1cfb3890b2993468b01155af307473, type: 3}
-  levelWater: {fileID: 21300000, guid: 60c79f41ec8356843beb372b0f7deb78, type: 3}
+  PastelLevelAntibiotic: {fileID: 21300000, guid: ac4fb9a3a7655304ea253eb3d230dfcb,
+    type: 3}
+  PastelLevelEat: {fileID: 21300000, guid: 2e1cfb3890b2993468b01155af307473, type: 3}
+  PastelLevelWater: {fileID: 21300000, guid: 60c79f41ec8356843beb372b0f7deb78, type: 3}
+  ClassicLevelAntibiotic: {fileID: 21300000, guid: 6eb5b995fedd1824cb66b14d7d4506cc,
+    type: 3}
+  ClassicLevelEat: {fileID: 21300000, guid: e69417768c3fe9e4f9dde0efd531f813, type: 3}
+  ClassicLevelWater: {fileID: 21300000, guid: 988bbb86677716d4087350b3b0632f4c, type: 3}
+  BoldLevelAntibiotic: {fileID: 21300000, guid: a055a4a375a568d458fb28f7666f225a,
+    type: 3}
+  BoldLevelEat: {fileID: 21300000, guid: ac20d383a5a8de04ab6f2841926ad7f6, type: 3}
+  BoldLevelWater: {fileID: 21300000, guid: b180ecfaa4c40ff41bfd944b0301f174, type: 3}
   levelLocked: {fileID: 21300000, guid: 5319e1d917bc0be488007ad5ec201de7, type: 3}
   gameFont: {fileID: 12800000, guid: 993de02b967b2564c9df47c82a5e7fcc, type: 3}
   fontSize: 65

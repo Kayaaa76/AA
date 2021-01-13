@@ -7,9 +7,18 @@ namespace TowerDefense
 {
     public class TDLevelSelect : MonoBehaviour
     {
-        public Sprite levelAntibiotic;
-        public Sprite levelEat;
-        public Sprite levelWater;
+        public Sprite PastelLevelAntibiotic;
+        public Sprite PastelLevelEat;
+        public Sprite PastelLevelWater;
+
+        public Sprite ClassicLevelAntibiotic;
+        public Sprite ClassicLevelEat;
+        public Sprite ClassicLevelWater;
+
+        public Sprite BoldLevelAntibiotic;
+        public Sprite BoldLevelEat;
+        public Sprite BoldLevelWater;
+
         public Sprite levelLocked;
 
         public Font gameFont;
@@ -48,15 +57,48 @@ namespace TowerDefense
                 {
                     if (i < 3)                                                                 //at levels 1-3
                     {
-                        totalLevels[i].GetComponent<Image>().sprite = levelAntibiotic;         //set button as given image
+                        if (PlayerPrefs.GetString("Theme") == "Pastel")
+                        {
+                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelAntibiotic;               //set button as given image
+                        }
+                        else if (PlayerPrefs.GetString("Theme") == "Classic")
+                        {
+                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelAntibiotic;               //set button as given image
+                        }
+                        else if (PlayerPrefs.GetString("Theme") == "Bold")
+                        {
+                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelAntibiotic;               //set button as given image
+                        }
                     }
                     else if (i < 6)                                                            //at levels 4-6
                     {
-                        totalLevels[i].GetComponent<Image>().sprite = levelEat;                //set button as given image
+                        if (PlayerPrefs.GetString("Theme") == "Pastel")
+                        {
+                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelEat;               //set button as given image
+                        }
+                        else if (PlayerPrefs.GetString("Theme") == "Classic")
+                        {
+                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelEat;               //set button as given image
+                        }
+                        else if (PlayerPrefs.GetString("Theme") == "Bold")
+                        {
+                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelEat;               //set button as given image
+                        }
                     }
                     else if (i < 9)                                                            //at levels 7-9
                     {
-                        totalLevels[i].GetComponent<Image>().sprite = levelWater;              //set button as given image
+                        if (PlayerPrefs.GetString("Theme") == "Pastel")
+                        {
+                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelWater;               //set button as given image
+                        }
+                        else if (PlayerPrefs.GetString("Theme") == "Classic")
+                        {
+                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelWater;               //set button as given image
+                        }
+                        else if (PlayerPrefs.GetString("Theme") == "Bold")
+                        {
+                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelWater;               //set button as given image
+                        }
                     }
 
                     totalLevels[i].interactable = true;                                         //make button interactable
