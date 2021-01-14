@@ -8,7 +8,7 @@ namespace Match3
     public class NotificationManager : MonoBehaviour
     {
         public Text notificationText;
-        private string[] sentences = new string[5];  //instantiate an array that has 5 elements
+        private string[] sentences = new string[10];  //instantiate an array that has 5 elements
 
         public GameObject m3levelselect;
         int m3notification;
@@ -20,7 +20,13 @@ namespace Match3
             sentences[1] = "Fruits and Vegetables X2!";
             sentences[2] = "Water X2!";
             sentences[3] = "Running X2!";
-            sentences[4] = "None";
+            sentences[4] = "No Bonus";
+
+            sentences[5] = "Getting at least 7 hours of quality sleep helps us to stay physically healthy";
+            sentences[6] = "A balanced diet which includes some fruits and vegetables builds a strong immune system for the body";
+            sentences[7] = "Boost your immunity by taking vaccines to protect yourself against viruses (e.g. flu vaccine)";
+            sentences[8] = "Exercise helps keep our bodies healthy, improving energy levels, and relieves stress";
+            sentences[9] = "Quality sleep, a balanced diet, updated immunization, and exercise keep us healthy";
         }
 
         void Update()
@@ -46,7 +52,8 @@ namespace Match3
             DisplayNotification(m3notification);
             yield return new WaitForSeconds(5);
 
-            notificationText.text = "The Info Nugget";
+            //notificationText.text = "The Info Nugget";
+            DisplayNotification(m3notification + 5);
             yield return new WaitForSeconds(5);
 
             isSwitching = false;
