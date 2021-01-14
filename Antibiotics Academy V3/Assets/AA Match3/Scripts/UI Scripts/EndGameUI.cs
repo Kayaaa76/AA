@@ -17,7 +17,7 @@ namespace Match3
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             StartUI = GameObject.Find("StartUI");
-            Debug.Log(StartUI);
+            //Debug.Log(StartUI);
             if (StartUI != null)
             {
                 StartUI.SetActive(false);

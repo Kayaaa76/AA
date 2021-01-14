@@ -230,7 +230,7 @@ public class GameManager : MonoBehaviour
             //test.Load(); // trigger match 3 game
 
             SceneManager.LoadScene(14); //macth 3 scene
-            Player.lives -= 1;
+            //Player.lives -= 1;
         }
         if (pharmacistStage == 2 && receptionistStage == 2) // if player wins match 3 game
         {

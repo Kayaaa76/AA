@@ -52,8 +52,8 @@ namespace Match3
 
         Button[] totalLevels;
 
-        public int playableLevels;                                                         //number of levels unlocked
-        public int playingLevel;                                                           //level currently playing
+        public int playableLevels;                                                              //number of levels unlocked
+        public int playingLevel;                                                                //level currently playing
 
         HealthManager hm;
         NotificationManager nm;
@@ -63,7 +63,7 @@ namespace Match3
         // Start is called before the first frame update
         void Start()
         {
-            totalLevels = new Button[transform.childCount];                                    //get total number of levels based on number of buttons
+            totalLevels = new Button[transform.childCount];                                     //get total number of levels based on number of buttons
 
             hm = FindObjectOfType<HealthManager>();
             nm = FindObjectOfType<NotificationManager>();
@@ -103,18 +103,16 @@ namespace Match3
                     {
                         if(PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelSleep;               //set button as given image
+                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelSleep;     //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelSleep;               //set button as given image
+                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelSleep;    //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelSleep;               //set button as given image
+                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelSleep;       //set button as given image
                         }
-
-                        //totalLevels[i].GetComponent<Image>().sprite = levelSleepPastel;               //set button as given image
                     }
                     else if (i < 8)                                                             //at levels 6-8
                     {
@@ -130,8 +128,6 @@ namespace Match3
                         {
                             totalLevels[i].GetComponent<Image>().sprite = BoldLevelNutrition1;               //set button as given image
                         }
-
-                        //totalLevels[i].GetComponent<Image>().sprite = levelNutrition1Pastel;          //set button as given image
                     }
                     else if (i < 10)                                                            //at levels 9-10
                     {
@@ -147,8 +143,6 @@ namespace Match3
                         {
                             totalLevels[i].GetComponent<Image>().sprite = BoldLevelNutrition2;               //set button as given image
                         }
-
-                        //totalLevels[i].GetComponent<Image>().sprite = levelNutrition2Pastel;          //set button as given image
                     }
                     else if (i < 15)                                                            //at levels 11-15
                     {
@@ -164,8 +158,6 @@ namespace Match3
                         {
                             totalLevels[i].GetComponent<Image>().sprite = BoldLevelImmunisation;               //set button as given image
                         }
-
-                        //totalLevels[i].GetComponent<Image>().sprite = levelImmunisationPastel;        //set button as given image
                     }
                     else if (i < 20)                                                            //at levels 16-20
                     {
@@ -181,8 +173,6 @@ namespace Match3
                         {
                             totalLevels[i].GetComponent<Image>().sprite = BoldLevelExercise;               //set button as given image
                         }
-
-                        //totalLevels[i].GetComponent<Image>().sprite = levelExercisePastel;            //set button as given image
                     }
                     else if (i < 21)                                                            //at level 21
                     {
@@ -198,8 +188,6 @@ namespace Match3
                         {
                             totalLevels[i].GetComponent<Image>().sprite = BoldLevelHealthy1;               //set button as given image
                         }
-
-                        //totalLevels[i].GetComponent<Image>().sprite = levelHealthy1Pastel;            //set button as given image
                     }
                     else if (i < 22)                                                            //at level 22
                     {
@@ -215,8 +203,6 @@ namespace Match3
                         {
                             totalLevels[i].GetComponent<Image>().sprite = BoldLevelHealthy2;               //set button as given image
                         }
-
-                        //totalLevels[i].GetComponent<Image>().sprite = levelHealthy2Pastel;            //set button as given image
                     }
                     else if (i < 23)                                                            //at level 23
                     {
@@ -232,8 +218,6 @@ namespace Match3
                         {
                             totalLevels[i].GetComponent<Image>().sprite = BoldLevelHealthy3;               //set button as given image
                         }
-
-                        //totalLevels[i].GetComponent<Image>().sprite = levelHealthy3Pastel;            //set button as given image
                     }
                     else if (i < 24)                                                            //at level 24
                     {
@@ -249,8 +233,6 @@ namespace Match3
                         {
                             totalLevels[i].GetComponent<Image>().sprite = BoldLevelHealthy4;               //set button as given image
                         }
-
-                        //totalLevels[i].GetComponent<Image>().sprite = levelHealthy4Pastel;            //set button as given image
                     }
                     else if (i < 25)                                                            //at level 24
                     {
@@ -266,8 +248,6 @@ namespace Match3
                         {
                             totalLevels[i].GetComponent<Image>().sprite = BoldLevelHealthy5;               //set button as given image
                         }
-
-                        //totalLevels[i].GetComponent<Image>().sprite = levelHealthy5Pastel;            //set button as given image
                     }
 
                     totalLevels[i].interactable = true;                                         //make button interactable
@@ -286,29 +266,17 @@ namespace Match3
 
         public void easyLevel()
         {
-            LevelSelectUI.SetActive(false);
-
             hm.currentHealth = hm.min_healthyHealth;
-
-            Time.timeScale = 1f;
         }
 
         public void mediumLevel()
         {
-            LevelSelectUI.SetActive(false);
-
             hm.currentHealth = hm.min_betterHealth;
-
-            Time.timeScale = 1f;
         }
 
         public void difficultLevel()
         {
-            LevelSelectUI.SetActive(false);
-
             hm.currentHealth = hm.min_neutralHealth;
-
-            Time.timeScale = 1f;
         }
 
         public void restLevel()
@@ -345,6 +313,23 @@ namespace Match3
             hm.bonusTag = "None";
             notification = 4;
             nm.isSwitching = false;
+        }
+
+        public void enterLevel()
+        {
+            if (Player.lives > 0)
+            {
+                LevelSelectUI.SetActive(false);
+
+                Player.lives -= 1;
+                Debug.Log("used life");
+
+                Time.timeScale = 1f;
+            }
+            else
+            {
+                Debug.Log("You do not have enough lifes to play the game!");
+            }
         }
     }
 }
