@@ -46,7 +46,12 @@ namespace Match3
         public void TriggerQuit() //function to quit the game
         {
             GameManager.pharmacistStage = 2;
-            GameManager.receptionistStage = 2;
+
+            //GameManager.receptionistStage = 2;
+            if(GameManager.receptionistStage != 3)
+            {
+                GameManager.receptionistStage = 2;
+            }
 
             //if (ThemeSelectScreen.IsClassic == true)
             //{
