@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject pauseBtn; // pause button
     public GameObject menu; // menu that appears after clicking on the pause button
 
+    public GameObject gamesBtn;
+
     //testScene1 test; // testScene1 script
 
     public static GameObject player; // store the player game object
@@ -170,6 +172,11 @@ public class GameManager : MonoBehaviour
             rightBtn.SetActive(true);
             downBtn.SetActive(true);
             upBtn.SetActive(true);
+        }
+
+        if (Player.m3unlockedlevels > 0) //games menu button to appear after unlocking match 3 (first game)
+        {
+            gamesBtn.SetActive(true);
         }
     }
 

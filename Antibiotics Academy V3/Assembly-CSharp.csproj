@@ -80,6 +80,7 @@
     <Compile Include="Assets\AA MainHub\Scripts\DialogueManager.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\DialogueTrigger.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\GameManager.cs" />
+    <Compile Include="Assets\AA MainHub\Scripts\GamesMenu.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\Movement.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\PlayerCharacterCustomization.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\Teleport.cs" />
