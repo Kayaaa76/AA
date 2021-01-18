@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using System.IO;
+using SimpleJSON;
 
 public class Login : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class Login : MonoBehaviour
     System.DateTime currentLogin;
 
     public static string LoginToken;
+
+    public static string GameSave;
+
+    public static System.DateTime dateModified;
 
     public void CallLogin()
     {
@@ -59,6 +64,7 @@ public class Login : MonoBehaviour
         currentLogin = System.DateTime.Now;
 
         string path = Application.persistentDataPath + "/PlayerSave.json";
+        string tpath = Application.persistentDataPath + "/GameSave.json";
         
         if(wwwLogin.error == null)
         {
@@ -68,15 +74,44 @@ public class Login : MonoBehaviour
             WWWForm formUpdateLogin = new WWWForm();
             WWW wwwUpdateLogin = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostLogin?ActivityTypeName=Login&Username=" + nameField.text,formUpdateLogin);
             yield return wwwUpdateLogin;
+            Debug.Log(wwwUpdateLogin.text);
             Debug.Log(wwwUpdateLogin.error);
+            Debug.Log(wwwUpdateLogin.url);
             #endregion
 
             #region Check Game Version
             //WWWForm formCheckVersion = new WWWForm();
             WWW wwwCheckVersion = new WWW("http://103.239.222.212/ALIVE2Service/api/game/GameSave");
             yield return wwwCheckVersion;
-
+            GameSave = wwwCheckVersion.text;
+            //Debug.Log(GameSave);
             Debug.Log(wwwCheckVersion.text);
+            File.WriteAllText(tpath, GameSave);
+            Debug.Log("game save written");
+
+            string jsonString = File.ReadAllText(tpath);
+            JSONObject gamesaveJson = (JSONObject)JSON.Parse(jsonString);
+
+            dateModified = System.DateTime.Parse(gamesaveJson["dateModified"]);
+
+            Debug.Log(dateModified);
+            Debug.Log(System.DateTime.Now);
+            #endregion
+
+            #region if current game version is older
+            if (dateModified > System.DateTime.Now      /*.AddYears(-1)*/)
+            {
+                Debug.Log("Current Game Version is outdated!");
+                WWW wwwGetAllNugQ = new WWW("http://103.239.222.212/ALIVE2Service/api/game/AllNugQ");
+                yield return wwwGetAllNugQ;
+                Debug.Log(wwwGetAllNugQ.text);
+                Debug.Log(wwwGetAllNugQ.error);
+                Debug.Log(wwwGetAllNugQ.url);
+            }
+            else if (dateModified < System.DateTime.Now)
+            {
+                Debug.Log("Game is running the correct version!");
+            }
             #endregion
 
             if (File.Exists(path))
