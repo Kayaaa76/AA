@@ -86,6 +86,8 @@ public class Login : MonoBehaviour
             GameSave = wwwCheckVersion.text;
             //Debug.Log(GameSave);
             Debug.Log(wwwCheckVersion.text);
+            Debug.Log(wwwCheckVersion.error);
+            Debug.Log(wwwCheckVersion.url);
             File.WriteAllText(tpath, GameSave);
             Debug.Log("game save written");
 
