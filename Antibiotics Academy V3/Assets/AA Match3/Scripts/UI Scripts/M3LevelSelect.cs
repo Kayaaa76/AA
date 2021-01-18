@@ -73,10 +73,10 @@ namespace Match3
                 LevelSelectMenu.SetActive(false);
             }
 
-            if(Player.m3unlockedlevels < 1)
-            {
-                Player.m3unlockedlevels = 1;
-            }
+            //if(Player.m3unlockedlevels < 1)
+            //{
+            //    Player.m3unlockedlevels = 1;
+            //}
 
             playableLevels = Player.m3unlockedlevels;
         }

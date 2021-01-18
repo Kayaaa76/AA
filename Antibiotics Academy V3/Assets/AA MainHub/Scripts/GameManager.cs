@@ -236,7 +236,13 @@ public class GameManager : MonoBehaviour
             sceneCounter = 2; // set scenecounter to 2 to change to next scene
             //test.Load(); // trigger match 3 game
 
-            SceneManager.LoadScene(14); //macth 3 scene
+            SceneManager.LoadScene(14); //match 3 scene
+
+            if (Player.m3unlockedlevels < 1)
+            {
+                Player.m3unlockedlevels = 1;
+            }
+
             //Player.lives -= 1;
         }
         if (pharmacistStage == 2 && receptionistStage == 2) // if player wins match 3 game
@@ -364,6 +370,9 @@ public class GameManager : MonoBehaviour
             currentPosition = player.transform.position; // get current position of player
             sceneCounter = 2; // set scenecounter to 2 to change scene
             SceneManager.LoadScene(11); // trigger endless runner game
+
+            Player.runlocked = true; //set runner game to be unlocked in data
+
             Player.lives -= 1;
         }
     }
@@ -377,6 +386,12 @@ public class GameManager : MonoBehaviour
             currentPosition = player.transform.position;
             sceneCounter = 2;
             SceneManager.LoadScene(9); // tower defense
+
+            if (Player.tdunlockedlevels < 1)
+            {
+                Player.tdunlockedlevels = 1;
+            }
+
             Player.lives -= 1;
         }
         else

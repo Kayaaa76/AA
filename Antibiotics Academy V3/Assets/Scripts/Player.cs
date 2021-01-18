@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     public int ttdunlockedlevels;
     public static int tdunlockedlevels;
 
+    public bool trunlocked;
+    public static bool runlocked;
+
     public System.DateTime tLastLogin;
 
     public static int lives;
@@ -89,6 +92,8 @@ public class Player : MonoBehaviour
 
         ttdunlockedlevels = tdunlockedlevels;
 
+        trunlocked = runlocked;
+
         //if (Input.GetKeyDown(KeyCode.S))
         //{
         //    Save(); 
@@ -133,6 +138,7 @@ public class Player : MonoBehaviour
         playerJson.Add("Spun Reward Wheel Today?", spunToday);
         playerJson.Add("Match 3 Levels Unlocked", tm3unlockedlevels);
         playerJson.Add("Tower Defense Levels Unlocked", ttdunlockedlevels);
+        playerJson.Add("Runner Unlocked", trunlocked);
 
         //Debug.Log(playerJson.ToString());
         string path = Application.persistentDataPath + "/PlayerSave.json";
@@ -166,6 +172,7 @@ public class Player : MonoBehaviour
         spunToday = playerJson["Spun Reward Wheel Today?"];
         m3unlockedlevels = playerJson["Match 3 Levels Unlocked"];
         tdunlockedlevels = playerJson["Tower Defense Levels Unlocked"];
+        runlocked = playerJson["Runner Unlocked"];
 
         Debug.Log(playerJson);
     }

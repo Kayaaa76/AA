@@ -18,22 +18,25 @@ namespace TowerDefense
             GameManager.surgeonStage = 3;
             GameManager.npclawyerStage = 1;
 
-            if (ThemeSelectScreen.IsYJ == true)
-            {
-                SceneManager.LoadScene(7); // go back to hospital
-            }
-            else if (ThemeSelectScreen.IsClassic == true)
-            {
-                SceneManager.LoadScene(13); // go back to hospital
-            }
-            else if (ThemeSelectScreen.IsTrixy == true)
-            {
-                SceneManager.LoadScene(16); // go back to hospital
-            }
-            else
-            {
-                SceneManager.LoadScene(13);
-            }
+            //if (ThemeSelectScreen.IsYJ == true)
+            //{
+            //    SceneManager.LoadScene(7); // go back to hospital
+            //}
+            //else if (ThemeSelectScreen.IsClassic == true)
+            //{
+            //    SceneManager.LoadScene(13); // go back to hospital
+            //}
+            //else if (ThemeSelectScreen.IsTrixy == true)
+            //{
+            //    SceneManager.LoadScene(16); // go back to hospital
+            //}
+            //else
+            //{
+            //    SceneManager.LoadScene(13);
+            //}
+
+            SceneManager.LoadScene(13); //main scene
+
             Player.coins += 50;
             Debug.Log("You got 50 coins for winning this game!");
         }

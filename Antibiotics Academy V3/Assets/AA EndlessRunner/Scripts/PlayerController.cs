@@ -101,21 +101,23 @@ public class PlayerController : MonoBehaviour
 
     public void backToMain() // function to go back to the community
     {
-        if (ThemeSelectScreen.IsYJ == true)
-        {
-            SceneManager.LoadScene(7); // go back to hospital
-        }
-        else if (ThemeSelectScreen.IsClassic == true)
-        {
-            SceneManager.LoadScene(13); // go back to hospital
-        }
-        else if (ThemeSelectScreen.IsTrixy == true)
-        {
-            SceneManager.LoadScene(16); // go back to hospital
-        }
-        else
-        {
-            SceneManager.LoadScene(13);
-        }
+        //if (ThemeSelectScreen.IsYJ == true)
+        //{
+        //    SceneManager.LoadScene(7); // go back to hospital
+        //}
+        //else if (ThemeSelectScreen.IsClassic == true)
+        //{
+        //    SceneManager.LoadScene(13); // go back to hospital
+        //}
+        //else if (ThemeSelectScreen.IsTrixy == true)
+        //{
+        //    SceneManager.LoadScene(16); // go back to hospital
+        //}
+        //else
+        //{
+        //    SceneManager.LoadScene(13);
+        //}
+
+        SceneManager.LoadScene(13); //main scene
     }
 }

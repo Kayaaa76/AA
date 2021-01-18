@@ -56893,7 +56893,7 @@ MonoBehaviour:
   gamesMenu: {fileID: 905359407}
   TDBtn: {fileID: 524919295}
   RBtn: {fileID: 1218692618}
-  TDLogo: {fileID: 21300000, guid: becadb4697ca3c34cb274e17556b7703, type: 3}
+  TDLogo: {fileID: 21300000, guid: cfb8362aeb1668a4ab03755e8615753c, type: 3}
   RLogo: {fileID: 21300000, guid: becadb4697ca3c34cb274e17556b7703, type: 3}
   gameLocked: {fileID: 21300000, guid: 5319e1d917bc0be488007ad5ec201de7, type: 3}
 --- !u!1 &905704182

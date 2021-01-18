@@ -52,18 +52,18 @@ public class GamesMenu : MonoBehaviour
             TDBtn.interactable = true;
         }
 
-        //if (Player.runlockedlevels < 1)
-        //{
-        //    RBtn.GetComponent<Image>().sprite = gameLocked;
-        //    RBtn.GetComponentInChildren<Text>().text = "?";
-        //    RBtn.interactable = false;
-        //}
-        //else
-        //{
-        //    RBtn.GetComponent<Image>().sprite = RLogo;
-        //    RBtn.GetComponentInChildren<Text>().text = "Runner";
-        //    RBtn.interactable = true;
-        //}
+        if (Player.runlocked == false)
+        {
+            RBtn.GetComponent<Image>().sprite = gameLocked;
+            RBtn.GetComponentInChildren<Text>().text = "?";
+            RBtn.interactable = false;
+        }
+        else
+        {
+            RBtn.GetComponent<Image>().sprite = RLogo;
+            RBtn.GetComponentInChildren<Text>().text = "Runner";
+            RBtn.interactable = true;
+        }
     }
 
     public void match3Unlocked()
@@ -76,17 +76,17 @@ public class GamesMenu : MonoBehaviour
 
     public void towerDefenseUnlocked()
     {
-        //GameManager.currentPosition = GameManager.player.transform.position;
-        //GameManager.sceneCounter = 2;
+        GameManager.currentPosition = GameManager.player.transform.position;
+        GameManager.sceneCounter = 2;
 
-        //SceneManager.LoadScene(); //tower defense scene
+        SceneManager.LoadScene(9); //tower defense scene
     }
 
     public void runnerUnlocked()
     {
-        //GameManager.currentPosition = GameManager.player.transform.position;
-        //GameManager.sceneCounter = 2;
+        GameManager.currentPosition = GameManager.player.transform.position;
+        GameManager.sceneCounter = 2;
 
-        //SceneManager.LoadScene(); //runner scene
+        SceneManager.LoadScene(11); //runner scene
     }
 }
