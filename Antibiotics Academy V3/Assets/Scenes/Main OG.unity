@@ -31910,7 +31910,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 524919296}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 905359411}
+        m_MethodName: towerDefenseUnlocked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &524919296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57822,6 +57833,7 @@ MonoBehaviour:
   tnpclawyerStage: 0
   tm3unlockedlevels: 0
   ttdunlockedlevels: 0
+  trunlocked: 0
   life: 0
   SpinMenu: {fileID: 1303884014}
 --- !u!1 &920105683
@@ -75116,7 +75128,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1218692619}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 905359411}
+        m_MethodName: runnerUnlocked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1218692619
 MonoBehaviour:
   m_ObjectHideFlags: 0
