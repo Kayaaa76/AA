@@ -39,7 +39,7 @@ public class GamesMenu : MonoBehaviour
 
     public void unlockingGames()
     {
-        if (Player.tdunlockedlevels < 1)
+        if (Player.tdunlockedlevels < 2) //when players have not won level 1 of tower defense
         {
             TDBtn.GetComponent<Image>().sprite = gameLocked;
             TDBtn.GetComponentInChildren<Text>().text = "?";

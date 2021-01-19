@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
             upBtn.SetActive(true);
         }
 
-        if (Player.m3unlockedlevels > 0) //games menu button to appear after unlocking match 3 (first game)
+        if (Player.m3unlockedlevels > 1) //games menu button to appear after winning 1 level of match 3 (first game)
         {
             gamesBtn.SetActive(true);
         }
@@ -238,7 +238,7 @@ public class GameManager : MonoBehaviour
 
             SceneManager.LoadScene(14); //match 3 scene
 
-            if (Player.m3unlockedlevels < 1)
+            if (Player.m3unlockedlevels < 1) //set starting level to 1
             {
                 Player.m3unlockedlevels = 1;
             }
@@ -387,7 +387,7 @@ public class GameManager : MonoBehaviour
             sceneCounter = 2;
             SceneManager.LoadScene(9); // tower defense
 
-            if (Player.tdunlockedlevels < 1)
+            if (Player.tdunlockedlevels < 1) //set starting level to 1
             {
                 Player.tdunlockedlevels = 1;
             }
