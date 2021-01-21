@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    static bool sceneChange = false;
+
     private Rigidbody2D rgb; // get rigidbody component of player game object
     public float jumpForce = 500f; // set the jump force of player
 
@@ -63,6 +65,8 @@ public class PlayerController : MonoBehaviour
             doubleJumpAllowed = false; // set double jump to false since aready double jumpedd
         }
         scoreText.text = "SCORE: " + yourScore; // update the score text according to the current score
+
+        StartCoroutine(PostGameLevelActivity());
     }
 
     void FixedUpdate()
@@ -117,7 +121,22 @@ public class PlayerController : MonoBehaviour
         //{
         //    SceneManager.LoadScene(13);
         //}
+        sceneChange = true;
 
         SceneManager.LoadScene(13); //main scene
+    }
+
+    IEnumerator PostGameLevelActivity()
+    {
+        if (sceneChange == true)
+        {
+            WWWForm formPostGameLevelActivity = new WWWForm();
+            WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
+            yield return wwwPostGameLevelActivity;
+            Debug.Log(wwwPostGameLevelActivity.text);
+            Debug.Log(wwwPostGameLevelActivity.error);
+            Debug.Log(wwwPostGameLevelActivity.url);
+            sceneChange = false;
+        }
     }
 }

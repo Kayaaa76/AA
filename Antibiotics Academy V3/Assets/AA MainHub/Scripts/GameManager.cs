@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    bool lifeDeducted = false;
+
     public Transform hospitalSpawn; // place where the player spawns after walking into the hospital
 
     public GameObject pauseBtn; // pause button
@@ -97,6 +99,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine(PostLifeActivity());
+
         checkObj(); // function to check for the npc that the player clicks
 
         if (obj != null) // if the npc is not null
@@ -367,6 +371,8 @@ public class GameManager : MonoBehaviour
 
         if (npclawyerStage == 2 && dm.spawned == false) // if lawyer finished dialogue
         {
+            lifeDeducted = true;
+
             currentPosition = player.transform.position; // get current position of player
             sceneCounter = 2; // set scenecounter to 2 to change scene
             SceneManager.LoadScene(11); // trigger endless runner game
@@ -382,6 +388,7 @@ public class GameManager : MonoBehaviour
     {
         if (Player.lives > 0)
         {
+            lifeDeducted = true;
             surgeonStage = 2;
             currentPosition = player.transform.position;
             sceneCounter = 2;
@@ -423,5 +430,26 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit(); // quit the game instantly
+    }
+
+    IEnumerator PostLifeActivity()
+    {
+        if (lifeDeducted == true)
+        {
+            WWWForm formPostLifeActivity = new WWWForm();
+            WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
+            yield return wwwPostLifeActivity;
+            Debug.Log(wwwPostLifeActivity.text);
+            Debug.Log(wwwPostLifeActivity.error);
+            Debug.Log(wwwPostLifeActivity.url);
+            lifeDeducted = false;
+
+            WWWForm formPostGameLevelActivity = new WWWForm();
+            WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
+            yield return wwwPostGameLevelActivity;
+            Debug.Log(wwwPostGameLevelActivity.text);
+            Debug.Log(wwwPostGameLevelActivity.error);
+            Debug.Log(wwwPostGameLevelActivity.url);
+        }
     }
 }

@@ -7,6 +7,8 @@ namespace Match3
 {
     public class NotificationManager : MonoBehaviour
     {
+        static bool showInfoNugget = false;
+
         public Text notificationText;
         private string[] sentences = new string[10];  //instantiate an array that has 5 elements
 
@@ -37,6 +39,7 @@ namespace Match3
             {
                 StartCoroutine(SwitchingTexts());
             }
+            StartCoroutine(PostInfoNuggetActivity());
         }
 
         public void DisplayNotification(int index)      //function to change the notification based on the index given in the argument
@@ -56,8 +59,24 @@ namespace Match3
             DisplayNotification(m3notification + 5);
             yield return new WaitForSeconds(5);
 
+            showInfoNugget = true;
+
             isSwitching = false;
             //Debug.Log(m3notification + "end");
+        }
+
+        IEnumerator PostInfoNuggetActivity()
+        {
+            if (showInfoNugget == true)
+            {
+                WWWForm formPostInfoNuggetActivity = new WWWForm();
+                WWW wwwPostInfoNuggetActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "InfoNugget&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "InfoNugget", formPostInfoNuggetActivity);
+                yield return wwwPostInfoNuggetActivity;
+                Debug.Log(wwwPostInfoNuggetActivity.text);
+                Debug.Log(wwwPostInfoNuggetActivity.error);
+                Debug.Log(wwwPostInfoNuggetActivity.url);
+                showInfoNugget = false;
+            }
         }
     }
 }

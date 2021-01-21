@@ -108,6 +108,12 @@ public class DailySpin : MonoBehaviour
             daily = "1 Life";
             Player.lives += 1;
             Debug.Log("You got 1 life from the Reward Wheel!");
+            WWWForm formPostLifeActivity = new WWWForm();
+            WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
+            yield return wwwPostLifeActivity;
+            Debug.Log(wwwPostLifeActivity.text);
+            Debug.Log(wwwPostLifeActivity.error);
+            Debug.Log(wwwPostLifeActivity.url);
         }
         //when wheel stops at 10 coins (angles based on wheel)
         else if (stoppedAngle <= 234)
@@ -115,6 +121,12 @@ public class DailySpin : MonoBehaviour
             daily = "10 Coins";
             Player.coins += 10;
             Debug.Log("You got 10 coins from the Reward Wheel!");
+            WWWForm formPostCoinActivity = new WWWForm();
+            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            yield return wwwPostCoinActivity;
+            Debug.Log(wwwPostCoinActivity.text);
+            Debug.Log(wwwPostCoinActivity.error);
+            Debug.Log(wwwPostCoinActivity.url);
         }
         //when wheel stops at 500 coins (angles based on wheel)
         else if (stoppedAngle <= 252)
@@ -122,6 +134,12 @@ public class DailySpin : MonoBehaviour
             daily = "500 Coins";
             Player.coins += 500;
             Debug.Log("You got 500 coins from the Reward Wheel!");
+            WWWForm formPostCoinActivity = new WWWForm();
+            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            yield return wwwPostCoinActivity;
+            Debug.Log(wwwPostCoinActivity.text);
+            Debug.Log(wwwPostCoinActivity.error);
+            Debug.Log(wwwPostCoinActivity.url);
         }
         //when wheel stops at 50 coins (angles based on wheel)
         else if (stoppedAngle <= 324)
@@ -129,6 +147,12 @@ public class DailySpin : MonoBehaviour
             daily = "50 Coins";
             Player.coins += 50;
             Debug.Log("You got 50 coins from the Reward Wheel!");
+            WWWForm formPostCoinActivity = new WWWForm();
+            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            yield return wwwPostCoinActivity;
+            Debug.Log(wwwPostCoinActivity.text);
+            Debug.Log(wwwPostCoinActivity.error);
+            Debug.Log(wwwPostCoinActivity.url);
         }
         //when wheel stops at 100 coins (angles based on wheel)
         else if (stoppedAngle <= 360)
@@ -136,6 +160,12 @@ public class DailySpin : MonoBehaviour
             daily = "100 Coins";
             Player.coins += 100;
             Debug.Log("You got 100 coins from the Reward Wheel!");
+            WWWForm formPostCoinActivity = new WWWForm();
+            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            yield return wwwPostCoinActivity;
+            Debug.Log(wwwPostCoinActivity.text);
+            Debug.Log(wwwPostCoinActivity.error);
+            Debug.Log(wwwPostCoinActivity.url);
         }
 
         //change text to daily won

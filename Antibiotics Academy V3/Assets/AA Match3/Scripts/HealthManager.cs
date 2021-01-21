@@ -15,6 +15,8 @@ namespace Match3
 
     public class HealthManager : MonoBehaviour
     {
+        static bool coinsChange = false;
+
         public HealthStates healthState;
         private NotificationManager nm;
         private DisplayEndUI display;
@@ -72,6 +74,11 @@ namespace Match3
             audiosrc = GetComponent<AudioSource>();
         }
 
+        void Update()
+        {
+            StartCoroutine(PostCoinAcitivty());
+        }
+
         void FixedUpdate()      
         {
             currentHealth -= rateOfDecrease * Time.deltaTime;  //reduces health over time based on the rate of decrease
@@ -91,26 +98,31 @@ namespace Match3
                     {
                         Player.coins += 10;                    //award 10 coins for passing level (one time claim)
                         Debug.Log("You got 10 coins for winning this level!");
+                        coinsChange = true;
                     }
                     else if(Player.m3unlockedlevels < 11)      //when completing levels 6-10
                     {
                         Player.coins += 30;                    //award 30 coins for passing level (one time claim)
                         Debug.Log("You got 30 coins for winning this level!");
+                        coinsChange = true;
                     }
                     else if (Player.m3unlockedlevels < 16)     //when completing levels 11-15
                     {
                         Player.coins += 50;                    //award 50 coins for passing level (one time claim)
                         Debug.Log("You got 50 coins for winning this level!");
+                        coinsChange = true;
                     }
                     else if (Player.m3unlockedlevels < 21)     //when completing levels 16-20
                     {
                         Player.coins += 60;                    //award 60 coins for passing level (one time claim)
                         Debug.Log("You got 60 coins for winning this level!");
+                        coinsChange = true;
                     }
                     else if (Player.m3unlockedlevels < 26)     //when completing levels 21-25
                     {
                         Player.coins += 80;                    //award 80 coins for passing level (one time claim)
                         Debug.Log("You got 80 coins for winning this level!");
+                        coinsChange = true;
                     }
 
                     Player.m3unlockedlevels += 1;              //increase unlocked level
@@ -275,6 +287,20 @@ namespace Match3
         public void SetBoolInactiveRun()
         {
             anim.SetBool(boolNameRun, false);
+        }
+
+        IEnumerator PostCoinAcitivty()
+        {
+            if (coinsChange == true)
+            {
+                WWWForm formPostCoinActivity = new WWWForm();
+                WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+                yield return wwwPostCoinActivity;
+                Debug.Log(wwwPostCoinActivity.text);
+                Debug.Log(wwwPostCoinActivity.error);
+                Debug.Log(wwwPostCoinActivity.url);
+                coinsChange = false;
+            }
         }
     }
 }

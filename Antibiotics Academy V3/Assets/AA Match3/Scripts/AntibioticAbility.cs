@@ -13,10 +13,13 @@ namespace Match3
 
         public Button btn;
 
+        static bool coinsChange = false;
+
         private void Start()
         {
             btn.onClick.AddListener(Effectiveness);
         }
+
 
         private void Update()
         {
@@ -28,6 +31,7 @@ namespace Match3
             {
                 btn.interactable = false;                                            //otherwise, it is not interactable
             }
+            StartCoroutine(PostCoinAcitivty());
         }
 
         private void Effectiveness()                                                  //function that reduces the effectiveness of the antibiotic ability after every use
@@ -37,6 +41,7 @@ namespace Match3
                 healthManager.currentHealth += 25;                                    //if counter is 3, adds health by 25
                 counter -= 1;                                                         //reduces counter by 1
                 Player.coins -= 25;
+                coinsChange = true;
             }
 
             else if (counter == 2)                                                   //if counter is 2, health adds by 15 and counter reduces by 1
@@ -44,6 +49,7 @@ namespace Match3
                 healthManager.currentHealth += 15;                                    //if counter is 2, adds health by 15
                 counter -= 1;                                                         //reduces counter by 1
                 Player.coins -= 25;
+                coinsChange = true;
             }
 
             else if (counter == 1)                                                   //if counter is 1, health adds by 10 and counter reduces by 1, which means counter is at 0 and the ability can no longer be used
@@ -51,6 +57,21 @@ namespace Match3
                 healthManager.currentHealth += 10;                                    //if counter is 1, adds health by 10
                 counter -= 1;                                                         //reduces counter by 1, now counter is 0 and the ability can never be used again
                 Player.coins -= 25;
+                coinsChange = true;
+            }
+        }
+
+        IEnumerator PostCoinAcitivty()
+        {
+            if (coinsChange == true)
+            {
+                WWWForm formPostCoinActivity = new WWWForm();
+                WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+                yield return wwwPostCoinActivity;
+                Debug.Log(wwwPostCoinActivity.text);
+                Debug.Log(wwwPostCoinActivity.error);
+                Debug.Log(wwwPostCoinActivity.url);
+                coinsChange = false;
             }
         }
 

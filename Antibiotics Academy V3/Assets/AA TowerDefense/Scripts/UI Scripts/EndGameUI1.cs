@@ -7,6 +7,9 @@ namespace TowerDefense
 {
     public class EndGameUI1 : MonoBehaviour
     {
+        static bool coinsChange;
+        static bool sceneChange = false;
+
         public void TriggerRestart()
         {
             SceneManager.LoadScene(9); // restart tower defense game
@@ -34,6 +37,8 @@ namespace TowerDefense
             //{
             //    SceneManager.LoadScene(13);
             //}
+            coinsChange = true;
+            sceneChange = true;
 
             SceneManager.LoadScene(13); //main scene
 
@@ -56,6 +61,40 @@ namespace TowerDefense
                 SceneManager.LoadScene(16); // back to main
             }
             GameManager.surgeonStage = 0;
+        }
+
+        IEnumerator PostCoinAcitivty()
+        {
+            if (coinsChange == true)
+            {
+                WWWForm formPostCoinActivity = new WWWForm();
+                WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+                yield return wwwPostCoinActivity;
+                Debug.Log(wwwPostCoinActivity.text);
+                Debug.Log(wwwPostCoinActivity.error);
+                Debug.Log(wwwPostCoinActivity.url);
+                coinsChange = false;
+            }
+        }
+
+        IEnumerator PostGameLevelActivity()
+        {
+            if (sceneChange == true)
+            {
+                WWWForm formPostGameLevelActivity = new WWWForm();
+                WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
+                yield return wwwPostGameLevelActivity;
+                Debug.Log(wwwPostGameLevelActivity.text);
+                Debug.Log(wwwPostGameLevelActivity.error);
+                Debug.Log(wwwPostGameLevelActivity.url);
+                sceneChange = false;
+            }
+        }
+
+        void Update()
+        {
+            StartCoroutine(PostCoinAcitivty());
+            StartCoroutine(PostGameLevelActivity());
         }
     }
 }

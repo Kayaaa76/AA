@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using System.IO;
 using SimpleJSON;
+using System;
 
 public class Login : MonoBehaviour
 {
     public InputField nameField;
     public InputField passwordField;
+
+    public static InputField tnameField;
+    public static InputField tpasswordField;
 
     public Button submitButton;
 
@@ -22,6 +26,12 @@ public class Login : MonoBehaviour
     public static string GameSave;
 
     public static System.DateTime dateModified;
+
+    void Update()
+    {
+        tnameField = nameField;
+        tpasswordField = passwordField;
+    }
 
     public void CallLogin()
     {
@@ -101,7 +111,7 @@ public class Login : MonoBehaviour
             #endregion
 
             #region if current game version is older
-            if (dateModified > System.DateTime.Now      /*.AddYears(-1)*/)
+            if (dateModified > System.DateTime.Now/*.AddYears(-1)*/)
             {
                 Debug.Log("Current Game Version is outdated!");
                 WWW wwwGetAllNugQ = new WWW("http://103.239.222.212/ALIVE2Service/api/game/AllNugQ");
@@ -109,6 +119,12 @@ public class Login : MonoBehaviour
                 Debug.Log(wwwGetAllNugQ.text);
                 Debug.Log(wwwGetAllNugQ.error);
                 Debug.Log(wwwGetAllNugQ.url);
+
+                File.WriteAllText(Application.persistentDataPath + "/AllNugQ.json", wwwGetAllNugQ.text);
+                Debug.Log("AllNugQ written");
+
+                string tjsonString = File.ReadAllText(Application.persistentDataPath + "/AllNugQ.json");
+                Debug.Log(tjsonString);
             }
             else if (dateModified < System.DateTime.Now)
             {
@@ -127,6 +143,20 @@ public class Login : MonoBehaviour
                     Debug.Log("You got 3 lives for logging in today!");
                     Player.spunToday = false;
                     Debug.Log("You get to spin the Reward Wheel!");
+
+                    WWWForm formPostCoinActivity = new WWWForm();
+                    WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+                    yield return wwwPostCoinActivity;
+                    Debug.Log(wwwPostCoinActivity.text);
+                    Debug.Log(wwwPostCoinActivity.error);
+                    Debug.Log(wwwPostCoinActivity.url);
+
+                    WWWForm formPostLifeActivity = new WWWForm();
+                    WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
+                    yield return wwwPostLifeActivity;
+                    Debug.Log(wwwPostLifeActivity.text);
+                    Debug.Log(wwwPostLifeActivity.error);
+                    Debug.Log(wwwPostLifeActivity.url);
                 }
                 else
                 {
@@ -135,12 +165,61 @@ public class Login : MonoBehaviour
             }
             else
             {
+                Debug.Log("Player save not detected!");
+
+                WWWForm formInsertCoin = new WWWForm();
+                WWW wwwInsertCoin = new WWW("http://103.239.222.212/ALIVE2Service/api/game/InsertUserInventory?InventoryCategoryName=Coins&username=" + nameField.text + "&UserInventoryValue=1", formInsertCoin);
+                yield return wwwInsertCoin;
+                Debug.Log(wwwInsertCoin.text);
+                Debug.Log(wwwInsertCoin.error);
+                Debug.Log(wwwInsertCoin.url);
+
+                WWWForm formInsertLife = new WWWForm();
+                WWW wwwInsertLife = new WWW("http://103.239.222.212/ALIVE2Service/api/game/InsertUserInventory?InventoryCategoryName=Life&username=" + nameField.text + "&UserInventoryValue=1", formInsertLife);
+                yield return wwwInsertLife;
+                Debug.Log(wwwInsertLife.text);
+                Debug.Log(wwwInsertLife.error);
+                Debug.Log(wwwInsertLife.url);
+
                 Player.coins += 10;
                 Debug.Log("You got 10 coins for logging in today!");
                 Player.lives += 3;
                 Debug.Log("You got 3 lives for logging in today!");
                 Player.spunToday = false;
                 Debug.Log("You get to spin the Reward Wheel!");
+
+                #region update api
+                //byte[] myData = System.Text.Encoding.UTF8.GetBytes("This is some test data");
+                //UnityWebRequest www = UnityWebRequest.Put("http://103.239.222.212/ALIVE2Service/api/game/Update", myData);
+                //www.method = "PATCH";
+                //{
+                //    yield return www.Send();
+
+                //    if (www.isNetworkError || www.isHttpError)
+                //    {
+                //        Debug.Log(www.error);
+                //    }
+                //    else
+                //    {
+                //        Debug.Log("Upload complete!");
+                //    }
+                //}
+                #endregion
+
+                WWWForm formPostCoinActivity = new WWWForm();
+                //WWW wwwPostActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=Player Coins&username=tony&ActivityDataValue=Player Coins", formPostActivity);
+                WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+                yield return wwwPostCoinActivity;
+                Debug.Log(wwwPostCoinActivity.text);
+                Debug.Log(wwwPostCoinActivity.error);
+                Debug.Log(wwwPostCoinActivity.url);
+
+                WWWForm formPostLifeActivity = new WWWForm();
+                WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
+                yield return wwwPostLifeActivity;
+                Debug.Log(wwwPostLifeActivity.text);
+                Debug.Log(wwwPostLifeActivity.error);
+                Debug.Log(wwwPostLifeActivity.url);
             }
 
             lastLogin = currentLogin;
@@ -149,8 +228,15 @@ public class Login : MonoBehaviour
 
             if (Player.donePreQuiz == false)
             {
+                WWWForm formPostPreActivity = new WWWForm();
+                WWW wwwPostPreActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Pre Quiz&" + "username=" + nameField.text + "&ActivityDataValue=" + "Pre Quiz", formPostPreActivity);
+                yield return wwwPostPreActivity;
+                Debug.Log(wwwPostPreActivity.text);
+                Debug.Log(wwwPostPreActivity.error);
+                Debug.Log(wwwPostPreActivity.url);
+
                 SceneManager.LoadScene(12);
-                Player.donePreQuiz = true;
+                Player.donePreQuiz = true;                
             }
             else if (Player.donePreQuiz == true)
             {
