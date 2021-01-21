@@ -43,19 +43,18 @@ public class testScene1 : MonoBehaviour
     {
         if (Player.lives > 0)
         {
+            lifeDeducted = true;
             if (ThemeSelectScreen.IsYJ == true)
             {
                 Player.lives -= 1;
 
                 SceneManager.LoadScene(8); // match 3
-                Player.lives -= 1;
             }
             else if (ThemeSelectScreen.IsClassic == true || ThemeSelectScreen.IsTrixy == true)
             {
                 Player.lives -= 1;
 
                 SceneManager.LoadScene(14);
-                Player.lives -= 1;
             }
             else
             {

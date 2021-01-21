@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class QuizManager : MonoBehaviour
 {
+    static bool coinsChange = false;
+
     List<Questions> qns = new List<Questions>(); //a list to store the questions
 
     public string nextScene;                  
@@ -45,6 +47,11 @@ public class QuizManager : MonoBehaviour
         LoginToken.text = Login.LoginToken;
     }
 
+    void Update()
+    {
+        StartCoroutine(PostCoinActivity());
+    }
+
     public void TrueBtn()        //function to set the ans to true
     {
         ans = "TRUE";            
@@ -73,6 +80,7 @@ public class QuizManager : MonoBehaviour
         {
             if (sceneID == 1)
             {
+                coinsChange = true;
                 SceneManager.LoadScene(nextScene);
                 Player.donePreQuiz = true;
             }
@@ -86,6 +94,7 @@ public class QuizManager : MonoBehaviour
             Debug.Log(score);
             Debug.Log("You got 100 coins for completing the Quiz!");
             Player.coins += 100;
+            
         }
 
 
@@ -97,6 +106,20 @@ public class QuizManager : MonoBehaviour
         {
             questionNo.text = "Question: " + qns[index].questionNo;  //set the questionNo text and question text based on the index
             question.text = qns[index].questions;
+        }
+    }
+
+    IEnumerator PostCoinActivity()
+    {
+        if (coinsChange == true)
+        {
+            WWWForm formPostCoinActivity = new WWWForm();
+            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            yield return wwwPostCoinActivity;
+            Debug.Log(wwwPostCoinActivity.text);
+            Debug.Log(wwwPostCoinActivity.error);
+            Debug.Log(wwwPostCoinActivity.url);
+            coinsChange = false;
         }
     }
 }
