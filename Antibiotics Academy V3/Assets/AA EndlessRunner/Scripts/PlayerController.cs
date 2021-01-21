@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
 
     private float startTime; // get the starting time
 
+    public Text timerText;
+    public float timer; //for timer text which will decrease
+
+    public Text menuText;
+
     public bool doubleJumpAllowed = false; // bool to check if player can double jump
     public bool onTheGround = false; // bool to check if player is on the ground
 
@@ -34,6 +39,8 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>(); // get the animator component of the player game object
 
         startTime = Time.time;
+
+        timer = 60; //set timer to 60seconds
     }
 
     // Update is called once per frame
@@ -65,6 +72,24 @@ public class PlayerController : MonoBehaviour
             doubleJumpAllowed = false; // set double jump to false since aready double jumpedd
         }
         scoreText.text = "SCORE: " + yourScore; // update the score text according to the current score
+
+        timer -= Time.deltaTime; //decrease timer over time
+
+        timerText.text = (Mathf.FloorToInt(timer) + 1).ToString(); //update timer text according to current timer in whole number (seconds)
+        //Debug.Log(startTime);
+
+        if (timer < 0) //when timer reaches 0
+        {
+            retryPanel.SetActive(true); // pop-up a retry screen
+            Time.timeScale = 0; // pause the game
+
+            menuText.text = "You won !";
+        }
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Jump();
+        //}
 
         StartCoroutine(PostGameLevelActivity());
     }
