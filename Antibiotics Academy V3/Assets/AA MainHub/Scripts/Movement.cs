@@ -99,7 +99,12 @@ public class Movement : MonoBehaviour
 
     public void CheckGender() // function to check gender of the character the player chose
     {
-        if (PlayerCharacterCustomization.IsMale == false) // if character selected is female (IsMale == false)
+        //if (PlayerCharacterCustomization.IsMale == false) // if character selected is female (IsMale == false)
+        //{
+        //    animator.runtimeAnimatorController = FemaleController; // set animator controller to be the female animator controller when the game starts
+        //}
+
+        if (PlayerPrefs.GetString("Gender") == "Female") // if character selected is female
         {
             animator.runtimeAnimatorController = FemaleController; // set animator controller to be the female animator controller when the game starts
         }

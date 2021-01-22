@@ -10,8 +10,11 @@ public class CustomizationScreen : MonoBehaviour
 
     public GameObject AdvisePopUp; // warning message that pops up if player clicks ok without selecting a character
 
-    public Sprite pastelMenuBg;
-    public Sprite classicMenuBg;
+    public Sprite pastelMenuBg; //pastel or bold theme background
+    public Sprite classicMenuBg; //classic theme background
+
+    public GameObject femaleSelection; //female selection option
+    public GameObject maleSelection; //male selection option
 
     // Start is called before the first frame update
     void Start()
@@ -34,14 +37,24 @@ public class CustomizationScreen : MonoBehaviour
 
     public void SelectMale() // function that triggers when player clicks on the male character in the character selection screen
     {
-        PlayerCharacterCustomization.IsMale = true; // set bool IsMale in the PlayerCharacterCustomization script to be true
+        //PlayerCharacterCustomization.IsMale = true; // set bool IsMale in the PlayerCharacterCustomization script to be true
         IsGenderSelected = true; // set bool to true since player has selected a character
+
+        PlayerPrefs.SetString("Gender", "Male");
+
+        maleSelection.GetComponent<Outline>().enabled = true; //outline male selection
+        femaleSelection.GetComponent<Outline>().enabled = false; //remove outline on female selection
     }
 
     public void SelectFemale() // function that triggers when player clicks on the female character in the character selection screen
     {
-        PlayerCharacterCustomization.IsMale = false; // set bool IsMale in the PlayerCharacterCustomization script to be false
+        //PlayerCharacterCustomization.IsMale = false; // set bool IsMale in the PlayerCharacterCustomization script to be false
         IsGenderSelected = true; // set bool to true since player has selected a character
+
+        PlayerPrefs.SetString("Gender", "Female");
+
+        maleSelection.GetComponent<Outline>().enabled = false; //remove outline on male selection
+        femaleSelection.GetComponent<Outline>().enabled = true; //outline female selection
     }
 
     public void GoToMainScene() // function to go to main scene after selecting a character
