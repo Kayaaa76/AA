@@ -10,22 +10,28 @@ namespace Match3
         static bool sceneChange;
         static bool ready;
 
+        bool restarted;
+
         GameObject StartUI;
 
         void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
-        
+
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            StartUI = GameObject.Find("StartUI");
-            //Debug.Log(StartUI);
-            if (StartUI != null)
+            if (restarted == true)
             {
-                StartUI.SetActive(false);
+                StartUI = GameObject.Find("StartUI");
+                //Debug.Log(StartUI);
+                if (StartUI != null)
+                {
+                    StartUI.SetActive(false);
+                    restarted = false;
+                }
+                //Debug.Log("OnSceneLoaded: " + scene.name);
             }
-            //Debug.Log("OnSceneLoaded: " + scene.name);
         }
 
         public void TriggerRestart()  //function to restart the game
@@ -42,6 +48,8 @@ namespace Match3
             //{
             //    SceneManager.LoadScene(14);
             //}
+
+            restarted = true;
 
             SceneManager.LoadScene(14); //match 3 scene
         }
@@ -106,7 +114,6 @@ namespace Match3
             {
                 return;
             }
-            
         }
     }
 }

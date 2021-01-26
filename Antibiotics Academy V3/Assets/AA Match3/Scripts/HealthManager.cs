@@ -61,6 +61,8 @@ namespace Match3
 
         public GameObject m3levelselectscript;
 
+        public bool startedLevel;
+
         void Start()
         {
             fm = FindObjectOfType<FindMatch>();
@@ -79,6 +81,15 @@ namespace Match3
             if (coinsChange == true)
             {
                 StartCoroutine(PostCoinAcitivty());
+            }
+
+            if(startedLevel == true)
+            {
+                StartCoroutine(PostGameLevelActivity());
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -302,6 +313,18 @@ namespace Match3
             Debug.Log(wwwPostCoinActivity.text);
             Debug.Log(wwwPostCoinActivity.error);
             Debug.Log(wwwPostCoinActivity.url);
+        }
+
+        IEnumerator PostGameLevelActivity()
+        {
+            startedLevel = false;
+
+            WWWForm formPostGameLevelActivity = new WWWForm();
+            WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
+            yield return wwwPostGameLevelActivity;
+            Debug.Log(wwwPostGameLevelActivity.text);
+            Debug.Log(wwwPostGameLevelActivity.error);
+            Debug.Log(wwwPostGameLevelActivity.url);
         }
     }
 }

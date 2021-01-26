@@ -320,6 +320,8 @@ namespace Match3
         {
             if (Player.lives > 0)
             {
+                hm.startedLevel = true;
+
                 LevelSelectUI.SetActive(false);
 
                 playingLevel = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text); //set playing level to button text
