@@ -76,10 +76,13 @@ namespace Match3
 
         void Update()
         {
-            StartCoroutine(PostCoinAcitivty());
+            if (coinsChange == true)
+            {
+                StartCoroutine(PostCoinAcitivty());
+            }
         }
 
-        void FixedUpdate()      
+        void FixedUpdate()
         {
             currentHealth -= rateOfDecrease * Time.deltaTime;  //reduces health over time based on the rate of decrease
             healthBar.SetHealth(currentHealth);                //updates the health bar by calling the sethealth function, passing the currenthealth in the argument
@@ -94,13 +97,13 @@ namespace Match3
                 display.DisplayWinUI();                        //displays the Win UI
                 if (m3levelselectscript.GetComponent<M3LevelSelect>().playingLevel == Player.m3unlockedlevels) //check if playing level is same as unlocked level
                 {
-                    if(Player.m3unlockedlevels < 6)            //when completing levels 1-5
+                    if (Player.m3unlockedlevels < 6)            //when completing levels 1-5
                     {
                         Player.coins += 10;                    //award 10 coins for passing level (one time claim)
                         Debug.Log("You got 10 coins for winning this level!");
                         coinsChange = true;
                     }
-                    else if(Player.m3unlockedlevels < 11)      //when completing levels 6-10
+                    else if (Player.m3unlockedlevels < 11)      //when completing levels 6-10
                     {
                         Player.coins += 30;                    //award 30 coins for passing level (one time claim)
                         Debug.Log("You got 30 coins for winning this level!");
@@ -127,7 +130,7 @@ namespace Match3
 
                     Player.m3unlockedlevels += 1;              //increase unlocked level
                 }
-            } 
+            }
             else if (currentHealth < 1)                        //if currentHealth is lesser than 1, meaning 0, it means that the player lost
             {
                 display.DisplayDeathUI();                      //displays the Death UI
@@ -136,7 +139,7 @@ namespace Match3
             {
                 healthState = HealthStates.Sick;
                 //nm.DisplayNotification(0);                                  
-                sr.sprite = sprites[0];                                      
+                sr.sprite = sprites[0];
 
                 bannerSleep.SetActive(true);
                 bannerEat.SetActive(false);
@@ -291,16 +294,14 @@ namespace Match3
 
         IEnumerator PostCoinAcitivty()
         {
-            if (coinsChange == true)
-            {
-                WWWForm formPostCoinActivity = new WWWForm();
-                WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
-                yield return wwwPostCoinActivity;
-                Debug.Log(wwwPostCoinActivity.text);
-                Debug.Log(wwwPostCoinActivity.error);
-                Debug.Log(wwwPostCoinActivity.url);
-                coinsChange = false;
-            }
+            coinsChange = false;
+
+            WWWForm formPostCoinActivity = new WWWForm();
+            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            yield return wwwPostCoinActivity;
+            Debug.Log(wwwPostCoinActivity.text);
+            Debug.Log(wwwPostCoinActivity.error);
+            Debug.Log(wwwPostCoinActivity.url);
         }
     }
 }

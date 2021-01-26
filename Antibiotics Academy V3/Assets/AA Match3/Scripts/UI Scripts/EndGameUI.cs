@@ -7,6 +7,9 @@ namespace Match3
 {
     public class EndGameUI : MonoBehaviour
     {
+        static bool sceneChange;
+        static bool ready;
+
         GameObject StartUI;
 
         void OnEnable()
@@ -48,7 +51,7 @@ namespace Match3
             GameManager.pharmacistStage = 2;
 
             //GameManager.receptionistStage = 2;
-            if(GameManager.receptionistStage != 3)
+            if (GameManager.receptionistStage != 3)
             {
                 GameManager.receptionistStage = 2;
             }
@@ -70,8 +73,8 @@ namespace Match3
             //    SceneManager.LoadScene(13);
             //}
 
-            SceneManager.LoadScene(13); //main scene
-
+            sceneChange = true;
+          
             //Player.coins += 50;
             //Debug.Log("You got 50 coins for winning this game!");
         }
@@ -79,6 +82,31 @@ namespace Match3
         public void TriggerQuitLost()  //function to quit the game when player lost
         {
             SceneManager.LoadScene(10); //death
+        }
+
+        IEnumerator PostGameLevelActivity()
+        {
+            sceneChange = false;
+            WWWForm formPostGameLevelActivity = new WWWForm();
+            WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
+            yield return wwwPostGameLevelActivity;
+            Debug.Log(wwwPostGameLevelActivity.text);
+            Debug.Log(wwwPostGameLevelActivity.error);
+            Debug.Log(wwwPostGameLevelActivity.url);
+            SceneManager.LoadScene(13); //main scene
+        }
+
+        void Update()
+        {
+            if (sceneChange == true)
+            {
+                StartCoroutine(PostGameLevelActivity());
+            }
+            else
+            {
+                return;
+            }
+            
         }
     }
 }

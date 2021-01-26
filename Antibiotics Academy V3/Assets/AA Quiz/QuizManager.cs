@@ -10,9 +10,9 @@ public class QuizManager : MonoBehaviour
 
     List<Questions> qns = new List<Questions>(); //a list to store the questions
 
-    public string nextScene;                  
+    public string nextScene;
 
-    public int sceneID; 
+    public int sceneID;
 
     public TextAsset questionsCSV;
 
@@ -25,6 +25,8 @@ public class QuizManager : MonoBehaviour
 
     private int index = 0;
     private int score;
+
+    static bool ready = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,16 +47,33 @@ public class QuizManager : MonoBehaviour
         question.text = qns[index].questions;
 
         LoginToken.text = Login.LoginToken;
+
+        coinsChange = false;
+        ready = false;
     }
 
     void Update()
     {
-        StartCoroutine(PostCoinActivity());
+        if (coinsChange == true)
+        {
+            StartCoroutine(PostCoinActivity());
+            coinsChange = false;
+        }
+
+        if (ready == true)
+        {
+            StartCoroutine(ChangeScene());
+            
+        }
+        else if (ready== false)
+        {
+            Debug.Log("not ready to change scenes");
+        }
     }
 
     public void TrueBtn()        //function to set the ans to true
     {
-        ans = "TRUE";            
+        ans = "TRUE";
         CheckAnswer();
     }
 
@@ -73,31 +92,28 @@ public class QuizManager : MonoBehaviour
                 score++;                                    //increase score
             }
             index++;                                        //increase index
-            NextQuestion();                                 
+            NextQuestion();
         }
 
         else
         {
-            if (sceneID == 1)
-            {
-                coinsChange = true;
-                SceneManager.LoadScene(nextScene);
-                Player.donePreQuiz = true;
-            }
-
-            else
-            {
-                Player.donePostQuiz = true;
-                Application.Quit();
-            }
             Debug.Log("No more Questions.");
             Debug.Log(score);
             Debug.Log("You got 100 coins for completing the Quiz!");
             Player.coins += 100;
-            
+            coinsChange = true;
+            //if (sceneID == 1)
+            //{
+            //    SceneManager.LoadScene(nextScene);
+            //    Player.donePreQuiz = true;
+            //}
+
+            //else
+            //{
+            //    Player.donePostQuiz = true;
+            //    Application.Quit();
+            //}
         }
-
-
     }
 
     void NextQuestion()         //function to display next question
@@ -111,15 +127,27 @@ public class QuizManager : MonoBehaviour
 
     IEnumerator PostCoinActivity()
     {
-        if (coinsChange == true)
+        WWWForm formPostCoinActivity = new WWWForm();
+        WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+        yield return wwwPostCoinActivity;
+        Debug.Log(wwwPostCoinActivity.text);
+        Debug.Log(wwwPostCoinActivity.error);
+        Debug.Log(wwwPostCoinActivity.url);
+        ready = true;
+    }
+
+    IEnumerator ChangeScene()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        if (sceneID == 1)
         {
-            WWWForm formPostCoinActivity = new WWWForm();
-            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
-            yield return wwwPostCoinActivity;
-            Debug.Log(wwwPostCoinActivity.text);
-            Debug.Log(wwwPostCoinActivity.error);
-            Debug.Log(wwwPostCoinActivity.url);
-            coinsChange = false;
+            Player.donePreQuiz = true;
+            SceneManager.LoadScene(nextScene);
+        }
+        else
+        {
+            Player.donePostQuiz = true;
+            Application.Quit();
         }
     }
 }

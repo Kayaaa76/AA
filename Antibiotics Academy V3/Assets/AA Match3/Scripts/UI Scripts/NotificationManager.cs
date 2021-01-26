@@ -39,7 +39,14 @@ namespace Match3
             {
                 StartCoroutine(SwitchingTexts());
             }
-            StartCoroutine(PostInfoNuggetActivity());
+            if (showInfoNugget == true)
+            {
+                StartCoroutine(PostInfoNuggetActivity());
+            }
+            else if (showInfoNugget == false)
+            {
+                return;
+            }
         }
 
         public void DisplayNotification(int index)      //function to change the notification based on the index given in the argument
@@ -67,16 +74,15 @@ namespace Match3
 
         IEnumerator PostInfoNuggetActivity()
         {
-            if (showInfoNugget == true)
-            {
-                WWWForm formPostInfoNuggetActivity = new WWWForm();
-                WWW wwwPostInfoNuggetActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "InfoNugget&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "InfoNugget", formPostInfoNuggetActivity);
-                yield return wwwPostInfoNuggetActivity;
-                Debug.Log(wwwPostInfoNuggetActivity.text);
-                Debug.Log(wwwPostInfoNuggetActivity.error);
-                Debug.Log(wwwPostInfoNuggetActivity.url);
-                showInfoNugget = false;
-            }
+            showInfoNugget = false;
+
+            WWWForm formPostInfoNuggetActivity = new WWWForm();
+            WWW wwwPostInfoNuggetActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "InfoNugget&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "InfoNugget", formPostInfoNuggetActivity);
+            yield return wwwPostInfoNuggetActivity;
+            Debug.Log(wwwPostInfoNuggetActivity.text);
+            Debug.Log(wwwPostInfoNuggetActivity.error);
+            Debug.Log(wwwPostInfoNuggetActivity.url);
+
         }
     }
 }
