@@ -73,6 +73,11 @@ namespace Match3
                 LevelSelectMenu.SetActive(false);
             }
 
+            if (Player.m3unlockedlevels < 1)                                                    //set starting level to 1
+            {
+                Player.m3unlockedlevels = 1;
+            }
+
             playableLevels = Player.m3unlockedlevels;
         }
 
@@ -80,10 +85,11 @@ namespace Match3
         void Update()
         {
             currentLevels();
-            if (EventSystem.current.currentSelectedGameObject.name.Contains("Lvl"))             //check if selected object name contains "Lvl" (for level buttons)
-            {
-                playingLevel = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text); //set playing level to button text
-            }
+
+            //if (EventSystem.current.currentSelectedGameObject.name.Contains("Lvl"))             //check if selected object name contains "Lvl" (for level buttons)
+            //{
+            //    playingLevel = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text); //set playing level to button text
+            //}
         }
 
         void currentLevels()                                                                    //display levels
@@ -315,6 +321,9 @@ namespace Match3
             if (Player.lives > 0)
             {
                 LevelSelectUI.SetActive(false);
+
+                playingLevel = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text); //set playing level to button text
+                //Debug.Log(playingLevel);
 
                 Player.lives -= 1;
                 Debug.Log("used life");

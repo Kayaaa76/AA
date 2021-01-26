@@ -242,10 +242,10 @@ public class GameManager : MonoBehaviour
 
             SceneManager.LoadScene(14); //match 3 scene
 
-            if (Player.m3unlockedlevels < 1) //set starting level to 1
-            {
-                Player.m3unlockedlevels = 1;
-            }
+            //if (Player.m3unlockedlevels < 1) //set starting level to 1
+            //{
+            //    Player.m3unlockedlevels = 1;
+            //}
 
             //Player.lives -= 1;
         }
