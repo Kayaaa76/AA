@@ -38,9 +38,7 @@ namespace TowerDefense
             //    SceneManager.LoadScene(13);
             //}
             coinsChange = true;
-            sceneChange = true;
 
-            SceneManager.LoadScene(13); //main scene
 
             Player.coins += 50;
             Debug.Log("You got 50 coins for winning this game!");
@@ -65,36 +63,45 @@ namespace TowerDefense
 
         IEnumerator PostCoinAcitivty()
         {
-            if (coinsChange == true)
-            {
-                WWWForm formPostCoinActivity = new WWWForm();
-                WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
-                yield return wwwPostCoinActivity;
-                Debug.Log(wwwPostCoinActivity.text);
-                Debug.Log(wwwPostCoinActivity.error);
-                Debug.Log(wwwPostCoinActivity.url);
-                coinsChange = false;
-            }
+            coinsChange = false;
+
+            WWWForm formPostCoinActivity = new WWWForm();
+            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            //WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=Player Coins&username=player1&ActivityDataValue=Player Coins", formPostCoinActivity);
+            yield return wwwPostCoinActivity;
+            Debug.Log(wwwPostCoinActivity.text);
+            Debug.Log(wwwPostCoinActivity.error);
+            Debug.Log(wwwPostCoinActivity.url);
+            sceneChange = true;
+
         }
 
         IEnumerator PostGameLevelActivity()
         {
-            if (sceneChange == true)
-            {
-                WWWForm formPostGameLevelActivity = new WWWForm();
-                WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
-                yield return wwwPostGameLevelActivity;
-                Debug.Log(wwwPostGameLevelActivity.text);
-                Debug.Log(wwwPostGameLevelActivity.error);
-                Debug.Log(wwwPostGameLevelActivity.url);
-                sceneChange = false;
-            }
+            sceneChange = false;
+
+            WWWForm formPostGameLevelActivity = new WWWForm();
+            WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
+            //WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=Game Level&username=player1&ActivityDataValue=Game Level", formPostGameLevelActivity);
+
+            yield return wwwPostGameLevelActivity;
+            Debug.Log(wwwPostGameLevelActivity.text);
+            Debug.Log(wwwPostGameLevelActivity.error);
+            Debug.Log(wwwPostGameLevelActivity.url);
+            SceneManager.LoadScene(13); //main scene
+
         }
 
         void Update()
         {
-            StartCoroutine(PostCoinAcitivty());
-            StartCoroutine(PostGameLevelActivity());
+            if (coinsChange == true)
+            {
+                StartCoroutine(PostCoinAcitivty());
+            }
+            if (sceneChange == true)
+            {
+                StartCoroutine(PostGameLevelActivity());
+            }
         }
     }
 }
