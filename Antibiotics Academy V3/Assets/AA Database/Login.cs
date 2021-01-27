@@ -111,7 +111,7 @@ public class Login : MonoBehaviour
             #endregion
 
             #region if current game version is older
-            if (dateModified > System.DateTime.Now/*.AddYears(-1)*/)
+            if (dateModified > System.DateTime.Now.AddYears(-1))
             {
                 Debug.Log("Current Game Version is outdated!");
                 WWW wwwGetAllNugQ = new WWW("http://103.239.222.212/ALIVE2Service/api/game/AllNugQ");
@@ -125,6 +125,15 @@ public class Login : MonoBehaviour
 
                 string tjsonString = File.ReadAllText(Application.persistentDataPath + "/AllNugQ.json");
                 Debug.Log(tjsonString);
+
+                RootObject myObject = new RootObject();
+
+                myObject = JsonUtility.FromJson<RootObject>("{\"sets\":" + tjsonString + "}");
+                
+                foreach (AllNugQ set in myObject.sets)
+                {
+                    Debug.Log("gamequestioninfoid: " + set.gameQuestionInfoID + " gamedetailid: " + set.gameDetailID + " NUGGET: " + set.infoNugget.infoNuggetValue);
+                }
             }
             else if (dateModified < System.DateTime.Now)
             {
@@ -349,5 +358,35 @@ public class Login : MonoBehaviour
     {
         StartCoroutine(PostRequest());
         //SceneManager.LoadScene(12);
+    }
+
+    [Serializable]
+    public class RootObject
+    {
+        public AllNugQ[] sets;
+    }
+
+    [Serializable]
+    public class InfoNuggetA
+    {
+        public string infoNuggetID;
+        public string infoNuggetName;
+        public string infoNuggetValue;
+        public string infoNuggetDescription;
+        public string gameCompetencyID;
+        public string gameCompetency;
+    }
+
+    [Serializable]
+    public class AllNugQ
+    {
+        public string gameQuestionInfoID;
+        public string gameDetailID;
+        public string infoNuggetID;
+        public string questionID;
+        public string dateModified;
+        public InfoNuggetA infoNugget;
+        public string question;
+        public string gameDetail;
     }
 }
