@@ -33,6 +33,8 @@ public class Login : MonoBehaviour
     string questionName;
     int x = 1;
 
+    public static bool outdated = false;
+
     void Update()
     {
         tnameField = nameField;
@@ -120,6 +122,7 @@ public class Login : MonoBehaviour
             if (dateModified > System.DateTime.Now.AddYears(-1))
             {
                 Debug.Log("Current Game Version is outdated!");
+                outdated = true;
                 WWW wwwGetAllNugQ = new WWW("http://103.239.222.212/ALIVE2Service/api/game/AllNugQ");
                 yield return wwwGetAllNugQ;
                 Debug.Log(wwwGetAllNugQ.text);
@@ -396,8 +399,11 @@ public class Login : MonoBehaviour
 
     public void BypassLogin()
     {
-        StartCoroutine(PostRequest());
+        //StartCoroutine(PostRequest());
         //SceneManager.LoadScene(12);
+
+        nameField.text = "player1";
+        passwordField.text = "2020Alive";
     }
 
     [Serializable]

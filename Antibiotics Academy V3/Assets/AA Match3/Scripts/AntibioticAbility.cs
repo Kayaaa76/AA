@@ -31,7 +31,11 @@ namespace Match3
             {
                 btn.interactable = false;                                            //otherwise, it is not interactable
             }
-            StartCoroutine(PostCoinAcitivty());
+
+            if (coinsChange == true)
+            {
+                StartCoroutine(PostCoinAcitivty());
+            }
         }
 
         private void Effectiveness()                                                  //function that reduces the effectiveness of the antibiotic ability after every use
@@ -63,17 +67,13 @@ namespace Match3
 
         IEnumerator PostCoinAcitivty()
         {
-            if (coinsChange == true)
-            {
-                WWWForm formPostCoinActivity = new WWWForm();
-                WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
-                yield return wwwPostCoinActivity;
-                Debug.Log(wwwPostCoinActivity.text);
-                Debug.Log(wwwPostCoinActivity.error);
-                Debug.Log(wwwPostCoinActivity.url);
-                coinsChange = false;
-            }
+            coinsChange = false;
+            WWWForm formPostCoinActivity = new WWWForm();
+            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            yield return wwwPostCoinActivity;
+            Debug.Log(wwwPostCoinActivity.text);
+            Debug.Log(wwwPostCoinActivity.error);
+            Debug.Log(wwwPostCoinActivity.url);
         }
-
     }
 }

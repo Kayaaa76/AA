@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using SimpleJSON;
 
 namespace Match3
 {
@@ -16,8 +18,13 @@ namespace Match3
         int m3notification;
         public bool isSwitching;
 
+        string[] advices;
+
+        bool toutdated = false;
+
         void Start()
         {
+            toutdated = Login.outdated;
             sentences[0] = "Rest X2!";          //store the five strings into the array
             sentences[1] = "Fruits and Vegetables X2!";
             sentences[2] = "Water X2!";
@@ -29,6 +36,19 @@ namespace Match3
             sentences[7] = "Boost your immunity by taking vaccines to protect yourself against viruses (e.g. flu vaccine)";
             sentences[8] = "Exercise helps keep our bodies healthy, improving energy levels, and relieves stress";
             sentences[9] = "Quality sleep, a balanced diet, updated immunization, and exercise keep us healthy";
+
+            //sentences[5-9] = advices[0-1]
+            if (toutdated == true)
+            {
+                Debug.Log("Updating info nuggets");
+                UpdateInfoNuggets();
+                sentences[5] = advices[0];
+                sentences[6] = advices[1];
+            }
+            else if (toutdated == false)
+            {
+                Debug.Log("Info Nuggets are up to date");
+            }
         }
 
         void Update()
@@ -43,9 +63,11 @@ namespace Match3
             {
                 StartCoroutine(PostInfoNuggetActivity());
             }
-            else if (showInfoNugget == false)
+
+            if (Input.GetKeyDown(KeyCode.U))
             {
-                return;
+                Debug.Log("U is pressed");
+                UpdateInfoNuggets();
             }
         }
 
@@ -64,9 +86,8 @@ namespace Match3
 
             //notificationText.text = "The Info Nugget";
             DisplayNotification(m3notification + 5);
-            yield return new WaitForSeconds(5);
-
             showInfoNugget = true;
+            yield return new WaitForSeconds(5);
 
             isSwitching = false;
             //Debug.Log(m3notification + "end");
@@ -83,6 +104,21 @@ namespace Match3
             Debug.Log(wwwPostInfoNuggetActivity.error);
             Debug.Log(wwwPostInfoNuggetActivity.url);
 
+        }
+
+        void UpdateInfoNuggets()
+        {
+            advices = new string[2];
+
+            string infoString1 = File.ReadAllText(Application.persistentDataPath + "/InfoNug1.json");
+            JSONObject infoNugget1 = (JSONObject)JSON.Parse(infoString1);
+            string infoString2 = File.ReadAllText(Application.persistentDataPath + "/InfoNug2.json");
+            JSONObject infoNugget2 = (JSONObject)JSON.Parse(infoString2);
+
+            advices[0] = infoNugget1["infoNuggetValue"];
+            advices[1] = infoNugget2["infoNuggetValue"];
+
+            //Debug.Log(advices[0] + "\n" + advices[1]);
         }
     }
 }
