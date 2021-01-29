@@ -27,6 +27,12 @@ public class Login : MonoBehaviour
 
     public static System.DateTime dateModified;
 
+    string nuggetName;
+    int i = 1;
+
+    string questionName;
+    int x = 1;
+
     void Update()
     {
         tnameField = nameField;
@@ -124,15 +130,49 @@ public class Login : MonoBehaviour
                 Debug.Log("AllNugQ written");
 
                 string tjsonString = File.ReadAllText(Application.persistentDataPath + "/AllNugQ.json");
-                Debug.Log(tjsonString);
+                //Debug.Log(tjsonString);
 
                 RootObject myObject = new RootObject();
 
                 myObject = JsonUtility.FromJson<RootObject>("{\"sets\":" + tjsonString + "}");
-                
+
+                //foreach (AllNugQ set in myObject.sets)
+                //{
+                //    Debug.Log("gamequestioninfoid: " + set.gameQuestionInfoID + " gamedetailid: " + set.gameDetailID + " NUGGET: " + set.infoNugget.infoNuggetValue);
+                //}
+
                 foreach (AllNugQ set in myObject.sets)
                 {
-                    Debug.Log("gamequestioninfoid: " + set.gameQuestionInfoID + " gamedetailid: " + set.gameDetailID + " NUGGET: " + set.infoNugget.infoNuggetValue);
+                    nuggetName = "InfoNug" + i;
+                    Debug.Log(nuggetName);
+                    questionName = "Q" + x;
+                    Debug.Log(questionName);
+                    //Debug.Log("infoNuggetName: " + set.infoNugget.infoNuggetName + "\n infoNuggetDescription: " + set.infoNugget.infoNuggetDescription + "\n infoNuggetValue: " + set.infoNugget.infoNuggetValue);
+                    if (set.infoNugget.infoNuggetName == nuggetName)
+                    {
+                        //Debug.Log(set.infoNugget.infoNuggetName + "\n" + set.infoNugget.infoNuggetDescription + "\n"  + set.infoNugget.infoNuggetValue);
+
+                        string filename = "InfoNug" + i;
+                        InfoNuggetA Nugget = new InfoNuggetA();
+                        Nugget.infoNuggetName = set.infoNugget.infoNuggetName;
+                        Nugget.infoNuggetDescription = set.infoNugget.infoNuggetDescription;
+                        Nugget.infoNuggetValue = set.infoNugget.infoNuggetValue;
+                        string nuggetJson = JsonUtility.ToJson(Nugget);
+                        File.WriteAllText(Application.persistentDataPath + "/" + filename + ".json", nuggetJson);
+                        i++;
+                    }
+
+                    if (set.question.questionName== questionName)
+                    {
+                        string filename = "Q" + x;
+                        InfoNuggetB Question= new InfoNuggetB();
+                        Question.questionName = set.question.questionName;
+                        Question.questionDescription = set.question.questionDescription;
+                        Question.questionValue = set.question.questionValue;
+                        string questionJson = JsonUtility.ToJson(Question);
+                        File.WriteAllText(Application.persistentDataPath + "/" + filename + ".json", questionJson);
+                        x++;
+                    }
                 }
             }
             else if (dateModified < System.DateTime.Now)
@@ -378,6 +418,18 @@ public class Login : MonoBehaviour
     }
 
     [Serializable]
+    public class InfoNuggetB
+    {
+        public string questionID;
+        public string questionName;
+        public string questionValue;
+        public string questionDescription;
+        public string gameCompetencyID;
+        public string gameCompetency;
+        public string answer;
+    }
+
+    [Serializable]
     public class AllNugQ
     {
         public string gameQuestionInfoID;
@@ -386,7 +438,9 @@ public class Login : MonoBehaviour
         public string questionID;
         public string dateModified;
         public InfoNuggetA infoNugget;
-        public string question;
+        public InfoNuggetB question;
+        //public string question;
         public string gameDetail;
     }
+
 }
