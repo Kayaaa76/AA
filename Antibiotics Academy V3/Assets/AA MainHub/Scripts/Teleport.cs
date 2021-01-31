@@ -29,6 +29,8 @@ public class Teleport : MonoBehaviour
             GameObject.Find("Main Camera").GetComponent<CameraController>().enabled = true; //enable camera controller script
 
             miniCommunity.SetActive(true); //enable minimap
+
+            collision.gameObject.transform.position = new Vector3(collision.transform.position.x, collision.transform.position.y, -38f); //set player z value to originally set value(manually in inspector)
         }
     }
 }
