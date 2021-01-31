@@ -72,6 +72,7 @@
     <Compile Include="Assets\AA EndlessRunner\Scripts\PlayerController.cs" />
     <Compile Include="Assets\AA EndlessRunner\Scripts\PrefabSpawner.cs" />
     <Compile Include="Assets\AA EndlessRunner\Scripts\backgroundLoop.cs" />
+    <Compile Include="Assets\AA MainHub\Resources\Minimap\Minimap.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\CameraController.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\CustomizationScreen.cs" />
     <Compile Include="Assets\AA MainHub\Scripts\DailySpin.cs" />
