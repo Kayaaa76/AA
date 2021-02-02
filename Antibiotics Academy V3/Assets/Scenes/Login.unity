@@ -267,7 +267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &453568485
 RectTransform:
   m_ObjectHideFlags: 0
@@ -782,7 +782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &777797798
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1115,6 +1115,9 @@ MonoBehaviour:
   tnpcseanStage: 0
   tnpcauntyStage: 0
   tnpclawyerStage: 0
+  tm3unlockedlevels: 0
+  ttdunlockedlevels: 0
+  trunlocked: 0
   life: 0
   SpinMenu: {fileID: 0}
 --- !u!1 &1037290869
@@ -1174,7 +1177,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 993de02b967b2564c9df47c82a5e7fcc, type: 3}
-    m_FontSize: 140
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1185,7 +1188,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Antibiotics Academy
+  m_Text: SteWARdS Antibiotic Defence
 --- !u!222 &1037290872
 CanvasRenderer:
   m_ObjectHideFlags: 0
