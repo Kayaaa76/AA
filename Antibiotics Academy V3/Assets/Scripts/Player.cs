@@ -44,6 +44,13 @@ public class Player : MonoBehaviour
 
     public GameObject SpinMenu;
 
+    public static int preGameQuizScore;
+    public static int postGameQuizScore;
+    //public static System.DateTime preGameQuizTime;
+    //public static System.DateTime postGameQuizTime;
+    public static string preGameQuizTime;
+    public static string postGameQuizTime;
+
     void Start()
     {
         if(spunToday == false)
@@ -139,6 +146,10 @@ public class Player : MonoBehaviour
         playerJson.Add("Match 3 Levels Unlocked", tm3unlockedlevels);
         playerJson.Add("Tower Defense Levels Unlocked", ttdunlockedlevels);
         playerJson.Add("Runner Unlocked", trunlocked);
+        playerJson.Add("Pre Game Quiz Score", preGameQuizScore);
+        playerJson.Add("Pre Game Quiz Time Taken", preGameQuizTime);
+        playerJson.Add("Post Game Quiz Score", postGameQuizScore);
+        playerJson.Add("Post Game Quiz Time Taken", postGameQuizTime);
 
         //Debug.Log(playerJson.ToString());
         string path = Application.persistentDataPath + "/PlayerSave.json";
@@ -173,6 +184,10 @@ public class Player : MonoBehaviour
         m3unlockedlevels = playerJson["Match 3 Levels Unlocked"];
         tdunlockedlevels = playerJson["Tower Defense Levels Unlocked"];
         runlocked = playerJson["Runner Unlocked"];
+        preGameQuizScore = playerJson["Pre Game Quiz Score"];
+        preGameQuizTime = playerJson["Pre Game Quiz Time Taken"];
+        postGameQuizScore = playerJson["Post Game Quiz Score"];
+        postGameQuizTime = playerJson["Post Game Quiz Time Taken"];
 
         Debug.Log(playerJson);
     }

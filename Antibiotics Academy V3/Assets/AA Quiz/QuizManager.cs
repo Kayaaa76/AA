@@ -27,6 +27,9 @@ public class QuizManager : MonoBehaviour
     private int score;
 
     static bool ready = false;
+
+    System.DateTime QuizStart;
+    System.DateTime QuizEnd;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +53,8 @@ public class QuizManager : MonoBehaviour
 
         coinsChange = false;
         ready = false;
+
+        QuizStart = System.DateTime.Now;
     }
 
     void Update()
@@ -97,6 +102,7 @@ public class QuizManager : MonoBehaviour
 
         else
         {
+            QuizEnd = System.DateTime.Now;
             Debug.Log("No more Questions.");
             Debug.Log(score);
             Debug.Log("You got 100 coins for completing the Quiz!");
@@ -141,13 +147,21 @@ public class QuizManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
         if (sceneID == 1)
         {
+            Debug.Log("Time taken for Pre-Game Quiz = " + (QuizEnd - QuizStart).TotalSeconds + " seconds");
+            Player.preGameQuizTime = (QuizEnd - QuizStart).ToString();
+            Debug.Log(Player.preGameQuizTime);
+            Player.preGameQuizScore = score;
             Player.donePreQuiz = true;
             SceneManager.LoadScene(nextScene);
         }
         else
         {
-            Player.donePostQuiz = true;
-            Application.Quit();
+            if (Player.donePreQuiz == true)
+            {
+                Player.postGameQuizScore = score;
+                Player.donePostQuiz = true;
+                Application.Quit();
+            }
         }
     }
 }

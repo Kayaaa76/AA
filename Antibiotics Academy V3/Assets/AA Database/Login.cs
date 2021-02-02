@@ -239,6 +239,8 @@ public class Login : MonoBehaviour
                 Debug.Log("You got 3 lives for logging in today!");
                 Player.spunToday = false;
                 Debug.Log("You get to spin the Reward Wheel!");
+                Player.preGameQuizTime = "";
+                Player.postGameQuizTime = "";
 
                 #region update api
                 //byte[] myData = System.Text.Encoding.UTF8.GetBytes("This is some test data");
