@@ -374,6 +374,8 @@ public class GameManager : MonoBehaviour
         {
             lifeDeducted = true;
 
+            Player.dateStartRunner = System.DateTime.Now;
+
             currentPosition = player.transform.position; // get current position of player
             sceneCounter = 2; // set scenecounter to 2 to change scene
             SceneManager.LoadScene(11); // trigger endless runner game
@@ -393,6 +395,9 @@ public class GameManager : MonoBehaviour
             surgeonStage = 2;
             currentPosition = player.transform.position;
             sceneCounter = 2;
+
+            Player.dateStartTD = System.DateTime.Now;
+
             SceneManager.LoadScene(9); // tower defense
 
             if (Player.tdunlockedlevels < 1) //set starting level to 1

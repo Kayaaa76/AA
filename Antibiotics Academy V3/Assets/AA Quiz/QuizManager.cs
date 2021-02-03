@@ -162,6 +162,7 @@ public class QuizManager : MonoBehaviour
                 Player.postGameQuizScore = score;
                 Player.donePostQuiz = true;
                 Player.dateEnd = System.DateTime.Now;
+                Player.totalDuration = (Player.dateEnd - Player.dateStart).ToString();
                 Player.Save();
                 Application.Quit();
             }

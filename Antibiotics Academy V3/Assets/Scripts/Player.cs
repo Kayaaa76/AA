@@ -53,12 +53,16 @@ public class Player : MonoBehaviour
 
     public static System.DateTime dateStartM3;
     public static System.DateTime dateEndM3;
+    public static string m3Duration;
     public static System.DateTime dateStartTD;
     public static System.DateTime dateEndTD;
+    public static string TDDuration;
     public static System.DateTime dateStartRunner;
     public static System.DateTime dateEndRunner;
+    public static string RunnerDuration;
     public static System.DateTime dateStart;
     public static System.DateTime dateEnd;
+    public static string totalDuration;
 
     void Start()
     {
@@ -161,12 +165,16 @@ public class Player : MonoBehaviour
         playerJson.Add("Post Game Quiz Time Taken", postGameQuizTime);
         playerJson.Add("Date Started", dateStart.ToString());
         playerJson.Add("Date Ended", dateEnd.ToString());
+        playerJson.Add("Total Duration", totalDuration);
         playerJson.Add("Date Started M3", dateStartM3.ToString());
         playerJson.Add("Date Ended M3", dateEndM3.ToString());
+        playerJson.Add("M3 Duration", m3Duration);
         playerJson.Add("Date Started TD", dateStartTD.ToString());
         playerJson.Add("Date Ended TD", dateEndTD.ToString());
+        playerJson.Add("TD Duration", TDDuration);
         playerJson.Add("Date Started Runner", dateStartRunner.ToString());
         playerJson.Add("Date Ended Runner", dateEndRunner.ToString());
+        playerJson.Add("Runner Duration", RunnerDuration);
 
         //Debug.Log(playerJson.ToString());
         string path = Application.persistentDataPath + "/PlayerSave.json";
@@ -212,12 +220,16 @@ public class Player : MonoBehaviour
         postGameQuizTime = playerJson["Post Game Quiz Time Taken"];
         dateStart = System.DateTime.Parse(playerJson["Date Started"]);
         dateEnd = System.DateTime.Parse(playerJson["Date Ended"]);
+        totalDuration = playerJson["Total Duration"];
         dateStartM3 = System.DateTime.Parse(playerJson["Date Started M3"]);
         dateEndM3 = System.DateTime.Parse(playerJson["Date Ended M3"]);
+        m3Duration = playerJson["M3 Duration"];
         dateStartTD = System.DateTime.Parse(playerJson["Date Started TD"]);
         dateEndTD = System.DateTime.Parse(playerJson["Date Ended TD"]);
+        TDDuration = playerJson["TD Duration"];
         dateStartRunner = System.DateTime.Parse(playerJson["Date Started Runner"]);
         dateEndRunner = System.DateTime.Parse(playerJson["Date Ended Runner"]);
+        RunnerDuration = playerJson["Runner Duration"];
 
         Debug.Log(playerJson);
     }

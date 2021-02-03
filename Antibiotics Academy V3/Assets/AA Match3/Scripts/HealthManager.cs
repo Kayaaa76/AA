@@ -137,6 +137,7 @@ namespace Match3
                         if(Player.m3unlockedlevels == 25)
                         {
                             Player.dateEndM3 = System.DateTime.Now;
+                            Player.m3Duration = (Player.dateEndM3 - Player.dateStartM3).ToString();
                         }
                         Player.coins += 80;                    //award 80 coins for passing level (one time claim)
                         Debug.Log("You got 80 coins for winning this level!");

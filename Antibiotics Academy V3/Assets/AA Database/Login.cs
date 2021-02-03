@@ -242,6 +242,10 @@ public class Login : MonoBehaviour
                 Debug.Log("You get to spin the Reward Wheel!");
                 Player.preGameQuizTime = "";
                 Player.postGameQuizTime = "";
+                Player.m3Duration = "";
+                Player.TDDuration = "";
+                Player.RunnerDuration = "";
+                Player.totalDuration = "";
                 Player.dateStart = DateTime.Now;
                 Player.Save();
 

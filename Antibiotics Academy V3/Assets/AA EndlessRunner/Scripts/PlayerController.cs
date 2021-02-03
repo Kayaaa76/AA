@@ -83,6 +83,8 @@ public class PlayerController : MonoBehaviour
             retryPanel.SetActive(true); // pop-up a retry screen
             Time.timeScale = 0; // pause the game
 
+            Player.dateEndRunner = System.DateTime.Now;
+
             menuText.text = "You won !";
         }
 
