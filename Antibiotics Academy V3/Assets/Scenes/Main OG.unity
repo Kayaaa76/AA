@@ -31931,6 +31931,7 @@ MonoBehaviour:
   LockedRight: {fileID: 169640907}
   LockedUp: {fileID: 1962643522}
   LockedDown: {fileID: 1296853590}
+  miniCommunity: {fileID: 1511245669}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -58659,6 +58660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: 0
+  inCommunity: 0
   life: 0
   SpinMenu: {fileID: 1303884014}
 --- !u!1 &920105683

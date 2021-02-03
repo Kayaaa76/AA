@@ -11,6 +11,8 @@ public class CameraController : MonoBehaviour
     public BoxCollider2D LockedUp;
     public BoxCollider2D LockedDown;
 
+    public GameObject miniCommunity;
+
     Camera cam;
 
     float camOrthSize;
@@ -35,9 +37,24 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Mathf.Clamp(player.position.x, LockedLeft.bounds.max.x + camHorizontalOrth, LockedRight.bounds.min.x - camHorizontalOrth); //set horizontal min and max range for camera movement
-        vertical = Mathf.Clamp(player.position.y + 2f, LockedDown.bounds.max.y + camOrthSize, LockedUp.bounds.min.y - camOrthSize); //set vertical min and max range for camera movement
-        transform.position = new Vector3(horizontal, vertical, transform.position.z);
+        //horizontal = Mathf.Clamp(player.position.x, LockedLeft.bounds.max.x + camHorizontalOrth, LockedRight.bounds.min.x - camHorizontalOrth); //set horizontal min and max range for camera movement
+        //vertical = Mathf.Clamp(player.position.y + 2f, LockedDown.bounds.max.y + camOrthSize, LockedUp.bounds.min.y - camOrthSize); //set vertical min and max range for camera movement
+        //transform.position = new Vector3(horizontal, vertical, transform.position.z);
+
+        if (player.position.y < -20)
+        {
+            horizontal = Mathf.Clamp(player.position.x, LockedLeft.bounds.max.x + camHorizontalOrth, LockedRight.bounds.min.x - camHorizontalOrth); //set horizontal min and max range for camera movement
+            vertical = Mathf.Clamp(player.position.y + 2f, LockedDown.bounds.max.y + camOrthSize, LockedUp.bounds.min.y - camOrthSize); //set vertical min and max range for camera movement
+            transform.position = new Vector3(horizontal, vertical, transform.position.z); //set camera position within the range
+
+            player.position = new Vector3(player.position.x, player.position.y, -38f); //set player z value to originally set value(manually in inspector)
+
+            miniCommunity.SetActive(true);
+        }
+        else
+        {
+            miniCommunity.SetActive(false);
+        }
     }
 
 }
