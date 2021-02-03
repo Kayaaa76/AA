@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 0; // pause the game
 
             Player.dateEndRunner = System.DateTime.Now;
+            Player.RunnerDuration = (Player.dateEndRunner - Player.dateStartRunner).ToString();
 
             menuText.text = "You won !";
         }
