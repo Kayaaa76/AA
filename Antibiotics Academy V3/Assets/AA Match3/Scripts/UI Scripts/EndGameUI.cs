@@ -110,10 +110,6 @@ namespace Match3
             {
                 StartCoroutine(PostGameLevelActivity());
             }
-            else
-            {
-                return;
-            }
         }
     }
 }

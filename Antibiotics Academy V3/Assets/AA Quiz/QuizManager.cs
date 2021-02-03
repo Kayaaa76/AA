@@ -152,6 +152,7 @@ public class QuizManager : MonoBehaviour
             Debug.Log(Player.preGameQuizTime);
             Player.preGameQuizScore = score;
             Player.donePreQuiz = true;
+            Player.Save();
             SceneManager.LoadScene(nextScene);
         }
         else
@@ -160,6 +161,8 @@ public class QuizManager : MonoBehaviour
             {
                 Player.postGameQuizScore = score;
                 Player.donePostQuiz = true;
+                Player.dateEnd = System.DateTime.Now;
+                Player.Save();
                 Application.Quit();
             }
         }

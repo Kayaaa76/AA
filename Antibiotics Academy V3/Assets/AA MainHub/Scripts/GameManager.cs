@@ -240,6 +240,7 @@ public class GameManager : MonoBehaviour
             sceneCounter = 2; // set scenecounter to 2 to change to next scene
             //test.Load(); // trigger match 3 game
 
+            Player.dateStartM3 = System.DateTime.Now;
             SceneManager.LoadScene(14); //match 3 scene
 
             //if (Player.m3unlockedlevels < 1) //set starting level to 1

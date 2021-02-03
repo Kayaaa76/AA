@@ -31735,6 +31735,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43344deff09f59945ad2187825a280e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  LockedLeft: {fileID: 0}
+  LockedRight: {fileID: 0}
+  LockedUp: {fileID: 0}
+  LockedDown: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -44232,6 +44237,7 @@ MonoBehaviour:
   hospitalSpawn: {fileID: 0}
   pauseBtn: {fileID: 0}
   menu: {fileID: 0}
+  gamesBtn: {fileID: 0}
   dialogueM: {fileID: 0}
   Receptionist1: {fileID: 0}
   Pharmacist1: {fileID: 0}
@@ -57733,19 +57739,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: 0
-  treceptionistStage: 0
-  tdoctorStage: 0
-  tpharmacistStage: 0
-  tsurgeonStage: 0
-  tnpcdadStage: 0
-  tnpcmalStage: 0
-  tnpcbffStage: 0
-  tnpcnqxStage: 0
-  tnpctimStage: 0
-  tnpcjunoStage: 0
-  tnpcseanStage: 0
-  tnpcauntyStage: 0
-  tnpclawyerStage: 0
   life: 0
   SpinMenu: {fileID: 2100531414}
 --- !u!1 &920105683
@@ -66206,6 +66199,7 @@ MonoBehaviour:
   hospitalSpawn: {fileID: 1495058015}
   pauseBtn: {fileID: 530727176}
   menu: {fileID: 1109171308}
+  gamesBtn: {fileID: 0}
   dialogueM: {fileID: 1038472733}
   Receptionist1: {fileID: 705242973}
   Pharmacist1: {fileID: 0}
@@ -73534,7 +73528,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 919904927}
-        m_MethodName: Save
+        m_MethodName: CallSavePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

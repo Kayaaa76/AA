@@ -58659,22 +58659,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: 0
-  treceptionistStage: 0
-  tdoctorStage: 0
-  tpharmacistStage: 0
-  tsurgeonStage: 0
-  tnpcdadStage: 0
-  tnpcmalStage: 0
-  tnpcbffStage: 0
-  tnpcnqxStage: 0
-  tnpctimStage: 0
-  tnpcjunoStage: 0
-  tnpcseanStage: 0
-  tnpcauntyStage: 0
-  tnpclawyerStage: 0
-  tm3unlockedlevels: 0
-  ttdunlockedlevels: 0
-  trunlocked: 0
   life: 0
   SpinMenu: {fileID: 1303884014}
 --- !u!1 &920105683
@@ -75062,7 +75046,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 919904927}
-        m_MethodName: Save
+        m_MethodName: CallSavePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -9,30 +9,30 @@ public class Player : MonoBehaviour
     public static int coins;
     public int coin;
 
-    public int treceptionistStage = 0;
-    public int tdoctorStage = 0;
-    public int tpharmacistStage = 0;
-    public int tsurgeonStage = 0;
-    public int tnpcdadStage = 0;
-    public int tnpcmalStage = 0;
-    public int tnpcbffStage = 0;
-    public int tnpcnqxStage = 0;
-    public int tnpctimStage = 0;
-    public int tnpcjunoStage = 0;
-    public int tnpcseanStage = 0;
-    public int tnpcauntyStage = 0;
-    public int tnpclawyerStage = 0;
+    public static int treceptionistStage = 0;
+    public static int tdoctorStage = 0;
+    public static int tpharmacistStage = 0;
+    public static int tsurgeonStage = 0;
+    public static int tnpcdadStage = 0;
+    public static int tnpcmalStage = 0;
+    public static int tnpcbffStage = 0;
+    public static int tnpcnqxStage = 0;
+    public static int tnpctimStage = 0;
+    public static int tnpcjunoStage = 0;
+    public static int tnpcseanStage = 0;
+    public static int tnpcauntyStage = 0;
+    public static int tnpclawyerStage = 0;
 
-    public int tm3unlockedlevels;
+    public static int tm3unlockedlevels;
     public static int m3unlockedlevels;
 
-    public int ttdunlockedlevels;
+    public static int ttdunlockedlevels;
     public static int tdunlockedlevels;
 
-    public bool trunlocked;
+    public static bool trunlocked;
     public static bool runlocked;
 
-    public System.DateTime tLastLogin;
+    public static System.DateTime tLastLogin;
 
     public static int lives;
     public int life;
@@ -50,6 +50,15 @@ public class Player : MonoBehaviour
     //public static System.DateTime postGameQuizTime;
     public static string preGameQuizTime;
     public static string postGameQuizTime;
+
+    public static System.DateTime dateStartM3;
+    public static System.DateTime dateEndM3;
+    public static System.DateTime dateStartTD;
+    public static System.DateTime dateEndTD;
+    public static System.DateTime dateStartRunner;
+    public static System.DateTime dateEndRunner;
+    public static System.DateTime dateStart;
+    public static System.DateTime dateEnd;
 
     void Start()
     {
@@ -121,7 +130,7 @@ public class Player : MonoBehaviour
         Debug.Log("Player has: " + lives + " lives!");
     }
 
-    public void Save()
+    public static void Save()
     {
         JSONObject playerJson = new JSONObject();
         playerJson.Add("Coins", coins);
@@ -150,10 +159,23 @@ public class Player : MonoBehaviour
         playerJson.Add("Pre Game Quiz Time Taken", preGameQuizTime);
         playerJson.Add("Post Game Quiz Score", postGameQuizScore);
         playerJson.Add("Post Game Quiz Time Taken", postGameQuizTime);
+        playerJson.Add("Date Started", dateStart.ToString());
+        playerJson.Add("Date Ended", dateEnd.ToString());
+        playerJson.Add("Date Started M3", dateStartM3.ToString());
+        playerJson.Add("Date Ended M3", dateEndM3.ToString());
+        playerJson.Add("Date Started TD", dateStartTD.ToString());
+        playerJson.Add("Date Ended TD", dateEndTD.ToString());
+        playerJson.Add("Date Started Runner", dateStartRunner.ToString());
+        playerJson.Add("Date Ended Runner", dateEndRunner.ToString());
 
         //Debug.Log(playerJson.ToString());
         string path = Application.persistentDataPath + "/PlayerSave.json";
         File.WriteAllText(path, playerJson.ToString());
+    }
+
+    public void CallSavePlayer()
+    {
+        Save();
     }
 
     public static void Load()
@@ -188,6 +210,14 @@ public class Player : MonoBehaviour
         preGameQuizTime = playerJson["Pre Game Quiz Time Taken"];
         postGameQuizScore = playerJson["Post Game Quiz Score"];
         postGameQuizTime = playerJson["Post Game Quiz Time Taken"];
+        dateStart = System.DateTime.Parse(playerJson["Date Started"]);
+        dateEnd = System.DateTime.Parse(playerJson["Date Ended"]);
+        dateStartM3 = System.DateTime.Parse(playerJson["Date Started M3"]);
+        dateEndM3 = System.DateTime.Parse(playerJson["Date Ended M3"]);
+        dateStartTD = System.DateTime.Parse(playerJson["Date Started TD"]);
+        dateEndTD = System.DateTime.Parse(playerJson["Date Ended TD"]);
+        dateStartRunner = System.DateTime.Parse(playerJson["Date Started Runner"]);
+        dateEndRunner = System.DateTime.Parse(playerJson["Date Ended Runner"]);
 
         Debug.Log(playerJson);
     }

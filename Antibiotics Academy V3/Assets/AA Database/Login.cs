@@ -209,6 +209,7 @@ public class Login : MonoBehaviour
                     Debug.Log(wwwPostLifeActivity.text);
                     Debug.Log(wwwPostLifeActivity.error);
                     Debug.Log(wwwPostLifeActivity.url);
+                    Player.Save();
                 }
                 else
                 {
@@ -241,6 +242,8 @@ public class Login : MonoBehaviour
                 Debug.Log("You get to spin the Reward Wheel!");
                 Player.preGameQuizTime = "";
                 Player.postGameQuizTime = "";
+                Player.dateStart = DateTime.Now;
+                Player.Save();
 
                 #region update api
                 //byte[] myData = System.Text.Encoding.UTF8.GetBytes("This is some test data");
