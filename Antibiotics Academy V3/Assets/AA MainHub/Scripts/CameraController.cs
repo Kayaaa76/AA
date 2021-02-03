@@ -37,10 +37,6 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //horizontal = Mathf.Clamp(player.position.x, LockedLeft.bounds.max.x + camHorizontalOrth, LockedRight.bounds.min.x - camHorizontalOrth); //set horizontal min and max range for camera movement
-        //vertical = Mathf.Clamp(player.position.y + 2f, LockedDown.bounds.max.y + camOrthSize, LockedUp.bounds.min.y - camOrthSize); //set vertical min and max range for camera movement
-        //transform.position = new Vector3(horizontal, vertical, transform.position.z);
-
         if (player.position.y < -20)
         {
             horizontal = Mathf.Clamp(player.position.x, LockedLeft.bounds.max.x + camHorizontalOrth, LockedRight.bounds.min.x - camHorizontalOrth); //set horizontal min and max range for camera movement
@@ -49,11 +45,11 @@ public class CameraController : MonoBehaviour
 
             player.position = new Vector3(player.position.x, player.position.y, -38f); //set player z value to originally set value(manually in inspector)
 
-            miniCommunity.SetActive(true);
+            miniCommunity.SetActive(true); //enable minimap
         }
         else
         {
-            miniCommunity.SetActive(false);
+            miniCommunity.SetActive(false); //disable minimap
         }
     }
 

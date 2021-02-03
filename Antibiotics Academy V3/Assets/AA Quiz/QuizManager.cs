@@ -30,6 +30,9 @@ public class QuizManager : MonoBehaviour
 
     System.DateTime QuizStart;
     System.DateTime QuizEnd;
+
+    public GameObject starRatingPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,6 +122,10 @@ public class QuizManager : MonoBehaviour
             //    Player.donePostQuiz = true;
             //    Application.Quit();
             //}
+            if(questionsCSV.name == "PostQuestions") //enable star rating menu after post game quiz
+            {
+                starRatingPanel.SetActive(true);
+            }
         }
     }
 

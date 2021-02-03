@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GamesMenu : MonoBehaviour
 {
-    public GameObject gamesMenu;
+    public GameObject gamesMenuPanel;
     
     public Button TDBtn;
     public Button RBtn;
@@ -29,12 +29,12 @@ public class GamesMenu : MonoBehaviour
 
     public void openGamesMenu()
     {
-        gamesMenu.SetActive(true);
+        gamesMenuPanel.SetActive(true);
     }
 
     public void closeGamesMenu()
     {
-        gamesMenu.SetActive(false);
+        gamesMenuPanel.SetActive(false);
     }
 
     public void unlockingGames()

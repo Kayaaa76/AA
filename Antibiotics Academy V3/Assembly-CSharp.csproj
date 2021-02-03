@@ -118,6 +118,7 @@
     <Compile Include="Assets\AA Quiz\ClickSound.cs" />
     <Compile Include="Assets\AA Quiz\Questions.cs" />
     <Compile Include="Assets\AA Quiz\QuizManager.cs" />
+    <Compile Include="Assets\AA Quiz\StarRating.cs" />
     <Compile Include="Assets\AA TowerDefense\Scripts\BulletBehavior.cs" />
     <Compile Include="Assets\AA TowerDefense\Scripts\CameraShake.cs" />
     <Compile Include="Assets\AA TowerDefense\Scripts\CloseShop.cs" />

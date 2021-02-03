@@ -49898,7 +49898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 320, y: 65}
+  m_AnchoredPosition: {x: 320, y: 17.1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782696186
@@ -57665,7 +57665,7 @@ GameObject:
   - component: {fileID: 905359409}
   - component: {fileID: 905359411}
   m_Layer: 5
-  m_Name: Games Menu
+  m_Name: Games Menu Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57742,7 +57742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2cf56dc2513d94fb06fcac32f1db8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamesMenu: {fileID: 905359407}
+  gamesMenuPanel: {fileID: 0}
   TDBtn: {fileID: 524919295}
   RBtn: {fileID: 1218692618}
   TDLogo: {fileID: 21300000, guid: cfb8362aeb1668a4ab03755e8615753c, type: 3}
@@ -58660,7 +58660,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: 0
-  inCommunity: 0
   life: 0
   SpinMenu: {fileID: 1303884014}
 --- !u!1 &920105683
@@ -126514,7 +126513,7 @@ GameObject:
   - component: {fileID: 2044958043}
   - component: {fileID: 2044958042}
   m_Layer: 5
-  m_Name: Games Menu Bg
+  m_Name: Games Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130021,9 +130020,9 @@ RectTransform:
   m_Father: {fileID: 1617793484}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180, y: -20}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 305, y: 80}
   m_SizeDelta: {x: 90, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2099162129

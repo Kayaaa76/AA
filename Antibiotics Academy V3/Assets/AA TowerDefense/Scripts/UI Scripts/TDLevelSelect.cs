@@ -106,8 +106,8 @@ namespace TowerDefense
                     totalLevels[i].GetComponentInChildren<Text>().fontSize = fontSize;
                     totalLevels[i].GetComponentInChildren<Text>().font = gameFont;
                 }
-                else
-                {                                                                               //when level is not unlocked
+                else                                                                            //when level is not unlocked
+                {
                     totalLevels[i].GetComponent<Image>().sprite = levelLocked;                  //change button image to locked
                     totalLevels[i].interactable = false;                                        //make button not interactable
                     totalLevels[i].GetComponentInChildren<Text>().text = null;                  //change button text to nothing
