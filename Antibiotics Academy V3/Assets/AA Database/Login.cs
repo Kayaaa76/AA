@@ -39,17 +39,10 @@ public class Login : MonoBehaviour
     public static string PlayerIDCoin;
     public static string PlayerIDLive;
 
-    public static bool isReady = false;
-
     void Update()
     {
         tnameField = nameField;
         tpasswordField = passwordField;
-
-        if (isReady == true)
-        {
-            StartCoroutine(ChangeScene());
-        }
     }
 
     public void CallLogin()
@@ -146,7 +139,7 @@ public class Login : MonoBehaviour
                     Debug.Log("You got 10 coins for logging in today!");
                     Player.lives += 3;
                     Debug.Log("You got 3 lives for logging in today!");
-                    if(Player.lives > 5)
+                    if (Player.lives > 5)
                     {
                         Player.lives = 5;
                         Debug.Log("You can only have 5 lives!");
@@ -154,28 +147,36 @@ public class Login : MonoBehaviour
                     Player.spunToday = false;
                     Debug.Log("You get to spin the Reward Wheel!");
 
-                    WWWForm formGetUserInventory = new WWWForm();
-                    WWW wwwGetUserInventory = new WWW("http://103.239.222.212/ALIVE2Service/api/game/GetUserInvenFromID?UserID=" + PlayerID, formGetUserInventory);
-                    yield return wwwGetUserInventory;
-                    Debug.Log(wwwGetUserInventory.text);
-                    Debug.Log(wwwGetUserInventory.error);
-                    Debug.Log(wwwGetUserInventory.url);
+                    //WWWForm formGetUserInventory = new WWWForm();
+                    //WWW wwwGetUserInventory = new WWW("http://103.239.222.212/ALIVE2Service/api/game/GetUserInvenFromID?UserID=" + PlayerID, formGetUserInventory);
+                    //yield return wwwGetUserInventory;
+                    //Debug.Log(wwwGetUserInventory.text);
+                    //Debug.Log(wwwGetUserInventory.error);
+                    //Debug.Log(wwwGetUserInventory.url);
 
-                    string getUserInvString = wwwGetUserInventory.text;
-                    InventoryRoot inventory = new InventoryRoot();
-                    inventory = JsonUtility.FromJson<InventoryRoot>("{\"inventoryIDs\":" + getUserInvString + "}");
+                    //string getUserInvString = wwwGetUserInventory.text;
+                    //InventoryRoot inventory = new InventoryRoot();
+                    //inventory = JsonUtility.FromJson<InventoryRoot>("{\"inventoryIDs\":" + getUserInvString + "}");
 
-                    foreach (InventoryID inventoryID in inventory.inventoryIDs)
-                    {
-                        if (inventoryID.inventoryCategoryID == "324dcb99-4e2c-4282-d5a2-08d8966455ad")
-                        {
-                            File.WriteAllText(Application.persistentDataPath + "/userInventoryIDCoin.json", inventoryID.userInventoryID);
-                        }
-                        if (inventoryID.inventoryCategoryID == "4428d6b7-07e2-4d6a-a0b0-e2bf9efdaaf6")
-                        {
-                            File.WriteAllText(Application.persistentDataPath + "/userInventoryIDLive.json", inventoryID.userInventoryID);
-                        }
-                    }
+                    //foreach (InventoryID inventoryID in inventory.inventoryIDs)
+                    //{
+                    //    if (inventoryID.inventoryCategoryID == "324dcb99-4e2c-4282-d5a2-08d8966455ad")
+                    //    {
+                    //        File.WriteAllText(Application.persistentDataPath + "/userInventoryIDCoin.json", inventoryID.userInventoryID);
+                    //    }
+                    //    if (inventoryID.inventoryCategoryID == "4428d6b7-07e2-4d6a-a0b0-e2bf9efdaaf6")
+                    //    {
+                    //        File.WriteAllText(Application.persistentDataPath + "/userInventoryIDLive.json", inventoryID.userInventoryID);
+                    //    }
+                    //}
+
+                    string userInvIDCoinString = File.ReadAllText(Application.persistentDataPath + "/userInventoryIDCoin.json");
+                    JSONObject userInvIDCoinJson = (JSONObject)JSON.Parse(userInvIDCoinString);
+                    PlayerIDCoin = userInvIDCoinJson["userInventoryID"];
+
+                    string userInvIDLiveString = File.ReadAllText(Application.persistentDataPath + "/userInventoryIDLive.json");
+                    JSONObject userInvIDLiveJson = (JSONObject)JSON.Parse(userInvIDLiveString);
+                    PlayerIDLive = userInvIDLiveJson["userInventoryID"];
 
                     WWWForm formPostCoinActivity = new WWWForm();
                     WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
@@ -235,6 +236,9 @@ public class Login : MonoBehaviour
                 Debug.Log(wwwInsertPlayerCoin.error);
                 Debug.Log(wwwInsertPlayerCoin.url);
 
+                
+                File.WriteAllText(Application.persistentDataPath + "/userInventoryIDCoin.json", wwwInsertPlayerCoin.text);
+
                 WWWForm formPostLifeActivity = new WWWForm();
                 WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
                 yield return wwwPostLifeActivity;
@@ -248,6 +252,8 @@ public class Login : MonoBehaviour
                 Debug.Log(wwwInsertPlayerLive.text);
                 Debug.Log(wwwInsertPlayerLive.error);
                 Debug.Log(wwwInsertPlayerLive.url);
+
+                File.WriteAllText(Application.persistentDataPath + "/userInventoryIDLive.json", wwwInsertPlayerLive.text);
             }
 
             #region if current game version is older
@@ -318,9 +324,29 @@ public class Login : MonoBehaviour
             }
             #endregion
 
+            if (Player.donePreQuiz == false)
+            {
+                WWWForm formPostPreActivity = new WWWForm();
+                WWW wwwPostPreActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Pre Quiz&" + "username=" + nameField.text + "&ActivityDataValue=" + "Pre Quiz", formPostPreActivity);
+                yield return wwwPostPreActivity;
+                Debug.Log(wwwPostPreActivity.text);
+                Debug.Log(wwwPostPreActivity.error);
+                Debug.Log(wwwPostPreActivity.url);
+
+                SceneManager.LoadScene(12);
+                Player.donePreQuiz = true;
+            }
+            else if (Player.donePreQuiz == true)
+            {
+                SceneManager.LoadScene("Cutscene");
+            }
+            else
+            {
+                SceneManager.LoadScene("Cutscene");
+            }
             lastLogin = currentLogin;
             NotificationManager.CreateNotifChannel();
-            NotificationManager.SendNotification();  
+            NotificationManager.SendNotification();
         }
         else
         {
@@ -516,8 +542,6 @@ public class Login : MonoBehaviour
 
     public static IEnumerator UpdateCoins()
     {
-        PlayerIDCoin = File.ReadAllText(Application.persistentDataPath + "/userInventoryIDCoin.json");
-
         byte[] coinData = System.Text.Encoding.UTF8.GetBytes("Player coin data");
         UnityWebRequest wwwUpdateCoin = UnityWebRequest.Put("http://103.239.222.212/ALIVE2Service/api/game/UpdateUserInven?userInventoryID=" + PlayerIDCoin + "&userInventoryValue=" + Player.coins + "&userID=" + PlayerID + "&inventoryCategoryID=324dcb99-4e2c-4282-d5a2-08d8966455ad", coinData);
         yield return wwwUpdateCoin.SendWebRequest();
@@ -533,8 +557,6 @@ public class Login : MonoBehaviour
 
     public static IEnumerator UpdateLives()
     {
-        PlayerIDLive = File.ReadAllText(Application.persistentDataPath + "/userInventoryIDLive.json");
-
         byte[] liveData = System.Text.Encoding.UTF8.GetBytes("Player live data");
         UnityWebRequest wwwUpdateLive = UnityWebRequest.Put("http://103.239.222.212/ALIVE2Service/api/game/UpdateUserInven?userInventoryID=" + PlayerIDLive + "&userInventoryValue=" + Player.lives + "&userID=" + PlayerID + "&inventoryCategoryID=4428d6b7-07e2-4d6a-a0b0-e2bf9efdaaf6", liveData);
         yield return wwwUpdateLive.SendWebRequest();
@@ -546,31 +568,5 @@ public class Login : MonoBehaviour
         {
             Debug.Log("Update complete!");
         }
-        isReady = true;
-    }
-
-    IEnumerator ChangeScene()
-    {
-        isReady = false;
-        if (Player.donePreQuiz == false)
-        {
-            WWWForm formPostPreActivity = new WWWForm();
-            WWW wwwPostPreActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Pre Quiz&" + "username=" + nameField.text + "&ActivityDataValue=" + "Pre Quiz", formPostPreActivity);
-            yield return wwwPostPreActivity;
-            Debug.Log(wwwPostPreActivity.text);
-            Debug.Log(wwwPostPreActivity.error);
-            Debug.Log(wwwPostPreActivity.url);
-
-            SceneManager.LoadScene(12);
-            Player.donePreQuiz = true;
-        }
-        else if (Player.donePreQuiz == true)
-        {
-            SceneManager.LoadScene("Cutscene");
-        }
-        else
-        {
-            SceneManager.LoadScene("Cutscene");
-        }
-    }
+    }    
 }
