@@ -111,6 +111,8 @@ public class QuizManager : MonoBehaviour
             Debug.Log("You got 100 coins for completing the Quiz!");
             Player.coins += 100;
             coinsChange = true;
+            StartCoroutine(Login.UpdateCoins());
+            Player.Save();
             //if (sceneID == 1)
             //{
             //    SceneManager.LoadScene(nextScene);

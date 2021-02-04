@@ -114,6 +114,8 @@ public class DailySpin : MonoBehaviour
             Debug.Log(wwwPostLifeActivity.text);
             Debug.Log(wwwPostLifeActivity.error);
             Debug.Log(wwwPostLifeActivity.url);
+
+            StartCoroutine(Login.UpdateLives());
         }
         //when wheel stops at 10 coins (angles based on wheel)
         else if (stoppedAngle <= 234)
@@ -127,6 +129,8 @@ public class DailySpin : MonoBehaviour
             Debug.Log(wwwPostCoinActivity.text);
             Debug.Log(wwwPostCoinActivity.error);
             Debug.Log(wwwPostCoinActivity.url);
+
+            StartCoroutine(Login.UpdateCoins());
         }
         //when wheel stops at 500 coins (angles based on wheel)
         else if (stoppedAngle <= 252)
@@ -140,6 +144,8 @@ public class DailySpin : MonoBehaviour
             Debug.Log(wwwPostCoinActivity.text);
             Debug.Log(wwwPostCoinActivity.error);
             Debug.Log(wwwPostCoinActivity.url);
+
+            StartCoroutine(Login.UpdateCoins());
         }
         //when wheel stops at 50 coins (angles based on wheel)
         else if (stoppedAngle <= 324)
@@ -153,6 +159,8 @@ public class DailySpin : MonoBehaviour
             Debug.Log(wwwPostCoinActivity.text);
             Debug.Log(wwwPostCoinActivity.error);
             Debug.Log(wwwPostCoinActivity.url);
+
+            StartCoroutine(Login.UpdateCoins());
         }
         //when wheel stops at 100 coins (angles based on wheel)
         else if (stoppedAngle <= 360)
@@ -166,6 +174,8 @@ public class DailySpin : MonoBehaviour
             Debug.Log(wwwPostCoinActivity.text);
             Debug.Log(wwwPostCoinActivity.error);
             Debug.Log(wwwPostCoinActivity.url);
+
+            StartCoroutine(Login.UpdateCoins());
         }
 
         //change text to daily won
@@ -175,5 +185,7 @@ public class DailySpin : MonoBehaviour
         //{
         //    menu.SetActive(false);
         //}
+
+        Player.Save();
     }
 }
