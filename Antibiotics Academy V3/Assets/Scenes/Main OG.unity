@@ -13944,10 +13944,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237956867}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -396, y: -251.24997, z: -17}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.114498705, y: 0.23627545, z: -5.118983}
+  m_LocalScale: {x: 0.15856475, y: 0.19466299, z: 0.19466299}
   m_Children: []
-  m_Father: {fileID: 1359024191}
+  m_Father: {fileID: 1241123285}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &237956870
@@ -76507,7 +76507,7 @@ MonoBehaviour:
     sentences:
     - My child... Go to the hospital...
     - I am much too ill.. To send you...
-    - Walk to the right... Remember, the hospital not the clinic...
+    - Walk straight up... Remember, the hospital not the clinic...
 --- !u!61 &1224892741
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -77340,7 +77340,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 14.84, y: -74.11, z: 87.10567}
   m_LocalScale: {x: 15.135775, y: 12.329, z: 12.329}
-  m_Children: []
+  m_Children:
+  - {fileID: 237956869}
   m_Father: {fileID: 1162663502}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84905,7 +84906,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 237956869}
   - {fileID: 1511245670}
   m_Father: {fileID: 1617793484}
   m_RootOrder: 2
@@ -92272,7 +92272,7 @@ MonoBehaviour:
     name: Boi
     sentences:
     - Hey Bestie!! How are you?
-    - Still sick? Keep walking to the right to go to the hospital!
+    - Still sick? Walk further up to go to the hospital!
     - Get well soon and exercise!
 --- !u!61 &1467979144
 BoxCollider2D:
@@ -95023,7 +95023,7 @@ RectTransform:
   - {fileID: 1447390299}
   - {fileID: 608031542}
   m_Father: {fileID: 1359024191}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
