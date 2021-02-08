@@ -322,8 +322,6 @@ namespace Match3
             {
                 hm.startedLevel = true;
 
-                LevelSelectUI.SetActive(false);
-
                 playingLevel = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text); //set playing level to button text
                 //Debug.Log(playingLevel);
 
@@ -331,6 +329,7 @@ namespace Match3
                 Debug.Log("used life");
                 StartCoroutine(Login.UpdateLives());
 
+                LevelSelectUI.SetActive(false);
                 Time.timeScale = 1f;
             }
             else
