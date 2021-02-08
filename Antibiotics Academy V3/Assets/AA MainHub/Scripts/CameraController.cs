@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     public BoxCollider2D LockedUp;
     public BoxCollider2D LockedDown;
 
-    public GameObject miniCommunity;
+    public GameObject minimap;
 
     Camera cam;
 
@@ -45,11 +45,11 @@ public class CameraController : MonoBehaviour
 
             player.position = new Vector3(player.position.x, player.position.y, -38f); //set player z value to originally set value(manually in inspector)
 
-            miniCommunity.SetActive(true); //enable minimap
+            minimap.SetActive(true); //enable minimap
         }
         else
         {
-            miniCommunity.SetActive(false); //disable minimap
+            minimap.SetActive(false); //disable minimap
         }
     }
 
