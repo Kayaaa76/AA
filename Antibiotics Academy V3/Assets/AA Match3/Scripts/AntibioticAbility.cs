@@ -35,6 +35,7 @@ namespace Match3
             if (coinsChange == true)
             {
                 StartCoroutine(PostCoinAcitivty());
+                StartCoroutine(Login.UpdateCoins());
             }
         }
 

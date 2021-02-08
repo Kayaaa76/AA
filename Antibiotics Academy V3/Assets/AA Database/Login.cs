@@ -133,7 +133,7 @@ public class Login : MonoBehaviour
             if (File.Exists(path))
             {
                 Player.Load();
-                if (currentLogin >= lastLogin.AddHours(-18))
+                if (currentLogin >= lastLogin.AddHours(18))
                 {
                     Player.coins += 10;
                     Debug.Log("You got 10 coins for logging in today!");
