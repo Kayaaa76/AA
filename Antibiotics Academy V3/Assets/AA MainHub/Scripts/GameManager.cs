@@ -383,6 +383,7 @@ public class GameManager : MonoBehaviour
             Player.runlocked = true; //set runner game to be unlocked in data
 
             Player.lives -= 1;
+            StartCoroutine(Login.UpdateLives());
         }
     }
     
@@ -406,6 +407,7 @@ public class GameManager : MonoBehaviour
             }
 
             Player.lives -= 1;
+            StartCoroutine(Login.UpdateLives());
         }
         else
         {

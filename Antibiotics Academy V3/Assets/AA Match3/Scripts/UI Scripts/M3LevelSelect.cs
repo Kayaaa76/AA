@@ -329,6 +329,7 @@ namespace Match3
 
                 Player.lives -= 1;
                 Debug.Log("used life");
+                StartCoroutine(Login.UpdateLives());
 
                 Time.timeScale = 1f;
             }

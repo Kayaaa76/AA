@@ -112,24 +112,28 @@ namespace Match3
                     {
                         Player.coins += 10;                    //award 10 coins for passing level (one time claim)
                         Debug.Log("You got 10 coins for winning this level!");
+                        StartCoroutine(Login.UpdateCoins());
                         coinsChange = true;
                     }
                     else if (Player.m3unlockedlevels < 11)      //when completing levels 6-10
                     {
                         Player.coins += 30;                    //award 30 coins for passing level (one time claim)
                         Debug.Log("You got 30 coins for winning this level!");
+                        StartCoroutine(Login.UpdateCoins());
                         coinsChange = true;
                     }
                     else if (Player.m3unlockedlevels < 16)     //when completing levels 11-15
                     {
                         Player.coins += 50;                    //award 50 coins for passing level (one time claim)
                         Debug.Log("You got 50 coins for winning this level!");
+                        StartCoroutine(Login.UpdateCoins());
                         coinsChange = true;
                     }
                     else if (Player.m3unlockedlevels < 21)     //when completing levels 16-20
                     {
                         Player.coins += 60;                    //award 60 coins for passing level (one time claim)
                         Debug.Log("You got 60 coins for winning this level!");
+                        StartCoroutine(Login.UpdateCoins());
                         coinsChange = true;
                     }
                     else if (Player.m3unlockedlevels < 26)     //when completing levels 21-25
@@ -141,6 +145,7 @@ namespace Match3
                         }
                         Player.coins += 80;                    //award 80 coins for passing level (one time claim)
                         Debug.Log("You got 80 coins for winning this level!");
+                        StartCoroutine(Login.UpdateCoins());
                         coinsChange = true;
                     }
 

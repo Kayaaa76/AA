@@ -42,6 +42,7 @@ namespace TowerDefense
 
             Player.coins += 50;
             Debug.Log("You got 50 coins for winning this game!");
+            StartCoroutine(Login.UpdateCoins());
         }
 
         public void TriggerQuitLost()
