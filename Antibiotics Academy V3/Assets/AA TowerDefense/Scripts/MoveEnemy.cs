@@ -35,7 +35,7 @@ public class MoveEnemy : MonoBehaviour
                 currentWaypoint++;                                            //currentwaypoint increases by 1
                 lastWaypointSwitchTime = Time.time;                           //update lastWayPointSwitchTime to current time
 
-                RotateIntoMoveDirection();                                    //call RotateIntoMoveDireciton
+                //RotateIntoMoveDirection();                                    //call RotateIntoMoveDireciton
             }
             else
             {
