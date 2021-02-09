@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     public GameObject upBtn; // up arrow button for movement of character
     public GameObject downBtn; // down arrow button for movement of character
 
+    public static System.DateTime DateTime;
     private void Awake()
     {
         
@@ -370,12 +371,14 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (npclawyerStage == 2 && dm.spawned == false) // if lawyer finished dialogue
+        if (npclawyerStage == 2 && dm.spawned == false && Player.lives > 0) // if lawyer finished dialogue
         {
             lifeDeducted = true;
 
-            Player.dateStartRunner = System.DateTime.Now;
-
+            if (Player.dateStartRunner == DateTime)
+            {
+                Player.dateStartRunner = System.DateTime.Now;
+            }
             currentPosition = player.transform.position; // get current position of player
             sceneCounter = 2; // set scenecounter to 2 to change scene
 
@@ -402,8 +405,10 @@ public class GameManager : MonoBehaviour
             currentPosition = player.transform.position;
             sceneCounter = 2;
 
-            Player.dateStartTD = System.DateTime.Now;
-
+            if (Player.dateStartTD == DateTime)
+            {
+                Player.dateStartTD = System.DateTime.Now;
+            }
 
             if (Player.tdunlockedlevels < 1) //set starting level to 1
             {

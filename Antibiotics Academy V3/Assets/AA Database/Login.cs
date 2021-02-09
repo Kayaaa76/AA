@@ -198,6 +198,13 @@ public class Login : MonoBehaviour
                 }
                 else
                 {
+                    string userInvIDCoinString = File.ReadAllText(Application.persistentDataPath + "/userInventoryIDCoin.json");
+                    JSONObject userInvIDCoinJson = (JSONObject)JSON.Parse(userInvIDCoinString);
+                    PlayerIDCoin = userInvIDCoinJson["userInventoryID"];
+
+                    string userInvIDLiveString = File.ReadAllText(Application.persistentDataPath + "/userInventoryIDLive.json");
+                    JSONObject userInvIDLiveJson = (JSONObject)JSON.Parse(userInvIDLiveString);
+                    PlayerIDLive = userInvIDLiveJson["userInventoryID"];
                     Debug.Log("You have already logged in for the day!");
                 }
             }
@@ -254,6 +261,14 @@ public class Login : MonoBehaviour
                 Debug.Log(wwwInsertPlayerLive.url);
 
                 File.WriteAllText(Application.persistentDataPath + "/userInventoryIDLive.json", wwwInsertPlayerLive.text);
+
+                string userInvIDCoinString = File.ReadAllText(Application.persistentDataPath + "/userInventoryIDCoin.json");
+                JSONObject userInvIDCoinJson = (JSONObject)JSON.Parse(userInvIDCoinString);
+                PlayerIDCoin = userInvIDCoinJson["userInventoryID"];
+
+                string userInvIDLiveString = File.ReadAllText(Application.persistentDataPath + "/userInventoryIDLive.json");
+                JSONObject userInvIDLiveJson = (JSONObject)JSON.Parse(userInvIDLiveString);
+                PlayerIDLive = userInvIDLiveJson["userInventoryID"];
             }
 
             #region if current game version is older
