@@ -37,6 +37,10 @@ namespace Match3
             sentences[8] = "Exercise helps keep our bodies healthy, improving energy levels, and relieves stress";
             sentences[9] = "Quality sleep, a balanced diet, updated immunization, and exercise keep us healthy";
 
+            UpdateInfoNuggets();
+            sentences[5] = advices[0];
+            sentences[6] = advices[1];
+
             //sentences[5-9] = advices[0-1]
             if (toutdated == true)
             {

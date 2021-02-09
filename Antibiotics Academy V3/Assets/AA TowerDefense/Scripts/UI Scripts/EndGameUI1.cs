@@ -17,6 +17,10 @@ namespace TowerDefense
 
         public void TriggerQuit() // win tower defense
         {
+            Player.Save();
+            StartCoroutine(Login.UpdateCoins());
+            StartCoroutine(Login.UpdateLives());
+
             // back to hub
             GameManager.surgeonStage = 3;
             GameManager.npclawyerStage = 1;

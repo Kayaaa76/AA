@@ -378,12 +378,17 @@ public class GameManager : MonoBehaviour
 
             currentPosition = player.transform.position; // get current position of player
             sceneCounter = 2; // set scenecounter to 2 to change scene
-            SceneManager.LoadScene(11); // trigger endless runner game
 
             Player.runlocked = true; //set runner game to be unlocked in data
 
             Player.lives -= 1;
             StartCoroutine(Login.UpdateLives());
+
+            Player.Save();
+            StartCoroutine(Login.UpdateLives());
+            StartCoroutine(Login.UpdateCoins());
+
+            SceneManager.LoadScene(11); // trigger endless runner game
         }
     }
     
@@ -399,7 +404,6 @@ public class GameManager : MonoBehaviour
 
             Player.dateStartTD = System.DateTime.Now;
 
-            SceneManager.LoadScene(9); // tower defense
 
             if (Player.tdunlockedlevels < 1) //set starting level to 1
             {
@@ -408,6 +412,12 @@ public class GameManager : MonoBehaviour
 
             Player.lives -= 1;
             StartCoroutine(Login.UpdateLives());
+
+            Player.Save();
+            StartCoroutine(Login.UpdateLives());
+            StartCoroutine(Login.UpdateCoins());
+
+            SceneManager.LoadScene(9); // tower defense
         }
         else
         {

@@ -150,6 +150,9 @@ namespace Match3
                     }
 
                     Player.m3unlockedlevels += 1;              //increase unlocked level
+                    Player.Save();
+                    StartCoroutine(Login.UpdateCoins());
+                    StartCoroutine(Login.UpdateLives());
                 }
             }
             else if (currentHealth < 1)                        //if currentHealth is lesser than 1, meaning 0, it means that the player lost

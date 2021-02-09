@@ -331,6 +331,10 @@ namespace Match3
 
                 LevelSelectUI.SetActive(false);
                 Time.timeScale = 1f;
+
+                Player.Save();
+                StartCoroutine(Login.UpdateLives());
+                StartCoroutine(Login.UpdateCoins());
             }
             else
             {

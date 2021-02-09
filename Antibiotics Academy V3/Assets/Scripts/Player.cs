@@ -183,6 +183,8 @@ public class Player : MonoBehaviour
 
     public void CallSavePlayer()
     {
+        StartCoroutine(Login.UpdateCoins());
+        StartCoroutine(Login.UpdateLives());
         Save();
     }
 

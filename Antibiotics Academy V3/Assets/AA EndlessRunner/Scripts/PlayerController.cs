@@ -151,6 +151,10 @@ public class PlayerController : MonoBehaviour
         //}
         sceneChange = true;
 
+        Player.Save();
+        StartCoroutine(Login.UpdateCoins());
+        StartCoroutine(Login.UpdateLives());
+
         SceneManager.LoadScene(13); //main scene
     }
 
