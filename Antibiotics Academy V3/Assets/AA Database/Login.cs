@@ -301,7 +301,7 @@ public class Login : MonoBehaviour
 
                 foreach (AllNugQ set in myObject.sets)
                 {
-                    nuggetName = "InfoNug" + i;
+                    nuggetName = "InfoNug " + i;
                     Debug.Log(nuggetName);
                     questionName = "Q" + x;
                     Debug.Log(questionName);
@@ -310,7 +310,7 @@ public class Login : MonoBehaviour
                     {
                         //Debug.Log(set.infoNugget.infoNuggetName + "\n" + set.infoNugget.infoNuggetDescription + "\n"  + set.infoNugget.infoNuggetValue);
 
-                        string filename = "InfoNug" + i;
+                        string filename = "InfoNug " + i;
                         InfoNuggetA Nugget = new InfoNuggetA();
                         Nugget.infoNuggetName = set.infoNugget.infoNuggetName;
                         Nugget.infoNuggetDescription = set.infoNugget.infoNuggetDescription;
@@ -567,6 +567,7 @@ public class Login : MonoBehaviour
         else
         {
             Debug.Log("Update complete!");
+            Debug.Log(wwwUpdateCoin.url);
         }
     }
 
@@ -582,6 +583,7 @@ public class Login : MonoBehaviour
         else
         {
             Debug.Log("Update complete!");
+            Debug.Log(wwwUpdateLive.url);
         }
     }    
 }
