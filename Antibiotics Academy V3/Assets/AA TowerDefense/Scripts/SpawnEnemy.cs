@@ -57,9 +57,41 @@ public class SpawnEnemy : MonoBehaviour
             if (enemiesSpawned == waves[currentWave].maxEnemies &&    //if enemies spawned is equal to the current wave max enemies and there are no more enemies
                 GameObject.FindGameObjectWithTag("Enemy") == null)
             {
-                gameManager.Wave++;                                   //go to the next wave
+                //gameManager.Wave++;                                   //go to the next wave
                 enemiesSpawned = 0;                                   //reset enemiesSpawned to 0
                 lastSpawnTime = Time.time;                            //set lastSpawntime to time.time
+
+                if(gameManager.Wave + 1 == Player.tdunlockedlevels) //check if playing level is same as unlocked level
+                {
+                    if (Player.tdunlockedlevels < 4)            //when completing levels 1-3
+                    {
+                        Player.coins += 50;                     //award 50 coins for passing level (one time claim)
+                        Debug.Log("You got 50 coins for winning this level!");
+                    }
+                    else if (Player.m3unlockedlevels < 6)       //when completing levels 4-5
+                    {
+                        Player.coins += 100;                    //award 100 coins for passing level (one time claim)
+                        Debug.Log("You got 100 coins for winning this level!");
+                    }
+                    else if (Player.m3unlockedlevels < 8)       //when completing levels 6-7
+                    {
+                        Player.coins += 150;                    //award 150 coins for passing level (one time claim)
+                        Debug.Log("You got 150 coins for winning this level!");
+                    }
+                    else if (Player.m3unlockedlevels < 10)      //when completing levels 8-9
+                    {
+                        Player.coins += 200;                    //award 200 coins for passing level (one time claim)
+                        Debug.Log("You got 200 coins for winning this level!");
+                    }
+                    else if (Player.m3unlockedlevels < 11)      //when completing level 10
+                    {
+                        Player.coins += 500;                    //award 500 coins for passing level (one time claim)
+                        Debug.Log("You got 500 coins for winning this level!");
+                    }
+
+                    gameManager.winLevel = true;                //level won is true
+                    Player.tdunlockedlevels += 1;               //increase unlocked level
+                }
             }
             // 5 
         }

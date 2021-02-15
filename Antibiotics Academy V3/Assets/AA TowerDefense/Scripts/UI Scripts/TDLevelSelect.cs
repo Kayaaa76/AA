@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace TowerDefense
@@ -32,13 +33,24 @@ namespace TowerDefense
 
         Button[] totalLevels;
 
-        public int playableLevels = 1;                                                         //number of levels unlocked
+        GameManagerBehavior gMB;
+
+        public int playableLevels;                                                         //number of levels unlocked
 
 
         // Start is called before the first frame update
         void Start()
         {
+            gMB = GameObject.Find("GameManager").GetComponent<GameManagerBehavior>();
+
             totalLevels = new Button[transform.childCount];                                    //get total number of levels based on number of buttons
+
+            if (Player.tdunlockedlevels < 1)                                                    //set starting level to 1
+            {
+                Player.tdunlockedlevels = 1;
+            }
+
+            playableLevels = Player.tdunlockedlevels;
         }
 
         // Update is called once per frame
@@ -59,26 +71,26 @@ namespace TowerDefense
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelAntibiotic;               //set button as given image
+                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelAntibiotic;      //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelAntibiotic;               //set button as given image
+                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelAntibiotic;     //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelAntibiotic;               //set button as given image
+                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelAntibiotic;        //set button as given image
                         }
                     }
                     else if (i < 7)                                                            //at levels 5-7
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelAb1;               //set button as given image
+                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelAb1;             //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelAb1;               //set button as given image
+                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelAb1;            //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
@@ -89,11 +101,11 @@ namespace TowerDefense
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelAb2;               //set button as given image
+                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelAb2;             //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelAb2;               //set button as given image
+                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelAb2;            //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
@@ -117,6 +129,8 @@ namespace TowerDefense
 
         public void differentLevel()
         {
+            gMB.Wave = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text) - 1; //set playing level to button text
+
             LevelSelectUI.SetActive(false);
             tutorialUI.SetActive(false);
 

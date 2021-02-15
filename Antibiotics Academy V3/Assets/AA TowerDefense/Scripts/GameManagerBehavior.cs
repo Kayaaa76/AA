@@ -7,6 +7,7 @@ public class GameManagerBehavior : MonoBehaviour
 
     public GameObject DeathUI;  //DeathUI game object
     public GameObject WinUI;    //WinUI game object
+    public GameObject WinLevelUI;    //WinUI game object
 
     public Text goldLabel;      //text to show the amount of gold
     private int gold;           //gold value
@@ -28,6 +29,7 @@ public class GameManagerBehavior : MonoBehaviour
 
     public bool gameOver = false;  //bool to see if game is over
     public bool lost = false;      //bool to see if player lost
+    public bool winLevel = false;
 
     private int wave;              //wave counter
     public int Wave
@@ -100,6 +102,12 @@ public class GameManagerBehavior : MonoBehaviour
             DisplayWinUI();                     //display win UI
         }
 
+        if(winLevel == true)                    //if level is won
+        {
+            DisplayWinLevelUI();                //display win level UI
+            winLevel = false;                   //reset bool
+        }
+
     }
 
     public void DisplayDeathUI()       //function to display the DeathUI
@@ -111,6 +119,12 @@ public class GameManagerBehavior : MonoBehaviour
     public void DisplayWinUI()        //function to display the WinUI
     {
         WinUI.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void DisplayWinLevelUI()        //function to display the WinUI
+    {
+        WinLevelUI.SetActive(true);
         Time.timeScale = 0f;
     }
 
