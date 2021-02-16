@@ -89,9 +89,10 @@ public class SpawnEnemy : MonoBehaviour
                         Debug.Log("You got 500 coins for winning this level!");
                     }
 
-                    gameManager.winLevel = true;                //level won is true
                     Player.tdunlockedlevels += 1;               //increase unlocked level
                 }
+
+                gameManager.winLevel = true;                    //level won is true
             }
             // 5 
         }

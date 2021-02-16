@@ -35,8 +35,11 @@ namespace TowerDefense
 
         GameManagerBehavior gMB;
 
-        public int playableLevels;                                                         //number of levels unlocked
+        public GameObject StartUI;
+        public GameObject LevelSelectMenu;
 
+        public int playableLevels;                                                             //number of levels unlocked
+        public static int levelDifficulty;                                                               //level currently playing
 
         // Start is called before the first frame update
         void Start()
@@ -44,6 +47,11 @@ namespace TowerDefense
             gMB = GameObject.Find("GameManager").GetComponent<GameManagerBehavior>();
 
             totalLevels = new Button[transform.childCount];                                    //get total number of levels based on number of buttons
+
+            if (StartUI.activeSelf == true)
+            {
+                LevelSelectMenu.SetActive(false);
+            }
 
             if (Player.tdunlockedlevels < 1)                                                    //set starting level to 1
             {
@@ -129,7 +137,8 @@ namespace TowerDefense
 
         public void differentLevel()
         {
-            gMB.Wave = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text) - 1; //set playing level to button text
+            levelDifficulty = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text) - 1; //get level difficulty according to button text(level number)
+            gMB.Wave = levelDifficulty; //set difficulty
 
             LevelSelectUI.SetActive(false);
             tutorialUI.SetActive(false);

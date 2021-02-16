@@ -10,8 +10,71 @@ namespace TowerDefense
         static bool coinsChange;
         static bool sceneChange = false;
 
-        public void TriggerRestart()
+        static bool next;
+        bool levels;
+        bool restarted;
+
+        GameObject StartUI;
+        GameObject LevelSelectUI;
+
+        GameManagerBehavior gMB;
+
+        void OnEnable()
         {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (levels == true)
+            {
+                StartUI = GameObject.Find("StartUI");
+                if (StartUI != null)
+                {
+                    StartUI.SetActive(false);
+                }
+
+                //levels = false;
+            }
+
+            if(next == true)
+            {
+                StartUI = GameObject.Find("StartUI");
+                if (StartUI != null)
+                {
+                    StartUI.SetActive(false);
+                }
+
+                LevelSelectUI = GameObject.Find("Tower Defense Level Select");
+                if (LevelSelectUI != null)
+                {
+                    LevelSelectUI.SetActive(false);
+                }
+            }
+        }
+
+        void Start()
+        {
+            gMB = GameObject.Find("GameManager").GetComponent<GameManagerBehavior>();
+            
+            if(next == true)
+            {
+                TDLevelSelect.levelDifficulty += 1;
+                gMB.Wave = TDLevelSelect.levelDifficulty;
+                next = false;
+                Time.timeScale = 1f;
+            }
+        }
+
+        public void TriggerNext()
+        {
+            next = true;
+            SceneManager.LoadScene(9); // restart tower defense game
+        }
+
+        public void TriggerLevels()
+        {
+            levels = true;
             SceneManager.LoadScene(9); // restart tower defense game
         }
 

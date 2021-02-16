@@ -105,7 +105,7 @@ public class GameManagerBehavior : MonoBehaviour
         if(winLevel == true)                    //if level is won
         {
             DisplayWinLevelUI();                //display win level UI
-            winLevel = false;                   //reset bool
+            //winLevel = false;                   //reset bool
         }
 
     }
