@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -95,6 +97,8 @@ public class GameManager : MonoBehaviour
             dt.dialogue.sentences[1] = "Walk around the hub.";
             dt.dialogue.sentences[2] = "Talk to a Surgeon to find out more.";
         }
+
+        StartCoroutine(SetGameDetail());
     }
 
     // Update is called once per frame
@@ -473,6 +477,53 @@ public class GameManager : MonoBehaviour
             Debug.Log(wwwPostGameLevelActivity.text);
             Debug.Log(wwwPostGameLevelActivity.error);
             Debug.Log(wwwPostGameLevelActivity.url);
+        }
+    }
+
+    [Serializable]
+    public class GameDetailRoot
+    {
+        public GameDetail[] gameDetails;
+    }
+
+    [Serializable]
+    public class GameDetail
+    {
+        public string gameDetailID;
+        public string gameDetailName;
+        public string gameDetailValue;
+        public string gameDetailDescription;
+    }
+
+   public IEnumerator SetGameDetail()
+    {
+        WWW wwwGetGameDetail = new WWW("http://103.239.222.212/ALIVE2Service/api/game/AllGameDetail");
+        yield return wwwGetGameDetail;
+        Debug.Log(wwwGetGameDetail.text);
+        Debug.Log(wwwGetGameDetail.error);
+        Debug.Log(wwwGetGameDetail.url);
+
+        File.WriteAllText(Application.persistentDataPath + "/AllGameDetail.json", wwwGetGameDetail.text);
+        Debug.Log("AllGameDetail written");
+
+        string jsonString = File.ReadAllText(Application.persistentDataPath + "/AllGameDetail.json");
+
+        GameDetailRoot gameDetailRoot = new GameDetailRoot();
+
+        gameDetailRoot = JsonUtility.FromJson<GameDetailRoot>("{\"gameDetails\":" + jsonString + "}");
+
+        string fileName = "";
+        foreach(GameDetail gameDetail in gameDetailRoot.gameDetails)
+        {
+            Debug.Log(gameDetail.gameDetailName);
+            fileName = gameDetail.gameDetailName;
+            GameDetail detail = new GameDetail();
+            detail.gameDetailID = gameDetail.gameDetailID;
+            detail.gameDetailName = gameDetail.gameDetailName;
+            detail.gameDetailValue = gameDetail.gameDetailValue;
+            detail.gameDetailDescription = gameDetail.gameDetailDescription;
+            string gameDetailJson = JsonUtility.ToJson(detail);
+            File.WriteAllText(Application.persistentDataPath + "/" + fileName + ".json", gameDetailJson);
         }
     }
 }
