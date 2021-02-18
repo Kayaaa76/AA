@@ -114,9 +114,9 @@ namespace Match3
         {
             advices = new string[2];
 
-            string infoString1 = File.ReadAllText(Application.persistentDataPath + "/InfoNug1.json");
+            string infoString1 = File.ReadAllText(Application.persistentDataPath + "/InfoNug 1.json");
             JSONObject infoNugget1 = (JSONObject)JSON.Parse(infoString1);
-            string infoString2 = File.ReadAllText(Application.persistentDataPath + "/InfoNug2.json");
+            string infoString2 = File.ReadAllText(Application.persistentDataPath + "/InfoNug 2.json");
             JSONObject infoNugget2 = (JSONObject)JSON.Parse(infoString2);
 
             advices[0] = infoNugget1["infoNuggetValue"];
