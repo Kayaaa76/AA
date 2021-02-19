@@ -7841,6 +7841,160 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &128893397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128893398}
+  - component: {fileID: 128893402}
+  - component: {fileID: 128893401}
+  - component: {fileID: 128893400}
+  - component: {fileID: 128893399}
+  m_Layer: 0
+  m_Name: NPC_Aunty (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &128893398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128893397}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -66.73, y: 1.2844682, z: 79}
+  m_LocalScale: {x: 0.4998009, y: 0.4998009, z: 0.4998009}
+  m_Children: []
+  m_Father: {fileID: 890608366}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &128893399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128893397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3336a7703e0fcdc449f4a528c527eb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Convenience Store Lady
+    sentences:
+    - Getting something from the vending machine?
+    - Please wait behind me!
+    - 
+--- !u!61 &128893400
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128893397}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.58, y: 3.96}
+    newSize: {x: 2.91, y: 4.73}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.91, y: 4.73}
+  m_EdgeRadius: 0
+--- !u!61 &128893401
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128893397}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.58, y: 3.96}
+    newSize: {x: 2.91, y: 4.73}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.91, y: 4.73}
+  m_EdgeRadius: 0
+--- !u!212 &128893402
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128893397}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: fc64ec181f34a164bb5c857ab8d5a21c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.91, y: 4.73}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &130141535
 GameObject:
   m_ObjectHideFlags: 0
@@ -11838,7 +11992,7 @@ MonoBehaviour:
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Dummy Text
@@ -24931,7 +25085,7 @@ Transform:
   m_LocalScale: {x: 0.5047341, y: 0.5047341, z: 0.5047341}
   m_Children: []
   m_Father: {fileID: 890608366}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &419475589
 SpriteRenderer:
@@ -57199,6 +57353,7 @@ Transform:
   - {fileID: 825928960}
   - {fileID: 1467979142}
   - {fileID: 1629800071}
+  - {fileID: 128893398}
   - {fileID: 1125918703}
   - {fileID: 1224892738}
   - {fileID: 419475588}
@@ -70367,7 +70522,7 @@ Transform:
   m_Children:
   - {fileID: 28745429}
   m_Father: {fileID: 890608366}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1125918704
 MonoBehaviour:
@@ -76954,7 +77109,7 @@ Transform:
   m_LocalScale: {x: 0.4998009, y: 0.4998009, z: 0.4998009}
   m_Children: []
   m_Father: {fileID: 890608366}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1224892739
 BoxCollider2D:
@@ -77000,6 +77155,7 @@ MonoBehaviour:
     - My child... Go to the hospital...
     - I am much too ill.. To send you...
     - Walk straight up... Remember, the hospital not the clinic...
+    - 
 --- !u!61 &1224892741
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -87133,7 +87289,7 @@ Transform:
   m_LocalScale: {x: 0.57043, y: 0.57043, z: 0.57043}
   m_Children: []
   m_Father: {fileID: 890608366}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1378793011
 SpriteRenderer:
@@ -92912,6 +93068,7 @@ MonoBehaviour:
     - Hey Bestie!! How are you?
     - Still sick? Walk further up to go to the hospital!
     - Get well soon and exercise!
+    - 
 --- !u!61 &1467979144
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -101837,7 +101994,7 @@ Transform:
   m_LocalScale: {x: 0.57043, y: 0.57043, z: 0.57043}
   m_Children: []
   m_Father: {fileID: 890608366}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1615764579
 SpriteRenderer:
@@ -102929,6 +103086,7 @@ MonoBehaviour:
     sentences:
     - Sorry, I'm going off for my break.
     - Do come back later!
+    - 
 --- !u!61 &1629800073
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116752,7 +116910,7 @@ Transform:
   m_LocalScale: {x: 0.78693, y: 0.78693, z: 0.78693}
   m_Children: []
   m_Father: {fileID: 890608366}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1861632428
 BoxCollider2D:

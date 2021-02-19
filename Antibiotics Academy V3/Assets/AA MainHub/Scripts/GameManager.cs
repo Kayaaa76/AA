@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public static int npcjunoStage = 0;
     public static int npcseanStage = 0;
     public static int npcauntyStage = 0;
+    public static int npcaunty1Stage = 0;
     public static int npclawyerStage = 0;
 
     private DialogueTrigger dt; // get DialogueTrigger script
@@ -157,6 +158,10 @@ public class GameManager : MonoBehaviour
             if (obj.name == "NPC_Aunty") // if the npc name is NPC_Aunty
             {
                 NPCAUNTY(); // call the NPCAUNTY function
+            }
+            if(obj.name == "NPC_Aunty (1)")
+            {
+                NPCAUNTY1();
             }
             if (obj.name == "NPC_Lawyer") // if the npc name is NPC_Lawyer
             {
@@ -357,6 +362,14 @@ public class GameManager : MonoBehaviour
         {
             obj.GetComponent<DialogueTrigger>().TriggerDialogue();
             npcauntyStage = 1;
+        }
+    }
+    public void NPCAUNTY1() // function to show npc aunty dialogue
+    {
+        if (npcaunty1Stage == 0)
+        {
+            obj.GetComponent<DialogueTrigger>().TriggerDialogue();
+            npcaunty1Stage = 1;
         }
     }
 
