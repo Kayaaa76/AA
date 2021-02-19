@@ -24,6 +24,8 @@ namespace Match3
 
         private AudioSource matchingAudio;
 
+        public float posOffset;
+
         void Start()
         {
             matchingAudio = GetComponent<AudioSource>();
@@ -32,6 +34,8 @@ namespace Match3
             healthManager = FindObjectOfType<HealthManager>();
             findMatch = FindObjectOfType<FindMatch>();
             allPieces = new GameObject[width, height];
+
+            posOffset = this.transform.position.x;
             SetUp();
         }
 
@@ -41,8 +45,8 @@ namespace Match3
             {
                 for (int j = 0; j < height; j++)
                 {
-                    Vector2 tempPosition = new Vector2(i, j + offSet);                                                     //sets tempposition to Vector2(i, j)
-                    Vector2 tempPosition1 = new Vector2(i, j);
+                    Vector2 tempPosition = new Vector2(i + posOffset, j + offSet);                                                     //sets tempposition to Vector2(i, j)
+                    Vector2 tempPosition1 = new Vector2(i + posOffset, j);
                     GameObject backgroundTile = Instantiate(tilePrefab, tempPosition1, Quaternion.identity) as GameObject;  //instantiate tilePrefab at temp position, which is under backgroundTile game object
                     backgroundTile.transform.parent = this.transform;                                                      //sets backgroundtile gameobject parent as the board gameobject
                     backgroundTile.name = "( " + i + "," + j + " )";                                                       //sets backgroundtile name as their position on the board

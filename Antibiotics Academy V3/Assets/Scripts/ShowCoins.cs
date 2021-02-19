@@ -14,6 +14,6 @@ public class ShowCoins : MonoBehaviour
 
     void Update()
     {
-        text.text = "Coins: " + Player.coins;
+        text.text = Player.coins.ToString();
     }
 }

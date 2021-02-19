@@ -11,7 +11,7 @@ namespace Match3
         public int row;                       //the row position  
         public int previousColumn;            //the previous column position      
         public int previousRow;               //the row column position
-        public int targetX;
+        public float targetX;
         public int targetY;
         public bool isMatched = false;        //bool to see if the piece is matched
 
@@ -40,7 +40,7 @@ namespace Match3
                 SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
                 mySprite.color = new Color(0f, 0f, 0f, .2f);
             }
-            targetX = row;                              //updates targetX to the row value
+            targetX = row + board.posOffset;                              //updates targetX to the row value
             targetY = column;                           //updates targetY to the column value
 
             if (Mathf.Abs(targetX - transform.position.x) > .1)                             //if target x position and piece x position is greater than .1
