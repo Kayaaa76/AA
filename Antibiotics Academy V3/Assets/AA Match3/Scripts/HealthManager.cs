@@ -106,7 +106,7 @@ namespace Match3
             if (currentHealth > 100)                           //if currentHealth is greater than 100, it means that the player won
             {
                 display.DisplayWinUI();                        //displays the Win UI
-                if (m3levelselectscript.GetComponent<M3LevelSelect>().playingLevel == Player.m3unlockedlevels) //check if playing level is same as unlocked level
+                if (m3levelselectscript.GetComponent<M3LevelSelect>().levelDifficulty + 1 == Player.m3unlockedlevels) //check if playing level is same as unlocked level
                 {
                     if (Player.m3unlockedlevels < 6)            //when completing levels 1-5
                     {

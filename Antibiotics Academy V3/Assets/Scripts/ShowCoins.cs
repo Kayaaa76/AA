@@ -7,9 +7,13 @@ public class ShowCoins : MonoBehaviour
 {
     Text text;
 
+    public GameObject coinsDisplay;
+
     void Start()
     {
         text = this.GetComponent<Text>();
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(coinsDisplay.GetComponent<RectTransform>());
     }
 
     void Update()

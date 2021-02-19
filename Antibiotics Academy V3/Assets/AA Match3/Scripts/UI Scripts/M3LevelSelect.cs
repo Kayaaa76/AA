@@ -53,10 +53,11 @@ namespace Match3
         Button[] totalLevels;
 
         public int playableLevels;                                                              //number of levels unlocked
-        public int playingLevel;                                                                //level currently playing
+        public int levelDifficulty;                                                                //level currently playing
 
         HealthManager hm;
         NotificationManager nm;
+        Criteria criteria;
 
         public int notification;
 
@@ -67,8 +68,9 @@ namespace Match3
 
             hm = FindObjectOfType<HealthManager>();
             nm = FindObjectOfType<NotificationManager>();
+            criteria = GameObject.Find("Criteria").GetComponent<Criteria>();
 
-            if(StartUI.activeSelf == true)
+            if (StartUI.activeSelf == true)
             {
                 LevelSelectMenu.SetActive(false);
             }
@@ -85,14 +87,9 @@ namespace Match3
         void Update()
         {
             currentLevels();
-
-            //if (EventSystem.current.currentSelectedGameObject.name.Contains("Lvl"))             //check if selected object name contains "Lvl" (for level buttons)
-            //{
-            //    playingLevel = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text); //set playing level to button text
-            //}
         }
 
-        void currentLevels()                                                                    //display levels
+        void currentLevels()                                                                    //display levels state
         {
             for (int i = 0; i < totalLevels.Length; i++)                                        //go through each button
             {
@@ -322,8 +319,10 @@ namespace Match3
             {
                 hm.startedLevel = true;
 
-                playingLevel = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text); //set playing level to button text
-                //Debug.Log(playingLevel);
+                levelDifficulty = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text) - 1; //set playing level to button text
+                criteria.currentLevel = levelDifficulty;
+
+                criteria.moveCounter = criteria.levels[criteria.currentLevel].limitMoves; //set move counter as number of moves given 
 
                 Player.lives -= 1;
                 Debug.Log("used life");

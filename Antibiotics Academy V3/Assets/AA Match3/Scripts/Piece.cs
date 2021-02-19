@@ -25,11 +25,14 @@ namespace Match3
         public float swipeAngle = 0;
         public float swipeResist = 1f;
 
+        Criteria criteria;
+
         // Start is called before the first frame update
         void Start()
         {
             board = FindObjectOfType<Board>();          //find board gameobject
             findMatch = FindObjectOfType<FindMatch>();
+            criteria = GameObject.Find("Criteria").GetComponent<Criteria>();
         }
 
         // Update is called once per frame
@@ -95,6 +98,8 @@ namespace Match3
                 else                                                              //otherwise, if the pieces are matched
                 {
                     board.DestroyMatches();                                       //call the destroymatches from board
+
+                    criteria.moveCounter--;
                 }
                 otherPiece = null;                                                //sets otherpiece to null
             }

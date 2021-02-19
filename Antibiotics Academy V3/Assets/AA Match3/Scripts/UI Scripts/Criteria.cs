@@ -9,7 +9,7 @@ namespace Match3
     public class Levels                                //wave class that defines the wave properties
     {
         public TilePrefabs[] tilePrefabs;        //list of enemy prefabs
-        public bool limitMoves;
+        public int limitMoves;
     }
 
     [System.Serializable]
@@ -28,16 +28,14 @@ namespace Match3
 
         public Levels[] levels;
 
-        M3LevelSelect m3ls;
+        DisplayEndUI display;
 
-        int currentLevel;
+        public int currentLevel;
 
         // Start is called before the first frame update
         void Start()
         {
-            m3ls = GameObject.Find("Buttons").GetComponent<M3LevelSelect>();
-
-            moveCounter = 0;
+            display = FindObjectOfType<DisplayEndUI>();
 
             DisplayCritera();
         }
@@ -45,9 +43,19 @@ namespace Match3
         // Update is called once per frame
         void Update()
         {
-            currentLevel = m3ls.playingLevel;
+            if (levels[currentLevel].limitMoves == 0) //infinite moves if no limit is set
+            {
+                movesText.text = "\u221E"; //set text to infinite symbol
+            }
+            else //when limit is set
+            {
+                movesText.text = moveCounter.ToString(); //set text to move counter
 
-            movesText.text = moveCounter.ToString();
+                if(moveCounter < 1) //trigger game lost if out of moves
+                {
+                    display.DisplayDeathUI();
+                }
+            }
         }
 
         void DisplayCritera()
