@@ -322,7 +322,8 @@ namespace Match3
                 levelDifficulty = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text) - 1; //set playing level to button text
                 criteria.currentLevel = levelDifficulty;
 
-                criteria.moveCounter = criteria.levels[criteria.currentLevel].limitMoves; //set move counter as number of moves given 
+                criteria.moveCounter = criteria.levels[criteria.currentLevel].limitMoves; //set move counter as number of moves given
+                criteria.DisplayCritera(); //show tile criteria of level
 
                 Player.lives -= 1;
                 Debug.Log("used life");

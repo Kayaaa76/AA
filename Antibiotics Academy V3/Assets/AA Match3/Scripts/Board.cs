@@ -109,7 +109,11 @@ namespace Match3
                 findMatch.currMatches.Remove(allPieces[row, column]);
                 Destroy(allPieces[row, column]);                                 //destroy the piece
                 healthManager.CalcAddHealth(allPieces[row, column].tag);
+
+                //Debug.Log(allPieces[row, column].tag);
+
                 allPieces[row, column] = null;                                   //sets the destroyed piece's position in the array to null
+
             }
         }
 

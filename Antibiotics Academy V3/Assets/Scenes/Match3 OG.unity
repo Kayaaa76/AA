@@ -1602,250 +1602,255 @@ MonoBehaviour:
   tilesNeeded: {fileID: 743635305}
   tilesNeededSet: {fileID: 3227337964841293241, guid: 834044ea271bf324c8940702635bd7ae,
     type: 3}
+  sleepingTile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+  fruitTile: {fileID: 21300000, guid: 3210fbde00e6ab24480e25a9080fb6ed, type: 3}
+  vegetableTile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+  runningTile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+  waterTile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+  currentLevel: 0
   levels:
   - tilePrefabs: []
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 1
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 3
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
+      count: 8
+    limitMoves: 5
+  - tilePrefabs:
+    - tile: 0
+      count: 2
+    - tile: 0
+      count: 6
+    - tile: 0
+      count: 1
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
   - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
+    - tile: 0
       count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
+    - tile: 0
       count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+    - tile: 0
       count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
+    - tile: 0
       count: 8
     limitMoves: 0
-  - tilePrefabs:
-    - tile: {fileID: 21300000, guid: c3e7153cf494aac499dbe201ba71ed18, type: 3}
-      count: 2
-    - tile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
-      count: 6
-    - tile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
-      count: 1
-    - tile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
-      count: 8
-    limitMoves: 0
-  currentLevel: 0
 --- !u!1 &288645896
 GameObject:
   m_ObjectHideFlags: 0

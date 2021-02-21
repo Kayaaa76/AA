@@ -5,6 +5,15 @@ using UnityEngine.UI;
 
 namespace Match3
 {
+    public enum Tile
+    {
+        sleeping,
+        fruit,
+        vegetable,
+        running,
+        water
+    }
+
     [System.Serializable]
     public class Levels                                //wave class that defines the wave properties
     {
@@ -15,7 +24,7 @@ namespace Match3
     [System.Serializable]
     public class TilePrefabs                           //wave class that defines the wave properties
     {
-        public Sprite tile;
+        public Tile tile;
         public int count;
     }
 
@@ -26,18 +35,27 @@ namespace Match3
         public GameObject tilesNeeded;
         public GameObject tilesNeededSet;
 
+        public Sprite sleepingTile;
+        public Sprite fruitTile;
+        public Sprite vegetableTile;
+        public Sprite runningTile;
+        public Sprite waterTile;
+
+        //public int sleepingTileCounter;
+        //public int fruitTileCounter;
+        //public int vegetableTileCounter;
+        //public int runningTileCounter;
+        //public int waterTileCounter;
+
+        public int currentLevel;
         public Levels[] levels;
 
         DisplayEndUI display;
-
-        public int currentLevel;
 
         // Start is called before the first frame update
         void Start()
         {
             display = FindObjectOfType<DisplayEndUI>();
-
-            DisplayCritera();
         }
 
         // Update is called once per frame
@@ -58,13 +76,35 @@ namespace Match3
             }
         }
 
-        void DisplayCritera()
+        public void DisplayCritera()
         {
             for (int i = 0; i < levels[currentLevel].tilePrefabs.Length; i++)
             {
                 Instantiate(tilesNeededSet, tilesNeeded.transform.position, tilesNeeded.transform.rotation, tilesNeeded.transform);
 
-                tilesNeededSet.GetComponentInChildren<Image>().sprite = levels[currentLevel].tilePrefabs[i].tile;
+                switch (levels[currentLevel].tilePrefabs[i].tile)
+                {
+                    case Tile.sleeping:
+                        tilesNeededSet.GetComponentInChildren<Image>().sprite = sleepingTile;
+                        break;
+
+                    case Tile.fruit:
+                        tilesNeededSet.GetComponentInChildren<Image>().sprite = fruitTile;
+                        break;
+
+                    case Tile.vegetable:
+                        tilesNeededSet.GetComponentInChildren<Image>().sprite = vegetableTile;
+                        break;
+
+                    case Tile.running:
+                        tilesNeededSet.GetComponentInChildren<Image>().sprite = runningTile;
+                        break;
+
+                    case Tile.water:
+                        tilesNeededSet.GetComponentInChildren<Image>().sprite = waterTile;
+                        break;
+                }
+
                 tilesNeededSet.GetComponentInChildren<Text>().text = "x " + levels[currentLevel].tilePrefabs[i].count;
             }
 
