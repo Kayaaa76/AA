@@ -23,6 +23,7 @@ namespace Match3
         private FindMatch fm;
         public SpriteRenderer sr;
         public Sprite[] sprites;
+        Criteria criteria;
 
         public GameObject emojiState;
 
@@ -68,6 +69,7 @@ namespace Match3
             fm = FindObjectOfType<FindMatch>();
             display = FindObjectOfType<DisplayEndUI>();
             //nm = FindObjectOfType<NotificationManager>();
+            criteria = GameObject.Find("Criteria").GetComponent<Criteria>();
             currentHealth = min_neutralHealth;
             healthState = HealthStates.Sick;
             healthBar.SetHealth(min_neutralHealth);
@@ -103,7 +105,7 @@ namespace Match3
 
         private void CheckState()                              //function to do things according to the state of the health
         {
-            if (currentHealth > 100)                           //if currentHealth is greater than 100, it means that the player won
+            if (currentHealth > 100 && criteria.clearTiles == true)                           //if currentHealth is greater than 100 and tile criteria is cleared, it means that the player won
             {
                 display.DisplayWinUI();                        //displays the Win UI
                 if (m3levelselectscript.GetComponent<M3LevelSelect>().levelDifficulty + 1 == Player.m3unlockedlevels) //check if playing level is same as unlocked level
@@ -155,7 +157,7 @@ namespace Match3
                     StartCoroutine(Login.UpdateLives());
                 }
             }
-            else if (currentHealth < 1)                        //if currentHealth is lesser than 1, meaning 0, it means that the player lost
+            else if (currentHealth < 1 || (currentHealth > 100 && criteria.clearTiles == false)) //if currentHealth is lesser than 1, meaning 0, or tile criteria is not cleared when currentHealth is greater than 100, it means that the player lost
             {
                 display.DisplayDeathUI();                      //displays the Death UI
             }

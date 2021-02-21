@@ -13,7 +13,7 @@ public class ShowCoins : MonoBehaviour
     {
         text = this.GetComponent<Text>();
 
-        LayoutRebuilder.ForceRebuildLayoutImmediate(coinsDisplay.GetComponent<RectTransform>());
+        LayoutRebuilder.ForceRebuildLayoutImmediate(coinsDisplay.GetComponent<RectTransform>()); //rebuild layout to display properly
     }
 
     void Update()

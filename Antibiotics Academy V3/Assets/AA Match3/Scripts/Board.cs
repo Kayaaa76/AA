@@ -21,6 +21,7 @@ namespace Match3
         public GameObject[,] allPieces;
         private FindMatch findMatch;
         private HealthManager healthManager;
+        Criteria criteria;
 
         private AudioSource matchingAudio;
 
@@ -31,11 +32,15 @@ namespace Match3
             matchingAudio = GetComponent<AudioSource>();
 
             Time.timeScale = 0f;
+
             healthManager = FindObjectOfType<HealthManager>();
             findMatch = FindObjectOfType<FindMatch>();
+            criteria = GameObject.Find("Criteria").GetComponent<Criteria>();
+
             allPieces = new GameObject[width, height];
 
             posOffset = this.transform.position.x;
+
             SetUp();
         }
 
@@ -110,7 +115,27 @@ namespace Match3
                 Destroy(allPieces[row, column]);                                 //destroy the piece
                 healthManager.CalcAddHealth(allPieces[row, column].tag);
 
-                //Debug.Log(allPieces[row, column].tag);
+                //decreases respective counters when destroying piece
+                if(allPieces[row, column].tag == "Sleeping")
+                {
+                    criteria.sleepingTileCounter--;
+                }
+                else if (allPieces[row, column].tag == "Fruit")
+                {
+                    criteria.fruitTileCounter--;
+                }
+                else if (allPieces[row, column].tag == "Vegetable")
+                {
+                    criteria.vegetableTileCounter--;
+                }
+                else if (allPieces[row, column].tag == "Running")
+                {
+                    criteria.runningTileCounter--;
+                }
+                else if (allPieces[row, column].tag == "Water")
+                {
+                    criteria.waterTileCounter--;
+                }
 
                 allPieces[row, column] = null;                                   //sets the destroyed piece's position in the array to null
 
