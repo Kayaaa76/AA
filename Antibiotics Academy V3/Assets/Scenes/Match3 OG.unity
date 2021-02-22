@@ -1607,249 +1607,109 @@ MonoBehaviour:
   vegetableTile: {fileID: 21300000, guid: d219656c8ed732f46b034af94fcbf019, type: 3}
   runningTile: {fileID: 21300000, guid: 3ce3731ea5504bb4da6e33e99ad279d1, type: 3}
   waterTile: {fileID: 21300000, guid: 34368c59d37267041ae1d96331e6429c, type: 3}
+  sleepingTileCounter: 0
+  fruitTileCounter: 0
+  vegetableTileCounter: 0
+  runningTileCounter: 0
+  waterTileCounter: 0
+  clearTiles: 0
   currentLevel: 0
   levels:
   - tilePrefabs: []
     limitMoves: 0
+  - tilePrefabs: []
+    limitMoves: 50
   - tilePrefabs:
     - tile: 0
-      count: 2
+      count: 5
+    limitMoves: 0
+  - tilePrefabs:
+    - tile: 0
+      count: 5
+    limitMoves: 50
+  - tilePrefabs:
+    - tile: 0
+      count: 10
+    limitMoves: 50
+  - tilePrefabs:
     - tile: 1
-      count: 6
+      count: 10
+    - tile: 2
+      count: 10
+    limitMoves: 0
+  - tilePrefabs:
+    - tile: 1
+      count: 10
+    - tile: 2
+      count: 10
+    limitMoves: 50
+  - tilePrefabs:
+    - tile: 1
+      count: 10
+    - tile: 1
+      count: 10
+    limitMoves: 40
+  - tilePrefabs:
+    - tile: 1
+      count: 10
+    - tile: 2
+      count: 20
+    limitMoves: 40
+  - tilePrefabs:
+    - tile: 1
+      count: 20
+    - tile: 2
+      count: 20
+    limitMoves: 40
+  - tilePrefabs:
+    - tile: 4
+      count: 20
+    limitMoves: 40
+  - tilePrefabs:
+    - tile: 4
+      count: 20
+    limitMoves: 30
+  - tilePrefabs:
+    - tile: 4
+      count: 30
+    limitMoves: 30
+  - tilePrefabs:
+    - tile: 4
+      count: 0
+    limitMoves: 0
+  - tilePrefabs:
+    - tile: 4
+      count: 0
+    limitMoves: 0
+  - tilePrefabs:
     - tile: 3
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 5
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
+      count: 0
     limitMoves: 0
   - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
+    - tile: 3
+      count: 0
     limitMoves: 0
   - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
+    - tile: 3
+      count: 0
     limitMoves: 0
   - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
+    - tile: 3
+      count: 0
     limitMoves: 0
   - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
+    - tile: 3
+      count: 50
     limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
+  - tilePrefabs: []
     limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
+  - tilePrefabs: []
     limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
+  - tilePrefabs: []
     limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
+  - tilePrefabs: []
     limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 0
-      count: 2
-    - tile: 0
-      count: 6
-    - tile: 0
-      count: 1
-    - tile: 0
-      count: 8
+  - tilePrefabs: []
     limitMoves: 0
 --- !u!1 &288645896
 GameObject:

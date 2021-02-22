@@ -53,7 +53,7 @@ public class Quest : MonoBehaviour
             questIcon = doctorQuestIcon;
             iconPosition = dIconPos;
         }
-        else if (GameManager.doctorStage == 1 && GameManager.pharmacistStage == 0) //when players need to talk to the pharmacist
+        else if (GameManager.doctorStage == 1 && (GameManager.pharmacistStage == 0 || GameManager.pharmacistStage == 1)) //when players need to talk to the pharmacist
         {
             questIcon = pharmacistQuestIcon;
             iconPosition = pIconPos;
