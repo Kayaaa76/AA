@@ -83,6 +83,8 @@ public class Login : MonoBehaviour
         Debug.Log(wwwLogin.error);
         Debug.Log(wwwLogin.url);
 
+        LoginToken = wwwLogin.text;
+
         currentLogin = System.DateTime.Now;
 
         string path = Application.persistentDataPath + "/PlayerSave.json";

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System;
 
 public class QuizManager : MonoBehaviour
 {
@@ -36,6 +38,8 @@ public class QuizManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(GetQuestionAnswer());
+
         string[] data = questionsCSV.text.Split(new char[] { '\n' });     //a string array that stores the split items from the csv
 
         for (int i = 1; i < data.Length - 1; i++)                         //for loop that stores the data into its respective variables
@@ -176,5 +180,147 @@ public class QuizManager : MonoBehaviour
                 Application.Quit();
             }
         }
+    }
+
+    IEnumerator GetQuestionAnswer()
+    {
+        WWW wwwQuestionAnswer = new WWW("http://103.239.222.212/ALIVE2Service/api/game/AllQuestionAnswer");
+        yield return wwwQuestionAnswer;
+        Debug.Log(wwwQuestionAnswer.text);
+        Debug.Log(wwwQuestionAnswer.error);
+        Debug.Log(wwwQuestionAnswer.url);
+
+        File.WriteAllText(Application.persistentDataPath + "/AllQuestionAnswer.json", wwwQuestionAnswer.text);
+
+        string jsonString = File.ReadAllText(Application.persistentDataPath + "/AllQuestionAnswer.json");
+
+        QARoot qARoot = new QARoot();
+        qARoot = JsonUtility.FromJson<QARoot>("{\"qas\":" + jsonString + "}");
+
+        string preGameQuestionName = "Pre-Game Question ";
+        int x = 1;
+        foreach (QA qA in qARoot.qas)
+        {
+            if (qA.questionName == preGameQuestionName + 1)
+            {
+                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                QA tQA = new QA();
+                tQA.questionName = qA.questionName;
+                tQA.questionValue = qA.questionValue;
+                tQA.answers = qA.answers;
+                string tQAJson = JsonUtility.ToJson(tQA);
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 1 + ".json", tQAJson);
+
+            }
+            else if (qA.questionName == preGameQuestionName + 2)
+            {
+                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                QA tQA = new QA();
+                tQA.questionName = qA.questionName;
+                tQA.questionValue = qA.questionValue;
+                tQA.answers = qA.answers;
+                string tQAJson = JsonUtility.ToJson(tQA);
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 2 + ".json", tQAJson);
+            }
+            else if (qA.questionName == preGameQuestionName + 3)
+            {
+                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                QA tQA = new QA();
+                tQA.questionName = qA.questionName;
+                tQA.questionValue = qA.questionValue;
+                tQA.answers = qA.answers;
+                string tQAJson = JsonUtility.ToJson(tQA);
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 3 + ".json", tQAJson);
+            }
+            else if (qA.questionName == preGameQuestionName + 4)
+            {
+                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                QA tQA = new QA();
+                tQA.questionName = qA.questionName;
+                tQA.questionValue = qA.questionValue;
+                tQA.answers = qA.answers;
+                string tQAJson = JsonUtility.ToJson(tQA);
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 4 + ".json", tQAJson);
+            }
+            else if (qA.questionName == preGameQuestionName + 5)
+            {
+                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                QA tQA = new QA();
+                tQA.questionName = qA.questionName;
+                tQA.questionValue = qA.questionValue;
+                tQA.answers = qA.answers;
+                string tQAJson = JsonUtility.ToJson(tQA);
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 5 + ".json", tQAJson);
+            }
+            else if (qA.questionName == preGameQuestionName + 6)
+            {
+                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                QA tQA = new QA();
+                tQA.questionName = qA.questionName;
+                tQA.questionValue = qA.questionValue;
+                tQA.answers = qA.answers;
+                string tQAJson = JsonUtility.ToJson(tQA);
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 6 + ".json", tQAJson);
+            }
+            else if (qA.questionName == preGameQuestionName + 7)
+            {
+                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                QA tQA = new QA();
+                tQA.questionName = qA.questionName;
+                tQA.questionValue = qA.questionValue;
+                tQA.answers = qA.answers;
+                string tQAJson = JsonUtility.ToJson(tQA);
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 7 + ".json", tQAJson);
+            }
+            else if (qA.questionName == preGameQuestionName + 8)
+            {
+                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                QA tQA = new QA();
+                tQA.questionName = qA.questionName;
+                tQA.questionValue = qA.questionValue;
+                tQA.answers = qA.answers;
+                string tQAJson = JsonUtility.ToJson(tQA);
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 8 + ".json", tQAJson);
+            }
+            else if (qA.questionName == preGameQuestionName + 9)
+            {
+                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                QA tQA = new QA();
+                tQA.questionName = qA.questionName;
+                tQA.questionValue = qA.questionValue;
+                tQA.answers = qA.answers;
+                string tQAJson = JsonUtility.ToJson(tQA);
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 9 + ".json", tQAJson);
+            }
+            else if (qA.questionName == preGameQuestionName + 10)
+            {
+                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                QA tQA = new QA();
+                tQA.questionName = qA.questionName;
+                tQA.questionValue = qA.questionValue;
+                tQA.answers = qA.answers;
+                string tQAJson = JsonUtility.ToJson(tQA);
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 10 + ".json", tQAJson);
+            }
+        }
+    }
+
+    [Serializable]
+    public class QARoot
+    {
+        public QA[] qas;
+    }
+
+    [Serializable]
+    public class QA
+    {
+        public string gameCompetencyID;
+        public string questionID;
+        public string questionName;
+        public string questionValue;
+        public string questionFeedback;
+        public string questionDescription;
+        public string dateModified;
+        public string answers;
     }
 }
