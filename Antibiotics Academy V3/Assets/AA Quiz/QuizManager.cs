@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System;
+using SimpleJSON;
 
 public class QuizManager : MonoBehaviour
 {
@@ -207,10 +208,8 @@ public class QuizManager : MonoBehaviour
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
-                tQA.answers = qA.answers;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 1 + ".json", tQAJson);
-
             }
             else if (qA.questionName == preGameQuestionName + 2)
             {
@@ -218,7 +217,6 @@ public class QuizManager : MonoBehaviour
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
-                tQA.answers = qA.answers;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 2 + ".json", tQAJson);
             }
@@ -228,7 +226,6 @@ public class QuizManager : MonoBehaviour
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
-                tQA.answers = qA.answers;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 3 + ".json", tQAJson);
             }
@@ -238,7 +235,6 @@ public class QuizManager : MonoBehaviour
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
-                tQA.answers = qA.answers;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 4 + ".json", tQAJson);
             }
@@ -248,7 +244,6 @@ public class QuizManager : MonoBehaviour
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
-                tQA.answers = qA.answers;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 5 + ".json", tQAJson);
             }
@@ -258,7 +253,6 @@ public class QuizManager : MonoBehaviour
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
-                tQA.answers = qA.answers;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 6 + ".json", tQAJson);
             }
@@ -268,7 +262,6 @@ public class QuizManager : MonoBehaviour
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
-                tQA.answers = qA.answers;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 7 + ".json", tQAJson);
             }
@@ -278,7 +271,6 @@ public class QuizManager : MonoBehaviour
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
-                tQA.answers = qA.answers;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 8 + ".json", tQAJson);
             }
@@ -288,7 +280,6 @@ public class QuizManager : MonoBehaviour
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
-                tQA.answers = qA.answers;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 9 + ".json", tQAJson);
             }
@@ -298,7 +289,6 @@ public class QuizManager : MonoBehaviour
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
-                tQA.answers = qA.answers;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 10 + ".json", tQAJson);
             }
@@ -321,6 +311,35 @@ public class QuizManager : MonoBehaviour
         public string questionFeedback;
         public string questionDescription;
         public string dateModified;
-        public string answers;
+        public Answers[] answer;
+    }
+
+    [Serializable]
+    public class Answers
+    {
+        public AnswerA answerA;
+        public AnswerB answerB;
+    }
+
+    [Serializable]
+    public class AnswerA
+    {
+        public string answerId;
+        public string answerName;
+        public string answerValue;
+        public string isCorrect;
+        public string questionID;
+        public string question;
+    }
+
+    [Serializable]
+    public class AnswerB
+    {
+        public string answerId;
+        public string answerName;
+        public string answerValue;
+        public string isCorrect;
+        public string questionID;
+        public string question;
     }
 }
