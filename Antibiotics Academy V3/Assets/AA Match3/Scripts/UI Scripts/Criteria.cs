@@ -72,16 +72,20 @@ namespace Match3
         public Levels[] levels;
 
         DisplayEndUI display;
+        HealthManager hm;
 
         // Start is called before the first frame update
         void Start()
         {
             display = FindObjectOfType<DisplayEndUI>();
+            hm = FindObjectOfType<HealthManager>();
         }
 
         // Update is called once per frame
         void Update()
         {
+            updateTileCounter();
+
             if (levels[currentLevel].limitMoves == 0) //infinite moves if no limit is set
             {
                 movesText.text = "\u221E"; //set text to infinite symbol
@@ -90,13 +94,11 @@ namespace Match3
             {
                 movesText.text = moveCounter.ToString(); //set text to move counter
 
-                if(moveCounter < 1) //trigger game lost if out of moves
+                if(moveCounter < 1 && (clearTiles == false || hm.currentHealth < 100)) //trigger game lost if out of moves to clear criteria
                 {
                     display.DisplayDeathUI();
                 }
             }
-
-            updateTileCounter();
         }
 
         void updateTileCounter() //set respective text to respective tile counters
@@ -151,6 +153,11 @@ namespace Match3
                 clearTiles = false;
             }
             else clearTiles = true; //tile criteria is cleared
+
+            foreach(Transform criteriaSet in tilesNeeded.transform)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(criteriaSet.GetComponent<RectTransform>()); //rebuild layout to display properly
+            }
         }
 
         public void DisplayCritera()

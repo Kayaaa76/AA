@@ -1646,7 +1646,7 @@ MonoBehaviour:
   - tilePrefabs:
     - tile: 1
       count: 10
-    - tile: 1
+    - tile: 2
       count: 10
     limitMoves: 40
   - tilePrefabs:
@@ -1661,6 +1661,10 @@ MonoBehaviour:
     - tile: 2
       count: 20
     limitMoves: 40
+  - tilePrefabs:
+    - tile: 4
+      count: 20
+    limitMoves: 0
   - tilePrefabs:
     - tile: 4
       count: 20
@@ -1675,42 +1679,74 @@ MonoBehaviour:
     limitMoves: 30
   - tilePrefabs:
     - tile: 4
-      count: 0
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 4
-      count: 0
-    limitMoves: 0
+      count: 40
+    limitMoves: 30
   - tilePrefabs:
     - tile: 3
-      count: 0
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 3
-      count: 0
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 3
-      count: 0
-    limitMoves: 0
-  - tilePrefabs:
-    - tile: 3
-      count: 0
+      count: 50
     limitMoves: 0
   - tilePrefabs:
     - tile: 3
       count: 50
     limitMoves: 0
-  - tilePrefabs: []
+  - tilePrefabs:
+    - tile: 3
+      count: 50
+    limitMoves: 50
+  - tilePrefabs:
+    - tile: 3
+      count: 50
+    limitMoves: 40
+  - tilePrefabs:
+    - tile: 3
+      count: 50
+    limitMoves: 30
+  - tilePrefabs:
+    - tile: 0
+      count: 10
+    - tile: 1
+      count: 10
+    - tile: 2
+      count: 10
     limitMoves: 0
-  - tilePrefabs: []
-    limitMoves: 0
-  - tilePrefabs: []
-    limitMoves: 0
-  - tilePrefabs: []
-    limitMoves: 0
-  - tilePrefabs: []
-    limitMoves: 0
+  - tilePrefabs:
+    - tile: 0
+      count: 20
+    - tile: 4
+      count: 20
+    - tile: 3
+      count: 20
+    limitMoves: 50
+  - tilePrefabs:
+    - tile: 0
+      count: 20
+    - tile: 1
+      count: 20
+    - tile: 2
+      count: 20
+    - tile: 4
+      count: 20
+    limitMoves: 50
+  - tilePrefabs:
+    - tile: 1
+      count: 30
+    - tile: 2
+      count: 30
+    - tile: 4
+      count: 30
+    - tile: 3
+      count: 30
+    limitMoves: 50
+  - tilePrefabs:
+    - tile: 0
+      count: 40
+    - tile: 1
+      count: 40
+    - tile: 2
+      count: 40
+    - tile: 3
+      count: 40
+    limitMoves: 40
 --- !u!1 &288645896
 GameObject:
   m_ObjectHideFlags: 0

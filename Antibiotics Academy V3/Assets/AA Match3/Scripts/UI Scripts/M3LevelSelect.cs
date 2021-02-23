@@ -315,7 +315,7 @@ namespace Match3
 
         public void enterLevel()
         {
-            if (Player.lives > 1)
+            if (Player.lives < 1)
             {
                 hm.startedLevel = true;
 
