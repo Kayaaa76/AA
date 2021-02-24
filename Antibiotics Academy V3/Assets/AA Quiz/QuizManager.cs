@@ -209,6 +209,11 @@ public class QuizManager : MonoBehaviour
         int x = 1;
         foreach (QA qA in qARoot.qas)
         {
+            foreach (Answers answer in qA.answer)
+            {
+                Debug.Log(answer.answerName);
+            }
+
             if (qA.questionName == preGameQuestionName + 1)
             {
                 Debug.Log(qA.questionName + "\n" + qA.questionValue);
