@@ -211,6 +211,22 @@ public class QuizManager : MonoBehaviour
                 tQA.answer = qA.answer;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 1 + ".json", tQAJson);
+
+                JSONObject jSONObject = new JSONObject();
+                string tJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 1 + ".json");
+                jSONObject = (JSONObject)JSON.Parse(tJsonString);
+                jSONObject.Remove("gameCompetencyID");
+                jSONObject.Remove("questionID");
+                jSONObject.Remove("questionName");
+                jSONObject.Remove("questionValue");
+                jSONObject.Remove("questionFeedback");
+                jSONObject.Remove("questionDescription");
+                jSONObject.Remove("dateModified");
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 1 + " Answer" + ".json", jSONObject.ToString());
+
+                JSONArray jSONArray = new JSONArray();
+                string xJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 1 + " Answer" + ".json");
+                jSONArray = (JSONArray)JSON.Parse(xJsonString);
             }
             else if (qA.questionName == preGameQuestionName + 2)
             {
@@ -321,7 +337,7 @@ public class QuizManager : MonoBehaviour
         public string questionFeedback;
         public string questionDescription;
         public string dateModified;
-        public Answers[] answer = new Answers[2];
+        public Answers[] answer;
     }
 
     [Serializable]
@@ -329,7 +345,7 @@ public class QuizManager : MonoBehaviour
     {
         //public AnswerA answerA;
         //public AnswerB answerB;
-        public string answerId;
+        public string answerID;
         public string answerName;
         public string answerValue;
         public string isCorrect;
