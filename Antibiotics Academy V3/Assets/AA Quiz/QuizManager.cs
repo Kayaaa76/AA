@@ -51,6 +51,13 @@ public class QuizManager : MonoBehaviour
             question.questions = row[1];                                  //set the questions from the string in row 1  
             question.answer = row[2].Trim();                              //store the answer from the string in row 2
 
+            string fileName = File.ReadAllText(Application.persistentDataPath + "/Pre-Game Question " + i + ".json");
+
+            JSONObject jSONObject = new JSONObject();
+            jSONObject = (JSONObject)JSON.Parse(fileName);
+
+            question.questions = jSONObject["questionValue"];
+
             qns.Add(question);                                            //add the question instance to the questions list
         }
 
@@ -223,10 +230,6 @@ public class QuizManager : MonoBehaviour
                 jSONObject.Remove("questionDescription");
                 jSONObject.Remove("dateModified");
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 1 + " Answer" + ".json", jSONObject.ToString());
-
-                JSONArray jSONArray = new JSONArray();
-                string xJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 1 + " Answer" + ".json");
-                jSONArray = (JSONArray)JSON.Parse(xJsonString);
             }
             else if (qA.questionName == preGameQuestionName + 2)
             {
@@ -237,6 +240,18 @@ public class QuizManager : MonoBehaviour
                 tQA.answer = qA.answer;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 2 + ".json", tQAJson);
+
+                JSONObject jSONObject = new JSONObject();
+                string tJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 2 + ".json");
+                jSONObject = (JSONObject)JSON.Parse(tJsonString);
+                jSONObject.Remove("gameCompetencyID");
+                jSONObject.Remove("questionID");
+                jSONObject.Remove("questionName");
+                jSONObject.Remove("questionValue");
+                jSONObject.Remove("questionFeedback");
+                jSONObject.Remove("questionDescription");
+                jSONObject.Remove("dateModified");
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 2 + " Answer" + ".json", jSONObject.ToString());
             }
             else if (qA.questionName == preGameQuestionName + 3)
             {
@@ -247,6 +262,18 @@ public class QuizManager : MonoBehaviour
                 tQA.answer = qA.answer;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 3 + ".json", tQAJson);
+
+                JSONObject jSONObject = new JSONObject();
+                string tJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 3 + ".json");
+                jSONObject = (JSONObject)JSON.Parse(tJsonString);
+                jSONObject.Remove("gameCompetencyID");
+                jSONObject.Remove("questionID");
+                jSONObject.Remove("questionName");
+                jSONObject.Remove("questionValue");
+                jSONObject.Remove("questionFeedback");
+                jSONObject.Remove("questionDescription");
+                jSONObject.Remove("dateModified");
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 3 + " Answer" + ".json", jSONObject.ToString());
             }
             else if (qA.questionName == preGameQuestionName + 4)
             {
@@ -257,6 +284,18 @@ public class QuizManager : MonoBehaviour
                 tQA.answer = qA.answer;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 4 + ".json", tQAJson);
+
+                JSONObject jSONObject = new JSONObject();
+                string tJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 4 + ".json");
+                jSONObject = (JSONObject)JSON.Parse(tJsonString);
+                jSONObject.Remove("gameCompetencyID");
+                jSONObject.Remove("questionID");
+                jSONObject.Remove("questionName");
+                jSONObject.Remove("questionValue");
+                jSONObject.Remove("questionFeedback");
+                jSONObject.Remove("questionDescription");
+                jSONObject.Remove("dateModified");
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 4 + " Answer" + ".json", jSONObject.ToString());
             }
             else if (qA.questionName == preGameQuestionName + 5)
             {
@@ -267,6 +306,18 @@ public class QuizManager : MonoBehaviour
                 tQA.answer = qA.answer;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 5 + ".json", tQAJson);
+
+                JSONObject jSONObject = new JSONObject();
+                string tJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 5 + ".json");
+                jSONObject = (JSONObject)JSON.Parse(tJsonString);
+                jSONObject.Remove("gameCompetencyID");
+                jSONObject.Remove("questionID");
+                jSONObject.Remove("questionName");
+                jSONObject.Remove("questionValue");
+                jSONObject.Remove("questionFeedback");
+                jSONObject.Remove("questionDescription");
+                jSONObject.Remove("dateModified");
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 5 + " Answer" + ".json", jSONObject.ToString());
             }
             else if (qA.questionName == preGameQuestionName + 6)
             {
@@ -277,6 +328,18 @@ public class QuizManager : MonoBehaviour
                 tQA.answer = qA.answer;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 6 + ".json", tQAJson);
+
+                JSONObject jSONObject = new JSONObject();
+                string tJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 6 + ".json");
+                jSONObject = (JSONObject)JSON.Parse(tJsonString);
+                jSONObject.Remove("gameCompetencyID");
+                jSONObject.Remove("questionID");
+                jSONObject.Remove("questionName");
+                jSONObject.Remove("questionValue");
+                jSONObject.Remove("questionFeedback");
+                jSONObject.Remove("questionDescription");
+                jSONObject.Remove("dateModified");
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 6 + " Answer" + ".json", jSONObject.ToString());
             }
             else if (qA.questionName == preGameQuestionName + 7)
             {
@@ -287,6 +350,18 @@ public class QuizManager : MonoBehaviour
                 tQA.answer = qA.answer;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 7 + ".json", tQAJson);
+
+                JSONObject jSONObject = new JSONObject();
+                string tJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 7 + ".json");
+                jSONObject = (JSONObject)JSON.Parse(tJsonString);
+                jSONObject.Remove("gameCompetencyID");
+                jSONObject.Remove("questionID");
+                jSONObject.Remove("questionName");
+                jSONObject.Remove("questionValue");
+                jSONObject.Remove("questionFeedback");
+                jSONObject.Remove("questionDescription");
+                jSONObject.Remove("dateModified");
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 7 + " Answer" + ".json", jSONObject.ToString());
             }
             else if (qA.questionName == preGameQuestionName + 8)
             {
@@ -297,6 +372,18 @@ public class QuizManager : MonoBehaviour
                 tQA.answer = qA.answer;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 8 + ".json", tQAJson);
+
+                JSONObject jSONObject = new JSONObject();
+                string tJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 8 + ".json");
+                jSONObject = (JSONObject)JSON.Parse(tJsonString);
+                jSONObject.Remove("gameCompetencyID");
+                jSONObject.Remove("questionID");
+                jSONObject.Remove("questionName");
+                jSONObject.Remove("questionValue");
+                jSONObject.Remove("questionFeedback");
+                jSONObject.Remove("questionDescription");
+                jSONObject.Remove("dateModified");
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 8 + " Answer" + ".json", jSONObject.ToString());
             }
             else if (qA.questionName == preGameQuestionName + 9)
             {
@@ -307,6 +394,18 @@ public class QuizManager : MonoBehaviour
                 tQA.answer = qA.answer;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 9 + ".json", tQAJson);
+
+                JSONObject jSONObject = new JSONObject();
+                string tJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 9 + ".json");
+                jSONObject = (JSONObject)JSON.Parse(tJsonString);
+                jSONObject.Remove("gameCompetencyID");
+                jSONObject.Remove("questionID");
+                jSONObject.Remove("questionName");
+                jSONObject.Remove("questionValue");
+                jSONObject.Remove("questionFeedback");
+                jSONObject.Remove("questionDescription");
+                jSONObject.Remove("dateModified");
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 9 + " Answer" + ".json", jSONObject.ToString());
             }
             else if (qA.questionName == preGameQuestionName + 10)
             {
@@ -317,6 +416,18 @@ public class QuizManager : MonoBehaviour
                 tQA.answer = qA.answer;
                 string tQAJson = JsonUtility.ToJson(tQA);
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 10 + ".json", tQAJson);
+
+                JSONObject jSONObject = new JSONObject();
+                string tJsonString = File.ReadAllText(Application.persistentDataPath + "/" + preGameQuestionName + 10 + ".json");
+                jSONObject = (JSONObject)JSON.Parse(tJsonString);
+                jSONObject.Remove("gameCompetencyID");
+                jSONObject.Remove("questionID");
+                jSONObject.Remove("questionName");
+                jSONObject.Remove("questionValue");
+                jSONObject.Remove("questionFeedback");
+                jSONObject.Remove("questionDescription");
+                jSONObject.Remove("dateModified");
+                File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + 10 + " Answer" + ".json", jSONObject.ToString());
             }
         }
     }
