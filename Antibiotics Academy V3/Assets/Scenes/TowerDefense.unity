@@ -12055,7 +12055,6 @@ GameObject:
   - component: {fileID: 1651875604}
   - component: {fileID: 1651875603}
   - component: {fileID: 1651875602}
-  - component: {fileID: 1651875605}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -12126,8 +12125,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1651875605}
-        m_MethodName: TriggerQuitLost
+      - m_Target: {fileID: 1266700656}
+        m_MethodName: TriggerQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12173,18 +12172,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651875600}
   m_CullTransparentMesh: 0
---- !u!114 &1651875605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651875600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a15b8231b5bdb4428a3f97a5dafe1e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1694075791
 GameObject:
   m_ObjectHideFlags: 0

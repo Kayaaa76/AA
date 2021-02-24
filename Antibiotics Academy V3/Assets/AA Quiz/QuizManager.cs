@@ -211,7 +211,7 @@ public class QuizManager : MonoBehaviour
         {
             foreach (Answers answer in qA.answer)
             {
-                Debug.Log(answer.answerName);
+                Debug.Log(answer.answerName + " -- value: " + answer.answerValue + " | iscorrect: " + answer.isCorrect);
             }
 
             if (qA.questionName == preGameQuestionName + 1)

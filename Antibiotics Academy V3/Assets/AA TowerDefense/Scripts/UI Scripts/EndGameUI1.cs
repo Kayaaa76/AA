@@ -12,7 +12,7 @@ namespace TowerDefense
 
         static bool next;
         bool levels;
-        bool restarted;
+        static bool restarted;
 
         GameObject StartUI;
         GameObject LevelSelectUI;
@@ -26,8 +26,9 @@ namespace TowerDefense
 
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            if (levels == true)
+            if (levels == true) //to display levels
             {
+                //disable start menu
                 StartUI = GameObject.Find("StartUI");
                 if (StartUI != null)
                 {
@@ -37,14 +38,16 @@ namespace TowerDefense
                 //levels = false;
             }
 
-            if(next == true)
+            if(next == true || restarted == true) //to directly display game (when starting next level or restarting)
             {
+                //disable start menu
                 StartUI = GameObject.Find("StartUI");
                 if (StartUI != null)
                 {
                     StartUI.SetActive(false);
                 }
 
+                //disable level select menu
                 LevelSelectUI = GameObject.Find("Tower Defense Level Select");
                 if (LevelSelectUI != null)
                 {
@@ -57,11 +60,18 @@ namespace TowerDefense
         {
             gMB = GameObject.Find("GameManager").GetComponent<GameManagerBehavior>();
             
-            if(next == true)
+            if(next == true) //if starting next level
             {
-                TDLevelSelect.levelDifficulty += 1;
-                gMB.Wave = TDLevelSelect.levelDifficulty;
+                TDLevelSelect.levelDifficulty += 1; //increase level by 1
+                gMB.Wave = TDLevelSelect.levelDifficulty; //set as increased level
                 next = false;
+                Time.timeScale = 1f;
+            }
+            
+            if(restarted == true) //if restarting level
+            {
+                gMB.Wave = TDLevelSelect.levelDifficulty; //set as original level
+                restarted = false;
                 Time.timeScale = 1f;
             }
         }
@@ -84,9 +94,17 @@ namespace TowerDefense
             StartCoroutine(Login.UpdateCoins());
             StartCoroutine(Login.UpdateLives());
 
-            // back to hub
-            GameManager.surgeonStage = 3;
-            GameManager.npclawyerStage = 1;
+            if (Player.tdunlockedlevels < 2) //when players have not won level 1 of tower defense
+            {
+                GameManager.surgeonStage = 0; //reset stage progress
+            }
+            else if (GameManager.npclawyerStage == 0) //update stage progress (one-time trigger upon leaving minigame for the first time)
+            {
+                GameManager.surgeonStage = 3;
+                GameManager.npclawyerStage = 1;
+            }
+
+            SceneManager.LoadScene(13); // back to main
 
             //if (ThemeSelectScreen.IsYJ == true)
             //{
@@ -104,30 +122,17 @@ namespace TowerDefense
             //{
             //    SceneManager.LoadScene(13);
             //}
-            coinsChange = true;
-
-
-            Player.coins += 50;
-            Debug.Log("You got 50 coins for winning this game!");
-            StartCoroutine(Login.UpdateCoins());
+            //coinsChange = true;
+            //Player.coins += 50;
+            //Debug.Log("You got 50 coins for winning this game!");
+            //StartCoroutine(Login.UpdateCoins());
             Player.Save();
         }
 
-        public void TriggerQuitLost()
+        public void TriggerRestart()
         {
-            if (ThemeSelectScreen.IsYJ == true)
-            {
-                SceneManager.LoadScene(7); // back to main
-            }
-            else if (ThemeSelectScreen.IsClassic == true)
-            {
-                SceneManager.LoadScene(13); // back to main
-            }
-            else if (ThemeSelectScreen.IsTrixy == true)
-            {
-                SceneManager.LoadScene(16); // back to main
-            }
-            GameManager.surgeonStage = 0;
+            restarted = true;
+            SceneManager.LoadScene(9); // restart tower defense game
         }
 
         IEnumerator PostCoinAcitivty()
