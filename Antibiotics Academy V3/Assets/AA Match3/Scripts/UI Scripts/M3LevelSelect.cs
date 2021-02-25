@@ -53,7 +53,7 @@ namespace Match3
         Button[] totalLevels;
 
         public int playableLevels;                                                              //number of levels unlocked
-        public int levelDifficulty;                                                                //level currently playing
+        public static int levelDifficulty;                                                                //level currently playing
 
         HealthManager hm;
         NotificationManager nm;
@@ -315,7 +315,7 @@ namespace Match3
 
         public void enterLevel()
         {
-            if (Player.lives > 1)
+            if (Player.lives < 1)
             {
                 hm.startedLevel = true;
 

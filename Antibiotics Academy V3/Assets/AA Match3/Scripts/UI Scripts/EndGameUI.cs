@@ -10,9 +10,14 @@ namespace Match3
         static bool sceneChange;
         static bool ready;
 
-        bool restarted;
+        static bool next;
+        bool levels;
+        static bool restarted;
 
         GameObject StartUI;
+        GameObject LevelSelectUI;
+
+        Criteria criteria;
 
         void OnEnable()
         {
@@ -21,20 +26,74 @@ namespace Match3
 
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            if (restarted == true)
+            if (levels == true) //to display levels
             {
+                //disable start menu
                 StartUI = GameObject.Find("StartUI");
-                //Debug.Log(StartUI);
                 if (StartUI != null)
                 {
                     StartUI.SetActive(false);
-                    restarted = false;
+                }
+
+                //levels = false;
+            }
+
+            if (next == true || restarted == true) //to directly display game (when starting next level or restarting)
+            {
+                //disable start menu
+                StartUI = GameObject.Find("StartUI");
+                if (StartUI != null)
+                {
+                    StartUI.SetActive(false);
+                }
+
+                //disable level select menu
+                LevelSelectUI = GameObject.Find("Match 3 Level Select");
+                if (LevelSelectUI != null)
+                {
+                    LevelSelectUI.SetActive(false);
                 }
                 //Debug.Log("OnSceneLoaded: " + scene.name);
             }
         }
 
-        public void TriggerRestart()  //function to restart the game
+        void Start()
+        {
+            criteria = GameObject.Find("Criteria").GetComponent<Criteria>();
+
+            if (next == true) //if starting next level
+            {
+                M3LevelSelect.levelDifficulty += 1; //increase level by 1
+                criteria.currentLevel = M3LevelSelect.levelDifficulty; //set as increased level
+
+                criteria.moveCounter = criteria.levels[criteria.currentLevel].limitMoves; //set move counter as number of moves given
+                criteria.DisplayCritera(); //show tile criteria of level
+
+                next = false;
+                Time.timeScale = 1f;
+            }
+
+            if (restarted == true) //if restarting level
+            {
+                criteria.currentLevel = M3LevelSelect.levelDifficulty; //set as original level
+                restarted = false;
+                Time.timeScale = 1f;
+            }
+        }
+
+        public void TriggerNext() // function to go to next level
+        {
+            next = true;
+            SceneManager.LoadScene(14); // macth 3 scene
+        }
+
+        public void TriggerLevels() // function to go to levels menu
+        {
+            levels = true;
+            SceneManager.LoadScene(14); // match 3 scene
+        }
+
+        public void TriggerRestart()  //function to restart match 3
         {
             //if (ThemeSelectScreen.IsClassic == true)
             //{
@@ -50,19 +109,21 @@ namespace Match3
             //}
 
             restarted = true;
-
             SceneManager.LoadScene(14); //match 3 scene
         }
 
-        public void TriggerQuit() //function to quit the game
+        public void TriggerQuit() //function to quit match 3
         {
-            GameManager.pharmacistStage = 2;
-
-            //GameManager.receptionistStage = 2;
-            if (GameManager.receptionistStage != 3)
+            if (Player.m3unlockedlevels < 2) //when players have not won level 1 of match 3
+            {
+                GameManager.surgeonStage = 0; //reset stage progress
+            }
+            else if (GameManager.receptionistStage == 1) //update stage progress (one-time trigger upon leaving minigame for the first time)
             {
                 GameManager.receptionistStage = 2;
+                GameManager.pharmacistStage = 2;
             }
+            
 
             //if (ThemeSelectScreen.IsClassic == true)
             //{

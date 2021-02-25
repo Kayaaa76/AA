@@ -38,7 +38,7 @@ namespace TowerDefense
                 //levels = false;
             }
 
-            if(next == true || restarted == true) //to directly display game (when starting next level or restarting)
+            if (next == true || restarted == true) //to directly display game (when starting next level or restarting)
             {
                 //disable start menu
                 StartUI = GameObject.Find("StartUI");
@@ -76,19 +76,19 @@ namespace TowerDefense
             }
         }
 
-        public void TriggerNext()
+        public void TriggerNext() // function to go to next level
         {
             next = true;
-            SceneManager.LoadScene(9); // restart tower defense game
+            SceneManager.LoadScene(9); // tower defense scene
         }
 
-        public void TriggerLevels()
+        public void TriggerLevels() // function to go to levels menu
         {
             levels = true;
-            SceneManager.LoadScene(9); // restart tower defense game
+            SceneManager.LoadScene(9); // tower defense scene
         }
 
-        public void TriggerQuit() // win tower defense
+        public void TriggerQuit() // function to quit tower defense
         {
             Player.Save();
             StartCoroutine(Login.UpdateCoins());
@@ -104,7 +104,8 @@ namespace TowerDefense
                 GameManager.npclawyerStage = 1;
             }
 
-            SceneManager.LoadScene(13); // back to main
+            sceneChange = true;
+            //SceneManager.LoadScene(13); // back to main
 
             //if (ThemeSelectScreen.IsYJ == true)
             //{
@@ -132,7 +133,7 @@ namespace TowerDefense
         public void TriggerRestart()
         {
             restarted = true;
-            SceneManager.LoadScene(9); // restart tower defense game
+            SceneManager.LoadScene(9); // tower defense scene
         }
 
         IEnumerator PostCoinAcitivty()
