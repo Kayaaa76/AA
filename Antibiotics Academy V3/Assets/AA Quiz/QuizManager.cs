@@ -51,17 +51,34 @@ public class QuizManager : MonoBehaviour
             question.questions = row[1];                                  //set the questions from the string in row 1  
             question.answer = row[2].Trim();                              //store the answer from the string in row 2
 
-            string fileName = File.ReadAllText(Application.persistentDataPath + "/Pre-Game Question " + i + ".json");
-            string tFileName = File.ReadAllText(Application.persistentDataPath + "/Pre-Game Question " + i + " Answer" + ".json");
+            if (questionsCSV.name == "PreQuestions")
+            {
+                string fileName = File.ReadAllText(Application.persistentDataPath + "/Pre-Game Question " + i + ".json");
+                string tFileName = File.ReadAllText(Application.persistentDataPath + "/Pre-Game Question " + i + " Answer" + ".json");
 
-            JSONObject jSONObject = new JSONObject();
-            jSONObject = (JSONObject)JSON.Parse(fileName);
+                JSONObject jSONObject = new JSONObject();
+                jSONObject = (JSONObject)JSON.Parse(fileName);
 
-            JSONObject tJSONObject = new JSONObject();
-            tJSONObject = (JSONObject)JSON.Parse(tFileName);
+                JSONObject tJSONObject = new JSONObject();
+                tJSONObject = (JSONObject)JSON.Parse(tFileName);
 
-            question.questions = jSONObject["questionValue"];
-            question.answer = tJSONObject["answer"];
+                question.questions = jSONObject["questionValue"];
+                question.answer = tJSONObject["answer"];
+            }
+            if (questionsCSV.name == "PostQuestions")
+            {
+                string fileName = File.ReadAllText(Application.persistentDataPath + "/Post-Game Question " + i + ".json");
+                string tFileName = File.ReadAllText(Application.persistentDataPath + "/Post-Game Question " + i + " Answer" + ".json");
+
+                JSONObject jSONObject = new JSONObject();
+                jSONObject = (JSONObject)JSON.Parse(fileName);
+
+                JSONObject tJSONObject = new JSONObject();
+                tJSONObject = (JSONObject)JSON.Parse(tFileName);
+
+                question.questions = jSONObject["questionValue"];
+                question.answer = tJSONObject["answer"];
+            }
 
             qns.Add(question);                                            //add the question instance to the questions list
         }
@@ -214,6 +231,7 @@ public class QuizManager : MonoBehaviour
         qARoot = JsonUtility.FromJson<QARoot>("{\"qas\":" + jsonString + "}");
 
         string preGameQuestionName = "Pre-Game Question ";
+        string postGameQuestionName = "Post-Game Question ";
         int x = 1;
         foreach (QA qA in qARoot.qas)
         {
@@ -228,9 +246,24 @@ public class QuizManager : MonoBehaviour
                 File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + x + ".json", tQAJson);
             }
 
+            void SavePostGameQuestion()
+            {
+                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                QA tQA = new QA();
+                tQA.questionName = qA.questionName;
+                tQA.questionValue = qA.questionValue;
+                tQA.answer = qA.answer;
+                string tQAJson = JsonUtility.ToJson(tQA);
+                File.WriteAllText(Application.persistentDataPath + "/" + postGameQuestionName + x + ".json", tQAJson);
+            }
+
             foreach (Answers answer in qA.answer)
             {
                 if (answer.answerName.Contains("Pre-Game Q"))
+                {
+                    Debug.Log(answer.answerName + " -- value: " + answer.answerValue + " | iscorrect: " + answer.isCorrect);
+                }
+                else if(answer.answerName.Contains("Post-Game Q"))
                 {
                     Debug.Log(answer.answerName + " -- value: " + answer.answerValue + " | iscorrect: " + answer.isCorrect);
                 }
@@ -251,6 +284,25 @@ public class QuizManager : MonoBehaviour
                     string answerJson = JsonUtility.ToJson(tAnswers);
                     File.WriteAllText(Application.persistentDataPath + "/" + preGameQuestionName + x + " Answer" + ".json", answerJson);
                 }
+
+                void SavePostGameAnswer()
+                {
+                    Answers tAnswers = new Answers();
+                    tAnswers.answerName = answer.answerName;
+                    tAnswers.answerValue = answer.answerValue;
+                    tAnswers.isCorrect = answer.isCorrect;
+                    if (tAnswers.isCorrect == "true")
+                    {
+                        tAnswers.answer = "TRUE";
+                    }
+                    else if (tAnswers.isCorrect == "false")
+                    {
+                        tAnswers.answer = "FALSE";
+                    }
+                    string answerJson = JsonUtility.ToJson(tAnswers);
+                    File.WriteAllText(Application.persistentDataPath + "/" + postGameQuestionName + x + " Answer" + ".json", answerJson);
+                }
+
                 if(answer.answerName == "Pre-Game Q1 A1")
                 {
                     x = 1;
@@ -300,6 +352,56 @@ public class QuizManager : MonoBehaviour
                 {
                     x = 10;
                     SavePreGameAnswer();
+                }
+                else if (answer.answerName == "Post-Game Q1 A1")
+                {
+                    x = 1;
+                    SavePostGameAnswer();
+                }
+                else if (answer.answerName == "Post-Game Q2 A1")
+                {
+                    x = 2;
+                    SavePostGameAnswer();
+                }
+                else if (answer.answerName == "Post-Game Q3 A1")
+                {
+                    x = 3;
+                    SavePostGameAnswer();
+                }
+                else if (answer.answerName == "Post-Game Q4 A1")
+                {
+                    x = 4;
+                    SavePostGameAnswer();
+                }
+                else if (answer.answerName == "Post-Game Q5 A1")
+                {
+                    x = 5;
+                    SavePostGameAnswer();
+                }
+                else if (answer.answerName == "Post-Game Q6 A1")
+                {
+                    x = 6;
+                    SavePostGameAnswer();
+                }
+                else if (answer.answerName == "Post-Game Q7 A1")
+                {
+                    x = 7;
+                    SavePostGameAnswer();
+                }
+                else if (answer.answerName == "Post-Game Q8 A1")
+                {
+                    x = 8;
+                    SavePostGameAnswer();
+                }
+                else if (answer.answerName == "Post-Game Q9 A1")
+                {
+                    x = 9;
+                    SavePostGameAnswer();
+                }
+                else if (answer.answerName == "Post-Game Q10 A1")
+                {
+                    x = 10;
+                    SavePostGameAnswer();
                 }
             }
 
@@ -352,6 +454,57 @@ public class QuizManager : MonoBehaviour
             {
                 x = 10;
                 SavePreGameQuestion();
+            }
+
+            else if (qA.questionName == postGameQuestionName + 1)
+            {
+                x = 1;
+                SavePostGameQuestion();
+            }
+            else if (qA.questionName == postGameQuestionName + 2)
+            {
+                x = 2;
+                SavePostGameQuestion();
+            }
+            else if (qA.questionName == postGameQuestionName + 3)
+            {
+                x = 3;
+                SavePostGameQuestion();
+            }
+            else if (qA.questionName == postGameQuestionName + 4)
+            {
+                x = 4;
+                SavePostGameQuestion();
+            }
+            else if (qA.questionName == postGameQuestionName + 5)
+            {
+                x = 5;
+                SavePostGameQuestion();
+            }
+            else if (qA.questionName == postGameQuestionName + 6)
+            {
+                x = 6;
+                SavePostGameQuestion();
+            }
+            else if (qA.questionName == postGameQuestionName + 7)
+            {
+                x = 7;
+                SavePostGameQuestion();
+            }
+            else if (qA.questionName == postGameQuestionName + 8)
+            {
+                x = 8;
+                SavePostGameQuestion();
+            }
+            else if (qA.questionName == postGameQuestionName + 9)
+            {
+                x = 9;
+                SavePostGameQuestion();
+            }
+            else if (qA.questionName == postGameQuestionName + 10)
+            {
+                x = 10;
+                SavePostGameQuestion();
             }
         }
     }
