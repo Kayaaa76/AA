@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    bool lifeDeducted = false;
+    //bool lifeDeducted = false;
 
     public Transform hospitalSpawn; // place where the player spawns after walking into the hospital
 
@@ -64,6 +64,8 @@ public class GameManager : MonoBehaviour
     public GameObject upBtn; // up arrow button for movement of character
     public GameObject downBtn; // down arrow button for movement of character
 
+    static bool enterMinigame = false;
+
     public static System.DateTime DateTime;
     private void Awake()
     {
@@ -105,7 +107,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(PostLifeActivity());
+        //StartCoroutine(PostLifeActivity());
+        if(enterMinigame == true)
+        {
+            StartCoroutine(PostGameLevelActivity());
+        }
 
         checkObj(); // function to check for the npc that the player clicks
 
@@ -248,6 +254,12 @@ public class GameManager : MonoBehaviour
             //test.Load(); // trigger match 3 game
 
             Player.dateStartM3 = System.DateTime.Now;
+            enterMinigame = true;
+
+            Player.Save();
+            StartCoroutine(Login.UpdateLives());
+            StartCoroutine(Login.UpdateCoins());
+
             SceneManager.LoadScene(14); //match 3 scene
         }
         if (pharmacistStage == 2 && receptionistStage == 2) // if player wins match 3 game
@@ -380,7 +392,7 @@ public class GameManager : MonoBehaviour
 
         if (npclawyerStage == 2 && dm.spawned == false && Player.lives > 0) // if lawyer finished dialogue
         {
-            lifeDeducted = true;
+            //lifeDeducted = true;
 
             if (Player.dateStartRunner == DateTime)
             {
@@ -391,8 +403,9 @@ public class GameManager : MonoBehaviour
 
             Player.runlocked = true; //set runner game to be unlocked in data
 
-            Player.lives -= 1;
-            StartCoroutine(Login.UpdateLives());
+            //Player.lives -= 1;
+            //StartCoroutine(Login.UpdateLives());
+            enterMinigame = true;
 
             Player.Save();
             StartCoroutine(Login.UpdateLives());
@@ -407,7 +420,7 @@ public class GameManager : MonoBehaviour
     {
         if (Player.lives > 0)
         {
-            lifeDeducted = true;
+            //lifeDeducted = true;
             surgeonStage = 2;
             currentPosition = player.transform.position;
             sceneCounter = 2;
@@ -417,13 +430,9 @@ public class GameManager : MonoBehaviour
                 Player.dateStartTD = System.DateTime.Now;
             }
 
-            if (Player.tdunlockedlevels < 1) //set starting level to 1
-            {
-                Player.tdunlockedlevels = 1;
-            }
-
-            Player.lives -= 1;
-            StartCoroutine(Login.UpdateLives());
+            //Player.lives -= 1;
+            //StartCoroutine(Login.UpdateLives());
+            enterMinigame = true;
 
             Player.Save();
             StartCoroutine(Login.UpdateLives());
@@ -462,25 +471,37 @@ public class GameManager : MonoBehaviour
         Application.Quit(); // quit the game instantly
     }
 
-    IEnumerator PostLifeActivity()
-    {
-        if (lifeDeducted == true)
-        {
-            WWWForm formPostLifeActivity = new WWWForm();
-            WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
-            yield return wwwPostLifeActivity;
-            Debug.Log(wwwPostLifeActivity.text);
-            Debug.Log(wwwPostLifeActivity.error);
-            Debug.Log(wwwPostLifeActivity.url);
-            lifeDeducted = false;
+    //IEnumerator PostLifeActivity()
+    //{
+    //    if (lifeDeducted == true)
+    //    {
+    //        WWWForm formPostLifeActivity = new WWWForm();
+    //        WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
+    //        yield return wwwPostLifeActivity;
+    //        Debug.Log(wwwPostLifeActivity.text);
+    //        Debug.Log(wwwPostLifeActivity.error);
+    //        Debug.Log(wwwPostLifeActivity.url);
+    //        lifeDeducted = false;
 
-            WWWForm formPostGameLevelActivity = new WWWForm();
-            WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
-            yield return wwwPostGameLevelActivity;
-            Debug.Log(wwwPostGameLevelActivity.text);
-            Debug.Log(wwwPostGameLevelActivity.error);
-            Debug.Log(wwwPostGameLevelActivity.url);
-        }
+    //        WWWForm formPostGameLevelActivity = new WWWForm();
+    //        WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
+    //        yield return wwwPostGameLevelActivity;
+    //        Debug.Log(wwwPostGameLevelActivity.text);
+    //        Debug.Log(wwwPostGameLevelActivity.error);
+    //        Debug.Log(wwwPostGameLevelActivity.url);
+    //    }
+    //}
+
+    IEnumerator PostGameLevelActivity()
+    {
+        enterMinigame = false;
+
+        WWWForm formPostGameLevelActivity = new WWWForm();
+        WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
+        yield return wwwPostGameLevelActivity;
+        Debug.Log(wwwPostGameLevelActivity.text);
+        Debug.Log(wwwPostGameLevelActivity.error);
+        Debug.Log(wwwPostGameLevelActivity.url);
     }
 
     [Serializable]

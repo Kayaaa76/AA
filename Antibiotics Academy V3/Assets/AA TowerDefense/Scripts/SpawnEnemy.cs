@@ -27,6 +27,8 @@ public class SpawnEnemy : MonoBehaviour
 
     private GameObject newEnemy;
 
+    static bool coinsChange = false;
+
     // Use this for initialization
     void Start()
     {
@@ -67,26 +69,36 @@ public class SpawnEnemy : MonoBehaviour
                     {
                         Player.coins += 50;                     //award 50 coins for passing level (one time claim)
                         Debug.Log("You got 50 coins for winning this level!");
+                        StartCoroutine(Login.UpdateCoins());
+                        coinsChange = true;
                     }
-                    else if (Player.m3unlockedlevels < 6)       //when completing levels 4-5
+                    else if (Player.tdunlockedlevels < 6)       //when completing levels 4-5
                     {
                         Player.coins += 100;                    //award 100 coins for passing level (one time claim)
                         Debug.Log("You got 100 coins for winning this level!");
+                        StartCoroutine(Login.UpdateCoins());
+                        coinsChange = true;
                     }
-                    else if (Player.m3unlockedlevels < 8)       //when completing levels 6-7
+                    else if (Player.tdunlockedlevels < 8)       //when completing levels 6-7
                     {
                         Player.coins += 150;                    //award 150 coins for passing level (one time claim)
                         Debug.Log("You got 150 coins for winning this level!");
+                        StartCoroutine(Login.UpdateCoins());
+                        coinsChange = true;
                     }
-                    else if (Player.m3unlockedlevels < 10)      //when completing levels 8-9
+                    else if (Player.tdunlockedlevels < 10)      //when completing levels 8-9
                     {
                         Player.coins += 200;                    //award 200 coins for passing level (one time claim)
                         Debug.Log("You got 200 coins for winning this level!");
+                        StartCoroutine(Login.UpdateCoins());
+                        coinsChange = true;
                     }
-                    else if (Player.m3unlockedlevels < 11)      //when completing level 10
+                    else if (Player.tdunlockedlevels < 11)      //when completing level 10
                     {
                         Player.coins += 500;                    //award 500 coins for passing level (one time claim)
                         Debug.Log("You got 500 coins for winning this level!");
+                        StartCoroutine(Login.UpdateCoins());
+                        coinsChange = true;
                     }
 
                     Player.tdunlockedlevels += 1;               //increase unlocked level
@@ -101,6 +113,11 @@ public class SpawnEnemy : MonoBehaviour
             gameManager.gameOver = true;                                                   //else game over is true
             GameObject gameOverText = GameObject.FindGameObjectWithTag("GameWon");         
             gameOverText.GetComponent<Animator>().SetBool("gameOver", true);
+        }
+
+        if (coinsChange == true)
+        {
+            StartCoroutine(PostCoinAcitivty());
         }
     }
 
@@ -132,4 +149,28 @@ public class SpawnEnemy : MonoBehaviour
             waves[gameManager.Wave].enemyPrefabs.RemoveAt(index);             //remove the enemy prefab
         }
     }
+
+    IEnumerator PostCoinAcitivty()
+    {
+        coinsChange = false;
+
+        WWWForm formPostCoinActivity = new WWWForm();
+        WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+        yield return wwwPostCoinActivity;
+        Debug.Log(wwwPostCoinActivity.text);
+        Debug.Log(wwwPostCoinActivity.error);
+        Debug.Log(wwwPostCoinActivity.url);
+    }
+
+    //IEnumerator PostGameLevelActivity()
+    //{
+    //    startedLevel = false;
+
+    //    WWWForm formPostGameLevelActivity = new WWWForm();
+    //    WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
+    //    yield return wwwPostGameLevelActivity;
+    //    Debug.Log(wwwPostGameLevelActivity.text);
+    //    Debug.Log(wwwPostGameLevelActivity.error);
+    //    Debug.Log(wwwPostGameLevelActivity.url);
+    //}
 }

@@ -318,7 +318,7 @@ namespace Match3
         {
             if (Player.lives > 0) //when player has lives
             {
-                hm.startedLevel = true;
+                //hm.startedLevel = true;
 
                 levelDifficulty = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text) - 1; //set playing level to button text
                 criteria.currentLevel = levelDifficulty;

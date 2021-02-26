@@ -7,7 +7,7 @@ namespace TowerDefense
 {
     public class EndGameUI1 : MonoBehaviour
     {
-        static bool coinsChange;
+        //static bool coinsChange;
         static bool sceneChange = false;
 
         static bool next;
@@ -120,20 +120,20 @@ namespace TowerDefense
             SceneManager.LoadScene(9); // tower defense scene
         }
 
-        IEnumerator PostCoinAcitivty()
-        {
-            coinsChange = false;
+        //IEnumerator PostCoinAcitivty()
+        //{
+        //    coinsChange = false;
 
-            WWWForm formPostCoinActivity = new WWWForm();
-            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
-            //WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=Player Coins&username=player1&ActivityDataValue=Player Coins", formPostCoinActivity);
-            yield return wwwPostCoinActivity;
-            Debug.Log(wwwPostCoinActivity.text);
-            Debug.Log(wwwPostCoinActivity.error);
-            Debug.Log(wwwPostCoinActivity.url);
-            sceneChange = true;
+        //    WWWForm formPostCoinActivity = new WWWForm();
+        //    WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+        //    //WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=Player Coins&username=player1&ActivityDataValue=Player Coins", formPostCoinActivity);
+        //    yield return wwwPostCoinActivity;
+        //    Debug.Log(wwwPostCoinActivity.text);
+        //    Debug.Log(wwwPostCoinActivity.error);
+        //    Debug.Log(wwwPostCoinActivity.url);
+        //    sceneChange = true;
 
-        }
+        //}
 
         IEnumerator PostGameLevelActivity()
         {
@@ -153,10 +153,10 @@ namespace TowerDefense
 
         void Update()
         {
-            if (coinsChange == true)
-            {
-                StartCoroutine(PostCoinAcitivty());
-            }
+            //if (coinsChange == true)
+            //{
+            //    StartCoroutine(PostCoinAcitivty());
+            //}
             if (sceneChange == true)
             {
                 StartCoroutine(PostGameLevelActivity());
