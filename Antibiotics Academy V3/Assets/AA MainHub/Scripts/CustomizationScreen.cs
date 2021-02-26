@@ -69,26 +69,6 @@ public class CustomizationScreen : MonoBehaviour
         }
     }
 
-    //public void GoToMainScene() // function to go to main scene after selecting a character
-    //{
-    //    if (IsGenderSelected == true && ThemeSelectScreen.IsClassic == true) // if player has selected classic theme
-    //    {
-    //        SceneManager.LoadScene("Main OG"); // go to main og scene
-    //    }
-    //    else if (IsGenderSelected == true && ThemeSelectScreen.IsYJ == true)
-    //    {
-    //        SceneManager.LoadScene("Main YJ");
-    //    }
-    //    else if (IsGenderSelected == true && ThemeSelectScreen.IsTrixy == true)
-    //    {
-    //        SceneManager.LoadScene("Main Trixy");
-    //    }
-    //    else // if player has not selected a character
-    //    {
-    //        StartCoroutine(AdvisePopUpTime()); // warning message appear
-    //    }
-    //}
-
     IEnumerator AdvisePopUpTime() // Coroutine function to let the warning text hover for a while before disappearing
     {
         AdvisePopUp.SetActive(true); // set the warning text to appear

@@ -39,6 +39,10 @@ public class ChangeScene : MonoBehaviour
 
     public void ThemeSelectionScene()
     {
-        SceneManager.LoadScene(15); // Change to character selection scene
+        if(PlayerPrefs.GetString("Theme") != null && PlayerPrefs.GetString("Gender") != null)
+        {
+            SceneManager.LoadScene("Main OG"); // go to main scene
+        }
+        else SceneManager.LoadScene(15); // Change to theme selection scene
     }
 }

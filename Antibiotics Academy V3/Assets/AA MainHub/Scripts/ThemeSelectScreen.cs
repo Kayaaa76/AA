@@ -20,9 +20,6 @@ public class ThemeSelectScreen : MonoBehaviour
 
     public void SelectPastel() // function that triggers when player clicks on the classic theme in the theme selection screen
     {
-        //IsClassic = true; // set bool IsClassic to be true
-        //IsYJ = false;
-        //IsTrixy = false;
         IsThemeSelected = true; // set bool to true since player has selected a theme
 
         PlayerPrefs.SetString("Theme", "Pastel");
@@ -34,9 +31,6 @@ public class ThemeSelectScreen : MonoBehaviour
 
     public void SelectClassic() // function that triggers when player clicks on the YJ's theme in the theme selection screen
     {
-        //IsYJ = true; // set bool IsYJ to be true
-        //IsClassic = false;
-        //IsTrixy = false;
         IsThemeSelected = true; // set bool to true since player has selected a theme
 
         PlayerPrefs.SetString("Theme", "Classic");
@@ -48,9 +42,6 @@ public class ThemeSelectScreen : MonoBehaviour
 
     public void SelectBold() // function that triggers when player clicks on the Trixy's theme in the theme selection screen
     {
-        //IsTrixy = true; // set bool IsTrixy to be true
-        //IsClassic = false;
-        //IsYJ = false;
         IsThemeSelected = true; // set bool to true since player has selected a theme
 
         PlayerPrefs.SetString("Theme", "Bold");
@@ -60,36 +51,8 @@ public class ThemeSelectScreen : MonoBehaviour
         boldSelection.GetComponent<Outline>().enabled = true; //outline bold selection
     }
 
-    //public void GoToMainScene() // function to go to main scene after selecting a character
-    //{
-    //    if (IsThemeSelected == true && IsClassic == true) // if player has selected classic theme
-    //    {
-    //        SceneManager.LoadScene("Main OG"); // go to main og scene
-    //    }
-    //    else if (IsThemeSelected == true && IsYJ == true)
-    //    {
-    //        SceneManager.LoadScene("Main YJ");
-    //    }
-    //    else if (IsThemeSelected == true && IsTrixy == true)
-    //    {
-    //        SceneManager.LoadScene("Main Trixy");
-    //    }
-    //    else // if player has not selected a character
-    //    {
-    //        StartCoroutine(AdvisePopUpTime()); // warning message appear
-    //    }
-    //}
-
     public void GoToCharacterSelect()
     {
-        //if (IsThemeSelected == true && IsYJ == true)
-        //{
-        //    SceneManager.LoadScene(6);
-        //}
-        //else if (IsThemeSelected == true && IsClassic == true || IsTrixy == true)
-        //{
-        //    SceneManager.LoadScene(17);
-        //}
         if(IsThemeSelected == true)
         {
             SceneManager.LoadScene(17); //character customization scene
