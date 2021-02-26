@@ -72,6 +72,7 @@ namespace TowerDefense
             for (int i = 0; i < totalLevels.Length; i++)                                       //go through each button
             {
                 totalLevels[i] = transform.GetChild(i).GetComponent<Button>();                 //get button
+                Image buttonImage = totalLevels[i].GetComponent<Image>();
 
                 if (i < playableLevels)                                                        //when level is unlocked
                 {
@@ -79,45 +80,45 @@ namespace TowerDefense
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelAntibiotic;      //set button as given image
+                            buttonImage.sprite = PastelLevelAntibiotic;      //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelAntibiotic;     //set button as given image
+                            buttonImage.sprite = ClassicLevelAntibiotic;     //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelAntibiotic;        //set button as given image
+                            buttonImage.sprite = BoldLevelAntibiotic;        //set button as given image
                         }
                     }
                     else if (i < 7)                                                            //at levels 5-7
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelAb1;             //set button as given image
+                            buttonImage.sprite = PastelLevelAb1;             //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelAb1;            //set button as given image
+                            buttonImage.sprite = ClassicLevelAb1;            //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelAb1;               //set button as given image
+                            buttonImage.sprite = BoldLevelAb1;               //set button as given image
                         }
                     }
                     else if (i < 10)                                                            //at levels 8-10
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelAb2;             //set button as given image
+                            buttonImage.sprite = PastelLevelAb2;             //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelAb2;            //set button as given image
+                            buttonImage.sprite = ClassicLevelAb2;            //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelAb2;               //set button as given image
+                            buttonImage.sprite = BoldLevelAb2;               //set button as given image
                         }
                     }
 
@@ -128,7 +129,7 @@ namespace TowerDefense
                 }
                 else                                                                            //when level is not unlocked
                 {
-                    totalLevels[i].GetComponent<Image>().sprite = levelLocked;                  //change button image to locked
+                    buttonImage.sprite = levelLocked;                  //change button image to locked
                     totalLevels[i].interactable = false;                                        //make button not interactable
                     totalLevels[i].GetComponentInChildren<Text>().text = null;                  //change button text to nothing
                 }
@@ -137,18 +138,33 @@ namespace TowerDefense
 
         public void differentLevel()
         {
-            levelDifficulty = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text) - 1; //get level difficulty according to button text(level number)
-            gMB.Wave = levelDifficulty; //set difficulty
-
-            LevelSelectUI.SetActive(false);
-            tutorialUI.SetActive(false);
-
-            Time.timeScale = 1f;
-
-            src = heart.GetComponent<AudioSource>();
-            if (!src.isPlaying)
+            if (Player.lives > 0) //when player has lives
             {
-                src.Play();
+                levelDifficulty = int.Parse(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text) - 1; //get level difficulty according to button text(level number)
+                gMB.Wave = levelDifficulty; //set difficulty
+
+                src = heart.GetComponent<AudioSource>();
+                if (!src.isPlaying)
+                {
+                    src.Play();
+                }
+
+                Player.lives -= 1;
+                Debug.Log("used life");
+                StartCoroutine(Login.UpdateLives());
+
+                LevelSelectUI.SetActive(false);
+                tutorialUI.SetActive(false);
+
+                Time.timeScale = 1f;
+
+                Player.Save();
+                StartCoroutine(Login.UpdateLives());
+                StartCoroutine(Login.UpdateCoins());
+            }
+            else
+            {
+                Debug.Log("You do not have enough lifes to play the game!");
             }
         }
     }

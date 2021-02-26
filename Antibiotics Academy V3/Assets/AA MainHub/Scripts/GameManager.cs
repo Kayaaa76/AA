@@ -231,10 +231,7 @@ public class GameManager : MonoBehaviour
     {
         if (receptionistStage == 1 && doctorStage == 1 && pharmacistStage == 0) // if player has talked to the receptionist and doctor at least once
         {
-            //obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger the dialogue for the pharmacist to start the match 3 mini game
-            //pharmacistStage = 1; // pharmacist stage 1 ( player done talking to the pharmacist )
-
-            if (Player.lives > 0)
+            if (Player.lives > 0) //when player has lives
             {
                 obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger the dialogue for the pharmacist to start the match 3 mini game
                 pharmacistStage = 1; // pharmacist stage 1 ( player done talking to the pharmacist )
@@ -252,13 +249,6 @@ public class GameManager : MonoBehaviour
 
             Player.dateStartM3 = System.DateTime.Now;
             SceneManager.LoadScene(14); //match 3 scene
-
-            //if (Player.m3unlockedlevels < 1) //set starting level to 1
-            //{
-            //    Player.m3unlockedlevels = 1;
-            //}
-
-            //Player.lives -= 1;
         }
         if (pharmacistStage == 2 && receptionistStage == 2) // if player wins match 3 game
         {

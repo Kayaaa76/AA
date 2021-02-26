@@ -94,6 +94,7 @@ namespace Match3
             for (int i = 0; i < totalLevels.Length; i++)                                        //go through each button
             {
                 totalLevels[i] = transform.GetChild(i).GetComponent<Button>();                  //get button
+                Image buttonImage = totalLevels[i].GetComponent<Image>();                       //get image component
 
                 if (i < playableLevels)                                                         //when level is unlocked
                 {
@@ -101,150 +102,150 @@ namespace Match3
                     {
                         if(PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelSleep;     //set button as given image
+                            buttonImage.sprite = PastelLevelSleep;     //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelSleep;    //set button as given image
+                            buttonImage.sprite = ClassicLevelSleep;    //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelSleep;       //set button as given image
+                            buttonImage.sprite = BoldLevelSleep;       //set button as given image
                         }
                     }
                     else if (i < 8)                                                             //at levels 6-8
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelNutrition1;               //set button as given image
+                            buttonImage.sprite = PastelLevelNutrition1;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelNutrition1;               //set button as given image
+                            buttonImage.sprite = ClassicLevelNutrition1;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelNutrition1;               //set button as given image
+                            buttonImage.sprite = BoldLevelNutrition1;               //set button as given image
                         }
                     }
                     else if (i < 10)                                                            //at levels 9-10
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelNutrition2;               //set button as given image
+                            buttonImage.sprite = PastelLevelNutrition2;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelNutrition2;               //set button as given image
+                            buttonImage.sprite = ClassicLevelNutrition2;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelNutrition2;               //set button as given image
+                            buttonImage.sprite = BoldLevelNutrition2;               //set button as given image
                         }
                     }
                     else if (i < 15)                                                            //at levels 11-15
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelImmunisation;               //set button as given image
+                            buttonImage.sprite = PastelLevelImmunisation;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelImmunisation;               //set button as given image
+                            buttonImage.sprite = ClassicLevelImmunisation;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelImmunisation;               //set button as given image
+                            buttonImage.sprite = BoldLevelImmunisation;               //set button as given image
                         }
                     }
                     else if (i < 20)                                                            //at levels 16-20
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelExercise;               //set button as given image
+                            buttonImage.sprite = PastelLevelExercise;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelExercise;               //set button as given image
+                            buttonImage.sprite = ClassicLevelExercise;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelExercise;               //set button as given image
+                            buttonImage.sprite = BoldLevelExercise;               //set button as given image
                         }
                     }
                     else if (i < 21)                                                            //at level 21
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelHealthy1;               //set button as given image
+                            buttonImage.sprite = PastelLevelHealthy1;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelHealthy1;               //set button as given image
+                            buttonImage.sprite = ClassicLevelHealthy1;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelHealthy1;               //set button as given image
+                            buttonImage.sprite = BoldLevelHealthy1;               //set button as given image
                         }
                     }
                     else if (i < 22)                                                            //at level 22
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelHealthy2;               //set button as given image
+                            buttonImage.sprite = PastelLevelHealthy2;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelHealthy2;               //set button as given image
+                            buttonImage.sprite = ClassicLevelHealthy2;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelHealthy2;               //set button as given image
+                            buttonImage.sprite = BoldLevelHealthy2;               //set button as given image
                         }
                     }
                     else if (i < 23)                                                            //at level 23
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelHealthy3;               //set button as given image
+                            buttonImage.sprite = PastelLevelHealthy3;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelHealthy3;               //set button as given image
+                            buttonImage.sprite = ClassicLevelHealthy3;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelHealthy3;               //set button as given image
+                            buttonImage.sprite = BoldLevelHealthy3;               //set button as given image
                         }
                     }
                     else if (i < 24)                                                            //at level 24
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelHealthy4;               //set button as given image
+                            buttonImage.sprite = PastelLevelHealthy4;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelHealthy4;               //set button as given image
+                            buttonImage.sprite = ClassicLevelHealthy4;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelHealthy4;               //set button as given image
+                            buttonImage.sprite = BoldLevelHealthy4;               //set button as given image
                         }
                     }
                     else if (i < 25)                                                            //at level 24
                     {
                         if (PlayerPrefs.GetString("Theme") == "Pastel")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = PastelLevelHealthy5;               //set button as given image
+                            buttonImage.sprite = PastelLevelHealthy5;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Classic")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = ClassicLevelHealthy5;               //set button as given image
+                            buttonImage.sprite = ClassicLevelHealthy5;               //set button as given image
                         }
                         else if (PlayerPrefs.GetString("Theme") == "Bold")
                         {
-                            totalLevels[i].GetComponent<Image>().sprite = BoldLevelHealthy5;               //set button as given image
+                            buttonImage.sprite = BoldLevelHealthy5;               //set button as given image
                         }
                     }
 
@@ -255,7 +256,7 @@ namespace Match3
                 }
                 else
                 {                                                                               //when level is not unlocked
-                    totalLevels[i].GetComponent<Image>().sprite = levelLocked;                  //change button image to locked
+                    buttonImage.sprite = levelLocked;                                           //change button image to locked
                     totalLevels[i].interactable = false;                                        //make button not interactable
                     totalLevels[i].GetComponentInChildren<Text>().text = null;                  //change button text to nothing
                 }
@@ -315,7 +316,7 @@ namespace Match3
 
         public void enterLevel()
         {
-            if (Player.lives < 1)
+            if (Player.lives > 0) //when player has lives
             {
                 hm.startedLevel = true;
 
