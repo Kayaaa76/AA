@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -51,11 +52,26 @@ public class GameManager : MonoBehaviour
     public static int npclawyerStage = 0;
 
     private DialogueTrigger dt; // get DialogueTrigger script
+    Quest quest;
 
-    public GameObject Receptionist1; // get the receptionist game object
-    public GameObject Pharmacist1; // get the pharmacist game object
-    public GameObject Doctor1; // get the doctor game object
-    public GameObject Surgeon1; // get the surgeon game object
+    public GameObject ReceptionistObject; // get the receptionist game object
+    public GameObject PharmacistObject; // get the pharmacist game object
+    public GameObject DoctorObject; // get the doctor game object
+    public GameObject SurgeonObject; // get the surgeon game object
+    public GameObject NPCDadObject; // get the NPC_Dad game object
+    public GameObject NPCMHObject; // get the NPC_MH game object
+    public GameObject NPCBFFObject; // get the NPC_BFF game object
+    public GameObject NPCNQXObject; // get the NPC_NQX game object
+    public GameObject NPCSGLObject; // get the NPC_SGL game object
+    public GameObject NPCTZDObject; // get the NPC_TZD game object
+    public GameObject NPCJKYObject; // get the NPC_JKY game object
+    public GameObject NPCAuntyObject; // get the NPC_Aunty game object
+    public GameObject NPCAunty1Object; // get the NPC_Aunty (1) game object
+    public GameObject NPCLawyerObject; // get the NPCLawyer game object
+    GameObject[] NPCs; //npc array
+    public Camera cam;
+    public GameObject NPCInteractables;
+    public Button TalkToNpcPrefab; 
 
     public GameObject TDPanel; // panel that allow player to start tower defense game
 
@@ -67,6 +83,7 @@ public class GameManager : MonoBehaviour
     static bool enterMinigame = false;
 
     public static System.DateTime DateTime;
+
     private void Awake()
     {
         
@@ -82,6 +99,7 @@ public class GameManager : MonoBehaviour
         menu.SetActive(false); // disable menu to show at start
 
         dm = dialogueM.GetComponent<DialogueManager>(); // get the DialogueManager component of the dialogueM game object
+        quest = gameObject.GetComponent<Quest>();
         //test = GetComponent<testScene1>(); // get the testScene1 script
 
         if (Time.timeScale == 0) // if game is paused
@@ -94,7 +112,7 @@ public class GameManager : MonoBehaviour
             player.transform.position = currentPosition; // set player position to be the last position the player was at before going into the match 3 scene
             sceneCounter = 0; // reset the counter to 0
 
-            dt = Receptionist1.GetComponent<DialogueTrigger>();
+            dt = ReceptionistObject.GetComponent<DialogueTrigger>();
             // win match 3 game, change the dialogue of the receptionist
             dt.dialogue.sentences[0] = "Do you want to be a doctor?";
             dt.dialogue.sentences[1] = "Walk around the hub.";
@@ -102,6 +120,8 @@ public class GameManager : MonoBehaviour
         }
 
         StartCoroutine(SetGameDetail());
+        
+        NPCs = GameObject.FindGameObjectsWithTag("NPC"); //get all objects with NPC tag
     }
 
     // Update is called once per frame
@@ -112,68 +132,70 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(PostGameLevelActivity());
         }
+        
+        NPCInteractables.transform.position = cam.WorldToScreenPoint(new Vector3(player.transform.position.x + 3.5f, player.transform.position.y + 1)); //set container position near player object
 
-        checkObj(); // function to check for the npc that the player clicks
+        //checkObj(); // function to check for the npc that the player clicks
 
-        if (obj != null) // if the npc is not null
-        {
-            if (obj.name == "Receptionist") // if npc name is Receptionist
-            {
-                Receptionist(); // call the Receptionist function
-            }
-            if (obj.name == "Pharmacist") // if npc name is Pharmacist
-            {
-                Pharmacist(); // call the Pharmacist function
-            }
-            if (obj.name == "Doctor") // if npc name is Doctor
-            {
-                Doctor(); // call the Doctor function
-            }
-            if (obj.name == "Surgeon") // if npc name is Surgeon
-            {
-                Surgeon(); // call the Surgeon function
-            }
-            if (obj.name == "NPC_Dad") // if npc name is NPC_Dad
-            {
-                NPCDAD(); // call the NPCDAD function
-            }
-            if (obj.name == "NPC_MH") // if npc name is NPC_MH
-            {
-                NPCMALCOLM(); // call the NPCMALCOLM function
-            }
-            if (obj.name == "NPC_BFF") // if npc name is NPC_BFF
-            {
-                NPCBFF(); // call the NPCBFF function
-            }
-            if (obj.name == "NPC_NQX") // if npc name is NPC_NQX
-            {
-                NPCNQX(); // call the NPCNQX function
-            }
-            if (obj.name == "NPC_SGL") // if the npc name is NPC_SGL
-            {
-                NPCSGL(); // call the NPCSGL function
-            }
-            if (obj.name == "NPC_TZD") // if the npc name is NPC_TZD
-            {
-                NPCTZD();  // call the NPCTZD function
-            }
-            if (obj.name == "NPC_JKY")  // if the npc name is NPC_JKY
-            {
-                NPCJKY(); // call the NPCJKY function
-            }
-            if (obj.name == "NPC_Aunty") // if the npc name is NPC_Aunty
-            {
-                NPCAUNTY(); // call the NPCAUNTY function
-            }
-            if(obj.name == "NPC_Aunty (1)")
-            {
-                NPCAUNTY1();
-            }
-            if (obj.name == "NPC_Lawyer") // if the npc name is NPC_Lawyer
-            {
-                NPCLAWYER(); // call the NPCLAWYER function
-            }
-        }
+        //if (obj != null) // if the npc is not null
+        //{
+        //    if (obj.name == "Receptionist") // if npc name is Receptionist
+        //    {
+        //        Receptionist(); // call the Receptionist function
+        //    }
+        //    if (obj.name == "Pharmacist") // if npc name is Pharmacist
+        //    {
+        //        Pharmacist(); // call the Pharmacist function
+        //    }
+        //    if (obj.name == "Doctor") // if npc name is Doctor
+        //    {
+        //        Doctor(); // call the Doctor function
+        //    }
+        //    if (obj.name == "Surgeon") // if npc name is Surgeon
+        //    {
+        //        Surgeon(); // call the Surgeon function
+        //    }
+        //    if (obj.name == "NPC_Dad") // if npc name is NPC_Dad
+        //    {
+        //        NPCDAD(); // call the NPCDAD function
+        //    }
+        //    if (obj.name == "NPC_MH") // if npc name is NPC_MH
+        //    {
+        //        NPCMALCOLM(); // call the NPCMALCOLM function
+        //    }
+        //    if (obj.name == "NPC_BFF") // if npc name is NPC_BFF
+        //    {
+        //        NPCBFF(); // call the NPCBFF function
+        //    }
+        //    if (obj.name == "NPC_NQX") // if npc name is NPC_NQX
+        //    {
+        //        NPCNQX(); // call the NPCNQX function
+        //    }
+        //    if (obj.name == "NPC_SGL") // if the npc name is NPC_SGL
+        //    {
+        //        NPCSGL(); // call the NPCSGL function
+        //    }
+        //    if (obj.name == "NPC_TZD") // if the npc name is NPC_TZD
+        //    {
+        //        NPCTZD();  // call the NPCTZD function
+        //    }
+        //    if (obj.name == "NPC_JKY")  // if the npc name is NPC_JKY
+        //    {
+        //        NPCJKY(); // call the NPCJKY function
+        //    }
+        //    if (obj.name == "NPC_Aunty") // if the npc name is NPC_Aunty
+        //    {
+        //        NPCAUNTY(); // call the NPCAUNTY function
+        //    }
+        //    if (obj.name == "NPC_Aunty (1)")
+        //    {
+        //        NPCAUNTY1();
+        //    }
+        //    if (obj.name == "NPC_Lawyer") // if the npc name is NPC_Lawyer
+        //    {
+        //        NPCLAWYER(); // call the NPCLAWYER function
+        //    }
+        //}
         // change npc exclusives dialogue box to trigger everytime instead of one
 
         if (dm.spawned == true) // if dialogue box is showned
@@ -183,6 +205,8 @@ public class GameManager : MonoBehaviour
             rightBtn.SetActive(false);
             downBtn.SetActive(false);
             upBtn.SetActive(false);
+
+            NPCInteractables.SetActive(false); //disable npc interactables from showing
         }
 
         if (dm.spawned == false) // if dialogue box is not showned
@@ -192,22 +216,148 @@ public class GameManager : MonoBehaviour
             rightBtn.SetActive(true);
             downBtn.SetActive(true);
             upBtn.SetActive(true);
+
+            NPCInteractables.SetActive(true); //enable npc interactables from showing
         }
 
         if (Player.m3unlockedlevels > 1) //games menu button to appear after winning 1 level of match 3 (first game)
         {
             gamesBtn.SetActive(true);
         }
+
+        NearNPC();
     }
 
-    void checkObj() // function to check if player has clicked on the npc
+    //void checkObj() // function to check if player has clicked on the npc
+    //{
+    //    if(Input.GetMouseButtonDown(0))
+    //    {
+    //        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+    //        if (hit.collider == true)
+    //        {
+    //            obj = hit.collider.gameObject;
+    //        }
+    //    }
+    //}
+
+    void NearNPC() //display interactable buttons for npc when near one
     {
-        if(Input.GetMouseButtonDown(0))
+        foreach (GameObject npc in NPCs) //cycle through npc objects
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider == true)
+            string objectName = "TalkTo" + npc.name; //create unique name for each npc
+            if (Vector2.Distance(npc.transform.position, player.transform.position) < 4) //when distance between player and npc is less than 4
             {
-                obj = hit.collider.gameObject;
+                if (npc == ReceptionistObject && quest.receptionistQuestIcon.activeSelf == false) //when npc cannot be interacted with
+                {
+                    if (NPCInteractables.transform.Find(objectName)) //if interactable exists
+                    {
+                        Destroy(NPCInteractables.transform.Find(objectName).gameObject); //destroy npc interactable object
+                    }
+                    return;
+                }
+                if (npc == PharmacistObject && quest.pharmacistQuestIcon.activeSelf == false) //when npc cannot be interacted with
+                {
+                    if (NPCInteractables.transform.Find(objectName)) //if interactable exists
+                    {
+                        Destroy(NPCInteractables.transform.Find(objectName).gameObject); //destroy npc interactable object
+                    }
+                    return;
+                }
+                if (npc == DoctorObject && quest.doctorQuestIcon.activeSelf == false) //when npc cannot be interacted with
+                {
+                    if (NPCInteractables.transform.Find(objectName)) //if interactable exists
+                    {
+                        Destroy(NPCInteractables.transform.Find(objectName).gameObject); //destroy npc interactable object
+                    }
+                    return;
+                }
+                if (npc == SurgeonObject && quest.surgeonQuestIcon.activeSelf == false) //when npc cannot be interacted with
+                {
+                    if (NPCInteractables.transform.Find(objectName)) //if interactable exists
+                    {
+                        Destroy(NPCInteractables.transform.Find(objectName).gameObject); //destroy npc interactable object
+                    }
+                    return;
+                }
+                if (npc == NPCLawyerObject && quest.lawyerQuestIcon.activeSelf == false) //when npc cannot be interacted with
+                {
+                    if (NPCInteractables.transform.Find(objectName)) //if interactable exists
+                    {
+                        Destroy(NPCInteractables.transform.Find(objectName).gameObject); //destroy npc interactable object
+                    }
+                    return;
+                }
+                if (NPCInteractables.transform.Find(objectName) == null) //if npc interactable object does not exist
+                {
+                    Button interactable = Instantiate(TalkToNpcPrefab, NPCInteractables.transform.position, NPCInteractables.transform.rotation, NPCInteractables.transform); //instantiate npc interactable object
+                    interactable.name = objectName; //set npc interactable object to its unique name
+                    interactable.GetComponentInChildren<Text>().text = npc.GetComponent<DialogueTrigger>().dialogue.name; //chnage text of npc interactable object to wanted npc name
+
+                    if (npc == ReceptionistObject) // if npc is Receptionist
+                    {
+                        interactable.onClick.AddListener(Receptionist); // add the Receptionist function
+                    }
+                    if (npc == PharmacistObject) // if npc is Pharmacist
+                    {
+                        interactable.onClick.AddListener(Pharmacist); // add the Pharmacist function
+                    }
+                    if (npc == DoctorObject) // if npc is Doctor
+                    {
+                        interactable.onClick.AddListener(Doctor); // add the Doctor function
+                    }
+                    if (npc == SurgeonObject) // if npc is Surgeon
+                    {
+                        interactable.onClick.AddListener(Surgeon); // add the Surgeon function
+                    }
+                    if (npc == NPCDadObject) // if npc is NPC_Dad
+                    {
+                        interactable.onClick.AddListener(NPCDAD); // add the NPCDAD function
+                    }
+                    if (npc == NPCMHObject) // if npc is NPC_MH
+                    {
+                        interactable.onClick.AddListener(NPCMALCOLM); // add the NPCMALCOLM function
+                    }
+                    if (npc == NPCBFFObject) // if npc is NPC_BFF
+                    {
+                        interactable.onClick.AddListener(NPCBFF); // add the NPCBFF function
+                    }
+                    if (npc == NPCNQXObject) // if npc is NPC_NQX
+                    {
+                        interactable.onClick.AddListener(NPCNQX); // add the NPCNQX function
+                    }
+                    if (npc == NPCSGLObject) // if the npc is NPC_SGL
+                    {
+                        interactable.onClick.AddListener(NPCSGL); // add the NPCSGL function
+                    }
+                    if (npc == NPCTZDObject) // if the npc is NPC_TZD
+                    {
+                        interactable.onClick.AddListener(NPCTZD);  // add the NPCTZD function
+                    }
+                    if (npc == NPCJKYObject)  // if the npc is NPC_JKY
+                    {
+                        interactable.onClick.AddListener(NPCJKY); // add the NPCJKY function
+                    }
+                    if (npc == NPCAuntyObject) // if the npc is NPC_Aunty
+                    {
+                        interactable.onClick.AddListener(NPCAUNTY); // add the NPCAUNTY function
+                    }
+                    if (npc == NPCAunty1Object) // if the npc is NPC_Aunty (1)
+                    {
+                        interactable.onClick.AddListener(NPCAUNTY1); // add the NPCAUNTY1 function
+                    }
+                    if (npc == NPCLawyerObject) // if the npc is NPC_Lawyer
+                    {
+                        interactable.onClick.AddListener(NPCLAWYER); // add the NPCLAWYER function
+                    }
+                }
+
+            }
+            else //when distance between player and npc is more than 4
+            {
+                if(NPCInteractables.transform.Find(objectName) != null) //if npc interactable object exists
+                {
+                    Destroy(NPCInteractables.transform.Find(objectName).gameObject); //destroy npc interactable object
+                }
             }
         }
     }
@@ -217,7 +367,7 @@ public class GameManager : MonoBehaviour
         if (receptionistStage == 0) // receptionist stage 0
         {
             // dialogue to go doctor's office
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger the dialogue for the receptionist npc
+            ReceptionistObject.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger the dialogue for the receptionist npc
             receptionistStage = 1; // after talking to the receptionist, the receptionist stage goes to 1
         }
     
@@ -239,7 +389,7 @@ public class GameManager : MonoBehaviour
         {
             if (Player.lives > 0) //when player has lives
             {
-                obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger the dialogue for the pharmacist to start the match 3 mini game
+                PharmacistObject.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger the dialogue for the pharmacist to start the match 3 mini game
                 pharmacistStage = 1; // pharmacist stage 1 ( player done talking to the pharmacist )
             }
             else
@@ -272,7 +422,7 @@ public class GameManager : MonoBehaviour
     {
         if (doctorStage == 0 && receptionistStage == 1) // if player has talked to the receptionist before finding the doctor
         {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger doctor dialogue to ask player to go to pharmacist
+            DoctorObject.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger doctor dialogue to ask player to go to pharmacist
             doctorStage = 1; // doctor stage 1
         }
     }
@@ -282,7 +432,7 @@ public class GameManager : MonoBehaviour
         if (surgeonStage == 1 && dm.spawned == false)  // if surgeon dialogue showned
         {
             TDPanel.SetActive(true); // show the option to start tower defense mini game
-            obj = null; 
+            //obj = null; 
             currentPosition = player.transform.position; // get current position of the player
             sceneCounter = 2; // set scenecounter to 2 to change scene
         }
@@ -290,89 +440,107 @@ public class GameManager : MonoBehaviour
         if (receptionistStage == 3 && surgeonStage == 0 && dm.spawned == false) // if player has completed match 3 game and has talked to the receptionist stage 2
         {
             // trigger tower defense if player clicks yes button
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger surgeon dialogue before showing panel to start tower defense game
+            SurgeonObject.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger surgeon dialogue before showing panel to start tower defense game
             surgeonStage = 1; // surgeon stage 1
         }
     }
 
     public void NPCDAD() // function to show npc dad dialogue
     {
-        if (npcdadStage == 0) 
-        {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue();
-            npcdadStage = 1;
-        }
+        //if (npcdadStage == 0) 
+        //{
+        //    NPCDadObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+        //    npcdadStage = 1;
+        //}
+
+        NPCDadObject.GetComponent<DialogueTrigger>().TriggerDialogue();
     }
 
     public void NPCMALCOLM() // function to show npc malcolm dialogue
     {
-        if (npcmalStage == 0)
-        {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue();
-            npcmalStage = 1;
-        }
+        //if (npcmalStage == 0)
+        //{
+        //    NPCMHObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+        //    npcmalStage = 1;
+        //}
+
+        NPCMHObject.GetComponent<DialogueTrigger>().TriggerDialogue();
     }
 
     public void NPCBFF() // function to show npc bff dialogue
     {
-        if (npcbffStage == 0)
-        {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue();
-            npcbffStage = 1;
-        }
+        //if (npcbffStage == 0)
+        //{
+        //    NPCBFFObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+        //    npcbffStage = 1;
+        //}
+
+        NPCBFFObject.GetComponent<DialogueTrigger>().TriggerDialogue();
     }
 
     public void NPCNQX() // function to show npc nqx dialogue
     {
-        if (npcnqxStage == 0)
-        {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue();
-            npcnqxStage = 1;
-        }
+        //if (npcnqxStage == 0)
+        //{
+        //    NPCNQXObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+        //    npcnqxStage = 1;
+        //}
+
+        NPCNQXObject.GetComponent<DialogueTrigger>().TriggerDialogue();
     }
 
     public void NPCSGL() // function to show npc sgl dialogue
     {
-        if (npcseanStage == 0)
-        {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue();
-            npcseanStage = 1;
-        }
+        //if (npcseanStage == 0)
+        //{
+        //    NPCSGLObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+        //    npcseanStage = 1;
+        //}
+
+        NPCSGLObject.GetComponent<DialogueTrigger>().TriggerDialogue();
     }
 
     public void NPCTZD() // function to show npc tzd dialogue
     {
-        if (npctimStage == 0)
-        {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue();
-            npctimStage = 1;
-        }
+        //if (npctimStage == 0)
+        //{
+        //    NPCTZDObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+        //    npctimStage = 1;
+        //}
+
+        NPCTZDObject.GetComponent<DialogueTrigger>().TriggerDialogue();
     }
 
     public void NPCJKY() // function to show npc jky dialogue
     {
-        if (npcjunoStage == 0)
-        {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue();
-            npcjunoStage = 1;
-        }
+        //if (npcjunoStage == 0)
+        //{
+        //    NPCJKYObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+        //    npcjunoStage = 1;
+        //}
+
+        NPCJKYObject.GetComponent<DialogueTrigger>().TriggerDialogue();
     }
 
     public void NPCAUNTY() // function to show npc aunty dialogue
     {
-        if (npcauntyStage == 0)
-        {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue();
-            npcauntyStage = 1;
-        }
+        //if (npcauntyStage == 0)
+        //{
+        //    NPCAuntyObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+        //    npcauntyStage = 1;
+        //}
+
+        NPCAuntyObject.GetComponent<DialogueTrigger>().TriggerDialogue();
     }
     public void NPCAUNTY1() // function to show npc aunty dialogue
     {
-        if (npcaunty1Stage == 0)
-        {
-            obj.GetComponent<DialogueTrigger>().TriggerDialogue();
-            npcaunty1Stage = 1;
-        }
+        //if (npcaunty1Stage == 0)
+        //{
+        //    NPCAunty1Object.GetComponent<DialogueTrigger>().TriggerDialogue();
+        //    npcaunty1Stage = 1;
+        //}
+
+        NPCAunty1Object.GetComponent<DialogueTrigger>().TriggerDialogue();
     }
 
     public void NPCLAWYER() // function to show npc lawyer dialogue
@@ -381,7 +549,7 @@ public class GameManager : MonoBehaviour
         {
             if (Player.lives > 0)
             {
-                obj.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger lawyer dialogue
+                NPCLawyerObject.GetComponent<DialogueTrigger>().TriggerDialogue(); // trigger lawyer dialogue
                 npclawyerStage = 2; // lawyer stage 2 
             }
             else

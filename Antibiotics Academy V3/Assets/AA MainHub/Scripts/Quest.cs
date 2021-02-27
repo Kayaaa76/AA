@@ -16,7 +16,7 @@ public class Quest : MonoBehaviour
     float sIconPos;
     float lIconPos;
 
-    GameObject questIcon;
+    public GameObject questIcon;
     float iconPosition;
 
     public float hoverDistance;

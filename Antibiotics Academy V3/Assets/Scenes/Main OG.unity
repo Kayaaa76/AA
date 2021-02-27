@@ -7856,7 +7856,7 @@ GameObject:
   - component: {fileID: 128893399}
   m_Layer: 0
   m_Name: NPC_Aunty (1)
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20042,7 +20042,7 @@ GameObject:
   - component: {fileID: 347512479}
   m_Layer: 0
   m_Name: NPC_JKY
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25152,7 +25152,7 @@ GameObject:
   - component: {fileID: 421233251}
   m_Layer: 0
   m_Name: NPC_NQX
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44888,10 +44888,9 @@ GameObject:
   - component: {fileID: 705242977}
   - component: {fileID: 705242978}
   - component: {fileID: 705242976}
-  - component: {fileID: 705242979}
   m_Layer: 0
   m_Name: Receptionist
-  m_TagString: Receptionist
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45033,32 +45032,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &705242979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705242973}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11bb4e6452250dd42a0811094189b354, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hospitalSpawn: {fileID: 0}
-  pauseBtn: {fileID: 0}
-  menu: {fileID: 0}
-  gamesBtn: {fileID: 0}
-  dialogueM: {fileID: 0}
-  Receptionist1: {fileID: 0}
-  Pharmacist1: {fileID: 0}
-  Doctor1: {fileID: 0}
-  Surgeon1: {fileID: 0}
-  TDPanel: {fileID: 0}
-  leftBtn: {fileID: 0}
-  rightBtn: {fileID: 0}
-  upBtn: {fileID: 0}
-  downBtn: {fileID: 0}
 --- !u!1 &708572638
 GameObject:
   m_ObjectHideFlags: 0
@@ -67812,10 +67785,24 @@ MonoBehaviour:
   menu: {fileID: 1109171308}
   gamesBtn: {fileID: 2099162127}
   dialogueM: {fileID: 1038472733}
-  Receptionist1: {fileID: 705242973}
-  Pharmacist1: {fileID: 0}
-  Doctor1: {fileID: 0}
-  Surgeon1: {fileID: 0}
+  ReceptionistObject: {fileID: 705242973}
+  PharmacistObject: {fileID: 1179134821}
+  DoctorObject: {fileID: 1171624710}
+  SurgeonObject: {fileID: 1516740621}
+  NPCDadObject: {fileID: 1224892737}
+  NPCMHObject: {fileID: 1995264884}
+  NPCBFFObject: {fileID: 1467979141}
+  NPCNQXObject: {fileID: 421233247}
+  NPCSGLObject: {fileID: 1403936961}
+  NPCTZDObject: {fileID: 1645880490}
+  NPCJKYObject: {fileID: 347512475}
+  NPCAuntyObject: {fileID: 1629800070}
+  NPCAunty1Object: {fileID: 128893397}
+  NPCLawyerObject: {fileID: 1125918702}
+  cam: {fileID: 519420031}
+  NPCInteractables: {fileID: 1517372793}
+  TalkToNpcPrefab: {fileID: 5979073729982709718, guid: fb19cbdb29ff02e49ae21e2d83a18a58,
+    type: 3}
   TDPanel: {fileID: 605420139}
   leftBtn: {fileID: 1728302953}
   rightBtn: {fileID: 1138638872}
@@ -67842,7 +67829,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089550800}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7cde685733ee274d80da01e84a3d57c, type: 3}
   m_Name: 
@@ -70504,7 +70491,7 @@ GameObject:
   - component: {fileID: 1125918704}
   m_Layer: 0
   m_Name: NPC_Lawyer
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73406,7 +73393,7 @@ GameObject:
   - component: {fileID: 1171624713}
   m_Layer: 0
   m_Name: Doctor
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73963,7 +73950,7 @@ GameObject:
   - component: {fileID: 1179134824}
   m_Layer: 0
   m_Name: Pharmacist
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77092,7 +77079,7 @@ GameObject:
   - component: {fileID: 1224892739}
   m_Layer: 0
   m_Name: NPC_Dad
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80607,6 +80594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0c034f4da395c479b465f452d79be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinsDisplay: {fileID: 0}
 --- !u!114 &1280094530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88939,7 +88927,7 @@ GameObject:
   - component: {fileID: 1403936965}
   m_Layer: 0
   m_Name: NPC_SGL
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93031,7 +93019,7 @@ GameObject:
   - component: {fileID: 1467979143}
   m_Layer: 0
   m_Name: NPC_BFF
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96208,7 +96196,7 @@ GameObject:
   - component: {fileID: 1516740624}
   m_Layer: 0
   m_Name: Surgeon
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96431,6 +96419,105 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1517372793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517372794}
+  - component: {fileID: 1517372796}
+  - component: {fileID: 1517372795}
+  - component: {fileID: 1517372797}
+  m_Layer: 5
+  m_Name: NPCInteractables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1517372794
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517372793}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1617793484}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 190, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1517372795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517372793}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1517372796
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517372793}
+  m_CullTransparentMesh: 0
+--- !u!114 &1517372797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517372793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 5
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
 --- !u!1 &1518861503
 GameObject:
   m_ObjectHideFlags: 0
@@ -102227,6 +102314,7 @@ RectTransform:
   - {fileID: 1280094528}
   - {fileID: 1358850936}
   - {fileID: 1303884015}
+  - {fileID: 1517372794}
   m_Father: {fileID: 282839841}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103050,7 +103138,7 @@ GameObject:
   - component: {fileID: 1629800072}
   m_Layer: 0
   m_Name: NPC_Aunty
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103960,7 +104048,7 @@ GameObject:
   - component: {fileID: 1645880494}
   m_Layer: 0
   m_Name: NPC_TZD
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124773,7 +124861,7 @@ GameObject:
   - component: {fileID: 1995264888}
   m_Layer: 0
   m_Name: NPC_MH
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

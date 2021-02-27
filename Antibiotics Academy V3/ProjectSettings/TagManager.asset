@@ -45,6 +45,7 @@ TagManager:
   - envDoor
   - envTicketMachine
   - envFloormat
+  - NPC
   layers:
   - Default
   - TransparentFX
