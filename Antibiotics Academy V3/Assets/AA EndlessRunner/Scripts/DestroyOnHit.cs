@@ -17,7 +17,7 @@ public class DestroyOnHit : MonoBehaviour
         }
         else
         {
-            Destroy(other.gameObject); // Destroys any other game object that the destroyer game object collides with
+            Destroy(other.transform.parent.gameObject); // Destroys any other game object that the destroyer game object collides with (destroy whole virus entity)
         }
     }
 }

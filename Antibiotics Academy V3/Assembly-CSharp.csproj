@@ -68,6 +68,7 @@
     <Compile Include="Assets\AA Database\Registration.cs" />
     <Compile Include="Assets\AA Death\Hub.cs" />
     <Compile Include="Assets\AA EndlessRunner\Scripts\DestroyOnHit.cs" />
+    <Compile Include="Assets\AA EndlessRunner\Scripts\EndgameUIR.cs" />
     <Compile Include="Assets\AA EndlessRunner\Scripts\MoveLeft.cs" />
     <Compile Include="Assets\AA EndlessRunner\Scripts\PlayerController.cs" />
     <Compile Include="Assets\AA EndlessRunner\Scripts\PrefabSpawner.cs" />

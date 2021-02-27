@@ -22,12 +22,15 @@ public class PlayerController : MonoBehaviour
     public Text timerText;
     public float timer; //for timer text which will decrease
 
+    public int enemyCount; //count of enemies passed
+
     public Text menuText;
 
     public bool doubleJumpAllowed = false; // bool to check if player can double jump
     public bool onTheGround = false; // bool to check if player is on the ground
 
     public GameObject retryPanel; // pop-up that shows when player loses the endless runner game
+    public GameObject pauseMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -121,34 +124,21 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.unscaledTime > nextScoreIncrease) // if 0.5 seconds passed
         {
-            yourScore += 1; // score increment by 1
+            if (retryPanel.activeSelf == false && pauseMenu.activeSelf == false) //when game is active
+            {
+                yourScore += 1; // score increment by 1
+            }
             nextScoreIncrease = Time.unscaledTime + 0.5f; // set score to increase next after 0.5 seconds pass
         }
     }
     
     public void retryGame() // function to retry the endless runner
     {
-        SceneManager.LoadScene(11); // retry endless runner
+        SceneManager.LoadScene(11); // runner scene
     }
 
     public void backToMain() // function to go back to the community
     {
-        //if (ThemeSelectScreen.IsYJ == true)
-        //{
-        //    SceneManager.LoadScene(7); // go back to hospital
-        //}
-        //else if (ThemeSelectScreen.IsClassic == true)
-        //{
-        //    SceneManager.LoadScene(13); // go back to hospital
-        //}
-        //else if (ThemeSelectScreen.IsTrixy == true)
-        //{
-        //    SceneManager.LoadScene(16); // go back to hospital
-        //}
-        //else
-        //{
-        //    SceneManager.LoadScene(13);
-        //}
         sceneChange = true;
 
         Player.Save();

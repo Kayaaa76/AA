@@ -15,6 +15,9 @@ public class PrefabSpawner : MonoBehaviour
     public GameObject player; // player game object
     PlayerController playercontroller; // player controller component
 
+    List<GameObject> enemies = new List<GameObject>(); //list of instantiated enemies
+    GameObject spawnObj; //instantiated enemy
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +33,7 @@ public class PrefabSpawner : MonoBehaviour
         {
             if (playercontroller.yourScore > 0 && playercontroller.yourScore <= 20) // if score is more than 0 but less than or equals to 20 (speed 8)
             {
-                Instantiate(prefabToSpawn[0], spawnPoint.position, Quaternion.identity); // instantiate element 0 of the prefabToSpawn array at the spawn position
+                spawnObj = Instantiate(prefabToSpawn[0], spawnPoint.position, Quaternion.identity); // instantiate element 0 of the prefabToSpawn array at the spawn position
                 nextSpawn = Time.time + spawnRate + Random.Range(0, randomDelay);  // set the time interval for the next spawn
             }
 
@@ -40,12 +43,12 @@ public class PrefabSpawner : MonoBehaviour
 
                 if (randomObstacle == 0 && Time.time > nextSpawn) // if the integer randomly generated is 0
                 {
-                    Instantiate(prefabToSpawn[0], spawnPoint.position, Quaternion.identity); // instantiate element 0 of the prefabToSpawn array at the spawn position
+                    spawnObj = Instantiate(prefabToSpawn[0], spawnPoint.position, Quaternion.identity); // instantiate element 0 of the prefabToSpawn array at the spawn position
                     nextSpawn = Time.time + spawnRate + Random.Range(0, randomDelay); // set the time interval for the next spawn
                 }
                 else if (randomObstacle == 1 && Time.time > nextSpawn) // if the integer randomly generated is 1
                 {
-                    Instantiate(prefabToSpawn[1], spawnPoint.position, Quaternion.identity); // instantiate element 1 of the prefabToSpawn array at the spawn position
+                    spawnObj = Instantiate(prefabToSpawn[1], spawnPoint.position, Quaternion.identity); // instantiate element 1 of the prefabToSpawn array at the spawn position
                     nextSpawn = Time.time + spawnRate + Random.Range(0, randomDelay);  // set the time interval for the next spawn
                 }
             }
@@ -58,17 +61,17 @@ public class PrefabSpawner : MonoBehaviour
 
                     if (randomObstacle == 0 && Time.time > nextSpawn) // if the integer randomly generated is 0 
                     {
-                        Instantiate(prefabToSpawn[0], spawnPoint.position, Quaternion.identity); // instantiate element 0 of the prefabToSpawn array at the spawn position
+                        spawnObj = Instantiate(prefabToSpawn[0], spawnPoint.position, Quaternion.identity); // instantiate element 0 of the prefabToSpawn array at the spawn position
                         nextSpawn = Time.time + spawnRate + Random.Range(0, randomDelay); // set the time interval for the next spawn
                     }
                     else if (randomObstacle == 1 && Time.time > nextSpawn) // if the integer randomly generated is 1
                     {
-                        Instantiate(prefabToSpawn[1], spawnPoint.position, Quaternion.identity); // instantiate element 1 of the prefabToSpawn array at the spawn position
+                        spawnObj = Instantiate(prefabToSpawn[1], spawnPoint.position, Quaternion.identity); // instantiate element 1 of the prefabToSpawn array at the spawn position
                         nextSpawn = Time.time + spawnRate + Random.Range(0, randomDelay); // set the time interval for the next spawn
                     }
                     else if (randomObstacle == 2 && Time.time > nextSpawn) // if the integer randomly generated is 2
                     {
-                        Instantiate(prefabToSpawn[2], spawnPoint.position, Quaternion.identity); // instantiate element 2 of the prefabToSpawn array at the spawn position
+                        spawnObj = Instantiate(prefabToSpawn[2], spawnPoint.position, Quaternion.identity); // instantiate element 2 of the prefabToSpawn array at the spawn position
                         nextSpawn = Time.time + spawnRate + Random.Range(0, randomDelay); // set the time interval for the next spawn
                         prevObj3 = true; // set bool to true since obstacle spawned is element 2
                     }
@@ -80,17 +83,28 @@ public class PrefabSpawner : MonoBehaviour
 
                     if (randomObstacle == 0 && Time.time > nextSpawn) // if the integer randomly generated is 0 
                     {
-                        Instantiate(prefabToSpawn[0], spawnPoint.position, Quaternion.identity); // instantiate element 0 of the prefabToSpawn array at the spawn position
+                        spawnObj = Instantiate(prefabToSpawn[0], spawnPoint.position, Quaternion.identity); // instantiate element 0 of the prefabToSpawn array at the spawn position
                         nextSpawn = Time.time + spawnRate + Random.Range(0, randomDelay); // set the time interval for the next spawn
                         prevObj3 = false; // set bool to false since obstacle spawned is not element 2
                     }
                     else if (randomObstacle == 1 && Time.time > nextSpawn) // if the integer randomly generated is 1
                     {
-                        Instantiate(prefabToSpawn[2], spawnPoint.position, Quaternion.identity); // instantiate element 2 of the prefabToSpawn array at the spawn position
+                        spawnObj = Instantiate(prefabToSpawn[2], spawnPoint.position, Quaternion.identity); // instantiate element 2 of the prefabToSpawn array at the spawn position
                         nextSpawn = Time.time + spawnRate + Random.Range(0, randomDelay); // set the time interval for the next spawn
                     }
                 }
 
+            }
+
+            enemies.Add(spawnObj); //add instantiated object to list
+        }
+
+        for (int i = 0; i < enemies.Count; i++) //cycle through list
+        {
+            if (enemies[i].transform.GetChild(0).transform.position.x < player.transform.position.x) //if object passes player
+            {
+                enemies.Remove(enemies[i]); //remove object from list
+                playercontroller.enemyCount += 1; //increase enemy pass count
             }
 
         }
