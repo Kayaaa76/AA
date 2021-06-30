@@ -10,36 +10,33 @@ public class GameManager : MonoBehaviour
 {
     //bool lifeDeducted = false;
 
-    public Transform hospitalSpawn; // place where the player spawns after walking into the hospital
+    public Transform hospitalSpawn;             // place where the player spawns after walking into the hospital
 
-    public GameObject pauseBtn; // pause button
-    public GameObject menu; // menu that appears after clicking on the pause button
+    public GameObject pauseBtn;                 // pause button
+    public GameObject menu;                     // menu that appears after clicking on the pause button
 
     public GameObject gamesBtn;
 
-    //testScene1 test; // testScene1 script
-
-    public static GameObject player; // store the player game object
-    public static Vector3 currentPosition; // store the current position of the player
-    public static int sceneCounter; // store the sceneCounter as integer so that when player completes a mini game and comes back to the main scene, the position of the player would be the same as where the player was last at before the minigame.
+    public static GameObject player;            // store the player game object
+    public static Vector3 currentPosition;      // store the current position of the player
+    public static int sceneCounter;             // store the sceneCounter as integer so that when player completes a mini game and comes back to the main scene, the position of the player would be the same as where the player was last at before the minigame.
 
     GameObject obj; //npc game object
 
-    public GameObject dialogueM; // get the dialogue manager game object
-    private DialogueManager dm; // get the DialogueManager script
+    public GameObject dialogueM;                // get the dialogue manager game object
+    public DialogueManager dm;                 // get the DialogueManager script
 
     List<string> inventory = new List<string>();
 
-    public static int receptionistStage = 0; // 0, task player go doctor office
-    public static int doctorStage = 0; // if receptionistStage = 1, go to pharmacist
-    public static int pharmacistStage = 0; // if 1, trigger Match 3 ( yes btn )
+    public static int receptionistStage = 0;    // 0, task player go doctor office
+    public static int doctorStage = 0;          // if receptionistStage = 1, go to pharmacist
+    public static int pharmacistStage = 0;      // if 1, trigger Match 3 ( yes btn )
 
     // if match 3 complete, receptionist stage = 2
     //The receptionist tells him that there is a lot of commitments involve in wanting to be a doctor and advises the player to walk around the hub and to ask more doctors and surgeons about the matter at hand.
 
-    public static int surgeonStage = 0; // if receptionistStage = 3, the surgeon asks "what are you doing here little one?, next dialogue "you want to go to medical school?", "do you want to take a free course from me now?"
-    // if player clicks ( yes btn ), trigger Tower Defense
-
+    public static int surgeonStage = 0;         // if receptionistStage = 3, the surgeon asks "what are you doing here little one?, next dialogue "you want to go to medical school?", "do you want to take a free course from me now?"
+                                                // if player clicks ( yes btn ), trigger Tower Defense
     public static int npcdadStage = 0;
     public static int npcmalStage = 0;
     public static int npcbffStage = 0;
@@ -54,40 +51,35 @@ public class GameManager : MonoBehaviour
     private DialogueTrigger dt; // get DialogueTrigger script
     Quest quest;
 
-    public GameObject ReceptionistObject; // get the receptionist game object
-    public GameObject PharmacistObject; // get the pharmacist game object
-    public GameObject DoctorObject; // get the doctor game object
-    public GameObject SurgeonObject; // get the surgeon game object
-    public GameObject NPCDadObject; // get the NPC_Dad game object
-    public GameObject NPCMHObject; // get the NPC_MH game object
-    public GameObject NPCBFFObject; // get the NPC_BFF game object
-    public GameObject NPCNQXObject; // get the NPC_NQX game object
-    public GameObject NPCSGLObject; // get the NPC_SGL game object
-    public GameObject NPCTZDObject; // get the NPC_TZD game object
-    public GameObject NPCJKYObject; // get the NPC_JKY game object
-    public GameObject NPCAuntyObject; // get the NPC_Aunty game object
-    public GameObject NPCAunty1Object; // get the NPC_Aunty (1) game object
-    public GameObject NPCLawyerObject; // get the NPCLawyer game object
-    GameObject[] NPCs; //npc array
+    public GameObject ReceptionistObject;   // get the receptionist game object
+    public GameObject PharmacistObject;     // get the pharmacist game object
+    public GameObject DoctorObject;         // get the doctor game object
+    public GameObject SurgeonObject;        // get the surgeon game object
+    public GameObject NPCDadObject;         // get the NPC_Dad game object
+    public GameObject NPCMHObject;          // get the NPC_MH game object
+    public GameObject NPCBFFObject;         // get the NPC_BFF game object
+    public GameObject NPCNQXObject;         // get the NPC_NQX game object
+    public GameObject NPCSGLObject;         // get the NPC_SGL game object
+    public GameObject NPCTZDObject;         // get the NPC_TZD game object
+    public GameObject NPCJKYObject;         // get the NPC_JKY game object
+    public GameObject NPCAuntyObject;       // get the NPC_Aunty game object
+    public GameObject NPCAunty1Object;      // get the NPC_Aunty (1) game object
+    public GameObject NPCLawyerObject;      // get the NPCLawyer game object
+    GameObject[] NPCs;                      //npc array
     public Camera cam;
     public GameObject NPCInteractables;
     public Button TalkToNpcPrefab; 
 
-    public GameObject TDPanel; // panel that allow player to start tower defense game
+    public GameObject TDPanel;              // panel that allow player to start tower defense game
 
-    public GameObject leftBtn; // left arrow button for movement of character
-    public GameObject rightBtn; // right arrow button for movement of character
-    public GameObject upBtn; // up arrow button for movement of character
-    public GameObject downBtn; // down arrow button for movement of character
+    public GameObject leftBtn;              // left arrow button for movement of character
+    public GameObject rightBtn;             // right arrow button for movement of character
+    public GameObject upBtn;                // up arrow button for movement of character
+    public GameObject downBtn;              // down arrow button for movement of character
 
     static bool enterMinigame = false;
 
     public static System.DateTime DateTime;
-
-    private void Awake()
-    {
-        
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -98,9 +90,7 @@ public class GameManager : MonoBehaviour
         TDPanel.SetActive(false); // disable tower defense trigger panel
         menu.SetActive(false); // disable menu to show at start
 
-        dm = dialogueM.GetComponent<DialogueManager>(); // get the DialogueManager component of the dialogueM game object
         quest = gameObject.GetComponent<Quest>();
-        //test = GetComponent<testScene1>(); // get the testScene1 script
 
         if (Time.timeScale == 0) // if game is paused
         {
@@ -127,76 +117,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //StartCoroutine(PostLifeActivity());
         if(enterMinigame == true)
         {
             StartCoroutine(PostGameLevelActivity());
         }
         
         NPCInteractables.transform.position = cam.WorldToScreenPoint(new Vector3(player.transform.position.x + 3.5f, player.transform.position.y + 1)); //set container position near player object
-
-        //checkObj(); // function to check for the npc that the player clicks
-
-        //if (obj != null) // if the npc is not null
-        //{
-        //    if (obj.name == "Receptionist") // if npc name is Receptionist
-        //    {
-        //        Receptionist(); // call the Receptionist function
-        //    }
-        //    if (obj.name == "Pharmacist") // if npc name is Pharmacist
-        //    {
-        //        Pharmacist(); // call the Pharmacist function
-        //    }
-        //    if (obj.name == "Doctor") // if npc name is Doctor
-        //    {
-        //        Doctor(); // call the Doctor function
-        //    }
-        //    if (obj.name == "Surgeon") // if npc name is Surgeon
-        //    {
-        //        Surgeon(); // call the Surgeon function
-        //    }
-        //    if (obj.name == "NPC_Dad") // if npc name is NPC_Dad
-        //    {
-        //        NPCDAD(); // call the NPCDAD function
-        //    }
-        //    if (obj.name == "NPC_MH") // if npc name is NPC_MH
-        //    {
-        //        NPCMALCOLM(); // call the NPCMALCOLM function
-        //    }
-        //    if (obj.name == "NPC_BFF") // if npc name is NPC_BFF
-        //    {
-        //        NPCBFF(); // call the NPCBFF function
-        //    }
-        //    if (obj.name == "NPC_NQX") // if npc name is NPC_NQX
-        //    {
-        //        NPCNQX(); // call the NPCNQX function
-        //    }
-        //    if (obj.name == "NPC_SGL") // if the npc name is NPC_SGL
-        //    {
-        //        NPCSGL(); // call the NPCSGL function
-        //    }
-        //    if (obj.name == "NPC_TZD") // if the npc name is NPC_TZD
-        //    {
-        //        NPCTZD();  // call the NPCTZD function
-        //    }
-        //    if (obj.name == "NPC_JKY")  // if the npc name is NPC_JKY
-        //    {
-        //        NPCJKY(); // call the NPCJKY function
-        //    }
-        //    if (obj.name == "NPC_Aunty") // if the npc name is NPC_Aunty
-        //    {
-        //        NPCAUNTY(); // call the NPCAUNTY function
-        //    }
-        //    if (obj.name == "NPC_Aunty (1)")
-        //    {
-        //        NPCAUNTY1();
-        //    }
-        //    if (obj.name == "NPC_Lawyer") // if the npc name is NPC_Lawyer
-        //    {
-        //        NPCLAWYER(); // call the NPCLAWYER function
-        //    }
-        //}
-        // change npc exclusives dialogue box to trigger everytime instead of one
 
         if (dm.spawned == true) // if dialogue box is showned
         {
@@ -581,8 +507,7 @@ public class GameManager : MonoBehaviour
 
             SceneManager.LoadScene(11); // trigger endless runner game
         }
-    }
-    
+    }  
 
     public void StartTD() // function to start tower defense game
     {
@@ -665,11 +590,13 @@ public class GameManager : MonoBehaviour
         enterMinigame = false;
 
         WWWForm formPostGameLevelActivity = new WWWForm();
-        WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
+        WWW wwwPostGameLevelActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
         yield return wwwPostGameLevelActivity;
-        Debug.Log(wwwPostGameLevelActivity.text);
-        Debug.Log(wwwPostGameLevelActivity.error);
-        Debug.Log(wwwPostGameLevelActivity.url);
+
+        //WWW wwwPostGameLevelActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Game Level&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Game Level", formPostGameLevelActivity);
+        //Debug.Log(wwwPostGameLevelActivity.text);
+        //Debug.Log(wwwPostGameLevelActivity.error);
+        //Debug.Log(wwwPostGameLevelActivity.url);
     }
 
     [Serializable]
@@ -689,7 +616,8 @@ public class GameManager : MonoBehaviour
 
    public IEnumerator SetGameDetail()
     {
-        WWW wwwGetGameDetail = new WWW("http://103.239.222.212/ALIVE2Service/api/game/AllGameDetail");
+        //WWW wwwGetGameDetail = new WWW("http://103.239.222.212/ALIVE2Service/api/game/AllGameDetail");
+        WWW wwwGetGameDetail = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/AllGameDetail");
         yield return wwwGetGameDetail;
         Debug.Log(wwwGetGameDetail.text);
         Debug.Log(wwwGetGameDetail.error);

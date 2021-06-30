@@ -18,7 +18,7 @@ public class DailySpin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
@@ -109,11 +109,13 @@ public class DailySpin : MonoBehaviour
             Player.lives += 1;
             Debug.Log("You got 1 life from the Reward Wheel!");
             WWWForm formPostLifeActivity = new WWWForm();
-            WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
+            WWW wwwPostLifeActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
             yield return wwwPostLifeActivity;
-            Debug.Log(wwwPostLifeActivity.text);
-            Debug.Log(wwwPostLifeActivity.error);
-            Debug.Log(wwwPostLifeActivity.url);
+            
+            //WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
+            //Debug.Log(wwwPostLifeActivity.text);
+            //Debug.Log(wwwPostLifeActivity.error);
+            //Debug.Log(wwwPostLifeActivity.url);
 
             StartCoroutine(Login.UpdateLives());
         }
@@ -124,11 +126,13 @@ public class DailySpin : MonoBehaviour
             Player.coins += 10;
             Debug.Log("You got 10 coins from the Reward Wheel!");
             WWWForm formPostCoinActivity = new WWWForm();
-            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            WWW wwwPostCoinActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
             yield return wwwPostCoinActivity;
-            Debug.Log(wwwPostCoinActivity.text);
-            Debug.Log(wwwPostCoinActivity.error);
-            Debug.Log(wwwPostCoinActivity.url);
+            
+            //WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            //Debug.Log(wwwPostCoinActivity.text);
+            //Debug.Log(wwwPostCoinActivity.error);
+            //Debug.Log(wwwPostCoinActivity.url);
 
             StartCoroutine(Login.UpdateCoins());
         }
@@ -139,11 +143,13 @@ public class DailySpin : MonoBehaviour
             Player.coins += 500;
             Debug.Log("You got 500 coins from the Reward Wheel!");
             WWWForm formPostCoinActivity = new WWWForm();
-            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            WWW wwwPostCoinActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
             yield return wwwPostCoinActivity;
-            Debug.Log(wwwPostCoinActivity.text);
-            Debug.Log(wwwPostCoinActivity.error);
-            Debug.Log(wwwPostCoinActivity.url);
+
+            //WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            //Debug.Log(wwwPostCoinActivity.text);
+            //Debug.Log(wwwPostCoinActivity.error);
+            //Debug.Log(wwwPostCoinActivity.url);
 
             StartCoroutine(Login.UpdateCoins());
         }
@@ -154,11 +160,12 @@ public class DailySpin : MonoBehaviour
             Player.coins += 50;
             Debug.Log("You got 50 coins from the Reward Wheel!");
             WWWForm formPostCoinActivity = new WWWForm();
-            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            WWW wwwPostCoinActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            //WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
             yield return wwwPostCoinActivity;
-            Debug.Log(wwwPostCoinActivity.text);
-            Debug.Log(wwwPostCoinActivity.error);
-            Debug.Log(wwwPostCoinActivity.url);
+            //Debug.Log(wwwPostCoinActivity.text);
+            //Debug.Log(wwwPostCoinActivity.error);
+            //Debug.Log(wwwPostCoinActivity.url);
 
             StartCoroutine(Login.UpdateCoins());
         }
@@ -169,11 +176,12 @@ public class DailySpin : MonoBehaviour
             Player.coins += 100;
             Debug.Log("You got 100 coins from the Reward Wheel!");
             WWWForm formPostCoinActivity = new WWWForm();
-            WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            WWW wwwPostCoinActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+            //WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
             yield return wwwPostCoinActivity;
-            Debug.Log(wwwPostCoinActivity.text);
-            Debug.Log(wwwPostCoinActivity.error);
-            Debug.Log(wwwPostCoinActivity.url);
+            //Debug.Log(wwwPostCoinActivity.text);
+            //Debug.Log(wwwPostCoinActivity.error);
+            //Debug.Log(wwwPostCoinActivity.url);
 
             StartCoroutine(Login.UpdateCoins());
         }

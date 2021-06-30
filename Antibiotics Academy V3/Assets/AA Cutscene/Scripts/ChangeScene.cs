@@ -5,18 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void CutScene2()
     {
         SceneManager.LoadScene(3); // Change to second cutscene
@@ -39,10 +27,12 @@ public class ChangeScene : MonoBehaviour
 
     public void ThemeSelectionScene()
     {
-        if(PlayerPrefs.GetString("Theme") != null && PlayerPrefs.GetString("Gender") != null)
-        {
-            SceneManager.LoadScene("Main OG"); // go to main scene
-        }
-        else SceneManager.LoadScene(15); // Change to theme selection scene
+        //if(PlayerPrefs.GetString("Theme") != null && PlayerPrefs.GetString("Gender") != null)
+        //{
+        //    SceneManager.LoadScene("Main OG"); // go to main scene
+        //}
+        //else SceneManager.LoadScene(15); // Change to theme selection scene
+        SceneManager.LoadScene(15);
+
     }
 }

@@ -10,22 +10,21 @@ using System;
 
 public class Login : MonoBehaviour
 {
-    public InputField nameField;
-    public InputField passwordField;
+    public InputField nameField;                //Input Username
+    public InputField passwordField;            //Input Password
 
-    public static InputField tnameField;
-    public static InputField tpasswordField;
+    public static InputField tnameField;        
+    public static InputField tpasswordField;    
 
     public Button submitButton;
+    public GameObject loginError;
 
+    public static System.DateTime dateModified;
     public static System.DateTime lastLogin;
     System.DateTime currentLogin;
 
     public static string LoginToken;
-
     public static string GameSave;
-
-    public static System.DateTime dateModified;
 
     string nuggetName;
     int i = 1;
@@ -39,49 +38,29 @@ public class Login : MonoBehaviour
     public static string PlayerIDCoin;
     public static string PlayerIDLive;
 
-    void Update()
+    void Start() //Originally in update, but used in start to reduce load, but switch back to update if suddenly not working.
     {
         tnameField = nameField;
         tpasswordField = passwordField;
     }
 
+    //void Update()
+    //{
+    //    tnameField = nameField;
+    //    tpasswordField = passwordField;
+    //}
+
     public void CallLogin()
     {
         StartCoroutine(LoginPlayer());
-        //StartCoroutine(GetRequest("http://103.239.222.212/ALIVEService/api/login/Generate?username=player1&password=2020Alive"));
-        //StartCoroutine(PostRequest());
-        //LoginPlayers();
     }
-
-    //IEnumerator LoginPlayer()
-    //{
-    //    WWWForm form = new WWWForm();
-    //    form.AddField("name", nameField.text);
-    //    form.AddField("password", passwordField.text);
-    //    //WWW www = new WWW("http://localhost/sqlconnect/login.php", form);
-    //    WWW www = new WWW("http://103.239.222.212/ALIVEService/api/login/Generate?username=player1&password=2020Alive", form);
-    //    yield return www;
-    //    if (www.text[0] == '0')
-    //    {
-    //        DBManager.username = nameField.text;
-    //        //DBManager.score = int.Parse(www.text.Split('\t')[1]);
-    //        SceneManager.LoadScene(12);
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("User login failed. Error #" + www.text);
-    //    }
-    //}
 
     IEnumerator LoginPlayer()
     {
         WWWForm formLogin = new WWWForm();
-        WWW wwwLogin = new WWW("http://103.239.222.212/ALIVE2Service/api/login/Generate?username=" + nameField.text + "&password=" + passwordField.text, formLogin);
+        //WWW wwwLogin = new WWW("http://103.239.222.212/ALIVE2Service/api/login/Generate?username=" + nameField.text + "&password=" + passwordField.text, formLogin);
+        WWW wwwLogin = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/login/Generate?username=" + nameField.text + "&password=" + passwordField.text, formLogin);
         yield return wwwLogin;
-
-        Debug.Log(wwwLogin.text);
-        Debug.Log(wwwLogin.error);
-        Debug.Log(wwwLogin.url);
 
         currentLogin = System.DateTime.Now;
 
@@ -94,11 +73,12 @@ public class Login : MonoBehaviour
 
             #region Update Login Activity
             WWWForm formUpdateLogin = new WWWForm();
-            WWW wwwUpdateLogin = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostLogin?ActivityTypeName=Login&Username=" + nameField.text, formUpdateLogin);
+            //WWW wwwUpdateLogin = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostLogin?ActivityTypeName=Login&Username=" + nameField.text, formUpdateLogin);
+            WWW wwwUpdateLogin = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostLogin?ActivityTypeName=Login&Username=" + nameField.text, formUpdateLogin);
             yield return wwwUpdateLogin;
-            Debug.Log(wwwUpdateLogin.text);
-            Debug.Log(wwwUpdateLogin.error);
-            Debug.Log(wwwUpdateLogin.url);
+            //Debug.Log(wwwUpdateLogin.text);
+            //Debug.Log(wwwUpdateLogin.error);
+            //Debug.Log(wwwUpdateLogin.url);
 
             File.WriteAllText(Application.persistentDataPath + "/PlayerInformation.json", wwwUpdateLogin.text);
 
@@ -106,20 +86,23 @@ public class Login : MonoBehaviour
             JSONObject userInfoJson = (JSONObject)JSON.Parse(userInfoString);
 
             PlayerID = userInfoJson["userID"];
-            Debug.Log(PlayerID);
+            //Debug.Log(PlayerID);
             #endregion
 
             #region Check Game Version
-            //WWWForm formCheckVersion = new WWWForm();
-            WWW wwwCheckVersion = new WWW("http://103.239.222.212/ALIVE2Service/api/game/GameSave");
+            
+            WWW wwwCheckVersion = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/GameSave");
             yield return wwwCheckVersion;
             GameSave = wwwCheckVersion.text;
-            //Debug.Log(GameSave);
-            Debug.Log(wwwCheckVersion.text);
-            Debug.Log(wwwCheckVersion.error);
-            Debug.Log(wwwCheckVersion.url);
             File.WriteAllText(tpath, GameSave);
             Debug.Log("game save written");
+
+            //WWWForm formCheckVersion = new WWWForm();
+            //WWW wwwCheckVersion = new WWW("http://103.239.222.212/ALIVE2Service/api/game/GameSave");
+            //Debug.Log(GameSave);
+            //Debug.Log(wwwCheckVersion.text);
+            //Debug.Log(wwwCheckVersion.error);
+            //Debug.Log(wwwCheckVersion.url);
 
             string jsonString = File.ReadAllText(tpath);
             JSONObject gamesaveJson = (JSONObject)JSON.Parse(jsonString);
@@ -130,45 +113,25 @@ public class Login : MonoBehaviour
             Debug.Log(System.DateTime.Now);
             #endregion
 
-            if (File.Exists(path))
+            if (File.Exists(path)) //if player's saved data exists
             {
                 Player.Load();
                 if (currentLogin >= lastLogin.AddHours(18))
                 {
                     Player.coins += 10;
                     Debug.Log("You got 10 coins for logging in today!");
+
                     Player.lives += 3;
                     Debug.Log("You got 3 lives for logging in today!");
+
                     if (Player.lives > 5)
                     {
                         Player.lives = 5;
                         Debug.Log("You can only have 5 lives!");
                     }
+
                     Player.spunToday = false;
                     Debug.Log("You get to spin the Reward Wheel!");
-
-                    //WWWForm formGetUserInventory = new WWWForm();
-                    //WWW wwwGetUserInventory = new WWW("http://103.239.222.212/ALIVE2Service/api/game/GetUserInvenFromID?UserID=" + PlayerID, formGetUserInventory);
-                    //yield return wwwGetUserInventory;
-                    //Debug.Log(wwwGetUserInventory.text);
-                    //Debug.Log(wwwGetUserInventory.error);
-                    //Debug.Log(wwwGetUserInventory.url);
-
-                    //string getUserInvString = wwwGetUserInventory.text;
-                    //InventoryRoot inventory = new InventoryRoot();
-                    //inventory = JsonUtility.FromJson<InventoryRoot>("{\"inventoryIDs\":" + getUserInvString + "}");
-
-                    //foreach (InventoryID inventoryID in inventory.inventoryIDs)
-                    //{
-                    //    if (inventoryID.inventoryCategoryID == "324dcb99-4e2c-4282-d5a2-08d8966455ad")
-                    //    {
-                    //        File.WriteAllText(Application.persistentDataPath + "/userInventoryIDCoin.json", inventoryID.userInventoryID);
-                    //    }
-                    //    if (inventoryID.inventoryCategoryID == "4428d6b7-07e2-4d6a-a0b0-e2bf9efdaaf6")
-                    //    {
-                    //        File.WriteAllText(Application.persistentDataPath + "/userInventoryIDLive.json", inventoryID.userInventoryID);
-                    //    }
-                    //}
 
                     string userInvIDCoinString = File.ReadAllText(Application.persistentDataPath + "/userInventoryIDCoin.json");
                     JSONObject userInvIDCoinJson = (JSONObject)JSON.Parse(userInvIDCoinString);
@@ -179,18 +142,14 @@ public class Login : MonoBehaviour
                     PlayerIDLive = userInvIDLiveJson["userInventoryID"];
 
                     WWWForm formPostCoinActivity = new WWWForm();
-                    WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+                    //WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+                    WWW wwwPostCoinActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
                     yield return wwwPostCoinActivity;
-                    Debug.Log(wwwPostCoinActivity.text);
-                    Debug.Log(wwwPostCoinActivity.error);
-                    Debug.Log(wwwPostCoinActivity.url);
 
                     WWWForm formPostLifeActivity = new WWWForm();
-                    WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
+                    //WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
+                    WWW wwwPostLifeActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
                     yield return wwwPostLifeActivity;
-                    Debug.Log(wwwPostLifeActivity.text);
-                    Debug.Log(wwwPostLifeActivity.error);
-                    Debug.Log(wwwPostLifeActivity.url);
 
                     StartCoroutine(UpdateCoins());
                     StartCoroutine(UpdateLives());
@@ -208,7 +167,7 @@ public class Login : MonoBehaviour
                     Debug.Log("You have already logged in for the day!");
                 }
             }
-            else
+            else //if player saved file doesn't exist
             {
                 Debug.Log("Player save not detected!");
 
@@ -225,40 +184,49 @@ public class Login : MonoBehaviour
                 Player.RunnerDuration = "";
                 Player.totalDuration = "";
                 Player.dateStart = DateTime.Now;
-                Player.tLastLogin = Player.dateStart;
+                //Player.tLastLogin = Player.dateStart;
+                lastLogin = Player.dateStart;
                 Player.Save();
 
                 WWWForm formPostCoinActivity = new WWWForm();
-                //WWW wwwPostActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=Player Coins&username=tony&ActivityDataValue=Player Coins", formPostActivity);
-                WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+                WWW wwwPostCoinActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
                 yield return wwwPostCoinActivity;
-                Debug.Log(wwwPostCoinActivity.text);
-                Debug.Log(wwwPostCoinActivity.error);
-                Debug.Log(wwwPostCoinActivity.url);
+                
+                //WWW wwwPostActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=Player Coins&username=tony&ActivityDataValue=Player Coins", formPostActivity);
+                //WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+                //Debug.Log(wwwPostCoinActivity.text);
+                //Debug.Log(wwwPostCoinActivity.error);
+                //Debug.Log(wwwPostCoinActivity.url);
 
-                WWWForm formInsertPlayerCoin = new WWWForm();
-                WWW wwwInsertPlayerCoin = new WWW("http://103.239.222.212/ALIVE2Service/api/game/InsertUserInventory?UserInventoryValue=10&userID=" + PlayerID + "&inventoryCategoryID=324dcb99-4e2c-4282-d5a2-08d8966455ad", formInsertPlayerCoin);
+                WWWForm formInsertPlayerCoin = new WWWForm();            
+                WWW wwwInsertPlayerCoin = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/InsertUserInventory?UserInventoryValue=10&userID=" + PlayerID + "&inventoryCategoryID=324dcb99-4e2c-4282-d5a2-08d8966455ad", formInsertPlayerCoin);
                 yield return wwwInsertPlayerCoin;
-                Debug.Log(wwwInsertPlayerCoin.text);
-                Debug.Log(wwwInsertPlayerCoin.error);
-                Debug.Log(wwwInsertPlayerCoin.url);
+                
+                //WWW wwwInsertPlayerCoin = new WWW("http://103.239.222.212/ALIVE2Service/api/game/InsertUserInventory?UserInventoryValue=10&userID=" + PlayerID + "&inventoryCategoryID=324dcb99-4e2c-4282-d5a2-08d8966455ad", formInsertPlayerCoin);
+                //Debug.Log(wwwInsertPlayerCoin.text);
+                //Debug.Log(wwwInsertPlayerCoin.error);
+                //Debug.Log(wwwInsertPlayerCoin.url);
 
                 
                 File.WriteAllText(Application.persistentDataPath + "/userInventoryIDCoin.json", wwwInsertPlayerCoin.text);
 
                 WWWForm formPostLifeActivity = new WWWForm();
-                WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
+                WWW wwwPostLifeActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
                 yield return wwwPostLifeActivity;
-                Debug.Log(wwwPostLifeActivity.text);
-                Debug.Log(wwwPostLifeActivity.error);
-                Debug.Log(wwwPostLifeActivity.url);
+
+                //WWW wwwPostLifeActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Lifes&" + "username=" + nameField.text + "&ActivityDataValue=" + "Player Lifes", formPostLifeActivity);
+                //Debug.Log(wwwPostLifeActivity.text);
+                //Debug.Log(wwwPostLifeActivity.error);
+                //Debug.Log(wwwPostLifeActivity.url);
 
                 WWWForm formInsertPlayerLive = new WWWForm();
-                WWW wwwInsertPlayerLive = new WWW("http://103.239.222.212/ALIVE2Service/api/game/InsertUserInventory?UserInventoryValue=3&userID=" + PlayerID + "&inventoryCategoryID=4428d6b7-07e2-4d6a-a0b0-e2bf9efdaaf6", formInsertPlayerLive);
+                WWW wwwInsertPlayerLive = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/InsertUserInventory?UserInventoryValue=3&userID=" + PlayerID + "&inventoryCategoryID=4428d6b7-07e2-4d6a-a0b0-e2bf9efdaaf6", formInsertPlayerLive);
                 yield return wwwInsertPlayerLive;
-                Debug.Log(wwwInsertPlayerLive.text);
-                Debug.Log(wwwInsertPlayerLive.error);
-                Debug.Log(wwwInsertPlayerLive.url);
+
+                //WWW wwwInsertPlayerLive = new WWW("http://103.239.222.212/ALIVE2Service/api/game/InsertUserInventory?UserInventoryValue=3&userID=" + PlayerID + "&inventoryCategoryID=4428d6b7-07e2-4d6a-a0b0-e2bf9efdaaf6", formInsertPlayerLive);
+                //Debug.Log(wwwInsertPlayerLive.text);
+                //Debug.Log(wwwInsertPlayerLive.error);
+                //Debug.Log(wwwInsertPlayerLive.url);
 
                 File.WriteAllText(Application.persistentDataPath + "/userInventoryIDLive.json", wwwInsertPlayerLive.text);
 
@@ -272,7 +240,6 @@ public class Login : MonoBehaviour
             }
 
             #region if current game version is older
-            //if (dateModified > System.DateTime.Now.AddYears(-1))
             Debug.Log(lastLogin);
             if (dateModified > lastLogin)
             {
@@ -280,12 +247,12 @@ public class Login : MonoBehaviour
                 outdated = true;
                 WWW wwwGetAllNugQ = new WWW("http://103.239.222.212/ALIVE2Service/api/game/AllNugQ");
                 yield return wwwGetAllNugQ;
-                Debug.Log(wwwGetAllNugQ.text);
-                Debug.Log(wwwGetAllNugQ.error);
-                Debug.Log(wwwGetAllNugQ.url);
+                //Debug.Log(wwwGetAllNugQ.text);
+                //Debug.Log(wwwGetAllNugQ.error);
+                //Debug.Log(wwwGetAllNugQ.url);
 
                 File.WriteAllText(Application.persistentDataPath + "/AllNugQ.json", wwwGetAllNugQ.text);
-                Debug.Log("AllNugQ written");
+                //Debug.Log("AllNugQ written");
 
                 string tjsonString = File.ReadAllText(Application.persistentDataPath + "/AllNugQ.json");
                 //Debug.Log(tjsonString);
@@ -293,11 +260,6 @@ public class Login : MonoBehaviour
                 RootObject myObject = new RootObject();
 
                 myObject = JsonUtility.FromJson<RootObject>("{\"sets\":" + tjsonString + "}");
-
-                //foreach (AllNugQ set in myObject.sets)
-                //{
-                //    Debug.Log("gamequestioninfoid: " + set.gameQuestionInfoID + " gamedetailid: " + set.gameDetailID + " NUGGET: " + set.infoNugget.infoNuggetValue);
-                //}
 
                 foreach (AllNugQ set in myObject.sets)
                 {
@@ -342,11 +304,9 @@ public class Login : MonoBehaviour
             if (Player.donePreQuiz == false)
             {
                 WWWForm formPostPreActivity = new WWWForm();
-                WWW wwwPostPreActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Pre Quiz&" + "username=" + nameField.text + "&ActivityDataValue=" + "Pre Quiz", formPostPreActivity);
+                //WWW wwwPostPreActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Pre Quiz&" + "username=" + nameField.text + "&ActivityDataValue=" + "Pre Quiz", formPostPreActivity);
+                WWW wwwPostPreActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Pre Quiz&" + "username=" + nameField.text + "&ActivityDataValue=" + "Pre Quiz", formPostPreActivity);
                 yield return wwwPostPreActivity;
-                Debug.Log(wwwPostPreActivity.text);
-                Debug.Log(wwwPostPreActivity.error);
-                Debug.Log(wwwPostPreActivity.url);
 
                 SceneManager.LoadScene(12);
                 Player.donePreQuiz = true;
@@ -355,10 +315,11 @@ public class Login : MonoBehaviour
             {
                 SceneManager.LoadScene("Cutscene");
             }
-            else
+            if (Player.donePreQuiz == true && File.Exists(path))
             {
-                SceneManager.LoadScene("Cutscene");
+                SceneManager.LoadScene(13);
             }
+
             lastLogin = currentLogin;
             NotificationManager.CreateNotifChannel();
             NotificationManager.SendNotification();
@@ -366,90 +327,9 @@ public class Login : MonoBehaviour
         else
         {
             Debug.Log("Login Failed!");
+            loginError.SetActive(true);
         }
     }
-
-    //IEnumerator GetRequest(string uri)
-    //{
-    //    using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
-    //    {
-    //        // Request and wait for the desired page.
-    //        yield return webRequest.SendWebRequest();
-
-    //        string[] pages = uri.Split('/');
-    //        int page = pages.Length - 1;
-
-    //        if (webRequest.isNetworkError)
-    //        {
-    //            Debug.Log(pages[page] + ": Error: " + webRequest.error);
-    //        }
-    //        else
-    //        {
-    //            Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-    //        }
-    //    }
-    //}
-
-    IEnumerator PostRequest()
-    {
-        WWWForm form = new WWWForm();
-        WWW www = new WWW("http://103.239.222.212/ALIVEService/api/login/Generate?username=player1&password=2020Alive", form);
-        yield return www;
-        Debug.Log(www.text);
-        LoginToken = www.text;
-
-        currentLogin = System.DateTime.Now;
-        string path = Application.persistentDataPath + "/PlayerSave.json";
-        if (File.Exists(path))
-        {
-            Player.Load();
-            if (currentLogin >= lastLogin.AddHours(18))
-            {
-                Player.coins += 10;
-                Debug.Log("You got 10 coins for logging in today!");
-                Player.lives += 3;
-                Debug.Log("You got 3 lives for logging in today!");
-            }
-            else
-            {
-                Debug.Log("You have already logged in for the day!");
-            }
-        }
-        else
-        {
-            Player.coins += 10;
-            Debug.Log("You got 10 coins for logging in today!");
-            Player.lives += 3;
-            Debug.Log("You got 3 lives for logging in today!");
-        }
-
-        lastLogin = currentLogin;
-        if (Player.donePreQuiz == false)
-        {
-            SceneManager.LoadScene(12);
-            Player.donePreQuiz = true;
-        }
-        else if (Player.donePreQuiz == true)
-        {
-            SceneManager.LoadScene("Cutscene");
-        }
-        else
-        {
-            SceneManager.LoadScene("Cutscene");
-        }
-    }
-
-    //void LoginPlayers()
-    //{
-    //    if (nameField.text == "testuser" && passwordField.text == "password")
-    //    {
-    //        SceneManager.LoadScene(12);
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Wrong credentials");
-    //    }
-    //}
 
     public void VerifyInputs()
     {
@@ -463,9 +343,6 @@ public class Login : MonoBehaviour
 
     public void BypassLogin()
     {
-        //StartCoroutine(PostRequest());
-        //SceneManager.LoadScene(12);
-
         nameField.text = "player1";
         passwordField.text = "2020Alive";
     }

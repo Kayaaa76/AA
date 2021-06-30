@@ -9,35 +9,29 @@ using SimpleJSON;
 
 public class QuizManager : MonoBehaviour
 {
-    static bool coinsChange = false;
-
-    List<Questions> qns = new List<Questions>(); //a list to store the questions
-
     public string nextScene;
-
     public int sceneID;
 
+    public GameObject starRatingPanel;
     public TextAsset questionsCSV;
-
     public Text questionNo;
     public Text question;
-
     public Text LoginToken;
 
     private string ans;
-
     private int index = 0;
     private int score;
 
+    static bool coinsChange = false;
     static bool ready = false;
+
+    List<Questions> qns = new List<Questions>(); //a list to store the questions
 
     System.DateTime QuizStart;
     System.DateTime QuizEnd;
 
-    public GameObject starRatingPanel;
-
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         StartCoroutine(GetQuestionAnswer());
 
@@ -51,45 +45,46 @@ public class QuizManager : MonoBehaviour
             question.questions = row[1];                                  //set the questions from the string in row 1  
             question.answer = row[2].Trim();                              //store the answer from the string in row 2
 
-            if (questionsCSV.name == "PreQuestions")
-            {
-                string fileName = File.ReadAllText(Application.persistentDataPath + "/Pre-Game Question " + i + ".json");
-                string tFileName = File.ReadAllText(Application.persistentDataPath + "/Pre-Game Question " + i + " Answer" + ".json");
+            //if (questionsCSV.name == "PreQuestions")
+            //{
+            //    string fileName = File.ReadAllText(Application.persistentDataPath + "/Pre-Game Question " + i + ".json");
+            //    string tFileName = File.ReadAllText(Application.persistentDataPath + "/Pre-Game Question " + i + " Answer" + ".json");
 
-                JSONObject jSONObject = new JSONObject();
-                jSONObject = (JSONObject)JSON.Parse(fileName);
+            //    JSONObject jSONObject = new JSONObject();
+            //    jSONObject = (JSONObject)JSON.Parse(fileName);
 
-                JSONObject tJSONObject = new JSONObject();
-                tJSONObject = (JSONObject)JSON.Parse(tFileName);
+            //    JSONObject tJSONObject = new JSONObject();
+            //    tJSONObject = (JSONObject)JSON.Parse(tFileName);
 
-                question.questions = jSONObject["questionValue"];
-                question.answer = tJSONObject["answer"];
-            }
-            if (questionsCSV.name == "PostQuestions")
-            {
-                string fileName = File.ReadAllText(Application.persistentDataPath + "/Post-Game Question " + i + ".json");
-                string tFileName = File.ReadAllText(Application.persistentDataPath + "/Post-Game Question " + i + " Answer" + ".json");
+            //    question.questions = jSONObject["questionValue"];
+            //    question.answer = tJSONObject["answer"];
+            //}
 
-                JSONObject jSONObject = new JSONObject();
-                jSONObject = (JSONObject)JSON.Parse(fileName);
+            //if (questionsCSV.name == "PostQuestions")
+            //{
+            //    string fileName = File.ReadAllText(Application.persistentDataPath + "/Post-Game Question " + i + ".json");
+            //    string tFileName = File.ReadAllText(Application.persistentDataPath + "/Post-Game Question " + i + " Answer" + ".json");
 
-                JSONObject tJSONObject = new JSONObject();
-                tJSONObject = (JSONObject)JSON.Parse(tFileName);
+            //    JSONObject jSONObject = new JSONObject();
+            //    jSONObject = (JSONObject)JSON.Parse(fileName);
 
-                question.questions = jSONObject["questionValue"];
-                question.answer = tJSONObject["answer"];
-            }
+            //    JSONObject tJSONObject = new JSONObject();
+            //    tJSONObject = (JSONObject)JSON.Parse(tFileName);
+
+            //    question.questions = jSONObject["questionValue"];
+            //    question.answer = tJSONObject["answer"];
+            //}
 
             qns.Add(question);                                            //add the question instance to the questions list
         }
 
         questionNo.text = "Question: " + qns[index].questionNo;           //set the questionNo text and question text to the first question, since index starts at 0
         question.text = qns[index].questions;
-
+        
         LoginToken.text = Login.LoginToken;
-
         coinsChange = false;
         ready = false;
+        //Debug.Log("not ready to change scenes");
 
         QuizStart = System.DateTime.Now;
     }
@@ -107,10 +102,10 @@ public class QuizManager : MonoBehaviour
             StartCoroutine(ChangeScene());
             
         }
-        else if (ready== false)
-        {
-            Debug.Log("not ready to change scenes");
-        }
+        //else if (ready == false)
+        //{
+        //    Debug.Log("not ready to change scenes");    
+        //}
     }
 
     public void TrueBtn()        //function to set the ans to true
@@ -180,12 +175,14 @@ public class QuizManager : MonoBehaviour
     IEnumerator PostCoinActivity()
     {
         WWWForm formPostCoinActivity = new WWWForm();
-        WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+        WWW wwwPostCoinActivity = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
         yield return wwwPostCoinActivity;
-        Debug.Log(wwwPostCoinActivity.text);
-        Debug.Log(wwwPostCoinActivity.error);
-        Debug.Log(wwwPostCoinActivity.url);
         ready = true;
+
+        //WWW wwwPostCoinActivity = new WWW("http://103.239.222.212/ALIVE2Service/api/game/PostActivity?ActivityTypeName=" + "Player Coins&" + "username=" + Login.tnameField.text + "&ActivityDataValue=" + "Player Coins", formPostCoinActivity);
+        //Debug.Log(wwwPostCoinActivity.text);
+        //Debug.Log(wwwPostCoinActivity.error);
+        //Debug.Log(wwwPostCoinActivity.url);
     }
 
     IEnumerator ChangeScene()
@@ -219,9 +216,11 @@ public class QuizManager : MonoBehaviour
     {
         WWW wwwQuestionAnswer = new WWW("http://103.239.222.212/ALIVE2Service/api/game/AllQuestionAnswer");
         yield return wwwQuestionAnswer;
-        Debug.Log(wwwQuestionAnswer.text);
-        Debug.Log(wwwQuestionAnswer.error);
-        Debug.Log(wwwQuestionAnswer.url);
+
+        //WWW wwwQuestionAnswer = new WWW("http://www.stewards.com.sg/ALIVE2Service/api/game/AllQuestionAnswer");
+        //Debug.Log(wwwQuestionAnswer.text);
+        //Debug.Log(wwwQuestionAnswer.error);
+        //Debug.Log(wwwQuestionAnswer.url);
 
         File.WriteAllText(Application.persistentDataPath + "/AllQuestionAnswer.json", wwwQuestionAnswer.text);
 
@@ -237,7 +236,7 @@ public class QuizManager : MonoBehaviour
         {
             void SavePreGameQuestion()
             {
-                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                //Debug.Log(qA.questionName + "\n" + qA.questionValue);
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
@@ -248,7 +247,7 @@ public class QuizManager : MonoBehaviour
 
             void SavePostGameQuestion()
             {
-                Debug.Log(qA.questionName + "\n" + qA.questionValue);
+                //Debug.Log(qA.questionName + "\n" + qA.questionValue);
                 QA tQA = new QA();
                 tQA.questionName = qA.questionName;
                 tQA.questionValue = qA.questionValue;
@@ -259,14 +258,14 @@ public class QuizManager : MonoBehaviour
 
             foreach (Answers answer in qA.answer)
             {
-                if (answer.answerName.Contains("Pre-Game Q"))
-                {
-                    Debug.Log(answer.answerName + " -- value: " + answer.answerValue + " | iscorrect: " + answer.isCorrect);
-                }
-                else if(answer.answerName.Contains("Post-Game Q"))
-                {
-                    Debug.Log(answer.answerName + " -- value: " + answer.answerValue + " | iscorrect: " + answer.isCorrect);
-                }
+                //if (answer.answerName.Contains("Pre-Game Q"))
+                //{
+                //    Debug.Log(answer.answerName + " -- value: " + answer.answerValue + " | iscorrect: " + answer.isCorrect);
+                //}
+                //else if(answer.answerName.Contains("Post-Game Q"))
+                //{
+                //    Debug.Log(answer.answerName + " -- value: " + answer.answerValue + " | iscorrect: " + answer.isCorrect);
+                //}
                 void SavePreGameAnswer()
                 {
                     Answers tAnswers = new Answers();

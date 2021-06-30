@@ -97,12 +97,6 @@ public class ThemeChange : MonoBehaviour
         changeEnvironment();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void changeEnvironment()
     {
         if(PlayerPrefs.GetString("Theme") == "Pastel")
@@ -172,6 +166,7 @@ public class ThemeChange : MonoBehaviour
                 ticketMachine[i].GetComponent<SpriteRenderer>().sprite = pastelTicketMachine;
             }
         }
+
         else if (PlayerPrefs.GetString("Theme") == "Classic")
         {
             for (int i = 0; i < bed1.Length; i++)
@@ -239,6 +234,7 @@ public class ThemeChange : MonoBehaviour
                 ticketMachine[i].GetComponent<SpriteRenderer>().sprite = pastelTicketMachine;
             }
         }
+
         else if (PlayerPrefs.GetString("Theme") == "Bold")
         {
             for (int i = 0; i < bed1.Length; i++)
